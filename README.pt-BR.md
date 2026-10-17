@@ -22,7 +22,7 @@ A demonstração é identificada na tela, não aceita uploads e usa uma origem s
 
 O build de fonte atual requer Linux x86-64.
 
-Use Docker Engine com Compose v2 em Linux. O primeiro build baixa releases verificadas por tamanho e SHA-256 e recompila o FigCraft do fonte Rust fixado, com correções de abrir/salvar no navegador. Os demais editores usam bundles upstream verificados com a preparação de marca documentada. Reserve tempo e disco adicionais para as dependências Rust; não é necessária GPU no servidor nem download de código no startup. Encoders e licenças originais são preservados; veja [os detalhes do build](docs/LICENSING.md#figcraft-browser-file-io). O navegador desktop atualizado precisa de WebAssembly/WebGL; funções avançadas de áudio/vídeo dependem das capacidades do navegador.
+Use Docker Engine com Compose v2 em Linux. O primeiro build baixa releases verificadas por tamanho e SHA-256 e recompila FigCraft e GridCraft dos fontes Rust fixados, com correções de abrir/salvar no navegador e da entrada inicial de células, respectivamente. Os demais editores usam bundles upstream verificados com a preparação de marca documentada. Reserve tempo e disco adicionais para as dependências Rust; não é necessária GPU no servidor nem download de código no startup. Encoders e licenças originais são preservados; veja [os detalhes do build](docs/LICENSING.md#source-built-editors). O navegador desktop atualizado precisa de WebAssembly/WebGL; funções avançadas de áudio/vídeo dependem das capacidades do navegador.
 
 Extraia o pacote, entre na pasta e execute:
 

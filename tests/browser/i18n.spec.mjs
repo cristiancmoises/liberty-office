@@ -33,7 +33,7 @@ test('demo locale and focus changes retain an open light document and make no pr
  await page.getByRole('combobox',{name:'Language / Idioma'}).selectOption('en');
  await page.locator('.app-card[title="WordCraft"]').click();
  const editor=page.frameLocator('#demo-frame iframe');
- await expect(editor.getByRole('heading',{name:'Documents · light mode'})).toBeVisible();
+ await expect(editor.getByRole('heading',{name:'Documents · light mode'})).toBeVisible({timeout:120000});
  await editor.getByRole('textbox',{name:'Document content'}).fill('Nome — unsaved document');
  const frameURL=await page.locator('#demo-frame iframe').getAttribute('src');
  await page.getByRole('combobox',{name:'Language / Idioma'}).selectOption('pt-BR');

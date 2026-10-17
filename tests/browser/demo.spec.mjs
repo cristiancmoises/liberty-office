@@ -50,7 +50,11 @@ test('demo remains isolated and usable at mobile widths without upload APIs',asy
  await expect(frame.getByRole('button',{name:'Abrir TXT/HTML'})).toHaveCount(0);
  expect(await frame.evaluate(()=>{try{parent.document.body;return false}catch(error){return error.name==='SecurityError'}})).toBe(true);
  const denied=await frame.evaluate(async()=>{try{await showOpenFilePicker();return false}catch(error){return error.name==='NotAllowedError'}});expect(denied).toBe(true);
- expect((await page.request.post(new URL(word.url).origin+'/api/files',{data:'no upload'})).status()).toBe(404);
+ const demoOrigin=new URL(word.url).origin;
+ expect((await page.request.get(demoOrigin+'/api/auth/status')).status()).toBe(404);
+ const blockedUpload=await page.request.post(demoOrigin+'/api/files',{data:'no upload'});
+ // The public proxy rejects POST before routing; direct backend tests return 404.
+ expect([403,404]).toContain(blockedUpload.status());
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
 });
 

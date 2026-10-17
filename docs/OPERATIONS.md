@@ -34,19 +34,26 @@ status, backup and recovery.
 ## Source build and editor integrity
 
 Source builds currently require Linux x86-64. The default Docker build compiles
-FigCraft with the browser file-I/O fixes from
-its pinned Rust source, then verifies the output against `figcraft-build.lock.json`.
-The other editors use verified upstream bundles and the documented data-only
-branding preparation. Rust, wasm-bindgen, source archives and craft-fonts are
-pinned in `scripts/build_figcraft_web.sh`; Cargo uses `--locked` and one build
+FigCraft with browser file-I/O fixes and GridCraft with initial cell-input fixes
+from their pinned Rust sources, then verifies the output against
+`figcraft-build.lock.json` and `gridcraft-build.lock.json`. The other editors use
+verified upstream bundles and the documented data-only branding preparation.
+Rust, wasm-bindgen, source archives and craft-fonts are pinned in
+`scripts/build_figcraft_web.sh` and `scripts/build_gridcraft_web.sh`; Cargo uses `--locked` and one build
 job. Reserve additional build time, memory and disk for dependencies and build
 caches. The recipe refuses to start or finish below 5 GiB free; this is a
 storage floor, not a claim that 5 GiB is sufficient for the whole build.
+The Docker stages serialize these source builds, including under BuildKit.
+The recipes do not impose a container memory/CPU limit themselves; configure
+those limits on your build host. The deployment was compiled in a separate
+bounded builder, not in the running application container.
 
 No server GPU is required. Runtime images contain prepared assets, not the Rust
 toolchain, and do not fetch editor code on startup. A trusted local bundle image
-with `/out` may be supplied through the `FIGCRAFT_BUNDLE_IMAGE` build argument
-to reuse an already-tested build. Exact compiled-file and current patch/recipe
+with `/out` may be supplied through the `FIGCRAFT_BUNDLE_IMAGE` or
+`GRIDCRAFT_BUNDLE_IMAGE` build argument to reuse the corresponding already-tested
+build. Each image must include a shell for the conditional build stage.
+Exact compiled-file and current patch/recipe
 hash checks still apply; an arbitrary or stale bundle is rejected. Preserve
 original licenses and source-build records when distributing prepared assets.
 

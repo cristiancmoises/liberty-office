@@ -1,4 +1,4 @@
-"""Install only the reviewed source-built FigCraft bundle; preserve original notices."""
+"""Install the two reviewed source-built editors; preserve original notices."""
 
 import argparse
 import gzip
@@ -8,6 +8,17 @@ import re
 import shutil
 import tempfile
 from pathlib import Path, PurePosixPath
+
+SOURCE_BUILD_VERSIONS = {"figcraft": "v0.6.0", "gridcraft": "v0.7.0"}
+
+
+def supported_identity(spec):
+    app_id = spec.get("id")
+    return (
+        isinstance(app_id, str)
+        and app_id in SOURCE_BUILD_VERSIONS
+        and (spec.get("version") == SOURCE_BUILD_VERSIONS[app_id])
+    )
 
 
 def digest(path):
@@ -19,6 +30,8 @@ def source_build_matches(record, lock):
     """Check installed provenance and asset digests against the public build lock."""
     lock = Path(lock)
     spec = json.loads(lock.read_text())
+    if not supported_identity(spec):
+        return False
     expected = {
         "source_commit": spec["source_commit"],
         "source_sha256": spec["source_sha256"],
@@ -26,7 +39,7 @@ def source_build_matches(record, lock):
     }
     files = record.get("files")
     return (
-        record.get("id") == spec["id"] == "figcraft"
+        record.get("id") == spec["id"]
         and record.get("version") == spec["version"]
         and record.get("source_build") == expected
         and isinstance(files, dict)
@@ -38,15 +51,15 @@ def install(bundle, output, lock):
     bundle, output, lock = Path(bundle), Path(output), Path(lock)
     spec = json.loads(lock.read_text())
     if (
-        spec.get("id") != "figcraft"
-        or spec.get("version") != "v0.6.0"
+        not supported_identity(spec)
         or not re.fullmatch(r"[0-9a-f]{40}", spec.get("source_commit", ""))
         or not re.fullmatch(r"[0-9a-f]{64}", spec.get("source_sha256", ""))
     ):
-        raise ValueError("Unexpected FigCraft source-build identity")
+        raise ValueError("Unexpected editor source-build identity")
+    app_id = spec["id"]
     patches = spec.get("patch_files")
     if not isinstance(patches, dict) or not 1 <= len(patches) <= 32:
-        raise ValueError("Missing reviewed FigCraft build inputs")
+        raise ValueError("Missing reviewed editor build inputs")
     for name, expected in patches.items():
         relative = PurePosixPath(name)
         path = lock.parent / relative
@@ -63,11 +76,11 @@ def install(bundle, output, lock):
             or digest(path) != expected
         ):
             raise ValueError(
-                "FigCraft patch/build recipe differs from the reviewed inputs"
+                "Editor patch/build recipe differs from the reviewed inputs"
             )
     files = spec.get("files")
     if not isinstance(files, dict) or not 3 <= len(files) <= 1000:
-        raise ValueError("Invalid FigCraft build inventory")
+        raise ValueError("Invalid editor build inventory")
     for name, expected in files.items():
         path = PurePosixPath(name)
         if (
@@ -80,29 +93,29 @@ def install(bundle, output, lock):
             or not isinstance(expected, str)
             or not re.fullmatch(r"[0-9a-f]{64}", expected)
         ):
-            raise ValueError("Unsafe FigCraft build inventory entry")
+            raise ValueError("Unsafe editor build inventory entry")
     entries = list(bundle.rglob("*"))
     if any(path.is_symlink() for path in entries):
-        raise ValueError("Symlinks are not accepted in FigCraft builds")
+        raise ValueError("Symlinks are not accepted in editor builds")
     actual = {
         path.relative_to(bundle).as_posix(): path for path in entries if path.is_file()
     }
     if actual.keys() != files.keys() or "index.html" not in actual:
-        raise ValueError("FigCraft build files differ from the reviewed inventory")
+        raise ValueError("Editor build files differ from the reviewed inventory")
     if not any(name.endswith(".wasm") for name in files) or not any(
         name.endswith(".js") for name in files
     ):
-        raise ValueError("FigCraft build lacks WebAssembly or JavaScript")
+        raise ValueError("Editor build lacks WebAssembly or JavaScript")
     if sum(path.stat().st_size for path in actual.values()) > 1024**3:
-        raise ValueError("FigCraft build exceeds the installation limit")
+        raise ValueError("Editor build exceeds the installation limit")
     if any(digest(path) != files[name] for name, path in actual.items()):
-        raise ValueError("FigCraft build SHA-256 mismatch")
-    target = output / "figcraft"
+        raise ValueError("Editor build SHA-256 mismatch")
+    target = output / app_id
     if not target.is_dir() or target.is_symlink():
-        raise ValueError("A verified original FigCraft installation is required")
+        raise ValueError("A verified original editor installation is required")
     original_entries = list(target.rglob("*"))
     if any(path.is_symlink() for path in original_entries):
-        raise ValueError("Unexpected symlink in the original FigCraft installation")
+        raise ValueError("Unexpected symlink in the original editor installation")
     provenance = {
         "source_commit": spec["source_commit"],
         "source_sha256": spec["source_sha256"],
@@ -110,7 +123,7 @@ def install(bundle, output, lock):
     }
     # All validation precedes replacement. Only this generated editor bundle is touched.
     with tempfile.TemporaryDirectory(
-        prefix="prepare-figcraft-", dir=output
+        prefix=f"prepare-{app_id}-", dir=output
     ) as temporary:
         stage = Path(temporary) / "bundle"
         stage.mkdir()
@@ -131,18 +144,18 @@ def install(bundle, output, lock):
             destination = stage / relative
             if destination.exists() and digest(destination) != digest(path):
                 raise ValueError(
-                    "Source build would overwrite an original FigCraft notice"
+                    "Source build would overwrite an original editor notice"
                 )
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(path, destination)
         if any(digest(stage / name) != expected for name, expected in files.items()):
-            raise ValueError("Staged FigCraft build SHA-256 mismatch")
+            raise ValueError("Staged editor build SHA-256 mismatch")
         modifications = {
-            "id": "figcraft",
+            "id": app_id,
             "kind": "source-build",
             **provenance,
             "changes": [
-                "Bounded browser file I/O using the native engine encoders",
+                "Reviewed source patches identified by the pinned build lock",
                 "Neutral product identity with original source attribution",
             ],
             "editor_patch_license": "MIT OR Apache-2.0",
@@ -161,7 +174,7 @@ def install(bundle, output, lock):
                 ):
                     shutil.copyfileobj(source, compressed, 1024 * 1024)
         record = {
-            "id": "figcraft",
+            "id": app_id,
             "version": spec["version"],
             "source_build": provenance,
             "files": {
@@ -172,7 +185,7 @@ def install(bundle, output, lock):
         }
         (stage / "installed.json").write_text(json.dumps(record, indent=2) + "\n")
         # A rollback failure must not put the original inside automatic cleanup.
-        backup = Path(tempfile.mkdtemp(prefix="figcraft-original-", dir=output))
+        backup = Path(tempfile.mkdtemp(prefix=f"{app_id}-original-", dir=output))
         previous = backup / "original"
         try:
             target.rename(previous)
@@ -186,7 +199,7 @@ def install(bundle, output, lock):
                 previous.rename(target)
             except BaseException as error:
                 error.add_note(
-                    "Original FigCraft bundle retained for recovery at " + str(previous)
+                    "Original editor bundle retained for recovery at " + str(previous)
                 )
                 raise
             backup.rmdir()
@@ -202,4 +215,4 @@ if __name__ == "__main__":
     parser.add_argument("--lock", type=Path, required=True)
     args = parser.parse_args()
     install(args.bundle, args.output, args.lock)
-    print("Verified source-built FigCraft installed; original notices preserved.")
+    print("Verified source-built editor installed; original notices preserved.")

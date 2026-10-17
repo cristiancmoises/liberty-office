@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "id": "gridcraft",
+  "version": "v0.7.0",
+  "source_commit": "d9d09f0baa912e88c5111107903fc8c640214b57",
+  "source_sha256": "3f4fc387e910a3a4c6e435f33b9b123abb6d3347399d589f9b791a9f53c50b25",
+  "source_archive_sha256": "3f4fc387e910a3a4c6e435f33b9b123abb6d3347399d589f9b791a9f53c50b25",
+  "license": "MIT OR Apache-2.0",
+  "rust_image": "rust:1.95.0-bookworm@sha256:6258907abe69656e41cd992e0b705cdcfabcbbe3db374f92ed2d47121282d4a1",
+  "wasm_bindgen": "0.2.129",
+  "wasm_bindgen_options": "--target web --weak-refs",
+  "binaryen_version": "133",
+  "binaryen_archive_sha256": "2dc9c7813f5375db93d96ead4b78222fcc3e2677bbb832297af4797782a37489",
+  "wasm_opt": "-Oz --enable-bulk-memory --enable-bulk-memory-opt --enable-nontrapping-float-to-int --enable-sign-ext --enable-reference-types --enable-multivalue",
+  "craft_fonts_commit": "abb83316d96aa59c1cf64784289e378fe9fa5695",
+  "craft_fonts_sha256": "53e41ed01ee81a0ef664601a73fb87281f1fd748e724f560c8128d7d33eb3328",
+  "cargo_locked": true,
+  "cargo_profile": "release",
+  "build_work_directory": "/build",
+  "cargo_profile_overrides": {
+    "lto": "thin"
+  },
+  "source_date_epoch": 1791936000,
+  "additional_liberty_wasm_limit_bytes": 25165824,
+  "modifications": "Exact-once initial text/focus handoff and ordered keyboard edit boundaries; one reviewed runtime identity label. Original engine, fonts, copyright and source credits preserved.",
+  "patch_files": {
+    "scripts/patch_gridcraft_web.py": "2733bfe2922d1054a7965085fcd5c816bfdf34d7c60404320e4cfd1dd94a6b97",
+    "scripts/build_gridcraft_web.sh": "2662275f04cdc13d56cce4de77fe0cafafd894560d172a9b4a6a68d1b0b47b59",
+    "scripts/package_gridcraft_web.py": "bda0fe5ef9ba125c9c8b76683e7fa96b76a6a4d596011436bb2cb0bd9f31ca08",
+    "patches/gridcraft-web/input-tests.Cargo.toml": "10903260c6a6a33bca2555e5183ad6512eb5002c8e5370fbfc17d7d487e510ad",
+    "patches/gridcraft-web/input_handoff.rs": "d420415120ecd1fe1b4d4811978e00434443d315db8775e4a3c1498b13c5fa71",
+    "patches/gridcraft-web/input_tests.rs": "b68015976a83f0abe4f68fc39123ccbae310ebf881564e588e8cd051c6edd3ac",
+    "patches/gridcraft-web/test_package.py": "31196e1c9b5f42290995faba668ab77790b82ef31bf136dc9958362e6e744a7a"
+  },
+  "files": {
+    "CRAFT-FONTS-ATTRIBUTION.md": "15b594735378181a33ab60da8800e64767d1d81232b922e46eb94879df59b155",
+    "CRAFT-FONTS-BIZ-UD-MINCHO-OFL.txt": "ef0ed524b3bd012f37015e986809eed6f67905456ebfc1ebd7fcc2765282ee01",
+    "CRAFT-FONTS-BIZ-UD-PGOTHIC-OFL.txt": "e753d7155d53c747d037a445e584c8ecfca6dd79846db610417e282a736b28bc",
+    "CRAFT-FONTS-LICENSE-APACHE": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+    "CRAFT-FONTS-LICENSE-MIT": "e360d6f5941863521687517eee951fac3328ee9f379fcb11bb5031fe6614fc8f",
+    "CRAFT-FONTS-SHIPPORI-MINCHO-OFL.txt": "41fba056279be5f45ff9a99e44b7b53897b42732f5806d8e666e0ab49ac6bd38",
+    "LICENSE-APACHE": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+    "LICENSE-MIT": "a87109bbb1ad43ca3920a5d7ff3806863b7e8470a73f4ded97a1447ac93333f5",
+    "NOTICE": "7c948d5b56639a6d53c362ce0b54a79badd6f272c542f0fc0f22e9ec31c61c2b",
+    "gridcraft-web.d.ts": "5fc22f12c45b554d3e2020b1cc8054592a68821169e15c440f905726bf911bcd",
+    "gridcraft-web.js": "08a0235b7276f07ce58989285636d8c288aec77f665480022a82236bcdf73ef1",
+    "gridcraft-web_bg.wasm": "9d2a67a0a00280d584babe00015a42d343dfe0dd784bae381ee4d05471f1e70a",
+    "gridcraft-web_bg.wasm.d.ts": "d778d268aa388a9e289f0ac1ed2fa82e046b94047f09b49fd1e8fded4e9320dd",
+    "gridcraft.ico": "f5693fcf3f71695d5ab332d24377c80e0315f952c24ae1eb3b4203bad9ea7f07",
+    "index.html": "269d7939b411c7a50dfb212723e38a15a1294ba581ad1f36d67e70935758e212"
+  }
+}

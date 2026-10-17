@@ -6,10 +6,15 @@ from unittest.mock import patch
 
 import pytest
 
-from scripts.install_figcraft_web import install
+from scripts.install_source_web import install
 
 
-def fixture(tmp_path):
+@pytest.fixture(params=["figcraft", "gridcraft"])
+def app_id(request):
+    return request.param
+
+
+def fixture(tmp_path, app_id):
     bundle = tmp_path / "bundle"
     bundle.mkdir()
     files = {
@@ -20,8 +25,8 @@ def fixture(tmp_path):
     for name, data in files.items():
         (bundle / name).write_bytes(data)
     spec = {
-        "id": "figcraft",
-        "version": "v0.6.0",
+        "id": app_id,
+        "version": {"figcraft": "v0.6.0", "gridcraft": "v0.7.0"}[app_id],
         "source_commit": "a" * 40,
         "source_sha256": "b" * 64,
         "files": {
@@ -33,7 +38,7 @@ def fixture(tmp_path):
     lock = tmp_path / "build.lock.json"
     lock.write_text(json.dumps(spec))
     output = tmp_path / "apps"
-    target = output / "figcraft"
+    target = output / app_id
     target.mkdir(parents=True)
     (target / "LICENSE-MIT").write_bytes(b"Original license\r\n")
     (target / "stale.wasm").write_bytes(b"old")
@@ -42,10 +47,10 @@ def fixture(tmp_path):
     return bundle, lock, output, spec
 
 
-def test_installs_only_verified_figcraft_and_preserves_original_notices(tmp_path):
-    bundle, lock, output, spec = fixture(tmp_path)
+def test_installs_only_verified_editor_and_preserves_original_notices(tmp_path, app_id):
+    bundle, lock, output, spec = fixture(tmp_path, app_id)
     record = install(bundle, output, lock)
-    target = output / "figcraft"
+    target = output / app_id
     assert (target / "fig.wasm").read_bytes() == b"\0asm\1\0\0\0"
     assert not (target / "stale.wasm").exists()
     assert (target / "LICENSE-MIT").read_bytes() == b"Original license\r\n"
@@ -65,10 +70,12 @@ def test_installs_only_verified_figcraft_and_preserves_original_notices(tmp_path
     )
 
 
-def test_runtime_diagnostics_require_the_reviewed_build_and_asset_hashes(tmp_path):
-    from scripts.install_figcraft_web import source_build_matches
+def test_runtime_diagnostics_require_the_reviewed_build_and_asset_hashes(
+    tmp_path, app_id
+):
+    from scripts.install_source_web import source_build_matches
 
-    bundle, lock, output, _ = fixture(tmp_path)
+    bundle, lock, output, _ = fixture(tmp_path, app_id)
     record = install(bundle, output, lock)
     assert source_build_matches(record, lock)
     wrong_source = json.loads(json.dumps(record))
@@ -93,8 +100,8 @@ def test_runtime_diagnostics_require_the_reviewed_build_and_asset_hashes(tmp_pat
         "unsafe-patch",
     ],
 )
-def test_invalid_source_build_never_changes_installed_bundle(tmp_path, problem):
-    bundle, lock, output, spec = fixture(tmp_path)
+def test_invalid_source_build_never_changes_installed_bundle(tmp_path, problem, app_id):
+    bundle, lock, output, spec = fixture(tmp_path, app_id)
     if problem == "tampered":
         (bundle / "fig.wasm").write_bytes(b"wrong")
     elif problem == "extra":
@@ -129,9 +136,9 @@ def test_invalid_source_build_never_changes_installed_bundle(tmp_path, problem):
     }
 
 
-def test_failed_replacement_and_rollback_retain_original_for_recovery(tmp_path):
-    bundle, lock, output, _ = fixture(tmp_path)
-    target = output / "figcraft"
+def test_failed_replacement_and_rollback_retain_original_for_recovery(tmp_path, app_id):
+    bundle, lock, output, _ = fixture(tmp_path, app_id)
+    target = output / app_id
     original_rename = Path.rename
     failed_restores = []
 
@@ -155,8 +162,8 @@ def test_failed_replacement_and_rollback_retain_original_for_recovery(tmp_path):
     assert (output / "other-editor" / "index.html").read_bytes() == b"untouched"
 
 
-def test_source_mutation_during_copy_is_rejected_before_replacement(tmp_path):
-    bundle, lock, output, _ = fixture(tmp_path)
+def test_source_mutation_during_copy_is_rejected_before_replacement(tmp_path, app_id):
+    bundle, lock, output, _ = fixture(tmp_path, app_id)
     original_copy = shutil.copyfile
     before = {
         str(path.relative_to(output)): path.read_bytes()
@@ -179,3 +186,35 @@ def test_source_mutation_during_copy_is_rejected_before_replacement(tmp_path):
         for path in output.rglob("*")
         if path.is_file()
     }
+
+
+def test_conflicting_original_notice_never_replaces_installed_editor(tmp_path, app_id):
+    bundle, lock, output, spec = fixture(tmp_path, app_id)
+    (bundle / "LICENSE-MIT").write_bytes(b"Changed license")
+    spec["files"]["LICENSE-MIT"] = hashlib.sha256(b"Changed license").hexdigest()
+    lock.write_text(json.dumps(spec))
+    with pytest.raises(ValueError, match="original .* notice"):
+        install(bundle, output, lock)
+    assert (output / app_id / "LICENSE-MIT").read_bytes() == b"Original license\r\n"
+    assert (output / app_id / "stale.wasm").read_bytes() == b"old"
+
+
+def test_other_editor_or_unreviewed_version_never_matches_runtime_record(
+    tmp_path, app_id
+):
+    from scripts.install_source_web import source_build_matches
+
+    bundle, lock, output, spec = fixture(tmp_path, app_id)
+    record = install(bundle, output, lock)
+    other = "gridcraft" if app_id == "figcraft" else "figcraft"
+    wrong_editor = {**record, "id": other}
+    assert not source_build_matches(wrong_editor, lock)
+    spec["version"] = "v99.0.0"
+    lock.write_text(json.dumps(spec))
+    record["version"] = spec["version"]
+    record["source_build"]["lock_sha256"] = hashlib.sha256(
+        lock.read_bytes()
+    ).hexdigest()
+    assert not source_build_matches(record, lock)
+    with pytest.raises(ValueError, match="identity"):
+        install(bundle, output, lock)

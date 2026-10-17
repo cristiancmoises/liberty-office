@@ -54,3 +54,48 @@ test('high-density native input reaches WordCraft and GridCraft export contents'
  const sheet=execFileSync('python3',['-c','import sys,zipfile;sys.stdout.buffer.write(zipfile.ZipFile(sys.argv[1]).read("xl/worksheets/sheet1.xml"))',xlsx],{encoding:'utf8'});
  expect(sheet).toContain('<v>42</v>');
 });
+
+for(const scenario of [
+ {name:'Enter commits both digits',keys:['4','2','Enter'],cells:{A1:'42'},selection:'A2'},
+ {name:'Tab commits both digits',keys:['4','2','Tab'],cells:{A1:'42'},selection:'B1'},
+ {name:'Escape cancels both digits',keys:['4','2','Escape'],cells:{},selection:'A1'},
+ {name:'separate commits retain event order',keys:['4','Enter','2','Enter'],cells:{A1:'4',A2:'2'},selection:'A3'},
+]){
+ test('rapid native GridCraft input: '+scenario.name,async({page,context},info)=>{
+  await page.setViewportSize({width:1440,height:1000});
+  const editor=await open(page,'GridCraft'),canvas=editor.locator('canvas');
+  await canvas.click({position:{x:52,y:223}});
+  await expect(canvas).toBeFocused();
+  await canvas.evaluate(()=>{
+   const probe={frame:0,events:[],running:true};window.__libertyGridRapidProbe=probe;
+   const tick=()=>{if(probe.running){probe.frame++;requestAnimationFrame(tick)}};requestAnimationFrame(tick);
+   const observe=event=>probe.events.push({key:event.key,trusted:event.isTrusted,target:event.target.tagName,frame:probe.frame,time:performance.now()});
+   window.addEventListener('keydown',observe,true);probe.stop=()=>{probe.running=false;window.removeEventListener('keydown',observe,true)};
+   return new Promise(resolve=>requestAnimationFrame(resolve));
+  });
+  // Queue real browser input together. No synthetic DOM events, F2 workaround,
+  // engine injection or fixed sleep: the trace below must prove one canvas frame.
+  const cdp=await context.newCDPSession(page),events=[];
+  for(const key of scenario.keys){
+   const code=/^[0-9]$/.test(key)?'Digit'+key:key;
+   const virtual=/^[0-9]$/.test(key)?key.charCodeAt(0):{Enter:13,Tab:9,Escape:27}[key];
+   events.push({type:'keyDown',key,code,windowsVirtualKeyCode:virtual,...(/^[0-9]$/.test(key)?{text:key,unmodifiedText:key}:{})});
+   events.push({type:'keyUp',key,code,windowsVirtualKeyCode:virtual});
+  }
+  await Promise.all(events.map(event=>cdp.send('Input.dispatchKeyEvent',event)));await cdp.detach();
+  const trace=await canvas.evaluate(()=>{const probe=window.__libertyGridRapidProbe;probe.stop();return probe.events});
+  await info.attach('rapid-native-key-events',{body:JSON.stringify(trace,null,2),contentType:'application/json'});
+  // Allow the native engine to process its queued frame(s), without selecting a
+  // different cell or changing the data under test, before requesting export.
+  await canvas.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+  const pending=page.waitForEvent('download');await page.keyboard.press('Control+s');
+  const xlsx=info.outputPath('rapid.xlsx');await(await pending).saveAs(xlsx);
+  const sheet=JSON.parse(execFileSync('python3',['-c',
+   'import json,sys,zipfile,xml.etree.ElementTree as E; root=E.fromstring(zipfile.ZipFile(sys.argv[1]).read("xl/worksheets/sheet1.xml")); ns={"s":"http://schemas.openxmlformats.org/spreadsheetml/2006/main"}; selection=root.find("s:sheetViews/s:sheetView/s:selection",ns); print(json.dumps({"cells":{cell.attrib["r"]:cell.find("s:v",ns).text for cell in root.findall("s:sheetData/s:row/s:c",ns) if cell.find("s:v",ns) is not None},"selection":selection.attrib.get("activeCell") if selection is not None else None}))',xlsx],{encoding:'utf8'}));
+  expect(trace.map(event=>event.key)).toEqual(scenario.keys);
+  expect(trace.every(event=>event.trusted&&event.target==='CANVAS'),'Regression requires trusted events reaching the selected canvas').toBe(true);
+  expect(new Set(trace.map(event=>event.frame)).size,'Regression requires one render-frame batch; a split batch is not a passing qualification').toBe(1);
+  expect(sheet.cells).toEqual(scenario.cells); // Exact bytes: 4 or duplicated 442 must never pass as 42.
+  expect(sheet.selection).toBe(scenario.selection);
+ });
+}

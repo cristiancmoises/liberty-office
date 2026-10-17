@@ -3,14 +3,14 @@
     "sha256",
     "sha512"
   ],
-  "created_at": "2026-10-17T14:31:58Z",
+  "created_at": "2026-10-17T15:38:11Z",
   "excluded": [
     {
       "path": ".codemark",
       "reason": "Metadados do CodeMark"
     }
   ],
-  "file_count": 495,
+  "file_count": 504,
   "files": {
     ".dockerignore": {
       "mode": 420,
@@ -26,9 +26,9 @@
     },
     ".github/workflows/acceptance.yml": {
       "mode": 420,
-      "sha256": "f2ab26e87742650dbab7ecccf6d069b5ce44a160ed6940203a4db4c91f13160f",
-      "sha512": "d0085705504e160bc74219c10a3766a70290aab1221523ee811e5a882b40ef414f00c6750c376c139b17bf9e8471c7a9d665fc54c68034ec56759a2df188fee6",
-      "size": 1051
+      "sha256": "a343ad976983c1dea3c19a6c12b2701394f74509b4422e84d2ebf07dc25552ba",
+      "sha512": "87af02f8b0ee1d49e6b99249d1993ac98bc3204029f5fb42a5aa6110ecdafcf24a213f1597060e4259eaed3e68e62b84945d19dcc557908880285bdfecbe8a0d",
+      "size": 1128
     },
     ".gitignore": {
       "mode": 420,
@@ -38,9 +38,9 @@
     },
     "Dockerfile": {
       "mode": 420,
-      "sha256": "7b5325cf7d56fe759e998333393b8ae902cd924c9529aef71b629a795fce4f97",
-      "sha512": "017f3953def068b1d413066b08c6d78f13416f467c7d1687581daa3c951e193466f5d2a0b99565686049b722030eaa3915ba97b5d0d26aab6dae8f88868a6c54",
-      "size": 2609
+      "sha256": "0615c0a503a02e740436d1e337a72d0d100cf55ff7880ce00f7cfd5b427a0547",
+      "sha512": "d0df7d75a5a8d143b2bfc8f9f8bb58e5f149149acac1386d574cd65fcc45e95fe3b01212e7256d3254e7a74a7d972aed310a4b7663ba629ca5d4fa0bbb2cdd6a",
+      "size": 3571
     },
     "LICENSE": {
       "mode": 420,
@@ -50,9 +50,9 @@
     },
     "MANIFEST.sha256": {
       "mode": 420,
-      "sha256": "b633b2c8bd7cd39b3d8624808d6671a4332ae881b80bbf0d498fac55bde7e59a",
-      "sha512": "f34cd697594437fac2bc9d78f12fa877936521dd76b6bbf9769136d772255a8b76d01d6223a2a7b3f7e4fdb50127e4da4ef35476a2a7cdbe56cea01a0a64f784",
-      "size": 61796
+      "sha256": "f62c2673b02326650b058f625c4750f816d4d1a9867ba9e9e88b276e790946d9",
+      "sha512": "a6321738807d8b33404c2f72bccc2dcd82835110949a8ebefa3c7ce351d3fa090322d8bca3a869d2dfe935ba6fa4497ad3281c26fe4e2bff91dde9cf3dff15de",
+      "size": 62697
     },
     "NOTICE": {
       "mode": 420,
@@ -62,15 +62,15 @@
     },
     "README.md": {
       "mode": 420,
-      "sha256": "f686aa51c2b33c3da1624312c925dba34ecb2e1a00718dc9f107cc9d01cfeff7",
-      "sha512": "339d01c502a8cd4a02e94627569ee14765de687c3390afadcc6573b995a24295ab75e28758cdfdbb0f8b27f34825c487303d22f26f75f462cc3f400411773a76",
-      "size": 4171
+      "sha256": "e72c42f0ba65297a7f2da37fb2a7b2895d8d6928453baa24aa391aabdac3206c",
+      "sha512": "7d9a2ec951ca1b11c40ddd944d139da312949f91cf005638de97e2c96380643d60b9e9cd9a4f1ab225f00512ea1b3c42cd560c293ac7a36a0611a43a9c947b33",
+      "size": 4203
     },
     "README.pt-BR.md": {
       "mode": 420,
-      "sha256": "29447cc6670a598b608a6c891da8165dc15ac7013eac10de393a38bc32ba10fd",
-      "sha512": "fc4569e41a4ffe1927b3b92bb01b00ff0dd23b64e1496efb45fc3335ac6669a56ae4494414f328505ee1e77878751734d7512c03f84b61794943d331d44ae1ec",
-      "size": 12090
+      "sha256": "c98b00bf3b0b35959a735101c76eaa97681a2d13061f4d95f6002235ec5ada07",
+      "sha512": "377fa24b3eb21c7da32e55116bd7db373d1f8fc4c39d671b27a6a7b2f3705a3906fc166bbbed31e95bff9219865c4c7f9d13ca0e477cc9c4953f10c38c4cd3c0",
+      "size": 12149
     },
     "assets/branding/geometry.json": {
       "mode": 420,
@@ -122,15 +122,15 @@
     },
     "docs/ACCEPTANCE.md": {
       "mode": 420,
-      "sha256": "f4bcef196f1bfac80d3b96cf88b4f1c938f85746a6e8962b6983f7a9835131ee",
-      "sha512": "fa23e6390fb29bb01efea72c0e4ee36a8a80b482840e87b38a6f1e47b1a6ba371f0e1774e400baff952785ae5b5c5ba240ca5b819710450169908407344e08ce",
-      "size": 6269
+      "sha256": "74d494f7729eeb8964edff6956c1a822361a095cdbf77f0fec3c5660731a189f",
+      "sha512": "49a6837136d601446cbe0276fe072812e609bbbb53ae6e383251696748d939fa6a1e4995fe4d9497857165972e9dcfeea8a1fba051d558a0e7d5324d1f00e2f1",
+      "size": 7593
     },
     "docs/ACCEPTANCE.pt-BR.md": {
       "mode": 420,
-      "sha256": "194f8dc1aeccde3f0ea36cbe0557d696e93c0ebe72524b0f5d1a330e142bee61",
-      "sha512": "6fb09b529a1a3d6f1bbec998c1c6dc4dff633497f2440b42c2800b203c3b9d6f216a0066be7a69a9fd694eb14f1ae64ab30b1e923b4d4000d32b50e361b83240",
-      "size": 6996
+      "sha256": "e3e9e9d9b03ae201aebb7913429ecf28824e682cd40eada32bccca16ad96f643",
+      "sha512": "f60224ed427a6072dc1b90fc646e3c9ae6ccb80a2ee8778bd7f9517f12451dfe803ec61cd877c651c0651945932c4657b2e3ccfa8a4dd5ba7d07dc89306a4f4f",
+      "size": 8373
     },
     "docs/INTEGRITY.md": {
       "mode": 420,
@@ -140,21 +140,21 @@
     },
     "docs/LICENSING.md": {
       "mode": 420,
-      "sha256": "714579173f506d8714202b8e89625c23abddf95c074342dc50f99347f6cf6b8c",
-      "sha512": "5748b2fe7039bb4109a410770dcd531d0f35bfe3b196be890607e8b03fc1db3c6fff9ccc73d7dc99125b49600bfe3a97ce64217026260b2cff2396554555ef03",
-      "size": 12986
+      "sha256": "54b9a08f5f250ccf3b93dba3292dd4ce81b8fd9428eeaf82bc2d1481084c1de2",
+      "sha512": "de2150673349854292f9a9bc885efc9935c62920add9657aa4291c06a1533825a07177972b51436a6b5d065e6661dbb717b2ccbfbd4688e2c104dcdfb8f0977e",
+      "size": 14794
     },
     "docs/OPERATIONS.md": {
       "mode": 420,
-      "sha256": "32a5db7a1a10686786d47cf7fd0290fdbc0100ff68800044d90207a174f1ec93",
-      "sha512": "b11b59939fc96d9936a221bd86543055e8c7274ea970a784cd320ee1a4f5e7f2813ee7b25f9d917e9f17a7d7063bb5bea1d0bf372a974e26e681d6d65c2c8088",
-      "size": 7597
+      "sha256": "40d7e52400eaa5ff45e0b9b294130e0b37d9d1b4f7dbe9387f65208a3998dcda",
+      "sha512": "fc797af9284d901fd77a72f2cfbe909d151d3281c11df51df3877f8c836261de42628e1b36fad4b7282174e1e9141a838386f6f6affc185dbf70afdc24b00f5d",
+      "size": 8103
     },
     "docs/OPERATIONS.pt-BR.md": {
       "mode": 420,
-      "sha256": "19f9d4cfd58b2440f60780ef7bdec5f48a61b4d66ec5915c6477211db5f89c92",
-      "sha512": "f99228f62586d555d85b72e31c1cff9a725106f7d66aaf105519a2c9d961fee96ff522bddb8091a05e11ee2eb0c222750f7f1be9c1d2544e2c093bf0acc31e2d",
-      "size": 11652
+      "sha256": "b344f559c8d141d079de1d311c9778f0a6ed84b634d11f83ef52bcb9f4e2d2de",
+      "sha512": "611379bf933b929fa803d2da652495e8a21cad7784a3a4c156bac9e9b9a6fa882dd15c67d0ecb8c52d3aef004b449b64fb670124c43e97334f3a4c221cd6f385",
+      "size": 12197
     },
     "docs/SECURITY.md": {
       "mode": 420,
@@ -164,9 +164,9 @@
     },
     "docs/SECURITY.pt-BR.md": {
       "mode": 420,
-      "sha256": "5ff10ed32f898a52745afeeecfcf88fef0c9cd4a88f7f0814d802c8cbdb0b110",
-      "sha512": "36750efbbcaae6ed30dcaeba28b94cae2e4e46d32ebaf9d2c4670643292779711a9330e2f9af612f3f287af72454a7fc018443cf29bdc7dceea1c8353d3d8233",
-      "size": 6192
+      "sha256": "f75bae43b849a645de6f21a3e13d036cdf4bcf895966c3cbc46ef926b8d1574c",
+      "sha512": "d38b34e0d1857c58f6de19262872068ed5637201a169a39dab263fa02b40c07ca4acfc03cc40e68608398418af48f91cb56730dcdc93b457e1d8a616f68f5e5c",
+      "size": 6215
     },
     "docs/screenshots/liberty-desktop.png": {
       "mode": 420,
@@ -197,6 +197,12 @@
       "sha256": "812b04608863093aa14e095c0010f00ec1ee523ae6853c2d1a0578b302895306",
       "sha512": "7ccd95e8a726a19751ded9d1d92b089be006ac84c79ca77c475a41cbff1a71f79aad2c52a8b2fbe7d935a71df753d252f03c27a6456dfa15504ba43e013e8bc2",
       "size": 3103
+    },
+    "gridcraft-build.lock.json": {
+      "mode": 420,
+      "sha256": "ee417aeec101522b9b719ad12f95f5125aecd1d7f42dc0335ebeee741f5ff4d7",
+      "sha512": "e28c8e3f20d8da543631025a37d0a07277f7079d5f16f91a58c9ab87e11e0f1ba8968e6e29341725b910aa45a3dd6564d650c1c7ee84830a34eee9b6916ac6eb",
+      "size": 3686
     },
     "liberty/__init__.py": {
       "mode": 420,
@@ -2694,6 +2700,30 @@
       "sha512": "32d615949979d2c64393aa26dfb68ab18fd4d22fa974ccddda0144541b6f37d96d26927dda492a39bb9c51160454e0234f549aa47b4de9d5118afe9bafb4b630",
       "size": 4921
     },
+    "patches/gridcraft-web/input-tests.Cargo.toml": {
+      "mode": 420,
+      "sha256": "10903260c6a6a33bca2555e5183ad6512eb5002c8e5370fbfc17d7d487e510ad",
+      "sha512": "dc82082ec55417f848a16ca5e9ce6a7ad4d0eee927703abfc4f69de872eb039d38a597321036de2fec185e2648afcd206ec67a1b4737cda54400a7e446b1a01d",
+      "size": 273
+    },
+    "patches/gridcraft-web/input_handoff.rs": {
+      "mode": 420,
+      "sha256": "d420415120ecd1fe1b4d4811978e00434443d315db8775e4a3c1498b13c5fa71",
+      "sha512": "327a1bc07f1702e355a713fb3bf53ee6beee506f9c60b46f46707ec337246249b061f4204fbaa0feaa4b21a2b53cde76d4229efa4baef88fbe744e98667e1bb3",
+      "size": 1596
+    },
+    "patches/gridcraft-web/input_tests.rs": {
+      "mode": 420,
+      "sha256": "b68015976a83f0abe4f68fc39123ccbae310ebf881564e588e8cd051c6edd3ac",
+      "sha512": "9a5ca7616ec52d1c3dd19ab4c5a256ac8e148d7f64301e626be6f2393f6ff4182ed234cdc9ab29ea973069772e27640d67569666f70395bae6bba240218f78a5",
+      "size": 4455
+    },
+    "patches/gridcraft-web/test_package.py": {
+      "mode": 420,
+      "sha256": "31196e1c9b5f42290995faba668ab77790b82ef31bf136dc9958362e6e744a7a",
+      "sha512": "5606b050f31cc46f01c37697f33e51a740bacf95e9e33b615881d17be84558cd241e46e97f90c5199d34a99965c9d7a16c5bbc35b65a7e5b1bc8f0f63bfd6bb6",
+      "size": 3211
+    },
     "playwright.config.mjs": {
       "mode": 420,
       "sha256": "70864eb8f9300d10a3a04dc7f938eabe4878b877f88982bba3b2940e2f80190d",
@@ -2730,11 +2760,17 @@
       "sha512": "e03f0e0aea00807bdad196c3059a9e88a4c36fc37a87267b7191a843335aeeae521e836f8447db45799ca89f50b5525b6df070324f26ae1345f332f5aec1aa57",
       "size": 4322
     },
+    "scripts/build_gridcraft_web.sh": {
+      "mode": 493,
+      "sha256": "2662275f04cdc13d56cce4de77fe0cafafd894560d172a9b4a6a68d1b0b47b59",
+      "sha512": "54b72d5d0f14186527e1cd4a0f1c5f02195ec2ca779d97b699671813e5355aba78e49a265a60f208851e07cbfd60de4fe61b61e3e81dc1b3822ec15237e65518",
+      "size": 4359
+    },
     "scripts/check_runtime.py": {
       "mode": 420,
-      "sha256": "77e44814cb4972f946974ba32dcb06aff05f83df9defc9e97c44538ff4e30c12",
-      "sha512": "cbbc81f2662a08773e8a81f459b6c3500735e221b7704ae09fd4f288e991ecbdcc94d220704370ef0ed47ac5e323d16315fe2dfde3a1bfdb084c6c7dc52339be",
-      "size": 2996
+      "sha256": "7a887878ca70dc50d3c4c55ac6d508019b70775896a0cdc9f9db373af88dce5f",
+      "sha512": "b3db4f6071f9a0cdb1a768b11460de1886e9491bf4a970e3b7a34cd73921ee4796a50c9694bcc5991274e42b9948fbbac94ad4a13b9ad60947ce89d283de3258",
+      "size": 3046
     },
     "scripts/docker_acceptance.sh": {
       "mode": 493,
@@ -2748,17 +2784,23 @@
       "sha512": "18e775035c68b9059d933817fc52adca23dfdbac323c116fec74af6daebcd803acee62ab70aeaecd73ac7094f67cca3b4ccd3a02c3c8329c5d4bcb634a7d7d16",
       "size": 5287
     },
-    "scripts/install_figcraft_web.py": {
+    "scripts/install_source_web.py": {
       "mode": 420,
-      "sha256": "2066ccb5346a6bcfa8fe770d5d55db34c5ce2357e62655d46ed312d647886e49",
-      "sha512": "07ea574bdb34302665df26dd8632259787907c3e7c971097827a70b68117cbecd6fa38e22c844ac6a6f501b9a276d1b34398c5cf344f6c99d96ea02588154b8e",
-      "size": 8330
+      "sha256": "606cdac8db71e9606aec0c68787acf598150b2c24f8c969381ad33a6837fbade",
+      "sha512": "307034a97919fd2e377dd6fe2f6cbc73774bfe87107fcbe5e59b876b3b2666d038d1c9f08523edecb485cc50e6a82c9079f278c9985f6066a173c836413b49e0",
+      "size": 8599
     },
     "scripts/package_figcraft_web.py": {
       "mode": 493,
       "sha256": "1a1aba9692bd36143e9116f7d5d05d58b1bef3a10bc461ba4e53e4c15bcd934a",
       "sha512": "ec617b50b4cdf41332bb9af767edbbc2f1059ffa2102b2c5d0c5cba7b7cbe8592a159a28ff3f4d8517fb1125b3e2ddffb543ff67176cce27f09378b2896c2342",
       "size": 3854
+    },
+    "scripts/package_gridcraft_web.py": {
+      "mode": 493,
+      "sha256": "bda0fe5ef9ba125c9c8b76683e7fa96b76a6a4d596011436bb2cb0bd9f31ca08",
+      "sha512": "8d314a7799b06bb4f36b67a97f9191592e621dfb3aa5d397a976dc1ccfecc1a780d025674bf346ec628f7e6c6796585547d0b1274d99d8fc0443639c7cc4114b",
+      "size": 4614
     },
     "scripts/package_source.py": {
       "mode": 493,
@@ -2771,6 +2813,12 @@
       "sha256": "04615a163bf08d7c711462f87318a694dbaee4c2eae06edaf5e2c46f4f13ac2f",
       "sha512": "15d407a7f365ee3161b5e4ccc003ec674434af9c2fcee0c0f4ea5864c4e13d1d7747c21f4f8afdc69d07a431a7858a0cef4ba555b7a65325ea0537355112edfb",
       "size": 6959
+    },
+    "scripts/patch_gridcraft_web.py": {
+      "mode": 493,
+      "sha256": "2733bfe2922d1054a7965085fcd5c816bfdf34d7c60404320e4cfd1dd94a6b97",
+      "sha512": "a9a7a0674557077d3810d42f970aba1cfdef1e570c488f0187fe4da99834edcb2d31f3dca90038133cf3b815bf50c148d1ff1359de4dbf7065695aaa6a539408",
+      "size": 6426
     },
     "scripts/verify_release.py": {
       "mode": 420,
@@ -2792,15 +2840,15 @@
     },
     "tests/browser/canvas-density.spec.mjs": {
       "mode": 420,
-      "sha256": "8c2e33ae53223d3765d7adc48782c184c7eadbfbf021696e7a3682cc3416abeb",
-      "sha512": "a898a9235276b17de2992da855b50f597807cfe2d9f882deddcfbb2f4a90d45e7dec7fe3444166251bf04347f81052f0124f83c626e0f4d1e7f6db05aa219e30",
-      "size": 3087
+      "sha256": "62132461123429181f946047f414d71a62a96744d982b9ee6a586ff61a04bd7b",
+      "sha512": "fbe4e6a1efc57e4e8b38784f462d8e0e4ea781f0959f10ae909c88382fce0bf7a324b2a0c340102d682ee6a2a4f39304c8da6c43a4d8154cc07c984a7b5eebbc",
+      "size": 6881
     },
     "tests/browser/demo.spec.mjs": {
       "mode": 420,
-      "sha256": "3d61e7bb729c37c9eaaa1df19dc090fda52bb2190f073b474ae355738386ff37",
-      "sha512": "8b2cf4e8b8412c24d33622d5cc6376ef66e3935546bc6890804c069ee0e279a58547fa51d00eddea3f72cc8dbd8e4dc3a807fe800f65b6c3f2d56dcc100fb2cc",
-      "size": 6298
+      "sha256": "5c46e06eefec65a161e043aa6bae5856ec059ccfdd19fd249e52bb3c58bab1dc",
+      "sha512": "982af92c261fc8dafcbf9af3e9feb585ce0a625fa3ff43b61c007dd08146533d5e68bfb589f4a13cf6ce03507f1d6505202f7bc28941e4510d2a20d56ede2fc7",
+      "size": 6541
     },
     "tests/browser/figcraft-native.spec.mjs": {
       "mode": 420,
@@ -2810,9 +2858,9 @@
     },
     "tests/browser/i18n.spec.mjs": {
       "mode": 420,
-      "sha256": "c537eb35bfefc8fb3a605f6cd94b6764929e022d41a8d0fa8e749a00cb970b56",
-      "sha512": "8e00c8015f7b72a782ab93d371f4ed765e0d97c3c3a0fbbed3998203c84f1c4355a3f55ec0e8d38bab89129412de515b94bcb1add3bb4115073d68deefc54f1f",
-      "size": 4200
+      "sha256": "5b2000608a3fcb1d755d7c1c5d7dcaa7de4601515aa710150fac49043c94f2d7",
+      "sha512": "76400afd8e55b002f884a98609fdf4f2711b1a89c1883ed22b2b513021108af8ccebc17ef4f86ba4df1eb6498675377172949e7507c05ddccd85a6c5d3d6197d",
+      "size": 4216
     },
     "tests/browser/native-editors.spec.mjs": {
       "mode": 420,
@@ -2930,9 +2978,9 @@
     },
     "tests/test_figcraft_install.py": {
       "mode": 420,
-      "sha256": "909e3b461d0d99a0cf27d398ba5d145f567eb32b496fb33139f11340e7b7f7fe",
-      "sha512": "b3d8a98a5f5448bff69f54ac219cfc1b4617d5f26e06d4fcbe55e41250c1b996ae4e9ed6f485e6d468aa51855cd10e55db40b9c2c099ddfc19172300fad3edba",
-      "size": 6351
+      "sha256": "0d29cb4b9398f1e03d37e3321bc351f655a776da284a8f2bb59f66f197735d6d",
+      "sha512": "c5e69e7ad9d975ae9a04c995206f31f9bf56a4a7ccd83a4a726e0f67a685279c024163085b139db3e5eb945ecf1e1815e587b6c7265fecc4468afd708c551f1f",
+      "size": 7936
     },
     "tests/test_figcraft_package.py": {
       "mode": 420,
@@ -2957,6 +3005,12 @@
       "sha256": "819a04e2abf755c0555753b0292e9e0b85a06eaf4beb2f4e4dba04637accc030",
       "sha512": "b9ec95a684fe369c00ebf8b05c1c35a68d99b507b775e63df26225a359d25d117835d8777f47470761daf844a9b941b9411fa279e2deb5c27e267763fa3afed6",
       "size": 5581
+    },
+    "tests/test_source_runtime.py": {
+      "mode": 420,
+      "sha256": "7154bb6b673890615456817620f99e71d1b089c68dc55f33a952457b62e4296b",
+      "sha512": "4cefa6968a0d7c4168f8f2bd18c403ae32924cbae723740fa065e476db3d3c0dfe584e0d3854d4ea4a04b414597cd37ef407a534fd3faceba1b7f0d25a231ad8",
+      "size": 1469
     },
     "tests/test_storage_hardening.py": {
       "mode": 420,
@@ -2986,5 +3040,5 @@
   "format": "secops-codemark-integrity-v1",
   "project_id": "77ee92c4-5b90-4839-bc43-05fdf32394b7",
   "tool_version": "0.4.1",
-  "total_bytes": 3020688
+  "total_bytes": 3064348
 }

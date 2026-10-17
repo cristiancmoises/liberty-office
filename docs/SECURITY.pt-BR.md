@@ -16,7 +16,7 @@ Dez códigos de recuperação aleatórios ficam como hashes e são consumidos at
 
 `PUBLIC_ORIGIN`, `EDITOR_ORIGIN` e `DEMO_EDITOR_ORIGIN` devem ser distintas. O servidor verifica Host completo, incluindo porta. Só a origem do portal permite API, interface e arquivos. A origem privada de edição permite `/runtime/TICKET/...`; a origem de demo serve assets anônimos, sem acesso às APIs de contas ou Drive. O middleware não concede CORS entre elas.
 
-Cada ticket fica vinculado a uma sessão completa, um aplicativo e sua expiração. Revogação de sessão invalida o ticket. O HTML servido adia os módulos até limpar o estado local e estabelecer o adaptador. A preparação dos assets e o build do FigCraft estão descritos em [licenciamento](LICENSING.md). A origem dos editores não recebe senha ou CSRF no HTML.
+Cada ticket fica vinculado a uma sessão completa, um aplicativo e sua expiração. Revogação de sessão invalida o ticket. O HTML servido adia os módulos até limpar o estado local e estabelecer o adaptador. A preparação dos assets e os builds de fonte de FigCraft e GridCraft estão descritos em [licenciamento](LICENSING.md). A origem dos editores não recebe senha ou CSRF no HTML.
 
 Exportações da demo usam um protocolo separado e limitado para download local.
 O portal aceita bytes somente do frame ativo e da origem exata da demo, valida

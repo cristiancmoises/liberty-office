@@ -1,5 +1,6 @@
 # syntax=docker/dockerfile:1
 ARG FIGCRAFT_BUNDLE_IMAGE=rust:1.95.0-bookworm@sha256:6258907abe69656e41cd992e0b705cdcfabcbbe3db374f92ed2d47121282d4a1
+ARG GRIDCRAFT_BUNDLE_IMAGE=rust:1.95.0-bookworm@sha256:6258907abe69656e41cd992e0b705cdcfabcbbe3db374f92ed2d47121282d4a1
 FROM ${FIGCRAFT_BUNDLE_IMAGE} AS figcraft
 WORKDIR /integration
 COPY scripts/build_figcraft_web.sh scripts/patch_figcraft_web.py scripts/package_figcraft_web.py ./scripts/
@@ -8,17 +9,29 @@ COPY patches/figcraft-web ./patches/figcraft-web
 # exact compiled-file and patch/recipe hash checks in the installation stage.
 RUN if [ ! -f /out/index.html ]; then bash scripts/build_figcraft_web.sh /build /out; fi
 
+FROM ${GRIDCRAFT_BUNDLE_IMAGE} AS gridcraft
+WORKDIR /integration
+# Keep the two memory-intensive source builds sequential under BuildKit too.
+COPY --from=figcraft /out/index.html /integration/figcraft-build-complete.html
+COPY scripts/build_gridcraft_web.sh scripts/patch_gridcraft_web.py scripts/package_gridcraft_web.py ./scripts/
+COPY patches/gridcraft-web ./patches/gridcraft-web
+RUN if [ ! -f /out/index.html ]; then bash scripts/build_gridcraft_web.sh /build /out; fi
+
 FROM python:3.12-slim-bookworm@sha256:34386ef0cb081344d7ec1c103ba398e6e9f64e9ab3a1509accc92a4e24a07258 AS apps
 WORKDIR /build
 COPY upstream.lock.json ./
 COPY branding.lock.json ./
 COPY assets/branding ./assets/branding
 COPY figcraft-build.lock.json ./
+COPY gridcraft-build.lock.json ./
 COPY patches/figcraft-web ./patches/figcraft-web
-COPY scripts/fetch_apps.py scripts/brand_apps.py scripts/install_figcraft_web.py scripts/build_figcraft_web.sh scripts/patch_figcraft_web.py scripts/package_figcraft_web.py ./scripts/
+COPY patches/gridcraft-web ./patches/gridcraft-web
+COPY scripts/fetch_apps.py scripts/brand_apps.py scripts/install_source_web.py scripts/build_figcraft_web.sh scripts/patch_figcraft_web.py scripts/package_figcraft_web.py scripts/build_gridcraft_web.sh scripts/patch_gridcraft_web.py scripts/package_gridcraft_web.py ./scripts/
 COPY --from=figcraft /out ./figcraft-prepared
+COPY --from=gridcraft /out ./gridcraft-prepared
 RUN python scripts/fetch_apps.py --output /opt/artcraft \
-    && python scripts/install_figcraft_web.py --bundle /build/figcraft-prepared --output /opt/artcraft --lock /build/figcraft-build.lock.json
+    && python scripts/install_source_web.py --bundle /build/figcraft-prepared --output /opt/artcraft --lock /build/figcraft-build.lock.json \
+    && python scripts/install_source_web.py --bundle /build/gridcraft-prepared --output /opt/artcraft --lock /build/gridcraft-build.lock.json
 
 FROM python:3.12-slim-bookworm@sha256:34386ef0cb081344d7ec1c103ba398e6e9f64e9ab3a1509accc92a4e24a07258 AS runtime
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 LIBERTY_DATA=/data LIBERTY_APPS=/opt/artcraft

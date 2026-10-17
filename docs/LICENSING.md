@@ -72,9 +72,9 @@ records the reviewed embedded graphics and their exact source commits, byte
 ranges and before/after hashes. Independent Liberty artwork replaces seven
 restricted graphic payloads across FilmCraft, PdfCraft, EffectCraft and
 DesignCraft. The inventory covers twelve complete product-identity/community
-labels, retaining plain-text source attribution. Nine installed upstream
-binaries receive data-only preparation; FigCraft's two labels are changed in
-its source build described below. DeckCraft, PhotoCraft and LightCraft have a
+labels, retaining plain-text source attribution. Eight installed upstream
+binaries receive data-only preparation; FigCraft and GridCraft identity labels
+are changed in their source builds described below. DeckCraft, PhotoCraft and LightCraft have a
 separate reviewed, unmodified-binary inventory.
 
 The data-only preparation is a deterministic transformation of pinned binary
@@ -92,6 +92,8 @@ modified integrations, not official upstream builds. Preserve both original
 notices and the modification records when redistributing them. Recheck embedded
 graphics and source render paths before any upstream update; a matching filename
 or unchanged executable section alone does not establish license compliance.
+
+## Source-built editors
 
 ### FigCraft browser file I/O
 
@@ -114,6 +116,25 @@ The 100 MiB encoded-file limit is not a bound on all decoding/rendering memory.
 This patch enables native project opening/saving and engine exports, not every
 desktop service. Auxiliary pickers for imports, libraries and plugins remain
 unavailable in this web build and report that limitation explicitly.
+
+### GridCraft initial cell input
+
+The pinned GridCraft release can discard characters when initial typing and a
+commit key arrive in the same animation frame before its text widget owns
+focus. Liberty rebuilds its pinned source with
+[`patches/gridcraft-web/`](../patches/gridcraft-web/) and the exact-source
+[`patch_gridcraft_web.py`](../scripts/patch_gridcraft_web.py) changes. The fix
+preserves the engine's own cell editing and file encoders rather than
+throttling browser keyboard events. These editor changes are **MIT OR
+Apache-2.0**, and preserve original copyright and license notices.
+
+[`gridcraft-build.lock.json`](../gridcraft-build.lock.json) records source,
+toolchain, font, patch and compiled-asset hashes.
+[`build_gridcraft_web.sh`](../scripts/build_gridcraft_web.sh) verifies inputs,
+runs the native regression checks and builds with Cargo `--locked`. This is an
+executable-code change, not data-only branding preparation.
+
+### Verification and integration boundary
 
 Installation verifies the reviewed compiled files and current patch inputs,
 preserves the original bundle's notices, and records the source-build changes
@@ -156,8 +177,8 @@ os arquivos originais. O inventário `branding.lock.json` fixa sete substituiç�
 gráficas em FilmCraft, PdfCraft, EffectCraft e DesignCraft, com arte própria,
 commits, posições e hashes de entrada/saída. O inventário cobre doze rótulos
 completos de identidade do produto/comunidade, preservando atribuição textual.
-Nove binários instalados recebem preparação apenas de dados; os dois rótulos
-do FigCraft são alterados no seu build de fonte. DeckCraft, PhotoCraft e
+Oito binários instalados recebem preparação apenas de dados; os rótulos de
+FigCraft e GridCraft são alterados nos builds de fonte. DeckCraft, PhotoCraft e
 LightCraft constam em inventário revisado de binários não modificados.
 
 A preparação de dados altera somente segmentos WASM, preservando tamanho e
@@ -170,7 +191,7 @@ carrega o adaptador de integração. São integrações modificadas, não builds
 oficiais. Preserve os avisos originais e esses registros, e repita a revisão de
 assets e caminhos de desenho ao atualizar cada editor.
 
-O FigCraft é uma exceção explícita: seu build web original não implementa os
+O FigCraft tem build de fonte explícito: seu build web original não implementa os
 serviços de abrir/salvar. O Liberty recompila o commit fixado com as alterações
 em `patches/figcraft-web/`, licenciadas MIT OU Apache-2.0, preservando os avisos
 originais. Esse build modifica código executável. O lock `figcraft-build.lock.json`
@@ -185,6 +206,17 @@ continuam indisponíveis neste build web, com aviso explícito.
 Instalação e diagnóstico profundo conferem o lock e os hashes. Reusar uma imagem
 local com os arquivos compilados não dispensa essas verificações. O `/source.zip`
 inclui os patches, a receita de build e a URL do fonte original.
+
+O GridCraft também é recompilado: o original pode descartar caracteres quando
+a digitação inicial e uma tecla de confirmação chegam no mesmo quadro, antes
+de o campo de texto receber foco. O patch em `patches/gridcraft-web/`, aplicado
+por `scripts/patch_gridcraft_web.py`, preserva o editor de células e os encoders
+originais, sem atrasar artificialmente os eventos de teclado no navegador.
+As alterações têm licença MIT OU Apache-2.0 e mantêm os avisos originais.
+`gridcraft-build.lock.json` fixa fonte, ferramentas, fontes tipográficas,
+patches e assets compilados; `scripts/build_gridcraft_web.sh` verifica os
+arquivos de entrada, executa a regressão nativa e usa Cargo `--locked`.
+Essa correção altera código executável, não apenas dados de marca.
 
 A tabela acima identifica versão, fonte e avisos de cada editor. A revisão cobre
 essas declarações e os materiais listados, não uma auditoria exaustiva de todas
