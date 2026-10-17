@@ -8,6 +8,46 @@ from .config import Settings
 from .db import DB
 from cryptography.fernet import Fernet
 from .security import digest,now
+from .i18n import EN
+
+CLI_EN = {
+    'Comandos locais de operação; backup/restauração exigem volume offline ou vazio.': __doc__,
+    'Configuração inicial já concluída.': 'Initial setup is already complete.',
+    'Entre com a senha da conta e use este código uma vez para configurar novo MFA:': 'Sign in with the account password and use this code once to set up a new MFA authenticator:',
+    'Link privado de uso único, válido por 30 minutos. MFA continua obrigatório:': 'Private single-use link, valid for 30 minutes. MFA remains mandatory:',
+    'Informe um caminho de saída ou --stdout.': 'Provide an output path or --stdout.',
+    'Backup concluído com banco, arquivos, versões e chave MFA.': 'Backup completed with database, files, revisions, and MFA key.',
+    'Backup restaurado. Sessões anteriores foram revogadas.': 'Backup restored. Previous sessions were revoked.',
+    'Erro: ': 'Error: ',
+    'Pare o serviço Liberty Office antes da manutenção do volume.': 'Stop Liberty Office before maintaining its volume.',
+    'Volume Liberty incompleto.': 'Incomplete Liberty volume.',
+    'O volume de destino deve estar vazio.': 'The destination volume must be empty.',
+    'Backup contém caminhos ou tipos inválidos.': 'Backup contains invalid paths or entry types.',
+    'Manifesto de backup ausente.': 'Backup manifest is missing.',
+    'Manifesto de backup grande demais.': 'Backup manifest is too large.',
+    'Manifesto de backup incompatível.': 'Incompatible backup manifest.',
+    'Backup não contém banco e chave MFA.': 'Backup does not contain the database and MFA key.',
+    'Tamanho inconsistente no backup.': 'Inconsistent size in backup.',
+    'Banco do backup inconsistente.': 'Inconsistent backup database.',
+    'O backup não corresponde aos blobs referenciados pelo banco.': 'Backup does not match the blobs referenced by the database.',
+    'Metadados de revisão inconsistentes no backup.': 'Inconsistent revision metadata in backup.',
+    'A chave MFA não corresponde às contas do backup.': 'MFA key does not match the backup accounts.',
+    'Banco de contas não encontrado.': 'Account database not found.',
+    'Origem inválida. Use HTTPS fora de localhost, sem caminho ou barra final.': 'Invalid origin. Use HTTPS outside localhost, without a path or trailing slash.',
+    'EDITOR_ORIGIN precisa ser diferente do portal e usar o mesmo esquema HTTP/HTTPS.': 'EDITOR_ORIGIN must differ from the portal and use the same HTTP/HTTPS scheme.',
+    'DEMO_EDITOR_ORIGIN precisa ser distinta do portal e dos editores privados, com o mesmo esquema.': 'DEMO_EDITOR_ORIGIN must differ from the portal and private editors, with the same scheme.',
+    'Limites devem ser positivos.': 'Limits must be positive.',
+}
+
+
+def cli_text(message):
+    """Translate fixed operator messages, not identifiers, paths or payloads."""
+    if os.getenv('LIBERTY_CLI_LANGUAGE') == 'pt-BR':
+        return message
+    prefix = 'SHA-256 inválido no backup: '
+    if message.startswith(prefix) and valid_member(message[len(prefix):]):
+        return 'Invalid SHA-256 in backup: ' + message[len(prefix):]
+    return CLI_EN.get(message, EN.get(message, message))
 
 @contextmanager
 def offline(data):
@@ -98,19 +138,20 @@ def restore_backup(archive_path,destination):
     return manifest
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);sub=p.add_subparsers(dest='command',required=True)
+    p=argparse.ArgumentParser(description=cli_text('Comandos locais de operação; backup/restauração exigem volume offline ou vazio.'));sub=p.add_subparsers(dest='command',required=True)
     sub.add_parser('bootstrap-token');sub.add_parser('status')
     doctor=sub.add_parser('doctor');doctor.add_argument('--deep',action='store_true')
     rec=sub.add_parser('recover');rec.add_argument('username')
     reset=sub.add_parser('password-reset');reset.add_argument('username')
     back=sub.add_parser('backup');back.add_argument('--stdout',action='store_true');back.add_argument('output',nargs='?')
     restore=sub.add_parser('restore');restore.add_argument('archive');restore.add_argument('destination')
-    args=p.parse_args();cfg=Settings.from_env()
+    args=p.parse_args()
     try:
+        cfg=Settings.from_env()
         if args.command=='bootstrap-token':
             path=cfg.data_dir/'bootstrap-token'
             if path.is_file():print(path.read_text().strip())
-            else:print('Configuração inicial já concluída.')
+            else:print(cli_text('Configuração inicial já concluída.'))
         elif args.command=='doctor':
             from scripts.check_runtime import inspect
             result=inspect(cfg,args.deep);print(json.dumps(result,indent=2));return 0 if result['ok'] else 2
@@ -130,7 +171,7 @@ def main():
                     c.execute('INSERT INTO recovery VALUES(?,?)',(row['id'],digest(code)))
                     c.execute('DELETE FROM sessions WHERE user_id=?',(row['id'],))
                     c.execute('INSERT INTO audit(actor,action,target,created) VALUES(NULL,?,?,?)',('operator.recover',row['id'],now()))
-            print('Entre com a senha da conta e use este código uma vez para configurar novo MFA:')
+            print(cli_text('Entre com a senha da conta e use este código uma vez para configurar novo MFA:'))
             print(code)
         elif args.command=='password-reset':
             token=secrets.token_urlsafe(32)
@@ -143,18 +184,18 @@ def main():
                     c.execute('INSERT INTO password_resets VALUES(?,?,?)',(digest(token),row['id'],now()+1800))
                     c.execute('DELETE FROM sessions WHERE user_id=?',(row['id'],))
                     c.execute('INSERT INTO audit(actor,action,target,created) VALUES(NULL,?,?,?)',('operator.password_reset',row['id'],now()))
-            print('Link privado de uso único, válido por 30 minutos. MFA continua obrigatório:')
+            print(cli_text('Link privado de uso único, válido por 30 minutos. MFA continua obrigatório:'))
             print(cfg.origin+'/#reset='+token)
         elif args.command=='backup':
             if args.stdout:make_backup(cfg.data_dir,sys.stdout.buffer)
             else:
                 if not args.output:raise ValueError('Informe um caminho de saída ou --stdout.')
                 with Path(args.output).open('xb') as stream:make_backup(cfg.data_dir,stream)
-            print('Backup concluído com banco, arquivos, versões e chave MFA.',file=sys.stderr)
+            print(cli_text('Backup concluído com banco, arquivos, versões e chave MFA.'),file=sys.stderr)
         elif args.command=='restore':
-            restore_backup(sys.stdin.buffer if args.archive=='-' else Path(args.archive),Path(args.destination));print('Backup restaurado. Sessões anteriores foram revogadas.')
+            restore_backup(sys.stdin.buffer if args.archive=='-' else Path(args.archive),Path(args.destination));print(cli_text('Backup restaurado. Sessões anteriores foram revogadas.'))
     except (ValueError,RuntimeError,OSError,sqlite3.Error,tarfile.TarError,KeyError) as e:
-        print('Erro: '+str(e),file=sys.stderr);return 1
+        print(cli_text('Erro: ')+cli_text(str(e)),file=sys.stderr);return 1
     return 0
 
 if __name__=='__main__':sys.exit(main())

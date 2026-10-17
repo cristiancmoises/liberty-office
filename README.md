@@ -12,6 +12,10 @@ The public demo has a permanent demo notice, disables uploads and runs editors o
 
 The lightweight text mode works without WebGL and supports basic writing and formatting. It does not provide full DOCX fidelity. Full graphical editors require working WebGL2 or WebGPU support in the browser. Startup errors are displayed explicitly, with a compatible option when one exists.
 
+In lightweight mode, TXT and Markdown are plain text: visual formatting is not
+exported. Use HTML to export basic formatting. Imported HTML is converted to
+inert text while preserving line and block boundaries; it is never executed.
+
 <details><summary>Native editing and small-screen layout</summary>
 
 ![Native WordCraft editor](docs/screenshots/liberty-word-native.png)

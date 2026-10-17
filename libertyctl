@@ -1,14 +1,17 @@
 #!/bin/sh
 set -eu
 cd "$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
-if ! command -v docker >/dev/null 2>&1; then printf '%s\n' 'Docker não encontrado. Instale Docker Engine e Docker Compose v2.' >&2; exit 1; fi
+cli_language=en
+[ "${LIBERTY_CLI_LANGUAGE:-}" != pt-BR ] || cli_language=pt-BR
+say() { if [ "$cli_language" = pt-BR ]; then printf '%s\n' "$2"; else printf '%s\n' "$1"; fi; }
+if ! command -v docker >/dev/null 2>&1; then say 'Docker not found. Install Docker Engine and Docker Compose v2.' 'Docker não encontrado. Instale Docker Engine e Docker Compose v2.' >&2; exit 1; fi
 docker compose version >/dev/null
 case "${1:-help}" in
  up)
   if [ ! -f .env ]; then cp .env.example .env; chmod 600 .env; fi
   if [ -n "${2:-}" ]; then
    origin=$2
-   if ! printf '%s\n' "$origin" | grep -Eq '^(https://[A-Za-z0-9.-]+(:[0-9]+)?|http://(localhost|127\.0\.0\.1)(:[0-9]+)?)$'; then printf '%s\n' 'Origem inválida. Exemplo: https://office.example.org' >&2; exit 1; fi
+   if ! printf '%s\n' "$origin" | grep -Eq '^(https://[A-Za-z0-9.-]+(:[0-9]+)?|http://(localhost|127\.0\.0\.1)(:[0-9]+)?)$'; then say 'Invalid origin. Example: https://office.example.org' 'Origem inválida. Exemplo: https://office.example.org' >&2; exit 1; fi
    editor=${3:-}
    if [ -z "$editor" ]; then
     case "$origin" in
@@ -16,12 +19,12 @@ case "${1:-help}" in
      http://*)
       hostport=${origin#http://}; host=${hostport%%:*}
       port=$(printf '%s\n' "$origin" | awk -F: '{print ($3==""?80:$3)+0}')
-      [ "$port" -ge 1 ] && [ "$port" -lt 65535 ] || { printf '%s\n' 'Informe uma porta local entre 1 e 65534.' >&2; exit 1; }
+      [ "$port" -ge 1 ] && [ "$port" -lt 65535 ] || { say 'Use a local port between 1 and 65534.' 'Informe uma porta local entre 1 e 65534.' >&2; exit 1; }
       editor="http://$host:$((port + 1))"
       ;;
     esac
    fi
-   if ! printf '%s\n' "$editor" | grep -Eq '^(https://[A-Za-z0-9.-]+(:[0-9]+)?|http://(localhost|127\.0\.0\.1)(:[0-9]+)?)$'; then printf '%s\n' 'Origem de edição inválida.' >&2; exit 1; fi
+   if ! printf '%s\n' "$editor" | grep -Eq '^(https://[A-Za-z0-9.-]+(:[0-9]+)?|http://(localhost|127\.0\.0\.1)(:[0-9]+)?)$'; then say 'Invalid editor origin.' 'Origem de edição inválida.' >&2; exit 1; fi
    demo=${4:-}
    if [ -z "$demo" ]; then
     case "$origin" in
@@ -29,11 +32,11 @@ case "${1:-help}" in
      http://*)
       hostport=${origin#http://}; host=${hostport%%:*}
       port=$(printf '%s\n' "$origin" | awk -F: '{print ($3==""?80:$3)+0}')
-      [ "$port" -ge 1 ] && [ "$port" -lt 65534 ] || { printf '%s\n' 'Informe uma porta local entre 1 e 65533 para incluir a demonstração.' >&2; exit 1; }
+      [ "$port" -ge 1 ] && [ "$port" -lt 65534 ] || { say 'Use a local port between 1 and 65533 to include the demo.' 'Informe uma porta local entre 1 e 65533 para incluir a demonstração.' >&2; exit 1; }
       demo="http://$host:$((port + 2))" ;;
     esac
    fi
-   if ! printf '%s\n' "$demo" | grep -Eq '^(https://[A-Za-z0-9.-]+(:[0-9]+)?|http://(localhost|127\.0\.0\.1)(:[0-9]+)?)$'; then printf '%s\n' 'Origem de demonstração inválida.' >&2; exit 1; fi
+   if ! printf '%s\n' "$demo" | grep -Eq '^(https://[A-Za-z0-9.-]+(:[0-9]+)?|http://(localhost|127\.0\.0\.1)(:[0-9]+)?)$'; then say 'Invalid demo origin.' 'Origem de demonstração inválida.' >&2; exit 1; fi
    portal_port=; editor_port=; demo_port=
    case "$origin" in http://*) portal_port=$(printf '%s\n' "$origin" | awk -F: '{print ($3==""?80:$3)+0}');; esac
    case "$editor" in http://*) editor_port=$(printf '%s\n' "$editor" | awk -F: '{print ($3==""?80:$3)+0}');; esac
@@ -51,29 +54,34 @@ case "${1:-help}" in
    chmod 600 .env.new; mv .env.new .env
   fi
   docker compose up -d --build
-  printf '%s\n' 'Liberty Office iniciado. Confira o estado e obtenha o token inicial:' './libertyctl status' './libertyctl token'
+  say 'Liberty Office started. Check its status and retrieve the setup token:' 'Liberty Office iniciado. Confira o estado e obtenha o token inicial:'
+  printf '%s\n' './libertyctl status' './libertyctl token'
   ;;
- token) docker compose exec -T office python -m liberty.cli bootstrap-token ;;
- verify) docker compose config --quiet; docker compose exec -T office python -m liberty.cli doctor --deep ;;
- status) docker compose ps; docker compose exec -T office python -m liberty.cli status ;;
+ token) docker compose exec -T -e "LIBERTY_CLI_LANGUAGE=$cli_language" office python -m liberty.cli bootstrap-token ;;
+ verify) docker compose config --quiet; docker compose exec -T -e "LIBERTY_CLI_LANGUAGE=$cli_language" office python -m liberty.cli doctor --deep ;;
+ status) docker compose ps; docker compose exec -T -e "LIBERTY_CLI_LANGUAGE=$cli_language" office python -m liberty.cli status ;;
  logs) docker compose logs --tail=100 -f office ;;
  stop) docker compose stop office ;;
  recover|password-reset)
-  [ -n "${2:-}" ] || { printf '%s\n' 'Uso: ./libertyctl recover usuario | password-reset usuario' >&2; exit 1; }
+  [ -n "${2:-}" ] || { say 'Usage: ./libertyctl recover username | password-reset username' 'Uso: ./libertyctl recover usuario | password-reset usuario' >&2; exit 1; }
   docker compose stop office
   trap 'docker compose up -d office >/dev/null' EXIT HUP INT TERM
-  docker compose run --rm --no-deps -T office python -m liberty.cli "$1" "$2"
+  docker compose run --rm --no-deps -T -e "LIBERTY_CLI_LANGUAGE=$cli_language" office python -m liberty.cli "$1" "$2"
   ;;
  backup)
-  [ -n "${2:-}" ] || { printf '%s\n' 'Uso: ./libertyctl backup /caminho/backup.tar.gz' >&2; exit 1; }
+  [ -n "${2:-}" ] || { say 'Usage: ./libertyctl backup /path/backup.tar.gz' 'Uso: ./libertyctl backup /caminho/backup.tar.gz' >&2; exit 1; }
   output=$2
-  [ ! -e "$output" ] || { printf '%s\n' 'O arquivo de saída já existe.' >&2; exit 1; }
+  [ ! -e "$output" ] || { say 'The output file already exists.' 'O arquivo de saída já existe.' >&2; exit 1; }
   umask 077
   docker compose stop office
   trap 'docker compose up -d office >/dev/null' EXIT HUP INT TERM
-  if docker compose run --rm --no-deps -T office python -m liberty.cli backup --stdout > "$output.partial"; then
+  if docker compose run --rm --no-deps -T -e "LIBERTY_CLI_LANGUAGE=$cli_language" office python -m liberty.cli backup --stdout > "$output.partial"; then
    mv "$output.partial" "$output"; printf 'Backup: %s\n' "$output"
   else rm -f "$output.partial"; exit 1; fi
   ;;
- *) printf '%s\n' 'Liberty Office 0.2.0-rc.1' 'Uso: ./libertyctl up [https://seu-dominio] [https://editor.seu-dominio] [https://demo-editor.seu-dominio]' '     ./libertyctl token | status | verify | logs | stop' '     ./libertyctl backup /caminho/backup.tar.gz' '     ./libertyctl recover usuario | password-reset usuario' ;;
+ *) printf '%s\n' 'Liberty Office 0.2.0-rc.1'
+    say 'Usage: ./libertyctl up [https://your-domain] [https://editor.your-domain] [https://demo-editor.your-domain]' 'Uso: ./libertyctl up [https://seu-dominio] [https://editor.seu-dominio] [https://demo-editor.seu-dominio]'
+    printf '%s\n' '     ./libertyctl token | status | verify | logs | stop'
+    say '     ./libertyctl backup /path/backup.tar.gz' '     ./libertyctl backup /caminho/backup.tar.gz'
+    say '     ./libertyctl recover username | password-reset username' '     ./libertyctl recover usuario | password-reset usuario' ;;
 esac

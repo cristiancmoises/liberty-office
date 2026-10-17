@@ -72,6 +72,17 @@ volume and private runtime configuration when rebuilding the application.
 
 ## Administrator setup
 
+Operator commands use English by default, independently of the host's `LANG`.
+For Brazilian Portuguese, use `LIBERTY_CLI_LANGUAGE=pt-BR ./libertyctl token`
+or `LIBERTY_CLI_LANGUAGE=pt-BR python -m liberty.cli --help`. Any other value
+selects English. `libertyctl` forwards this choice to each Python command with
+Compose's per-command `-e`; it does not write it into `.env` or change the
+running service. For direct Compose use, pass
+`docker compose exec -T -e LIBERTY_CLI_LANGUAGE=pt-BR office python -m liberty.cli --help`.
+Only application-owned messages are translated. Tokens, URLs, paths, JSON status
+and binary backup stdout are unchanged; diagnostics from Docker, argparse and
+other dependencies may use their own language.
+
 Run `./libertyctl token` on the host and use the one-time token in the portal. Store it privately; do not paste it into logs or tickets. There is no default password. Complete TOTP enrollment and save the recovery codes. Accounts created later receive one-time invitations from an administrator.
 
 ## Persistent data and backups

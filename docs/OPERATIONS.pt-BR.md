@@ -4,6 +4,17 @@
 
 ## Antes do primeiro acesso
 
+Os comandos de operação usam inglês por padrão, independentemente do `LANG` do
+host. Para português brasileiro, use `LIBERTY_CLI_LANGUAGE=pt-BR ./libertyctl token`
+ou `LIBERTY_CLI_LANGUAGE=pt-BR python -m liberty.cli --help`. Qualquer outro valor
+seleciona inglês. O `libertyctl` repassa essa escolha a cada comando Python pelo
+`-e` do Compose, sem gravá-la no `.env` nem alterar o serviço em execução. No
+Compose direto, use
+`docker compose exec -T -e LIBERTY_CLI_LANGUAGE=pt-BR office python -m liberty.cli --help`.
+Somente mensagens próprias são traduzidas. Tokens, URLs, caminhos, JSON de
+status e stdout binário de backup permanecem iguais; diagnósticos do Docker,
+argparse e outras dependências podem usar seu próprio idioma.
+
 Configure `PUBLIC_ORIGIN`, `EDITOR_ORIGIN` e `DEMO_EDITOR_ORIGIN` com três origens exatas e distintas, sem barra final. Use HTTPS nas três; por exemplo `https://office.example.org`, `https://edit.office.example.org` e `https://demo-edit.office.example.org`. A origem controla Host, CSRF e os links de convite. O proxy deve manter Host e Origin; os cabeçalhos X-Forwarded-* não são tratados como prova de identidade. O backend não precisa saber o IP real do usuário para aplicar MFA. O throttle combina nome da conta e IP do proxy; muitos usuários em um único proxy podem compartilhar o limite de IP.
 
 A porta publicada em loopback não pode ser acessada de outro computador. Um NPM em Docker deve compartilhar a rede, não usar `127.0.0.1` como se fosse o host. Use o override NPM. Exemplo com `npm-bridge`:

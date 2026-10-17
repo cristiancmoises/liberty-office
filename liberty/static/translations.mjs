@@ -1,5 +1,8 @@
 // Only application-owned interface strings belong here; never translate user data.
 export const english={
+ 'TXT e Markdown são salvos como texto puro, sem formatação. Negrito, itálico, sublinhado e listas não são preservados. Use HTML para exportar a formatação.':'TXT and Markdown are saved as plain text, without formatting. Bold, italic, underline, and lists are not preserved. Use HTML to export formatting.',
+ 'Download de texto puro iniciado, sem formatação. Nada é salvo no servidor.':'Plain text download started, without formatting. Nothing is saved on the server.',
+ 'Salvo no Drive como texto puro, sem formatação.':'Saved to Drive as plain text, without formatting.',
  'Download iniciado. Confira os downloads do navegador. Nada é salvo no servidor.':'Download started. Check your browser downloads. Nothing is saved on the server.',
  'Aguarde o download em andamento.':'Wait for the current download to finish.',
  'O portal não confirmou o início do download.':'The portal did not confirm the download start.',

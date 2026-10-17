@@ -8,6 +8,10 @@ Portal web self-hosted com 13 editores integrados, Drive privado, administraçã
 
 A demonstração é identificada na tela, não aceita uploads e usa uma origem separada dos editores privados. Os arquivos de demonstração não são gravados no Drive. O modo leve de texto permite escrever sem WebGL; ele não oferece a fidelidade DOCX do editor completo.
 
+No modo leve, TXT e Markdown são texto puro e não preservam a formatação visual.
+Use HTML para exportar formatação básica. HTML importado vira texto inerte,
+preservando quebras e limites de blocos; seu conteúdo nunca é executado.
+
 <details><summary>Edição nativa e tela pequena</summary>
 
 ![Editor WordCraft nativo](docs/screenshots/liberty-word-native.png)
