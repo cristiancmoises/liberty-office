@@ -1,0 +1,20 @@
+/* Keep the canvas usable when the editor toolbar wraps on a small screen. */
+.layout>.sidebar{min-width:0}
+.topbar .searchbox{min-width:0}
+.editor[aria-label]{grid-template-rows:auto minmax(0,1fr) auto;max-width:100vw;height:100dvh}
+.editor .editor-top{min-width:0}
+.editor .editor-filename{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.editor .editor-actions{display:flex;align-items:center;gap:8px;min-width:0;max-width:100%;overflow-x:auto;padding:4px 0}
+.editor .editor-actions button{flex-shrink:0;white-space:nowrap}
+.editor iframe{min-height:0;min-width:0;display:block}
+.editor .editor-status{overflow-wrap:anywhere}
+@media(max-width:850px){
+ .editor .editor-actions{order:2;width:100%;border-top:1px solid var(--line);padding-top:8px}
+ .editor .editor-top button{min-height:40px}
+ .editor .editor-save-hint{display:none}
+}
+@media(max-width:380px){
+ .editor .editor-top{gap:6px}
+ .editor .editor-filename{flex-basis:0}
+}
+@media(max-width:600px){.layout.layout{grid-template-columns:minmax(0,1fr)}}

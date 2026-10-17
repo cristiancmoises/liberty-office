@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+ <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+ <title>Demonstração · Liberty Office</title>
+ <meta name="description" content="Experimente os editores Liberty Office sem criar uma conta. Demonstração sem envio de arquivos ao servidor.">
+ <link rel="icon" href="/static/liberty.svg" type="image/svg+xml">
+ <link rel="stylesheet" href="/static/style.css"><link rel="stylesheet" href="/static/demo.css">
+ <script type="module" src="/static/demo.mjs"></script>
+</head>
+<body class="demo-page">
+ <header class="demo-banner"><strong>Demonstração pública</strong><span>Sem conta, sem uploads e sem arquivos salvos no servidor. Use apenas conteúdo de teste.</span><a href="/">Entrar no meu espaço</a></header>
+ <main id="demo-launcher" class="main">
+  <div class="page-title"><p class="eyebrow">Liberty Office</p><h1>Experimente seu próximo espaço de trabalho.</h1><p>Escolha um aplicativo, crie um exemplo e teste as ferramentas. A demonstração é temporária e separada das contas privadas.</p></div>
+  <p class="warning">A edição completa usa WebGL2 ou WebGPU. A disponibilidade depende do navegador e da GPU. As alterações de demonstração podem permanecer no armazenamento deste navegador até a próxima abertura do editor; nada é enviado ao Drive.</p>
+  <div id="demo-apps" class="apps-grid" aria-label="Aplicativos de demonstração"></div>
+  <p id="demo-message" role="status">Carregando aplicativos…</p>
+  <p><a href="/source.zip">Código fonte e avisos</a> · <a href="https://codeberg.org/berkeley/liberty-office/src/branch/main/docs/LICENSING.md">Licenças dos editores</a></p>
+ </main>
+ <section id="demo-editor" hidden aria-label="Editor de demonstração">
+  <div class="demo-toolbar"><strong id="demo-name"></strong><span>Importações desativadas · Salvamento local apenas</span><button id="demo-close">Sair da demonstração</button></div>
+  <div id="demo-frame"></div>
+  <p id="demo-status" role="status" aria-live="polite">Carregando…</p>
+ </section>
+ <noscript>Ative JavaScript para experimentar os editores.</noscript>
+</body></html>

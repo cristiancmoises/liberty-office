@@ -56,18 +56,22 @@ def runtime(token: str,asset: str,request: Request):
     service=svc(request);ticket=valid_ticket(service,token)
     if asset.startswith('__liberty/'):
         name=asset.removeprefix('__liberty/')
-        if name not in ('bridge.mjs','editor-host.mjs','editor-storage.mjs'):raise HTTPException(404,'Adaptador não encontrado.')
-        return FileResponse(STATIC/name,media_type='text/javascript')
-    root=(service.settings.apps_dir/ticket['app_id']).resolve();path=(root/asset).resolve()
+        if name not in ('bridge.mjs','editor-host.mjs','editor-storage.mjs','editor-runtime.mjs','light-editor.mjs','light-editor.css'):raise HTTPException(404,'Adaptador não encontrado.')
+        return FileResponse(STATIC/name,media_type='text/css' if name.endswith('.css') else 'text/javascript')
+    config={'portalOrigin':service.settings.origin,'nonce':ticket['nonce'],'maxBytes':service.settings.max_upload,'appId':ticket['app_id'],
+            'identity':hashlib.sha256(('editor:'+ticket['user_id']).encode()).hexdigest()}
+    data=json.dumps(config,ensure_ascii=True).replace('<','\\u003c')
+    injection='<script id="__liberty-config" type="application/json">'+data+'</script>'
+    injection+='<script type="module" src="./__liberty/editor-host.mjs"></script>'
+    return serve_bundle(service,ticket['app_id'],asset,request,injection)
+
+def serve_bundle(service,app_id,asset,request,injection):
+    """Serve pinned assets after the calling route has authorized its runtime."""
+    root=(service.settings.apps_dir/app_id).resolve();path=(root/asset).resolve()
     if not path.is_relative_to(root) or not path.is_file() or any(p.startswith('.') for p in Path(asset).parts):
         raise HTTPException(404,'Arquivo do aplicativo não encontrado.')
     if asset=='index.html':
-        config={'portalOrigin':service.settings.origin,'nonce':ticket['nonce'],'maxBytes':service.settings.max_upload,
-                'identity':hashlib.sha256(('editor:'+ticket['user_id']).encode()).hexdigest()}
-        data=json.dumps(config,ensure_ascii=True).replace('<','\\u003c')
         # Original WASM/assets remain untouched. The served HTML adds only the Liberty adapter.
-        injection='<script id="__liberty-config" type="application/json">'+data+'</script>'
-        injection+='<script type="module" src="./__liberty/editor-host.mjs"></script>'
         html=path.read_text()
         html=re.sub(r'(<script\b[^>]*?\btype\s*=\s*)([\"\'])module\2',lambda m:m.group(1)+m.group(2)+'application/x-liberty-module'+m.group(2),html,flags=re.I)
         html=html.replace('<head>','<head>'+injection,1) if '<head>' in html else injection+html

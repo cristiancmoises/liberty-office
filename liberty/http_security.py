@@ -5,11 +5,12 @@ from fastapi.responses import JSONResponse
 EXEMPT={'/api/auth/login','/api/auth/bootstrap','/api/auth/activate','/api/auth/password-reset'}
 UPLOAD=re.compile(r'^/api/files(?:/[^/]+/content)?$')
 
-def decorate(response,editor,settings):
+def decorate(response,editor,settings,demo=False):
     response.headers['X-Content-Type-Options']='nosniff'
     response.headers['Referrer-Policy']='no-referrer'
     response.headers['Cache-Control']='no-store'
     response.headers['Permissions-Policy']='camera=(), geolocation=(), payment=()'
+    if demo:response.headers['Permissions-Policy']+=', clipboard-read=(), microphone=()'
     if editor:
         if 'x-frame-options' in response.headers:del response.headers['x-frame-options']
         response.headers['Content-Security-Policy']=("default-src 'self'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval'; "
@@ -19,7 +20,7 @@ def decorate(response,editor,settings):
     else:
         response.headers['X-Frame-Options']='DENY'
         response.headers.setdefault('Content-Security-Policy',"default-src 'self'; script-src 'self'; style-src 'self'; "
-            "img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; frame-src "+settings.editor_origin+"; "
+            "img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; frame-src "+settings.editor_origin+' '+settings.demo_editor_origin+"; "
             "object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'")
     if settings.secure:response.headers['Strict-Transport-Security']='max-age=31536000'
     return response
@@ -27,9 +28,12 @@ def decorate(response,editor,settings):
 async def handle(request,call_next,service):
     cfg=service.settings;host=request.headers.get('host','').lower()
     portal=host==urlsplit(cfg.origin).netloc.lower();editor=host==urlsplit(cfg.editor_origin).netloc.lower()
-    def reject(status,message):return decorate(JSONResponse({'detail':message},status_code=status),editor,cfg)
+    demo=host==urlsplit(cfg.demo_editor_origin).netloc.lower()
+    def reject(status,message):return decorate(JSONResponse({'detail':message},status_code=status),editor or demo,cfg,demo)
     path=request.url.path
-    if not portal and not editor:return reject(400,'Host não autorizado.')
+    if not portal and not editor and not demo:return reject(400,'Host não autorizado.')
+    if demo and not (path.startswith('/demo/runtime/') or path=='/healthz'):return reject(404,'Recurso não encontrado.')
+    if not demo and path.startswith('/demo/runtime/'):return reject(404,'Abra a demonstração na origem isolada.')
     if editor and not (path.startswith('/runtime/') or path=='/healthz'):return reject(404,'Recurso não encontrado.')
     if portal and path.startswith('/runtime/'):return reject(404,'Abra os editores na origem isolada.')
     if request.method not in ('GET','HEAD','OPTIONS'):
@@ -56,4 +60,4 @@ async def handle(request,call_next,service):
             except TimeoutError:return reject(408,'Tempo de envio excedido.')
             # Starlette's cached Request replays this bounded body to FastAPI.
             request._body=b''.join(chunks)
-    return decorate(await call_next(request),editor,cfg)
+    return decorate(await call_next(request),editor or demo,cfg,demo)

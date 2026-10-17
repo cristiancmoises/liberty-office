@@ -7,7 +7,9 @@ command -v docker >/dev/null
 project="liberty-acceptance-$(date +%s)-$$"
 export PUBLIC_ORIGIN="http://localhost:${ACCEPTANCE_PORT:-18097}"
 export EDITOR_ORIGIN="http://localhost:${ACCEPTANCE_EDITOR_PORT:-18098}"
+export DEMO_EDITOR_ORIGIN="http://localhost:${ACCEPTANCE_DEMO_EDITOR_PORT:-18099}"
 export LIBERTY_BIND=127.0.0.1 LIBERTY_PORT=${ACCEPTANCE_PORT:-18097} EDITOR_PORT=${ACCEPTANCE_EDITOR_PORT:-18098}
+export DEMO_EDITOR_PORT=${ACCEPTANCE_DEMO_EDITOR_PORT:-18099}
 initial_volume="$project-data";restore_volume="$project-restored"
 export LIBERTY_VOLUME_NAME="$initial_volume"
 export LIBERTY_IMAGE="$project:0.2.0-rc.1"
@@ -24,6 +26,7 @@ compose restart office
 compose up -d --wait
 compose exec -T office python -m liberty.cli doctor --deep > "$work/runtime.json"
 export LIBERTY_ACCEPTANCE_SEED="$(pwd)/$work/seed.json"
+export LIBERTY_DEMO_ORIGIN="$PUBLIC_ORIGIN"
 npm run test:browser
 compose stop office
 compose run --rm --no-deps -T office python -m liberty.cli backup --stdout > "$work/backup.tar.gz"

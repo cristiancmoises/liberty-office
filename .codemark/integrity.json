@@ -1,0 +1,2780 @@
+{
+  "algorithms": [
+    "sha256",
+    "sha512"
+  ],
+  "created_at": "2026-10-17T03:24:26Z",
+  "excluded": [
+    {
+      "path": ".codemark",
+      "reason": "Metadados do CodeMark"
+    }
+  ],
+  "file_count": 460,
+  "files": {
+    ".dockerignore": {
+      "mode": 420,
+      "sha256": "8697621bf4dc170067ac3ee3d8a023227529a9d6b9e913cfdd4b1aee8ed5623f",
+      "sha512": "b0100f4f3da08f0ea03245a07d62590889b77f8a76863d94a18a252fe05b5c7c08e2691f72d5bf16a8019ab704fb03ea97ef847b270fa0df821a8a2a6fd3d571",
+      "size": 260
+    },
+    ".env.example": {
+      "mode": 420,
+      "sha256": "10f8a02ff1af333e9e0e8fffddbcc5e5a58c14b814b3b838ddc36d02809a2aa1",
+      "sha512": "0a8973aa0fdd1c619f8a0a514196ef7cb97a01564fa80887e8d9df1ab322a0be49012d0b147c6ea802aeb3717f226146717389f32f8f70dfbc40cf6c808ac0dd",
+      "size": 551
+    },
+    ".github/workflows/acceptance.yml": {
+      "mode": 420,
+      "sha256": "f2ab26e87742650dbab7ecccf6d069b5ce44a160ed6940203a4db4c91f13160f",
+      "sha512": "d0085705504e160bc74219c10a3766a70290aab1221523ee811e5a882b40ef414f00c6750c376c139b17bf9e8471c7a9d665fc54c68034ec56759a2df188fee6",
+      "size": 1051
+    },
+    ".gitignore": {
+      "mode": 420,
+      "sha256": "5d4416ec2b38e2be6977c41a35ec4cca239f956fd0fe54e7f46026946fa68e29",
+      "sha512": "4bdec10914f7af590f433d6bbceda578d32d68e2e28c4ec9dfeadb9fa28067c1ff3423bb0d66622208eea9f07e0ae055aed1c95d5226bf139d6f19c3487d0e9f",
+      "size": 250
+    },
+    "Dockerfile": {
+      "mode": 420,
+      "sha256": "4e80da052c93c57f7b50677b64958c2abf8899a6f838f0ff4838d9b92a820169",
+      "sha512": "51faa2462fedd1594834ff01bce7f983adca695c3f3c6311b62319867f639d092fadb0e727ed2ddcea345656104465fd4910ca3dc7b29b673690f51c681af4c4",
+      "size": 1553
+    },
+    "LICENSE": {
+      "mode": 420,
+      "sha256": "d8a6cc31abc16b6748c7a21f21611f5a1ec33f67d22ca23d7da1c19b95496bee",
+      "sha512": "3edf11dc2de2f03f707fb3efb40092ddbf17cb17ec48951dd71cafb87f5857438b7d2ff3f89497a2921f018c3371fc760e7cbc2b7cb9b52ba7ebcbb36f8f04e2",
+      "size": 34020
+    },
+    "MANIFEST.sha256": {
+      "mode": 420,
+      "sha256": "bb2eab65ca7affc5ff6441f6cb0e0393154727cf7c38012294f00ce69b714dc4",
+      "sha512": "46a9323fd371d88f13c2c9a34b50560809d1c80769e6b5d447f58bd8b60514f9a7db5f11e757c44c9404be458497696776608ed0a831c0dd4c3880b030572f67",
+      "size": 58446
+    },
+    "NOTICE": {
+      "mode": 420,
+      "sha256": "f5009225bf19d837b8543b5c422c5f4689df9dc1415be2ac7eeba7455b42fbb7",
+      "sha512": "0d27f3d8576dd7eb37bb39e951b4554aa0220b00c25b19577dade9ec3b41096c3d1a296607a4ff777f124c56e1c26668d77bdd7140c221fa46fb075652fbdf55",
+      "size": 393
+    },
+    "README.md": {
+      "mode": 420,
+      "sha256": "481bf438d4862c6a49171c5b2137d4dcd66bc009b5aa86bdc0e1d21cb884c1bd",
+      "sha512": "050d83596a6c857f32ddeb00b5706e48691898420524fa1e80817e107560acbbba27668ccd5ba10326ae8465e78c48f0c39487b13376f6643cdd6e28e461bf86",
+      "size": 3549
+    },
+    "README.pt-BR.md": {
+      "mode": 420,
+      "sha256": "b9759fbc60ac9fcefc6b5a730eda81eeaa685cb40cf84cd1bb524488d2986bef",
+      "sha512": "8ccab76d1dbb4f781456dfa2a255bf28481130cc9631288036042ea2c952ee7d17070c0fa117f1c85e6e8c7c349435b8b76d6c62365ecbe7a183234f525fde6e",
+      "size": 11259
+    },
+    "compose.yaml": {
+      "mode": 420,
+      "sha256": "a3ca2ad348822ce8a6bfb6a2f0321747d71dfeb25682ebd4f89e022688da1759",
+      "sha512": "f37ceacf9b103648d6b59f5c78b1e657d112ccdd5b5ce7eb69d49be4bf9aeb73fa3732fa7ebe052620a6a4d30bfa4f3131a8cd52d4e2ed0a73c9a2dcafd26369",
+      "size": 1188
+    },
+    "deploy/compose.npm.yaml": {
+      "mode": 420,
+      "sha256": "4e68f69c87fcb4d789ebe852c823a24dabcdaaa5ced8ed4107ef273667e9b28e",
+      "sha512": "11cfb0250346bebd7d53dc3bce0347a13a80f87ac588eb474f5993a9fa2a4ee4865eb16e4fa070d2c573fd19d35dc827205888196a79308a7f16e39faa42e1ba",
+      "size": 226
+    },
+    "deploy/compose.storage.yaml": {
+      "mode": 420,
+      "sha256": "a1ad09bcb9bba53c82e95dc3f166e20aa48dbc757eddb01d080852c2ce1cf446",
+      "sha512": "5f46c6ef58066d5b3cdae17cfeede4daaba6c2f4fe3de01ed36ac5b46d159c39d4dba0eb4975bdedde04f2f64a30a0cfe0b8278ef3a4dc71001710d7a05a8738",
+      "size": 231
+    },
+    "docs/ACCEPTANCE.md": {
+      "mode": 420,
+      "sha256": "afc1a08012017dff0b20c908541bcbaa6ce45db8b19277bdc2cc2b3b8b540a0b",
+      "sha512": "e78b02fdae576a9ae3d56924ff16170c23d440b8bfb2a364a03911a5aa3cbe5f42aca1b77130a627b3c5533f962dbb0ec81c7c2ba07f805f0ce3c68343e6ecc9",
+      "size": 5223
+    },
+    "docs/INTEGRITY.md": {
+      "mode": 420,
+      "sha256": "5886dbfce01808316ee241c0d751253931abc9d3d5849165970d68df1beeaf51",
+      "sha512": "799150cb6155a296dce34cf953a7ef4c974a41ccab66cd61fd7b93e49cb903631bdcfeb0f8197d44f65d4f238afafe8998fd1dc86b9cda0b59f20d5d0f7f71e4",
+      "size": 3347
+    },
+    "docs/LICENSING.md": {
+      "mode": 420,
+      "sha256": "9b3982fc59d40ddba765dd283cd0bfa742f9e02bff008d3e5a006d698f65218b",
+      "sha512": "c657754f8c12f0e12e180bb3fe962661120101fb4bbe5be258a1318576689a88a3d4c1cd7b4ec68a0535fa293fada83fff57ff64a1d0bd364ac8500613c36aa8",
+      "size": 7691
+    },
+    "docs/OPERATIONS.en.md": {
+      "mode": 420,
+      "sha256": "edb44c5c1b85bcdff3c39c0b86e152cbdf6a0b2261529cc14436c90b744cbd49",
+      "sha512": "1e134bc47b44d281a07be89d8c6e707df9d7f6f215cc1ba5c59cd03165d774cbf04c7e0a6693f2f76761b822ddf86f35377c5fe2883ba2e05390ff2aaca51098",
+      "size": 3996
+    },
+    "docs/OPERATIONS.md": {
+      "mode": 420,
+      "sha256": "9abc40b614b511bddcd1b235d25dd22c13f47fc95faa6a32af183a59f2acd4ae",
+      "sha512": "bcb16e7d811f32e2981b612d0d6e13f22256964dc0d19343d711f64a7e1ea367f0037630f5d2058da0f75260667d21c1a6573aa90b6d4ecb1a52ff9a9a98b4a6",
+      "size": 10455
+    },
+    "docs/SECURITY.md": {
+      "mode": 420,
+      "sha256": "e12971e2ef5993faf5425df38e3b5546e0c0d269785050817dca4ece3a1441c8",
+      "sha512": "7de5c688bc48d6a68bc0b7dd85969d203040044ea03d3d53cc894f4a28d59f93c6f30d8435dc3afd60d42f15259d3155c7f410f8fc4fc4c9813b1c952c78d63f",
+      "size": 5553
+    },
+    "docs/screenshots/liberty-desktop.png": {
+      "mode": 420,
+      "sha256": "14a512d4fb295564d45f6c839a7107350a2bd717bcb4c42b6e6e351b34e5be5c",
+      "sha512": "14f331425cf49484f947a30a0350ac8e38f70bafe444491dcfaa6bf9261c2138474d79d42aefb0a408e7b056182267ba0e9e3a4d65bd071d5c33f8e1c5d29d7a",
+      "size": 191791
+    },
+    "docs/screenshots/liberty-mobile.png": {
+      "mode": 420,
+      "sha256": "25e8a0e56cef21e35e9a05b86faba661204ebad2716138e7713734ae770e8045",
+      "sha512": "0f2eafab5211c45bdc2f6f05bd2c05b12c67213e9d89fec7e9043243fd51f3f3147c90158c2ffeb30fb52cc335d531f954c82fe9c90d6dcb4619ccf0c395173f",
+      "size": 51142
+    },
+    "docs/screenshots/liberty-word-lite.png": {
+      "mode": 420,
+      "sha256": "580b71d550ccebe0c3123725b1d54b2992e8dc3e8c505788f9e7b2c843121e94",
+      "sha512": "26ef52e5c320340f072c34869bfe4f37a049718107d8d3786335f4a6e5f5bcb4db9f7c24cc99603fda0c78faf060e64583b3c19f2b01270d6874cbbeef748c1b",
+      "size": 86749
+    },
+    "liberty/__init__.py": {
+      "mode": 420,
+      "sha256": "e9a764ed630532c732099965243b0530639b331eb65f0189b2ce01123bc8300d",
+      "sha512": "bbdfdb9ae190484a201decb8fd64a7b4d803556f940c416a27bc83ea2a3506de6e6f87c5b13b66076dc4d1aa55c1a815e7aa5bf50f63f546c89d7a787e4507eb",
+      "size": 100
+    },
+    "liberty/admin.py": {
+      "mode": 420,
+      "sha256": "17b9084508f98bde98ebf94f262057b57dc72d0a85518320ccac1b70c480170e",
+      "sha512": "a86674d3b0b8b8475a6ae3f2738bab8f0fc98f8d1466c7a6fc9aba3c53cd86f8bc9f4451ef18d5b2209d79ea84cebdb7eb599b57882066dc96a4ee843dba9788",
+      "size": 4952
+    },
+    "liberty/app.py": {
+      "mode": 420,
+      "sha256": "9bd5850c53a912b25938a715b3247c6581558c5c114654fcbe999cb895710926",
+      "sha512": "404acf52c325d53de2b2673ac809106d2cd95520c4b857079d4bccc402f201a55be851fb9cdd1a50810deac5391904c09226fc266849bfd7285dea36230a6b7b",
+      "size": 3181
+    },
+    "liberty/auth.py": {
+      "mode": 420,
+      "sha256": "fe362c58caffeae5d6d137a8577a9213e6420e062b1c05115fc1b647449b255c",
+      "sha512": "60aab4d2ec20a1d1fcbe46e3eb062c0ce859b2beada2e2841975c7b93bf27a42dad02d6a2b167e5baf243d3352bae40a7211d09a050af6214a5bc0ba2d5691c7",
+      "size": 12276
+    },
+    "liberty/catalog.py": {
+      "mode": 420,
+      "sha256": "30b5934ecaa6ca23b20ddbcd9516ecb0466beea38d364fd0314005227daa1ab4",
+      "sha512": "9c673975c367bbff59c811b6433a76131df44d3efd7fb691e8f774e7d9c6911e99ca2fa5e5f126bbc0de7926538eea5115b94cfd344e1145d4b3cc6eda591645",
+      "size": 5408
+    },
+    "liberty/cli.py": {
+      "mode": 420,
+      "sha256": "a62efdf2fc3732c98890d4898fe3cf9d4bfb33b958b700097ceeb9410b6f2150",
+      "sha512": "cd43a84670ab59fc9cf13af3feb47ef1b55f71a03afbd810283d5026566430c99503a2c66ba4e4170c6ce3ccee9ddbb4c3e16a013aa3fd4fe3c0f12a89aa0353",
+      "size": 10839
+    },
+    "liberty/config.py": {
+      "mode": 420,
+      "sha256": "5b8ec34fed71566be874416627ea60c7ab329295e73db4dbfa16cab875d6a253",
+      "sha512": "cb234e6f5793364a10342536bfe56e79cba02a13689f40a4d83c044ea51716586834ba93fadbe7506d8646ca24005c0afc45b501705ee242747fd0805b470102",
+      "size": 3891
+    },
+    "liberty/db.py": {
+      "mode": 420,
+      "sha256": "3ce4bffe724daa8f2f0ca6fd345fe632d9bcfcf56297dffa321e7b762d43435b",
+      "sha512": "b146a1842fa9775fe2e8fd083c07604bbaed3e4d092936491fea697981ccf47abfe73f0b5ead76360880677bdced8e81f53f064027d99d436179ad0e6c4cc948",
+      "size": 3827
+    },
+    "liberty/demo.py": {
+      "mode": 420,
+      "sha256": "330b1e10fc0b5d3ae237543dab8a72607b873b116a8f43c04615bbd5c4a2ae1e",
+      "sha512": "6b53df638a1e2dc6b4b6cc9b5bccc10f29d0ddcd5c02555a17aae8628ecb53127782fd30a436d02870b8ea8a8042663a5ddc3310c8b00246b0ed81050d5cb6a0",
+      "size": 1845
+    },
+    "liberty/drive.py": {
+      "mode": 420,
+      "sha256": "32f6104c50c3776c21d8beecc06163e7ac27d286d3c9a68a2cfbe327f17f5fa8",
+      "sha512": "dbc0d124e09c5b23da1e1e3955177034138392620acd35382d2bfb0aaba74045858de6b884cc4683602f0af3e5473edfca1ebf1ef83dc845baf1fc8558520ff2",
+      "size": 21226
+    },
+    "liberty/http_security.py": {
+      "mode": 420,
+      "sha256": "64db6d9824f60ffd1f63e1760fd1c3a61b9363b51eb532c09aecdc3e24aa468b",
+      "sha512": "a04e60d70f0518387fab4863cb9f32115878d8814c53a9ba0ae03e75d171c74cc24437a5f447eab0557f344fe6f868f52ec75d68266db35fecad83cf286dcf22",
+      "size": 4355
+    },
+    "liberty/locks.py": {
+      "mode": 420,
+      "sha256": "33be893bd4acf0df92e61c815e9928ec30ec69d2611884d843c808d75d6aca12",
+      "sha512": "deb6de1482de985d9cb973f1bc7de25a33d835db08d1bf2b57f20d48c7c1106f29a705a53fb0853dd05f905457f9e91e830323998e4c3b1a11c485476bbc01da",
+      "size": 831
+    },
+    "liberty/models.py": {
+      "mode": 420,
+      "sha256": "209fe81f5fda56adce38f45c36e1ec1476af8f4f5a9dead246279ec055935ee0",
+      "sha512": "4098abbe028944687c8162e0df3e145b533406b93c681bc99afbef20c2371500a0f1d130d53050f92526805a338041cbb69092a2c86a2cd5155fa31655346340",
+      "size": 1722
+    },
+    "liberty/security.py": {
+      "mode": 420,
+      "sha256": "112960f666fef80e1601f608d2f084258eec5c11fcd68c125ad0209835d5d100",
+      "sha512": "a8ca7983fb4eb9d55cc14ea75db11b7ac303080a658ac1cf3b7297976b96a9036543301431b68f671d116b8de6655503c521336f88970b872bd30acc3e921e49",
+      "size": 6439
+    },
+    "liberty/static/app.js": {
+      "mode": 420,
+      "sha256": "3142fc29631e53517ae547c7ad0b836bcbc2bf709f1caa5888d91f8b5d7fd135",
+      "sha512": "844ad6479a5154525190adb5048b98d2d3acdd1cef114db60259c63b1ab594a09b34c8f42fd95a971bc7111091fef172356d81a43762671ae1b8caf0bd511665",
+      "size": 37182
+    },
+    "liberty/static/bridge.mjs": {
+      "mode": 420,
+      "sha256": "5ba838ae068f23c9e186b6b4111a064309a6a0e5176fc1e26bc4c53575348b20",
+      "sha512": "137c01aa8a25a17b47fd6094146aa19b2f70905676cfb688bb12d9f947e9a03ef1b009505be1e67388af389b3c39637a2dd3cb58b62668d33981951236c61d34",
+      "size": 6810
+    },
+    "liberty/static/demo-guard.mjs": {
+      "mode": 420,
+      "sha256": "ea64193708d0ec3ce94245fe4a8af97d99513b6cbdf995907e988b706aabe388",
+      "sha512": "5af43032ad753d1976239b76c607ecbf6417ade425bb4b9ce9cedb75c2b39dd0e852f0c404dea50393b5437ecfeee22062ebec7ba1ae242208735af9c362ac37",
+      "size": 1143
+    },
+    "liberty/static/demo-host.mjs": {
+      "mode": 420,
+      "sha256": "2f137c178f6106338f7bf5327df1e694fe6023a8607a2854e33365d28a8ae2ff",
+      "sha512": "92328672228aca60bde0674d41b126ee47b0de019ff5f8c3d959dba5a223db9c4ccc2615165b2c2b810acc92eab618bf7ffec304a318e86d9c84f92e2f63b26a",
+      "size": 2315
+    },
+    "liberty/static/demo.css": {
+      "mode": 420,
+      "sha256": "9199d8fd274be15a0914aa7342bfe1055e534cfcc49156437a1c596dc3ff238f",
+      "sha512": "9fbfa0372ec5a69c517786c799715dfa557264a71f4618c567a903204aa9f865ad5e6261134c0eb3f55640bc7e9d4b2b6dcc0c66ccfbc2d31c5c53359bcacaa8",
+      "size": 1405
+    },
+    "liberty/static/demo.html": {
+      "mode": 420,
+      "sha256": "8f8c057f868e89075c2d410329bd4308396cc35a75d5416e1524839ee5152317",
+      "sha512": "5b6bc6fa4c37f0fd0c9472899babb2c2a1f10151510ca4fcde0387a66c7d73b6c649d23e7c47455f3b84cc5b04a5557ac50e61f721e6cf193c7e1a1e30e78e96",
+      "size": 2162
+    },
+    "liberty/static/demo.mjs": {
+      "mode": 420,
+      "sha256": "f74a51184e0e998af7d6e6ae4d44d95fdd91d44cdb578a08b794b486b9050958",
+      "sha512": "3cdf330b8afc8126b5e5c38ef8e3129a55d2f442d870fdd0cb0ed2976b60cbd06c5abf21652852431f2b938d34aa55b417f3af8539464f2b24f0e4cd60fd3bd8",
+      "size": 2245
+    },
+    "liberty/static/editor-client.mjs": {
+      "mode": 420,
+      "sha256": "6dfe699b0982bb66509ecd794ed5197d32762e277891e25f08d22e45e4bdb699",
+      "sha512": "8b99207c362fe672365d863aed8be5cd50a783ce9bc3674238219d9f9a40a5429a1ecf2c01f4d0bdbbcb77b91e47c7a4adb6265e569f4b44e865d5834985db6a",
+      "size": 3728
+    },
+    "liberty/static/editor-host.mjs": {
+      "mode": 420,
+      "sha256": "de11ef262a8d408e44480ccf874991827dc12e1120b905ffc0f3453f61685812",
+      "sha512": "e5142ef3faecce0898af24245363b72a72a4a32354c429ee7bea81a2fb0fcee603c45750a94ad5f5c26d8af9c5f8c11ce65ce0b09628e3eefe338561147452c1",
+      "size": 3984
+    },
+    "liberty/static/editor-layout.css": {
+      "mode": 420,
+      "sha256": "da283d354269f592a823b2f48bd0f9858012b12bacd6e9cd69f915cefcb4a6c2",
+      "sha512": "8521433ac1717c80979d7c756a5196d41a7c9b99790b2c7592a5f889f3b3daa810b216bd0f98d1684a8c92e49c3d1b475942e402686db7f88d6c8e6332525493",
+      "size": 1033
+    },
+    "liberty/static/editor-runtime.mjs": {
+      "mode": 420,
+      "sha256": "b4a84fb60a463b460faaedda0f140fb0fb9afc06d7a9bbdfab5368b9641c94b4",
+      "sha512": "7b3d0d1ca91452ad1de602b13d032896e8ea9e7729bea95164781f19f720e5b0eec5e67317ed1e6bc180d851593fb2149aad49beb7c55287e9006e142e3a8de9",
+      "size": 2553
+    },
+    "liberty/static/editor-storage.mjs": {
+      "mode": 420,
+      "sha256": "73956df40106820990ee4e614b988df1a953daae60597754d4170052904e63b3",
+      "sha512": "84da3708dc19e6f3de5686facf655b99fa7ec39458126aaba834de1a2941b2d1cba532eb538b652f858bb17d58f7a3ffa55d6cae1689ebcac4247ad02f26f3cd",
+      "size": 1614
+    },
+    "liberty/static/fonts.css": {
+      "mode": 420,
+      "sha256": "101b0120132c29af8f3e393db56640e20cdb47b185bc879ca4b5c76a102a7627",
+      "sha512": "dc44f8a0a831edb3e8795c1f0d6d6ad2d2a5fdd295ce0a8df49a8538b26bb966bf386d0102b3bf802ca7a89b697f21e07d250424dd6c000268ea99edec118619",
+      "size": 78
+    },
+    "liberty/static/index.html": {
+      "mode": 420,
+      "sha256": "2f12bfd360e0fa19549a5cd1b4e0eb693e8bd34e669bbe134fc5cc98ca7c545e",
+      "sha512": "1dc565dde79152243a1b668738032cf7dbd31206bf3748e53d56944de49e4802ced271737ae5f692b9cc258ba2983501d15260f66e51e26c25a0e301deb4d2b5",
+      "size": 866
+    },
+    "liberty/static/liberty.svg": {
+      "mode": 420,
+      "sha256": "036a68534dd86dc693d5bc93e739a00eaa5ca318706c8422b8b1fca114fecb78",
+      "sha512": "bc1bad509bd502395b8e7e84c0051b58e3b5b415fc0dc2c75335f81a9939caf0942ff404358a7d42e31a15b42b2cf1b929afbb780d0504ae0dd217983e57fc8c",
+      "size": 254
+    },
+    "liberty/static/light-editor.css": {
+      "mode": 420,
+      "sha256": "534d3f434d7082c31718c0226329d2fbeeabdcf564c4f381786bc347fc7fd4e8",
+      "sha512": "fcdc1dc020296fa349b394f734eef29ca32d72113e447ae07b599550df6b321adfdec2d66be65a9301395f1d569fa05d7072f72980ec02cf9a07723ad176787b",
+      "size": 2149
+    },
+    "liberty/static/light-editor.mjs": {
+      "mode": 420,
+      "sha256": "0a26b4aaf6d92a9a114e74788438f22c2ce096204cb5afee73689ac84b865176",
+      "sha512": "a5328316af40201c64b6f4ea1784cadc9c4903f281872da63ca6b8abacc74491d1f0554fb4dbc032977ead42f165fa9a919e20d6d6bc0a92388d935e53d5e252",
+      "size": 4727
+    },
+    "liberty/static/style.css": {
+      "mode": 420,
+      "sha256": "851fbbfbd19c87d45a7c1ed7eb530aa68f91057ea8cf8aa11eec4c90c26afc22",
+      "sha512": "53b38b5fdde218a07604539753219a112d0a0bf9b0568687e34fabc67dde7a37ef4107071f46af3f0d76df1bef3a78f943f8df86e35abf90a5b5c1f847262735",
+      "size": 14475
+    },
+    "libertyctl": {
+      "mode": 493,
+      "sha256": "81e1a9c099adbc669fdaa15ef63c158a838f7e6c77462183b64e0e9302e3e433",
+      "sha512": "67c62d55545a6b488d4812277532c33ec165e8d69ce638cc37c18bfbd8b98d135824c00c6152e1e8ed78e4c1040ac0e8f9648b6d4984e84887383064749c9c82",
+      "size": 4750
+    },
+    "licenses/upstream/SOURCES.json": {
+      "mode": 420,
+      "sha256": "d78e408461c76ed50428b32278d83fec22d0552cc88e5da88f9271bc51c684cd",
+      "sha512": "dc9400464bd10e384058bd8b7db7d9a9b85fd622ecd137b5b9f3ddae4b8937b1772b5e318ff36a51ad2ab47a847f7c1d713b537d5ccc13bb4d37662b2b70c4f0",
+      "size": 166742
+    },
+    "licenses/upstream/cadcraft/ATTRIBUTION.md": {
+      "mode": 420,
+      "sha256": "59cd0595dd708a1087b0126ed7620b757be6a2c4352570566a8074601083580c",
+      "sha512": "d9d58e9cb738c76000f0e79895e91a919a6f0063506147109b360b7e944581b55690634fc1ae405385cdf108a331f2314c233eba04e9570a9a004031db9fd75e",
+      "size": 9544
+    },
+    "licenses/upstream/cadcraft/LICENSE-APACHE": {
+      "mode": 420,
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "sha512": "27b8c0252eae50ca3ce02ab7c5670664c0c824e03eb3da1089f3f0a00d23e648a956bcb9f53645c6d79674a87c4cc86d1085dc335911be0210d691336b121857",
+      "size": 10174
+    },
+    "licenses/upstream/cadcraft/LICENSE-MIT": {
+      "mode": 420,
+      "sha256": "54b0fc87ed7b61b59c20340070dd2b8c7f9d0b53795347819c3bd7c67ea2508a",
+      "sha512": "1ee76bea62d1961cf36415d9a26ba38e6395b81b70a617cb55f5e463d59551886803cfa9bddbdfb8d3499e1d0e9749035bdc7c72644e6eb993dddc91d75bf350",
+      "size": 1100
+    },
+    "licenses/upstream/cadcraft/NOTICE": {
+      "mode": 420,
+      "sha256": "cdfbfa6606bc6c389758cfdc5addeccb47a2a2cc7bfb7fcc4be9a2b783bd1561",
+      "sha512": "0b8031d1e9d2b4eed88b546419e601e886b470ecf438e3222461ebb799cfc6c21ce5b7d6ea737ca0bfc033aecbfb3a3b6475ef0b10ecc97b0db21a88bad24501",
+      "size": 1244
+    },
+    "licenses/upstream/cadcraft/docs/brand/LICENSE-brand.txt": {
+      "mode": 420,
+      "sha256": "382b7443d4346ba31115a9d7a1f3fcfc16e44c39c94654b01998e09cef8a2679",
+      "sha512": "0a213d87883eb70d3e388586b779db7d575d855eeffb494bb7850ae8a52ddea206645058c445f8f99dc430148424019717af0bba1eb9179069ac4d013b20f4be",
+      "size": 2256
+    },
+    "licenses/upstream/craft-fonts/3d9ab3a132ed0eff457e424226a435a901da30d3/ATTRIBUTION.md": {
+      "mode": 420,
+      "sha256": "387bc959b6c332b955f03d30b13a5efd0e616a02881dc1942b14a9dc57d3d656",
+      "sha512": "21d2f0338153c5ec9e50236a4d968fd900ef41529d8bc51d7ff2cdc11b185becd6e46fb4538e17213c5bd1f456b758364b13f3660bb9125a16bbab1ae0048182",
+      "size": 2673
+    },
+    "licenses/upstream/craft-fonts/3d9ab3a132ed0eff457e424226a435a901da30d3/LICENSE-APACHE": {
+      "mode": 420,
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "sha512": "27b8c0252eae50ca3ce02ab7c5670664c0c824e03eb3da1089f3f0a00d23e648a956bcb9f53645c6d79674a87c4cc86d1085dc335911be0210d691336b121857",
+      "size": 10174
+    },
+    "licenses/upstream/craft-fonts/3d9ab3a132ed0eff457e424226a435a901da30d3/LICENSE-MIT": {
+      "mode": 420,
+      "sha256": "e360d6f5941863521687517eee951fac3328ee9f379fcb11bb5031fe6614fc8f",
+      "sha512": "017df9672afd935b6570eea283307237e2a33dfd9c49f3610ec4a4c6e6cf66e36f8450029ecaee0d2602073bbc4501006de9f33c805943c83593a635d6706c89",
+      "size": 1103
+    },
+    "licenses/upstream/craft-fonts/3d9ab3a132ed0eff457e424226a435a901da30d3/fonts/biz-ud-mincho/OFL.txt": {
+      "mode": 420,
+      "sha256": "ef0ed524b3bd012f37015e986809eed6f67905456ebfc1ebd7fcc2765282ee01",
+      "sha512": "a6ae9e9eefe4e172f5025a017e8cf694417e9ce478f17a8937b9737ffc2808a365d606472e3a4ebf275a0f02dda500b2d36106464bbfa6973fa539783e1191b6",
+      "size": 4408
+    },
+    "licenses/upstream/craft-fonts/3d9ab3a132ed0eff457e424226a435a901da30d3/fonts/biz-ud-pgothic/OFL.txt": {
+      "mode": 420,
+      "sha256": "e753d7155d53c747d037a445e584c8ecfca6dd79846db610417e282a736b28bc",
+      "sha512": "cf02e1328facb47bb6d8ea1008fc5de7965cb604833f8fa2054cfe51a4d0bbec8f96a33b520042457cf4ddd2b256fbfbf2e4c925ebc3eba6afad32cc63e94e9b",
+      "size": 4408
+    },
+    "licenses/upstream/craft-fonts/3d9ab3a132ed0eff457e424226a435a901da30d3/fonts/manifest.txt": {
+      "mode": 420,
+      "sha256": "803dac6cb77e1d04b03495378545867df63a4da36a7baf193c5281f929bd7a46",
+      "sha512": "fecb8f60696e9cdb731b409837f43da85f5ece48a8e9fcb7fc453d4bd4c0da76e09313d9097529b8921d5c1dd75f29cf908fbcaf23e2620642588d8b434ebd98",
+      "size": 2450
+    },
+    "licenses/upstream/craft-fonts/3d9ab3a132ed0eff457e424226a435a901da30d3/fonts/noto-sans-arabic/OFL.txt": {
+      "mode": 420,
+      "sha256": "07fc70bfeb985cc1a87a8587d0a0c80bab11c86c9dc3fd95b6f0cb332f983e96",
+      "sha512": "3e806b5b37edf955d8fb4304268c1c0109a3f504d9a23857560790b0c9b49f9b1019b2a240383ec521b2c62c49f4758b18279553b95755ca9ae2283bac4e4854",
+      "size": 4382
+    },
+    "licenses/upstream/craft-fonts/3d9ab3a132ed0eff457e424226a435a901da30d3/fonts/noto-sans-cjk-sc/OFL.txt": {
+      "mode": 420,
+      "sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2",
+      "sha512": "53cf33ddac5d44b9f622a041f267bcf53ca704555f0481ee3e89eeba505019c8d1d504a6ffe7ebd6a7d1d5d7d26cf3da052cc63b3540eb4260ce74a93cf35841",
+      "size": 4301
+    },
+    "licenses/upstream/craft-fonts/3d9ab3a132ed0eff457e424226a435a901da30d3/fonts/noto-sans-thai/OFL.txt": {
+      "mode": 420,
+      "sha256": "2e98fd23a52d253db8612cd5942c8f2ff4111b21d2367050fdca91d8ccc374a0",
+      "sha512": "dcb0a54dac1c9148c274e47c9c699ffb4455b36d6b3d2f3891046a45dbdc655ab8515c0128cf3364e6be8a5e379f860bb4350a86e2e6e4e09410464b4c9982ed",
+      "size": 4380
+    },
+    "licenses/upstream/craft-fonts/3d9ab3a132ed0eff457e424226a435a901da30d3/fonts/shippori-mincho/OFL.txt": {
+      "mode": 420,
+      "sha256": "41fba056279be5f45ff9a99e44b7b53897b42732f5806d8e666e0ab49ac6bd38",
+      "sha512": "d023dbf4e0abd15067d6798469ad754355963cfccc0f439ff1092ea423f43de065139ccb851790c1c0bdf26cf72b2833b952eff9af4b8de0d9457c0275c12858",
+      "size": 4399
+    },
+    "licenses/upstream/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/ATTRIBUTION.md": {
+      "mode": 420,
+      "sha256": "35b47c2d660235ccaff400ee42c73d1806d65abc02aabe0a06787b116fffddab",
+      "sha512": "1e994f250207654b714fdef75ae51cc36319e4a3675759dae02be688f0d872703ff7fdd05561bc0acc48b7caf4dc830e395fb12a1b56692cf1e563624e4064a3",
+      "size": 18712
+    },
+    "licenses/upstream/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/LICENSE-APACHE": {
+      "mode": 420,
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "sha512": "27b8c0252eae50ca3ce02ab7c5670664c0c824e03eb3da1089f3f0a00d23e648a956bcb9f53645c6d79674a87c4cc86d1085dc335911be0210d691336b121857",
+      "size": 10174
+    },
+    "licenses/upstream/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/LICENSE-MIT": {
+      "mode": 420,
+      "sha256": "e360d6f5941863521687517eee951fac3328ee9f379fcb11bb5031fe6614fc8f",
+      "sha512": "017df9672afd935b6570eea283307237e2a33dfd9c49f3610ec4a4c6e6cf66e36f8450029ecaee0d2602073bbc4501006de9f33c805943c83593a635d6706c89",
+      "size": 1103
+    },
+    "licenses/upstream/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/biz-ud-mincho/OFL.txt": {
+      "mode": 420,
+      "sha256": "ef0ed524b3bd012f37015e986809eed6f67905456ebfc1ebd7fcc2765282ee01",
+      "sha512": "a6ae9e9eefe4e172f5025a017e8cf694417e9ce478f17a8937b9737ffc2808a365d606472e3a4ebf275a0f02dda500b2d36106464bbfa6973fa539783e1191b6",
+      "size": 4408
+    },
+    "licenses/upstream/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/biz-ud-pgothic/OFL.txt": {
+      "mode": 420,
+      "sha256": "e753d7155d53c747d037a445e584c8ecfca6dd79846db610417e282a736b28bc",
+      "sha512": "cf02e1328facb47bb6d8ea1008fc5de7965cb604833f8fa2054cfe51a4d0bbec8f96a33b520042457cf4ddd2b256fbfbf2e4c925ebc3eba6afad32cc63e94e9b",
+      "size": 4408
+    },
+    "licenses/upstream/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/caladea/OFL.txt": {
+      "mode": 420,
+      "sha256": "ccdab61d371d8c8683a128a92cd7d498dbdb1d37689f7cb21f1bf6b16658d213",
+      "sha512": "837edcaa89244db05155521eefc61367b84a823325682611461b6d729a606b3c1649c9933cd40b5406880db066b7e6137302ab6ab632485a82fa1ee906384ca4",
+      "size": 4393
+    },
+    "licenses/upstream/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/carlito/OFL.txt": {
+      "mode": 420,
+      "sha256": "58402f82a7c332a700294988fe7554fbb0a63a8d27ccc1ee3bbc640311990a00",
+      "sha512": "6677e14d4693af57f5e7001e84bfc0b7d40c8395539749b2eb38676e7caee2e7f70ab67677f2994fddee9357bb3fa9dbb1dfc1e5d645f517cf4ed0fc9f0206de",
+      "size": 4424
+    },
+    "licenses/upstream/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/inter/OFL.txt": {
+      "mode": 420,
+      "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+      "sha512": "593d608d18186478ee378027cbf8ec480055862acdbd437626f3c36b65b61f08024ac90d2ce007d718e55a4134e61f6e9df46e18ccbd5fcd7499737ede288b2b",
+      "size": 4380
+    },
+    "licenses/upstream/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/lato/OFL.txt": {
+      "mode": 420,
+      "sha256": "74ba064d03f1f1c4a952da936c3eb71866c34404916734de3cae73b34357e59e",
+      "sha512": "0642dfaa45c5e189e2b21da1961e348cb5f601b81fc601e8febfba51fa49f8cce416efd39e442dc2b3dfba8ac8fcff3c1d0bbed74cfc834a7a1e30322d870b16",
+      "size": 4407
+    },
+    "licenses/upstream/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/liberation-mono/OFL.txt": {
+      "mode": 420,
+      "sha256": "93fed46019c38bbe566b479d22148e2e8a1e85ada614accb0211c37b2c61c19b",
+      "sha512": "c096e6f07d4371e9f5bcaeebba7f17bc8fd964b17487be3b3706d14b34da15cfc70c30a34b3de34e09a4d5cfebe7569df013af120bc9affe300541d82a89d899",
+      "size": 4414
+    },
+    "licenses/upstream/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/liberation-sans/OFL.txt": {
+      "mode": 420,
+      "sha256": "93fed46019c38bbe566b479d22148e2e8a1e85ada614accb0211c37b2c61c19b",
+      "sha512": "c096e6f07d4371e9f5bcaeebba7f17bc8fd964b17487be3b3706d14b34da15cfc70c30a34b3de34e09a4d5cfebe7569df013af120bc9affe300541d82a89d899",
+      "size": 4414
+    },
+    "licenses/upstream/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/liberation-serif/OFL.txt": {
+      "mode": 420,
+      "sha256": "93fed46019c38bbe566b479d22148e2e8a1e85ada614accb0211c37b2c61c19b",
+      "sha512": "c096e6f07d4371e9f5bcaeebba7f17bc8fd964b17487be3b3706d14b34da15cfc70c30a34b3de34e09a4d5cfebe7569df013af120bc9affe300541d82a89d899",
+      "size": 4414
+    },
+    "licenses/upstream/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/manifest.txt": {
+      "mode": 420,
+      "sha256": "3bb90a214de61317ffaadf2c7f3035224c498b4bbc2165798f983e8f982aa092",
+      "sha512": "186324d7604a32148ffac601915176e65ef65605ccb574c86c0400b1ca6e51e6b0add824b95271d660b5458db9181f905f1b47d5dbbcb62a350cfb1d55339f5f",
+      "size": 2173
+    },
+    "licenses/upstream/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/merriweather/OFL.txt": {
+      "mode": 420,
+      "sha256": "a7ba785ad99b6eae0444ab89910e512d4af9865937fddbcb5c72c4f59f55d6ad",
+      "sha512": "dc6eb1da315f2ba4f7e1f9feeefe95abdf41b3b8edfa3af63b100d57e5debd09620f9b666a0648627188ae15ced7fbfe309b4bcd886227b083d823110b941ce8",
+      "size": 4437
+    },
+    "licenses/upstream/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/montserrat/OFL.txt": {
+      "mode": 420,
+      "sha256": "8b7141c03fa4f8d44e6345d5d4931709290f0f67875e452e95ac1fd3a027802e",
+      "sha512": "f6700c3e1c2586e597f89408fffda3aa29d79340104f720e903f157f0163997778efc81ee43e3212b8605ed47fd5003dc38b3258e9cd851415beb0aa5fbe00ef",
+      "size": 4400
+    },
+    "licenses/upstream/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/noto-sans-arabic/OFL.txt": {
+      "mode": 420,
+      "sha256": "07fc70bfeb985cc1a87a8587d0a0c80bab11c86c9dc3fd95b6f0cb332f983e96",
+      "sha512": "3e806b5b37edf955d8fb4304268c1c0109a3f504d9a23857560790b0c9b49f9b1019b2a240383ec521b2c62c49f4758b18279553b95755ca9ae2283bac4e4854",
+      "size": 4382
+    },
+    "licenses/upstream/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/noto-sans-cjk-sc/OFL.txt": {
+      "mode": 420,
+      "sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2",
+      "sha512": "53cf33ddac5d44b9f622a041f267bcf53ca704555f0481ee3e89eeba505019c8d1d504a6ffe7ebd6a7d1d5d7d26cf3da052cc63b3540eb4260ce74a93cf35841",
+      "size": 4301
+    },
+    "licenses/upstream/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/nunito-sans/OFL.txt": {
+      "mode": 420,
+      "sha256": "efbb0c9e864cef973982d9a17567e6be5c3d1759695574586f3f18c7ecca064b",
+      "sha512": "b6d56b2bfe8ed96f8142b9706a8f7203af33ac9d8588cd9b89b06f218253024a45ff55684c98905eb5cbd895aaf0caeab4be5e583f51035cf3d82a74a1ab1c80",
+      "size": 4393
+    },
+    "licenses/upstream/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/open-sans/OFL.txt": {
+      "mode": 420,
+      "sha256": "fbbbcfef55318de350562559b671360de6d597112ecc5c73881b05092db89602",
+      "sha512": "7bbfb13787c026d62326be488ec2b77e64dd594b2470e8bfd338d229e57aa6ce298fa27a7a40adf7439babb9d010e0cc5e7338c0678a8990cd70efca649f369b",
+      "size": 4389
+    },
+    "licenses/upstream/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/playfair-display/OFL.txt": {
+      "mode": 420,
+      "sha256": "566be814f8e96e93dfa16101331557eb6b5467e9e03f627c0910fe93ca12300e",
+      "sha512": "9ada8db248c7077a68d699df6542d802346c89dd88fe32297a6b41de4f7ebcbc062446bd1e04ceb561e7867b1f56e8bb2d1848fb93021a2608714e16861ca061",
+      "size": 4449
+    },
+    "licenses/upstream/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/poppins/OFL.txt": {
+      "mode": 420,
+      "sha256": "6be04893d770899a015649c7aa3b582f871b272f8747a92b78b17c3e5c8b2573",
+      "sha512": "9a93b7d5bd7f8117bc3d817fc80a5903e8194cb452c1527286effa4eab06c4bd4738813f59fb7ad481a30528d9f657ea5fa1c1b633d085c74326efe4d2511c9e",
+      "size": 4385
+    },
+    "licenses/upstream/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/roboto/OFL.txt": {
+      "mode": 420,
+      "sha256": "061402327a96aadb0bfb694a960ed289ecd38d383e396243831ab81feb109c41",
+      "sha512": "915b4a148dc1ae107e8330086a70eff3be67a4e2c395b3a5444e32e1682aa8df507ff6deb7a76ccad09a862efc9af3264f45871ea5077d2a3c63bee38de3312f",
+      "size": 4394
+    },
+    "licenses/upstream/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/shippori-mincho/OFL.txt": {
+      "mode": 420,
+      "sha256": "41fba056279be5f45ff9a99e44b7b53897b42732f5806d8e666e0ab49ac6bd38",
+      "sha512": "d023dbf4e0abd15067d6798469ad754355963cfccc0f439ff1092ea423f43de065139ccb851790c1c0bdf26cf72b2833b952eff9af4b8de0d9457c0275c12858",
+      "size": 4399
+    },
+    "licenses/upstream/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/source-sans-3/OFL.txt": {
+      "mode": 420,
+      "sha256": "89ad2c4f66dd29127527493e729c31e731f111cf10faf5774c3db9275ed0c22c",
+      "sha512": "495878e1c2778bb2e92642598528f245fcd0e1489bc2806433e01bb32f343846b9fee27f4e423ffbc745ec8db2660acafaba57ee4e86c515c85824fa16bdb8be",
+      "size": 4579
+    },
+    "licenses/upstream/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/source-serif-4/OFL.txt": {
+      "mode": 420,
+      "sha256": "75784a295293a8992f5a8d99210566e0064a012e6dab6731305e3787f15896c7",
+      "sha512": "a9ff44bd62ac2cc8888b0c1a3c0877ef150b2454c3ba2bcf2abf14db0ba75db781c2c7de33224adcc2fa33372747c9775950119e748493ce2ec866eef31bd352",
+      "size": 4492
+    },
+    "licenses/upstream/craft-fonts/8dcdacd5153e64560d109541a47d806f26f048c0/ATTRIBUTION.md": {
+      "mode": 420,
+      "sha256": "28095b1a86d7b726983de24d4edb029257becd26abcd3056a63b4d959ed24f51",
+      "sha512": "96a2ac3399a15d61bbb062abf61bae3f2246c8ec533eb989ed15422b9de8a67e69f3dea0eb5d26109b73b7745e49adc6851afe2ce9e46b8993f10782e84d5780",
+      "size": 2410
+    },
+    "licenses/upstream/craft-fonts/8dcdacd5153e64560d109541a47d806f26f048c0/LICENSE-APACHE": {
+      "mode": 420,
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "sha512": "27b8c0252eae50ca3ce02ab7c5670664c0c824e03eb3da1089f3f0a00d23e648a956bcb9f53645c6d79674a87c4cc86d1085dc335911be0210d691336b121857",
+      "size": 10174
+    },
+    "licenses/upstream/craft-fonts/8dcdacd5153e64560d109541a47d806f26f048c0/LICENSE-MIT": {
+      "mode": 420,
+      "sha256": "e360d6f5941863521687517eee951fac3328ee9f379fcb11bb5031fe6614fc8f",
+      "sha512": "017df9672afd935b6570eea283307237e2a33dfd9c49f3610ec4a4c6e6cf66e36f8450029ecaee0d2602073bbc4501006de9f33c805943c83593a635d6706c89",
+      "size": 1103
+    },
+    "licenses/upstream/craft-fonts/8dcdacd5153e64560d109541a47d806f26f048c0/fonts/biz-ud-mincho/OFL.txt": {
+      "mode": 420,
+      "sha256": "ef0ed524b3bd012f37015e986809eed6f67905456ebfc1ebd7fcc2765282ee01",
+      "sha512": "a6ae9e9eefe4e172f5025a017e8cf694417e9ce478f17a8937b9737ffc2808a365d606472e3a4ebf275a0f02dda500b2d36106464bbfa6973fa539783e1191b6",
+      "size": 4408
+    },
+    "licenses/upstream/craft-fonts/8dcdacd5153e64560d109541a47d806f26f048c0/fonts/biz-ud-pgothic/OFL.txt": {
+      "mode": 420,
+      "sha256": "e753d7155d53c747d037a445e584c8ecfca6dd79846db610417e282a736b28bc",
+      "sha512": "cf02e1328facb47bb6d8ea1008fc5de7965cb604833f8fa2054cfe51a4d0bbec8f96a33b520042457cf4ddd2b256fbfbf2e4c925ebc3eba6afad32cc63e94e9b",
+      "size": 4408
+    },
+    "licenses/upstream/craft-fonts/8dcdacd5153e64560d109541a47d806f26f048c0/fonts/manifest.txt": {
+      "mode": 420,
+      "sha256": "3bb90a214de61317ffaadf2c7f3035224c498b4bbc2165798f983e8f982aa092",
+      "sha512": "186324d7604a32148ffac601915176e65ef65605ccb574c86c0400b1ca6e51e6b0add824b95271d660b5458db9181f905f1b47d5dbbcb62a350cfb1d55339f5f",
+      "size": 2173
+    },
+    "licenses/upstream/craft-fonts/8dcdacd5153e64560d109541a47d806f26f048c0/fonts/noto-sans-arabic/OFL.txt": {
+      "mode": 420,
+      "sha256": "07fc70bfeb985cc1a87a8587d0a0c80bab11c86c9dc3fd95b6f0cb332f983e96",
+      "sha512": "3e806b5b37edf955d8fb4304268c1c0109a3f504d9a23857560790b0c9b49f9b1019b2a240383ec521b2c62c49f4758b18279553b95755ca9ae2283bac4e4854",
+      "size": 4382
+    },
+    "licenses/upstream/craft-fonts/8dcdacd5153e64560d109541a47d806f26f048c0/fonts/noto-sans-cjk-sc/OFL.txt": {
+      "mode": 420,
+      "sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2",
+      "sha512": "53cf33ddac5d44b9f622a041f267bcf53ca704555f0481ee3e89eeba505019c8d1d504a6ffe7ebd6a7d1d5d7d26cf3da052cc63b3540eb4260ce74a93cf35841",
+      "size": 4301
+    },
+    "licenses/upstream/craft-fonts/8dcdacd5153e64560d109541a47d806f26f048c0/fonts/shippori-mincho/OFL.txt": {
+      "mode": 420,
+      "sha256": "41fba056279be5f45ff9a99e44b7b53897b42732f5806d8e666e0ab49ac6bd38",
+      "sha512": "d023dbf4e0abd15067d6798469ad754355963cfccc0f439ff1092ea423f43de065139ccb851790c1c0bdf26cf72b2833b952eff9af4b8de0d9457c0275c12858",
+      "size": 4399
+    },
+    "licenses/upstream/craft-fonts/abb83316d96aa59c1cf64784289e378fe9fa5695/ATTRIBUTION.md": {
+      "mode": 420,
+      "sha256": "15b594735378181a33ab60da8800e64767d1d81232b922e46eb94879df59b155",
+      "sha512": "c77fcfa687669bb6d7b05994ac09e72df13f43b9e1361b7243a3ba0c3668482e7ef8ffba4c30ea41926ca5cb9855047528dd08419e4016f6d99ddfb44e639a23",
+      "size": 1816
+    },
+    "licenses/upstream/craft-fonts/abb83316d96aa59c1cf64784289e378fe9fa5695/LICENSE-APACHE": {
+      "mode": 420,
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "sha512": "27b8c0252eae50ca3ce02ab7c5670664c0c824e03eb3da1089f3f0a00d23e648a956bcb9f53645c6d79674a87c4cc86d1085dc335911be0210d691336b121857",
+      "size": 10174
+    },
+    "licenses/upstream/craft-fonts/abb83316d96aa59c1cf64784289e378fe9fa5695/LICENSE-MIT": {
+      "mode": 420,
+      "sha256": "e360d6f5941863521687517eee951fac3328ee9f379fcb11bb5031fe6614fc8f",
+      "sha512": "017df9672afd935b6570eea283307237e2a33dfd9c49f3610ec4a4c6e6cf66e36f8450029ecaee0d2602073bbc4501006de9f33c805943c83593a635d6706c89",
+      "size": 1103
+    },
+    "licenses/upstream/craft-fonts/abb83316d96aa59c1cf64784289e378fe9fa5695/fonts/biz-ud-mincho/OFL.txt": {
+      "mode": 420,
+      "sha256": "ef0ed524b3bd012f37015e986809eed6f67905456ebfc1ebd7fcc2765282ee01",
+      "sha512": "a6ae9e9eefe4e172f5025a017e8cf694417e9ce478f17a8937b9737ffc2808a365d606472e3a4ebf275a0f02dda500b2d36106464bbfa6973fa539783e1191b6",
+      "size": 4408
+    },
+    "licenses/upstream/craft-fonts/abb83316d96aa59c1cf64784289e378fe9fa5695/fonts/biz-ud-pgothic/OFL.txt": {
+      "mode": 420,
+      "sha256": "e753d7155d53c747d037a445e584c8ecfca6dd79846db610417e282a736b28bc",
+      "sha512": "cf02e1328facb47bb6d8ea1008fc5de7965cb604833f8fa2054cfe51a4d0bbec8f96a33b520042457cf4ddd2b256fbfbf2e4c925ebc3eba6afad32cc63e94e9b",
+      "size": 4408
+    },
+    "licenses/upstream/craft-fonts/abb83316d96aa59c1cf64784289e378fe9fa5695/fonts/manifest.txt": {
+      "mode": 420,
+      "sha256": "2cb08e06c497e2b0a71355bd3137841c44812c3848319d5fed7889fec018f8d2",
+      "sha512": "18cc6a9dd4d7e6899cb3342e6fb40d73c432a81df0d568b0050bb332da988d340cc5bf365547c7b1c6396feac053ee531185ca1db1c413a75d765a3bb31dc57a",
+      "size": 1573
+    },
+    "licenses/upstream/craft-fonts/abb83316d96aa59c1cf64784289e378fe9fa5695/fonts/shippori-mincho/OFL.txt": {
+      "mode": 420,
+      "sha256": "41fba056279be5f45ff9a99e44b7b53897b42732f5806d8e666e0ab49ac6bd38",
+      "sha512": "d023dbf4e0abd15067d6798469ad754355963cfccc0f439ff1092ea423f43de065139ccb851790c1c0bdf26cf72b2833b952eff9af4b8de0d9457c0275c12858",
+      "size": 4399
+    },
+    "licenses/upstream/crates/acadrust-0.6.4/LICENSE": {
+      "mode": 420,
+      "sha256": "9e83d639d5f01d42bd019923d48cc485155f10d20c81f6294902976fe2715fca",
+      "sha512": "c604e0992c0d6c4add97e038431ec5a1158bf2f74a5c8b285879a349ce205984215b45e46fdd3e9b69d74d3b474f8909d2cf540f6749d8bef998ae7146b3e571",
+      "size": 17177
+    },
+    "licenses/upstream/crates/acadrust-0.6.4/tests/fixtures/dynamic-blocks/LICENSE": {
+      "mode": 420,
+      "sha256": "4ab9f4b6fa9796739b367c859f46a783d5d3ea612b101323bf7b94a975e04882",
+      "sha512": "b27076567f71dce647ddf19e9c626e01c4fbe6faae9e8b28500f2999a0ee5535bc8d512454b71b20c208f4c46b07ec30de015c38c517509b3a032f81b4e09372",
+      "size": 1093
+    },
+    "licenses/upstream/crates/epaint_default_fonts-0.36.2/LICENSE-APACHE": {
+      "mode": 420,
+      "sha256": "8173d5c29b4f956d532781d2b86e4e30f83e6b7878dce18c919451d6ba707c90",
+      "sha512": "ca322e7f48f3e2621dc336e0d05f91b70f9af3b7de928a59d39c1b737b4e5bf16f5ad2060b67b3ab0c76b6644cd75b8c3e967b67e5e8c02cad4d8855ebed0c96",
+      "size": 10850
+    },
+    "licenses/upstream/crates/epaint_default_fonts-0.36.2/LICENSE-MIT": {
+      "mode": 420,
+      "sha256": "95ca92f5f8ea5231f1580b3a2a799e8260af3114b900e1def5355a7f44bcf60c",
+      "sha512": "f825a4433b3f1569197e23726e6576b7dd4408757ed1f6326a21934a9b35f26490fff453bc7c6e66b91620989caa39a29457d48638c1d415ceaa849e337fae57",
+      "size": 1092
+    },
+    "licenses/upstream/crates/epaint_default_fonts-0.36.2/fonts/Hack-Regular.txt": {
+      "mode": 420,
+      "sha256": "47c0cccbeec7e8614548cc485588b28149e7874188df5f41b36efebcee285c87",
+      "sha512": "ad8a48d380b5472f36583b69bba648aa58bed347d5473ef6106eb83ffb4d7bac8cde820a6da83a9b807a0373025b28422fe678c9fba0e1c653f3028c4bde88e0",
+      "size": 3734
+    },
+    "licenses/upstream/crates/epaint_default_fonts-0.36.2/fonts/OFL.txt": {
+      "mode": 420,
+      "sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2",
+      "sha512": "53cf33ddac5d44b9f622a041f267bcf53ca704555f0481ee3e89eeba505019c8d1d504a6ffe7ebd6a7d1d5d7d26cf3da052cc63b3540eb4260ce74a93cf35841",
+      "size": 4301
+    },
+    "licenses/upstream/crates/epaint_default_fonts-0.36.2/fonts/UFL.txt": {
+      "mode": 420,
+      "sha256": "2f0015108d68627bd788d313f529c21ff4da2c2c42a5e1f3883acc83480f9002",
+      "sha512": "e8741b4341085ee2da8f6b2d150cb171f63a4879a701f80d02bbdc06190954e219cf6f75766e449d3ac73083501bb614d8aacfba764219a8816ede9d88900fb7",
+      "size": 4673
+    },
+    "licenses/upstream/crates/epaint_default_fonts-0.36.2/fonts/emoji-icon-font-mit-license.txt": {
+      "mode": 420,
+      "sha256": "b9d2c1d909aa149996fd4c91dcb92b2362a04431640c1d200959da94caf8cde1",
+      "sha512": "cb233bbad7078448a1a11a5fd9924d039af2236cf5af494bda924a472bb4e5064d9f936bbac466253c1fbe49d6c1dd196ecc19187f6764c6ec825913206cf24a",
+      "size": 1069
+    },
+    "licenses/upstream/crates/hayro-ccitt-0.3.0/LICENSE-APACHE": {
+      "mode": 420,
+      "sha256": "0cec06e0e55fbc3dc5cee4fca9b607f66cb8f4e4dbcf3b3c013594dd156732e9",
+      "sha512": "8d68a21e58dce28df9eb68ca54f0b99c38f997653746ef6cea96b1d9d983f5e5df5d61204ca6ab9fc8abda59ff305d91cc1df2a4a11a1e4f19410230a68621d8",
+      "size": 10173
+    },
+    "licenses/upstream/crates/hayro-ccitt-0.3.0/LICENSE-MIT": {
+      "mode": 420,
+      "sha256": "51b50e6120c344dcc146bbd6375ca1c78e079d97c8bea76e67a53d6ff0efebac",
+      "sha512": "108cd263c8c929ef80cae821982b45d2ae21d22e5949df85aa97a93a8b59c3f5d0600f01c1569ced37795af504ddf1e255d9ea444f19159364b2fd6994d167b4",
+      "size": 1063
+    },
+    "licenses/upstream/crates/hayro-ccitt-0.4.0/LICENSE-APACHE": {
+      "mode": 420,
+      "sha256": "0cec06e0e55fbc3dc5cee4fca9b607f66cb8f4e4dbcf3b3c013594dd156732e9",
+      "sha512": "8d68a21e58dce28df9eb68ca54f0b99c38f997653746ef6cea96b1d9d983f5e5df5d61204ca6ab9fc8abda59ff305d91cc1df2a4a11a1e4f19410230a68621d8",
+      "size": 10173
+    },
+    "licenses/upstream/crates/hayro-ccitt-0.4.0/LICENSE-MIT": {
+      "mode": 420,
+      "sha256": "51b50e6120c344dcc146bbd6375ca1c78e079d97c8bea76e67a53d6ff0efebac",
+      "sha512": "108cd263c8c929ef80cae821982b45d2ae21d22e5949df85aa97a93a8b59c3f5d0600f01c1569ced37795af504ddf1e255d9ea444f19159364b2fd6994d167b4",
+      "size": 1063
+    },
+    "licenses/upstream/crates/hayro-cmap-0.1.0/LICENSE-APACHE": {
+      "mode": 420,
+      "sha256": "0cec06e0e55fbc3dc5cee4fca9b607f66cb8f4e4dbcf3b3c013594dd156732e9",
+      "sha512": "8d68a21e58dce28df9eb68ca54f0b99c38f997653746ef6cea96b1d9d983f5e5df5d61204ca6ab9fc8abda59ff305d91cc1df2a4a11a1e4f19410230a68621d8",
+      "size": 10173
+    },
+    "licenses/upstream/crates/hayro-cmap-0.1.0/LICENSE-MIT": {
+      "mode": 420,
+      "sha256": "51b50e6120c344dcc146bbd6375ca1c78e079d97c8bea76e67a53d6ff0efebac",
+      "sha512": "108cd263c8c929ef80cae821982b45d2ae21d22e5949df85aa97a93a8b59c3f5d0600f01c1569ced37795af504ddf1e255d9ea444f19159364b2fd6994d167b4",
+      "size": 1063
+    },
+    "licenses/upstream/crates/hayro-cmap-0.1.0/assets/LICENSE.txt": {
+      "mode": 420,
+      "sha256": "742665db9c8e1bc72603c6d319ca3e90b83bd6d95202f0cd4ef11068a07a9c29",
+      "sha512": "010e6cfb0f238f8ea5e7edfc393f846c029c9676f963a15e54850d00f6d10a70fec8853998ee2c5606f94be0a929e18d5aee089a30f82abebd0317c4f6fa7ebc",
+      "size": 1453
+    },
+    "licenses/upstream/crates/hayro-interpret-0.7.0/LICENSE-APACHE": {
+      "mode": 420,
+      "sha256": "0cec06e0e55fbc3dc5cee4fca9b607f66cb8f4e4dbcf3b3c013594dd156732e9",
+      "sha512": "8d68a21e58dce28df9eb68ca54f0b99c38f997653746ef6cea96b1d9d983f5e5df5d61204ca6ab9fc8abda59ff305d91cc1df2a4a11a1e4f19410230a68621d8",
+      "size": 10173
+    },
+    "licenses/upstream/crates/hayro-interpret-0.7.0/LICENSE-MIT": {
+      "mode": 420,
+      "sha256": "51b50e6120c344dcc146bbd6375ca1c78e079d97c8bea76e67a53d6ff0efebac",
+      "sha512": "108cd263c8c929ef80cae821982b45d2ae21d22e5949df85aa97a93a8b59c3f5d0600f01c1569ced37795af504ddf1e255d9ea444f19159364b2fd6994d167b4",
+      "size": 1063
+    },
+    "licenses/upstream/crates/hayro-interpret-0.7.0/assets/CGATS_LICENSE.txt": {
+      "mode": 420,
+      "sha256": "469d87b5fa48f8aaf69e25f4fcac3a309c97dbb7d561b917638abdb640e004d9",
+      "sha512": "4441270dc34af6f38f69d865255f8d26dba39fc99fcfb31510e80c3948f0c1c2da7a8af99665e7063950e23efeb076315babfbf0fb84a72a83e31d114298bcce",
+      "size": 6552
+    },
+    "licenses/upstream/crates/hayro-interpret-0.7.0/assets/LICENSE_FOXIT": {
+      "mode": 420,
+      "sha256": "b578cdd2345840ada550bd12519533812320d5f1d21cf4c1c7e1b1b0a31c98b7",
+      "sha512": "3f21463d1a6e109596ea7a884ba739cc89daacde70eb991a3c5bd8560528a5d720af5603ea1d8abd2927c4cf0de5164ea40cd3a07df2626d2e30b9cdb0c6b3d5",
+      "size": 1553
+    },
+    "licenses/upstream/crates/hayro-jbig2-0.3.1/LICENSE-APACHE": {
+      "mode": 420,
+      "sha256": "0cec06e0e55fbc3dc5cee4fca9b607f66cb8f4e4dbcf3b3c013594dd156732e9",
+      "sha512": "8d68a21e58dce28df9eb68ca54f0b99c38f997653746ef6cea96b1d9d983f5e5df5d61204ca6ab9fc8abda59ff305d91cc1df2a4a11a1e4f19410230a68621d8",
+      "size": 10173
+    },
+    "licenses/upstream/crates/hayro-jbig2-0.3.1/LICENSE-MIT": {
+      "mode": 420,
+      "sha256": "51b50e6120c344dcc146bbd6375ca1c78e079d97c8bea76e67a53d6ff0efebac",
+      "sha512": "108cd263c8c929ef80cae821982b45d2ae21d22e5949df85aa97a93a8b59c3f5d0600f01c1569ced37795af504ddf1e255d9ea444f19159364b2fd6994d167b4",
+      "size": 1063
+    },
+    "licenses/upstream/crates/hayro-jpeg2000-0.3.5/LICENSE-APACHE": {
+      "mode": 420,
+      "sha256": "0cec06e0e55fbc3dc5cee4fca9b607f66cb8f4e4dbcf3b3c013594dd156732e9",
+      "sha512": "8d68a21e58dce28df9eb68ca54f0b99c38f997653746ef6cea96b1d9d983f5e5df5d61204ca6ab9fc8abda59ff305d91cc1df2a4a11a1e4f19410230a68621d8",
+      "size": 10173
+    },
+    "licenses/upstream/crates/hayro-jpeg2000-0.3.5/LICENSE-MIT": {
+      "mode": 420,
+      "sha256": "51b50e6120c344dcc146bbd6375ca1c78e079d97c8bea76e67a53d6ff0efebac",
+      "sha512": "108cd263c8c929ef80cae821982b45d2ae21d22e5949df85aa97a93a8b59c3f5d0600f01c1569ced37795af504ddf1e255d9ea444f19159364b2fd6994d167b4",
+      "size": 1063
+    },
+    "licenses/upstream/crates/hayro-jpeg2000-0.3.5/assets/LICENSE.txt": {
+      "mode": 420,
+      "sha256": "469d87b5fa48f8aaf69e25f4fcac3a309c97dbb7d561b917638abdb640e004d9",
+      "sha512": "4441270dc34af6f38f69d865255f8d26dba39fc99fcfb31510e80c3948f0c1c2da7a8af99665e7063950e23efeb076315babfbf0fb84a72a83e31d114298bcce",
+      "size": 6552
+    },
+    "licenses/upstream/crates/hayro-postscript-0.1.0/LICENSE-APACHE": {
+      "mode": 420,
+      "sha256": "0cec06e0e55fbc3dc5cee4fca9b607f66cb8f4e4dbcf3b3c013594dd156732e9",
+      "sha512": "8d68a21e58dce28df9eb68ca54f0b99c38f997653746ef6cea96b1d9d983f5e5df5d61204ca6ab9fc8abda59ff305d91cc1df2a4a11a1e4f19410230a68621d8",
+      "size": 10173
+    },
+    "licenses/upstream/crates/hayro-postscript-0.1.0/LICENSE-MIT": {
+      "mode": 420,
+      "sha256": "51b50e6120c344dcc146bbd6375ca1c78e079d97c8bea76e67a53d6ff0efebac",
+      "sha512": "108cd263c8c929ef80cae821982b45d2ae21d22e5949df85aa97a93a8b59c3f5d0600f01c1569ced37795af504ddf1e255d9ea444f19159364b2fd6994d167b4",
+      "size": 1063
+    },
+    "licenses/upstream/crates/hayro-syntax-0.7.2/LICENSE-APACHE": {
+      "mode": 420,
+      "sha256": "0cec06e0e55fbc3dc5cee4fca9b607f66cb8f4e4dbcf3b3c013594dd156732e9",
+      "sha512": "8d68a21e58dce28df9eb68ca54f0b99c38f997653746ef6cea96b1d9d983f5e5df5d61204ca6ab9fc8abda59ff305d91cc1df2a4a11a1e4f19410230a68621d8",
+      "size": 10173
+    },
+    "licenses/upstream/crates/hayro-syntax-0.7.2/LICENSE-MIT": {
+      "mode": 420,
+      "sha256": "51b50e6120c344dcc146bbd6375ca1c78e079d97c8bea76e67a53d6ff0efebac",
+      "sha512": "108cd263c8c929ef80cae821982b45d2ae21d22e5949df85aa97a93a8b59c3f5d0600f01c1569ced37795af504ddf1e255d9ea444f19159364b2fd6994d167b4",
+      "size": 1063
+    },
+    "licenses/upstream/crates/hayro-write-0.7.0/LICENSE-APACHE": {
+      "mode": 420,
+      "sha256": "0cec06e0e55fbc3dc5cee4fca9b607f66cb8f4e4dbcf3b3c013594dd156732e9",
+      "sha512": "8d68a21e58dce28df9eb68ca54f0b99c38f997653746ef6cea96b1d9d983f5e5df5d61204ca6ab9fc8abda59ff305d91cc1df2a4a11a1e4f19410230a68621d8",
+      "size": 10173
+    },
+    "licenses/upstream/crates/hayro-write-0.7.0/LICENSE-MIT": {
+      "mode": 420,
+      "sha256": "51b50e6120c344dcc146bbd6375ca1c78e079d97c8bea76e67a53d6ff0efebac",
+      "sha512": "108cd263c8c929ef80cae821982b45d2ae21d22e5949df85aa97a93a8b59c3f5d0600f01c1569ced37795af504ddf1e255d9ea444f19159364b2fd6994d167b4",
+      "size": 1063
+    },
+    "licenses/upstream/crates/jpeg-encoder-0.6.1/LICENSE-APACHE": {
+      "mode": 420,
+      "sha256": "85a884980abd6032fc6b5439ba918ab16db9ac9051b5cf18db9c27c587df07c0",
+      "sha512": "3a2dc04a8be54a237d770dfffa94b18657ad035683ddd81b5c4a01c3965256b967898e84906dc4f8c2b2401525736d488c1206f05252479f867035379d3c27ce",
+      "size": 10701
+    },
+    "licenses/upstream/crates/jpeg-encoder-0.6.1/LICENSE-MIT": {
+      "mode": 420,
+      "sha256": "4d022727ea392ebba2fe5e9a5f78c610a0eae506b491f3db29c78b6d430d6503",
+      "sha512": "e514b02f83c6fdac78707fb676bd27a7c21ef4c8a5f1d50be0aa85791001c3b1cefc3a321075961f83e1ec0c139f6644a29d63016c2812bd9989124ada90e36b",
+      "size": 1088
+    },
+    "licenses/upstream/crates/jpeg-encoder-0.7.1/LICENSE-APACHE": {
+      "mode": 420,
+      "sha256": "85a884980abd6032fc6b5439ba918ab16db9ac9051b5cf18db9c27c587df07c0",
+      "sha512": "3a2dc04a8be54a237d770dfffa94b18657ad035683ddd81b5c4a01c3965256b967898e84906dc4f8c2b2401525736d488c1206f05252479f867035379d3c27ce",
+      "size": 10701
+    },
+    "licenses/upstream/crates/jpeg-encoder-0.7.1/LICENSE-IJG": {
+      "mode": 420,
+      "sha256": "a21e92ec88aefc6823f0c51994783571a849e8d9b43d9ade61ec9d886776721e",
+      "sha512": "e42847fd66c95adadf2cbcc3d245cfda952095c88df0a433652917ee5f3297a9ee6ce7030b57ad87534080f9fdc4f883f3bd33785f56cca253e378731a3b79c4",
+      "size": 3228
+    },
+    "licenses/upstream/crates/jpeg-encoder-0.7.1/LICENSE-MIT": {
+      "mode": 420,
+      "sha256": "4d022727ea392ebba2fe5e9a5f78c610a0eae506b491f3db29c78b6d430d6503",
+      "sha512": "e514b02f83c6fdac78707fb676bd27a7c21ef4c8a5f1d50be0aa85791001c3b1cefc3a321075961f83e1ec0c139f6644a29d63016c2812bd9989124ada90e36b",
+      "size": 1088
+    },
+    "licenses/upstream/crates/symphonia-0.5.5/LICENSE": {
+      "mode": 420,
+      "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30",
+      "sha512": "b8f99ff4658e879c2bd8b3eef464cb0854b449fb093873a529d45994178385fae29f8d66216bf415d69af60cee03a7f3b99828320962590a3b1617db5b735998",
+      "size": 16725
+    },
+    "licenses/upstream/crates/symphonia-bundle-flac-0.5.5/LICENSE": {
+      "mode": 420,
+      "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30",
+      "sha512": "b8f99ff4658e879c2bd8b3eef464cb0854b449fb093873a529d45994178385fae29f8d66216bf415d69af60cee03a7f3b99828320962590a3b1617db5b735998",
+      "size": 16725
+    },
+    "licenses/upstream/crates/symphonia-bundle-mp3-0.5.5/LICENSE": {
+      "mode": 420,
+      "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30",
+      "sha512": "b8f99ff4658e879c2bd8b3eef464cb0854b449fb093873a529d45994178385fae29f8d66216bf415d69af60cee03a7f3b99828320962590a3b1617db5b735998",
+      "size": 16725
+    },
+    "licenses/upstream/crates/symphonia-codec-aac-0.5.5/LICENSE": {
+      "mode": 420,
+      "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30",
+      "sha512": "b8f99ff4658e879c2bd8b3eef464cb0854b449fb093873a529d45994178385fae29f8d66216bf415d69af60cee03a7f3b99828320962590a3b1617db5b735998",
+      "size": 16725
+    },
+    "licenses/upstream/crates/symphonia-codec-adpcm-0.5.5/LICENSE": {
+      "mode": 420,
+      "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30",
+      "sha512": "b8f99ff4658e879c2bd8b3eef464cb0854b449fb093873a529d45994178385fae29f8d66216bf415d69af60cee03a7f3b99828320962590a3b1617db5b735998",
+      "size": 16725
+    },
+    "licenses/upstream/crates/symphonia-codec-alac-0.5.5/LICENSE": {
+      "mode": 420,
+      "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30",
+      "sha512": "b8f99ff4658e879c2bd8b3eef464cb0854b449fb093873a529d45994178385fae29f8d66216bf415d69af60cee03a7f3b99828320962590a3b1617db5b735998",
+      "size": 16725
+    },
+    "licenses/upstream/crates/symphonia-codec-pcm-0.5.5/LICENSE": {
+      "mode": 420,
+      "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30",
+      "sha512": "b8f99ff4658e879c2bd8b3eef464cb0854b449fb093873a529d45994178385fae29f8d66216bf415d69af60cee03a7f3b99828320962590a3b1617db5b735998",
+      "size": 16725
+    },
+    "licenses/upstream/crates/symphonia-codec-vorbis-0.5.5/LICENSE": {
+      "mode": 420,
+      "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30",
+      "sha512": "b8f99ff4658e879c2bd8b3eef464cb0854b449fb093873a529d45994178385fae29f8d66216bf415d69af60cee03a7f3b99828320962590a3b1617db5b735998",
+      "size": 16725
+    },
+    "licenses/upstream/crates/symphonia-core-0.5.5/LICENSE": {
+      "mode": 420,
+      "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30",
+      "sha512": "b8f99ff4658e879c2bd8b3eef464cb0854b449fb093873a529d45994178385fae29f8d66216bf415d69af60cee03a7f3b99828320962590a3b1617db5b735998",
+      "size": 16725
+    },
+    "licenses/upstream/crates/symphonia-format-caf-0.5.5/LICENSE": {
+      "mode": 420,
+      "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30",
+      "sha512": "b8f99ff4658e879c2bd8b3eef464cb0854b449fb093873a529d45994178385fae29f8d66216bf415d69af60cee03a7f3b99828320962590a3b1617db5b735998",
+      "size": 16725
+    },
+    "licenses/upstream/crates/symphonia-format-isomp4-0.5.5/LICENSE": {
+      "mode": 420,
+      "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30",
+      "sha512": "b8f99ff4658e879c2bd8b3eef464cb0854b449fb093873a529d45994178385fae29f8d66216bf415d69af60cee03a7f3b99828320962590a3b1617db5b735998",
+      "size": 16725
+    },
+    "licenses/upstream/crates/symphonia-format-mkv-0.5.5/LICENSE": {
+      "mode": 420,
+      "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30",
+      "sha512": "b8f99ff4658e879c2bd8b3eef464cb0854b449fb093873a529d45994178385fae29f8d66216bf415d69af60cee03a7f3b99828320962590a3b1617db5b735998",
+      "size": 16725
+    },
+    "licenses/upstream/crates/symphonia-format-ogg-0.5.5/LICENSE": {
+      "mode": 420,
+      "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30",
+      "sha512": "b8f99ff4658e879c2bd8b3eef464cb0854b449fb093873a529d45994178385fae29f8d66216bf415d69af60cee03a7f3b99828320962590a3b1617db5b735998",
+      "size": 16725
+    },
+    "licenses/upstream/crates/symphonia-format-riff-0.5.5/LICENSE": {
+      "mode": 420,
+      "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30",
+      "sha512": "b8f99ff4658e879c2bd8b3eef464cb0854b449fb093873a529d45994178385fae29f8d66216bf415d69af60cee03a7f3b99828320962590a3b1617db5b735998",
+      "size": 16725
+    },
+    "licenses/upstream/crates/symphonia-metadata-0.5.5/LICENSE": {
+      "mode": 420,
+      "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30",
+      "sha512": "b8f99ff4658e879c2bd8b3eef464cb0854b449fb093873a529d45994178385fae29f8d66216bf415d69af60cee03a7f3b99828320962590a3b1617db5b735998",
+      "size": 16725
+    },
+    "licenses/upstream/crates/symphonia-utils-xiph-0.5.5/LICENSE": {
+      "mode": 420,
+      "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30",
+      "sha512": "b8f99ff4658e879c2bd8b3eef464cb0854b449fb093873a529d45994178385fae29f8d66216bf415d69af60cee03a7f3b99828320962590a3b1617db5b735998",
+      "size": 16725
+    },
+    "licenses/upstream/deckcraft/ATTRIBUTION.md": {
+      "mode": 420,
+      "sha256": "e698cd8478b6b5d8b8dd78bc633948e50700435b57a6634a9f03bb1c6c6f285b",
+      "sha512": "f69415493c5f021d8ff844ca7d188fd2e38da9af6ffe8e7797450ae8ecab9f593ced77ad1039cbc13bd9c8bafa7280df4a01b8e0af672171f923a6ff20525976",
+      "size": 7141
+    },
+    "licenses/upstream/deckcraft/LICENSE-APACHE": {
+      "mode": 420,
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "sha512": "27b8c0252eae50ca3ce02ab7c5670664c0c824e03eb3da1089f3f0a00d23e648a956bcb9f53645c6d79674a87c4cc86d1085dc335911be0210d691336b121857",
+      "size": 10174
+    },
+    "licenses/upstream/deckcraft/LICENSE-MIT": {
+      "mode": 420,
+      "sha256": "90e96fef569474cd526350e716e4b05dd32f179ca96d39d61e6b928485e35406",
+      "sha512": "c29c0a03e1aac2e8f3a1579aa9c42f322c3f4664eb9a23fbe0c66fca5b6c078b1f7b08137c6857bd76745746a0fa6642dc7c03f51d95a722213a951f0728dcf3",
+      "size": 1101
+    },
+    "licenses/upstream/deckcraft/NOTICE": {
+      "mode": 420,
+      "sha256": "77b755b4c3c7c2076076547580001a2ecdefd270dcd6536ed8a7da1b64960a45",
+      "sha512": "461e7062fd055842eb2ad22cef05c6d3c0146657a55aeb11840c0daed6ab2816d73539ae81d26ad2e4feafecb564d4737e02c5adb5d688501723f59d612d78d6",
+      "size": 1498
+    },
+    "licenses/upstream/deckcraft/docs/brand/LICENSE-brand.txt": {
+      "mode": 420,
+      "sha256": "c5ad8e77d0dd8939161b4c4eca7aaba2437d6340c29e7809fa4679f0f2a82f62",
+      "sha512": "d4f4587fa79e27b0e7f901578cc2c1df216805672cbdeb2b5fb5df52c2f5e9cbf5094b10688187555ea30352c7e182a5fef1dbd56c95e757be0bd509b4012cc7",
+      "size": 2263
+    },
+    "licenses/upstream/designcraft/ASSETS.md": {
+      "mode": 420,
+      "sha256": "e0ef96525996e350e6d23792658adbabd03847a775e36698f0e93b81cede2952",
+      "sha512": "ed857f8f1e5a6c427427559be5ab746c0d862be156e6037f513fa65acd2af1d354c6e6a5c206ed2de2e5357d8ac282d0fd32ec865bb6ac8bf21b8fa0c263db49",
+      "size": 16413
+    },
+    "licenses/upstream/designcraft/LICENSE-APACHE": {
+      "mode": 420,
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "sha512": "27b8c0252eae50ca3ce02ab7c5670664c0c824e03eb3da1089f3f0a00d23e648a956bcb9f53645c6d79674a87c4cc86d1085dc335911be0210d691336b121857",
+      "size": 10174
+    },
+    "licenses/upstream/designcraft/LICENSE-MIT": {
+      "mode": 420,
+      "sha256": "d543d31e3120c64b70abc77cfadcbdc2249c78de1c8efa2e3d62540bb79de816",
+      "sha512": "c8c18c873d975f3f935beaa0c70a419eafc163e90a217bb39d840e0a9fbe01a57b2531c6ea937606b83b2f150d115bdee2bfa0a92d12263c9865f68acdd1e127",
+      "size": 1103
+    },
+    "licenses/upstream/designcraft/NOTICE": {
+      "mode": 420,
+      "sha256": "59da5d57095806a032148fb768b257b90f9f2de89171d7c3f6c48bf4fea7258e",
+      "sha512": "ff7bcc7adb2f981309dcaef490d3b7cf399aa9993d9b150ea981829b40964ff4e20e086b276da689928196cdc12831636911d275ddd3dc419c62be22e93cc8c9",
+      "size": 5520
+    },
+    "licenses/upstream/designcraft/assets/app-icon/LICENSE.txt": {
+      "mode": 420,
+      "sha256": "eb3f3cfc6437fd370e31ca8449c7312314c191d15347bd70934d9ce2df5331bd",
+      "sha512": "a33889c957d3648f4b6f964b0c11fb79246e250e65e7fe451d62def0851578d1a6edd6ba1a5a7c36a313e4bb06ed27e93b0b8644b055ab6336b9dc33a0905eeb",
+      "size": 584
+    },
+    "licenses/upstream/designcraft/assets/fonts/OFL-Inter.txt": {
+      "mode": 420,
+      "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+      "sha512": "593d608d18186478ee378027cbf8ec480055862acdbd437626f3c36b65b61f08024ac90d2ce007d718e55a4134e61f6e9df46e18ccbd5fcd7499737ede288b2b",
+      "size": 4380
+    },
+    "licenses/upstream/designcraft/assets/fonts/OFL-JetBrainsMono.txt": {
+      "mode": 420,
+      "sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+      "sha512": "82b369c518db1bbf733d05efd7a33318abd569d3149aa3f3e3fe58952ad2e241e89c2392faf7d7fe6a0d636ac1a03698efebd86fa3e58b9966e2b8ccb9bcf2ce",
+      "size": 4399
+    },
+    "licenses/upstream/designcraft/assets/fonts/OFL-SourceSans3.txt": {
+      "mode": 420,
+      "sha256": "56af9b9c6715597e458284a474dc118a50a4150e9d547c70f7b4a33c3e6a9328",
+      "sha512": "07e4974ab59d6a9bb7029b14eb57c907586d361ac74bb77b2826eab1e9d01fb9635afa4e69cd443b948ffb9778ae4489cf6b64ba3ce0f01f6665b23ba61bd366",
+      "size": 4486
+    },
+    "licenses/upstream/designcraft/assets/fonts/OFL-SourceSerif4.txt": {
+      "mode": 420,
+      "sha256": "c21d7293d87b6d7ab1d0229a2f55b77f33a7613a6a4e66f6693d68d7d8d09464",
+      "sha512": "9e3bf068bb8a05b0022a48b4d8097b3f2e155cabfefa2c468474adcbcdce0f73bb7b1037b6db091d9c75f99cceb33810815e2f3d7612a526fd00c37c04862078",
+      "size": 4491
+    },
+    "licenses/upstream/designcraft/docs/brand/LICENSE-brand.txt": {
+      "mode": 420,
+      "sha256": "68fb0e786130f8ead0350a352f66d7027d0f8a8ebebcf30d51de9146405f670e",
+      "sha512": "4e82043bc74d98aa6431071bddec3d1340256bc3af4f14e7d6bed2119f81c3cc973b788befd014a00a5aab78b8e10b425c8f4198b028a389b07feb9da5adf07a",
+      "size": 2277
+    },
+    "licenses/upstream/effectcraft/ATTRIBUTION.md": {
+      "mode": 420,
+      "sha256": "0186518bf46d473e5841d34234ee117f2059dfcaf8b4616ae6dfb6da5745dc38",
+      "sha512": "f1a810b0ae7b9c69bad7baebcf5914fd25b1bdf1eaf8437614bd00b9b033ea5144e0c248ba44ee0de9bcb30309691746a5e820eea8748f6f09489e6cc902a291",
+      "size": 14751
+    },
+    "licenses/upstream/effectcraft/LICENSE-APACHE": {
+      "mode": 420,
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "sha512": "27b8c0252eae50ca3ce02ab7c5670664c0c824e03eb3da1089f3f0a00d23e648a956bcb9f53645c6d79674a87c4cc86d1085dc335911be0210d691336b121857",
+      "size": 10174
+    },
+    "licenses/upstream/effectcraft/LICENSE-MIT": {
+      "mode": 420,
+      "sha256": "7b6db9a363688683feacdf9b528f059637f2e5d2edbacd8720fc9b26781c9abe",
+      "sha512": "ee3c67037619be5ab7c124a78a35c591351c146be4dd3d814e84f9dad1f9cae2ebdabbf0a54a374d5b11dcef9cb3dc51de439fc2c771ef3b732bc42ac7a8f41b",
+      "size": 1103
+    },
+    "licenses/upstream/effectcraft/NOTICE": {
+      "mode": 420,
+      "sha256": "d0bf841555c56b6136745a61ec529c9a558c9dd7404d377d82f86d10e0e9b530",
+      "sha512": "d0c542475618f2c0084ffe2868dc5182e79939997aff05c3216d0ff36ba2a63c004e44314715710286c221d9310bea0d46b52c938698637343a5954e3087eb06",
+      "size": 907
+    },
+    "licenses/upstream/effectcraft/apps/effectcraft-web/web/favicon.svg.attribution": {
+      "mode": 420,
+      "sha256": "251067e86df910861eaeb6eb36fbc3a62b44e2e86bb991961c8842222ed2a7a2",
+      "sha512": "f69de3b191e13f83d5d6679e9c7b72e7b1c2fdd8140a0b884589e3b4fab32aee8227c9df5c51a10785244ac635bcc6c6fd8f0c78aa50b6bc3771557dd4c7a1e5",
+      "size": 492
+    },
+    "licenses/upstream/effectcraft/assets/app-icon/LICENSE.txt": {
+      "mode": 420,
+      "sha256": "6f7a100b47da67df0c9e8e06397a7222766932c36cdebeff2e89cb2cd2917b85",
+      "sha512": "f2ab32836adcbfcd1c27ffb4c4ae9d72361b6f81d7a24a1936238086aa14ae24b6502f74a889ae894d99514b49ec6d7b901e3cf9a281a2787dba36211c3c2dea",
+      "size": 643
+    },
+    "licenses/upstream/effectcraft/assets/app-icon/effectcraft-1024.png.attribution": {
+      "mode": 420,
+      "sha256": "a8d53ce0b6b922c415fc190381e3d242cbe3fef3761667bd9ce9af9a53021a94",
+      "sha512": "47d16ec288fb351273b7a1c48623e29f0daf0eecd137846f31614589c765c8dd5ffa75448f576e13bf886df8a21ff8eb90dd0689736f40a285a0e62a3e596253",
+      "size": 419
+    },
+    "licenses/upstream/effectcraft/assets/app-icon/effectcraft-macos-512.png.attribution": {
+      "mode": 420,
+      "sha256": "5838dd1e2d59809c4ef4bc93785dae6014ec03af59f84733b37eca573279c993",
+      "sha512": "1fb10399d6b73c10a0e0b8112775fce32641006d8236f7ae59ebe524f703c6c77bc6099ca86defd69d026ddc59f367efe90e5fcfc1852e0e807824d88d398efd",
+      "size": 504
+    },
+    "licenses/upstream/effectcraft/assets/app-icon/effectcraft-small.svg.attribution": {
+      "mode": 420,
+      "sha256": "15db893cd2957f98a48a7d45ae34d5d3a679960bde2334d30b8e914355b862da",
+      "sha512": "fa3d692d20c989344b470379ab3883d8bf199574d943dfda5821bf3a11f2f5a97086f4a8f5ee6ba8e38229ca517649e07dab4435c014126a6c394631b45bb69a",
+      "size": 480
+    },
+    "licenses/upstream/effectcraft/assets/app-icon/effectcraft.icns.attribution": {
+      "mode": 420,
+      "sha256": "39708b29f022b161914353c1cf152b4c13eb9a2dd3530a90f8166ace4f2e606e",
+      "sha512": "dc716aba5b5d083bcf317542256b22f9e1dd1f7dd17170ba2b7a3f8e7ab704ebd032159549d4d14af0fd0deec3559716529428e26a506c195234b3799af789cb",
+      "size": 455
+    },
+    "licenses/upstream/effectcraft/assets/app-icon/effectcraft.ico.attribution": {
+      "mode": 420,
+      "sha256": "66334e72007d10980a6b465c5377baf43759d3f28e96b6aad0f03c93a1b1df98",
+      "sha512": "af1ef415b4dff6bb7451125078423f9aacf36819a7b3ca6e0c87d23a3558ad03b6c747ca462b6eed25e45fc98e213e61a5af994a5352b07938302e4b04ca7b50",
+      "size": 454
+    },
+    "licenses/upstream/effectcraft/assets/app-icon/effectcraft.svg.attribution": {
+      "mode": 420,
+      "sha256": "fb05c2b09b2887e21f820447b8e9b45052b7b7872156ff93f3cce017eaabf215",
+      "sha512": "6e5135959f336a33d59b6b1ede2cbf6b4da4fa20feae73835dc4d067196fee3081700b93aa80439d654d0bfe3b1eb52bd8c987f20e2a0dce59a2e17cf1883bdc",
+      "size": 579
+    },
+    "licenses/upstream/effectcraft/assets/app-icon/hicolor/128x128/apps/ai.storyteller.effectcraft.png.attribution": {
+      "mode": 420,
+      "sha256": "0126aa42ee8348d15f715e9f34572afabdfa513094d76efe54852eb07ce5b8bd",
+      "sha512": "34dd66c87d91794282082c6308911ca47de11c0dc5d40d8e940b6000a28dcb9d273b4cd3c44e41c4510eaa37e69bbc67f6ab5d5b8e33971353c8ede012d2dc30",
+      "size": 443
+    },
+    "licenses/upstream/effectcraft/assets/app-icon/hicolor/16x16/apps/ai.storyteller.effectcraft.png.attribution": {
+      "mode": 420,
+      "sha256": "7d18ee30dc5dea577c3da7cccaa939b0dd3d390d6441dbe4b85872d065ed3f55",
+      "sha512": "24c567c0592a98bc2292744ad24e1316ffafb04824d6642aeb146416515dc2d5aac3d3e6728e53f8a602681f078f90d8368a5fa79be365442f240f3725ac309c",
+      "size": 441
+    },
+    "licenses/upstream/effectcraft/assets/app-icon/hicolor/24x24/apps/ai.storyteller.effectcraft.png.attribution": {
+      "mode": 420,
+      "sha256": "c2df1f29d0b59e7d00589dd356e13267405585786fb40689e51ee22451578f5e",
+      "sha512": "749840b2e9bcb918294e8b38eadfc6e67675f997bc2880d64b58db1274c04087df0b56d5f331fcaf8016ac5c3aff988cf07d168864206567edb280279a4bc0a4",
+      "size": 441
+    },
+    "licenses/upstream/effectcraft/assets/app-icon/hicolor/256x256/apps/ai.storyteller.effectcraft.png.attribution": {
+      "mode": 420,
+      "sha256": "e665dce6336da74f1e1436529b437403bed6155338b39aabeb291e295b6c6c29",
+      "sha512": "be66adacf6962e5e6a5073195e824a6807eac870efca3b9afe2f9d629cbc7527f1a13e6e5b5e48fc344677d56d5198b767c0c1240107346bc1cba066af61e3fd",
+      "size": 502
+    },
+    "licenses/upstream/effectcraft/assets/app-icon/hicolor/32x32/apps/ai.storyteller.effectcraft.png.attribution": {
+      "mode": 420,
+      "sha256": "c9dc5c5811d442946f866563fe80d980f44da7b15383c8cb7fa674b76b3c4f24",
+      "sha512": "542594087b257dfe6ab249bba1894c31d26efad2dd41fcb33b94a48ac246b5a1c41c67e2ad5a6022f48b341ab8975043053f00bd3535b80a593fe3a09fc85871",
+      "size": 441
+    },
+    "licenses/upstream/effectcraft/assets/app-icon/hicolor/48x48/apps/ai.storyteller.effectcraft.png.attribution": {
+      "mode": 420,
+      "sha256": "e0c51be7508e5d92ea6f24ea7467597c5038396efeec1454ae54a78ea7c3a71e",
+      "sha512": "6b6a0f7b76bf62abd3c99c91d4b25a2ceb931f8b556b9a117cbc0a5b639ceceda6864ce7f01b1bb2512d50ff1e16b2b723bdb7b794759350f624722176537222",
+      "size": 441
+    },
+    "licenses/upstream/effectcraft/assets/app-icon/hicolor/512x512/apps/ai.storyteller.effectcraft.png.attribution": {
+      "mode": 420,
+      "sha256": "de6b71367a6b27e7faecfb82a89add08d3f6f36233ddfd5082da94f63a1622f6",
+      "sha512": "955db2c9730187f4ef6d9cdf9df6073552986ea4c5e0a617cb709c54192f9d800c898223ffcbf5b127d96de2b7539b6d3772a96c5e432cbb9d3d316c60c21262",
+      "size": 443
+    },
+    "licenses/upstream/effectcraft/assets/app-icon/hicolor/64x64/apps/ai.storyteller.effectcraft.png.attribution": {
+      "mode": 420,
+      "sha256": "9f8ff016589b9cb6c8f96076da68579d9fcb44dafde2cdc739c7408f401765bb",
+      "sha512": "b0ae44fce9f707749e906b1076f13e5709c8cbad03ef3acf6f796176c325c110c723e51fb17a4712a4db5d78cd154a1593413a4c2d95a338dfc73dc2e10bf9c6",
+      "size": 441
+    },
+    "licenses/upstream/effectcraft/assets/app-icon/hicolor/scalable/apps/ai.storyteller.effectcraft.svg.attribution": {
+      "mode": 420,
+      "sha256": "97e73a509f6f432f5dd5fb8c72fc19b3abac8b52fcc96817d590be48e2583e11",
+      "sha512": "ce5ca7882b23b9090d6393f265840a8225bbd2cd1b6ae870bd1c6be4c04d8ddc137fd3a833362ca508e8715ffc41133ac750181533c381bc819215ec4868891c",
+      "size": 442
+    },
+    "licenses/upstream/effectcraft/assets/fonts/Inter-Bold.ttf.attribution": {
+      "mode": 420,
+      "sha256": "caf2a2e8ecdcd42abef2e0a05c41a97450eb7320381980599b555abd6b36771f",
+      "sha512": "6499d9cc9cdb74eb593bca27ba235375a2090d8fc070dcb48cd44d400a299e2bc4a70129db7e0cb7268572958eaa6ff68404c8a7bafeff6490905d5e22e065a4",
+      "size": 516
+    },
+    "licenses/upstream/effectcraft/assets/fonts/Inter-Italic.ttf.attribution": {
+      "mode": 420,
+      "sha256": "192adc49aca402eb8e60703c52024db425238e9fd3daf5e4c9da2ed98af99150",
+      "sha512": "933c51bb3309cca030dcf4ced6759cbd9715eabe055e05dbb2d7e6de81b5b576cd59952b3c34dea6b5b873cbd5bccb1bd33ac36f1baa70310ef200059640cec1",
+      "size": 520
+    },
+    "licenses/upstream/effectcraft/assets/fonts/Inter-Medium.ttf.attribution": {
+      "mode": 420,
+      "sha256": "36d8f9319e543cb10ac35c54969fd16fc6c6354ed72a38e91387d31c4530aba6",
+      "sha512": "1425917fd714ed029603da93c5fdc8e08b0149647c99b06968efe238257c0c57725f3ffd103d097b6a72795ceebd615d170861a14347b220d699139674784635",
+      "size": 506
+    },
+    "licenses/upstream/effectcraft/assets/fonts/Inter-Regular.ttf.attribution": {
+      "mode": 420,
+      "sha256": "3c6dba474d83a03ef433b54acf495cabdaca2e288741ff4dc5a8b6383e0acfb9",
+      "sha512": "3a3e1d20a2c77db27e9421a4ecc2545157a5b381822b2d8b475b042599c07f167a36a398781a4e8011a8f3838ab3ad68e58bc61d238a876a4e3cdb3d95ed0398",
+      "size": 508
+    },
+    "licenses/upstream/effectcraft/assets/fonts/Inter-SemiBold.ttf.attribution": {
+      "mode": 420,
+      "sha256": "3d23c3c7585236563062a54229f1124f6af8d6ccd25b55ff59fe1a08a09693f8",
+      "sha512": "13be9acea76bf62f057f24f446c5cb5cbb9b514f4417e956fcbf1b277ab70e5afa830f7bed0df1f038dcc7c7ff37b1b8fe3a17876d4e0a0ecda90bc1d2b00224",
+      "size": 532
+    },
+    "licenses/upstream/effectcraft/assets/fonts/JetBrainsMono-Regular.ttf.attribution": {
+      "mode": 420,
+      "sha256": "00599ced628e9da0445787ef90d93ac9c3008ba214f17aa588a42673d08c65f4",
+      "sha512": "ad5906d29b6be55df670ad56259f5fc783f14178be442b332ed762c4e6e98dec5adf21c49cbe0e9afd2c4248de2f21a1d68371efc6771e34da41569bc2215f84",
+      "size": 540
+    },
+    "licenses/upstream/effectcraft/assets/fonts/NotoSerif-Regular.ttf.attribution": {
+      "mode": 420,
+      "sha256": "d358224da9ac620fffd3bd00ca64bdac35c505dfd1a9ae113e03ad5b695126be",
+      "sha512": "aff0d21d53ca0af153b2af4e2507366070cc096a4528fe0345a0674b015bbf9689c77e571d5aea5d8a1b2e49595020c90b922cc36d066906d73e1882cbc759ff",
+      "size": 549
+    },
+    "licenses/upstream/effectcraft/assets/fonts/OFL-Inter.txt": {
+      "mode": 420,
+      "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+      "sha512": "593d608d18186478ee378027cbf8ec480055862acdbd437626f3c36b65b61f08024ac90d2ce007d718e55a4134e61f6e9df46e18ccbd5fcd7499737ede288b2b",
+      "size": 4380
+    },
+    "licenses/upstream/effectcraft/assets/fonts/OFL-JetBrainsMono.txt": {
+      "mode": 420,
+      "sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+      "sha512": "82b369c518db1bbf733d05efd7a33318abd569d3149aa3f3e3fe58952ad2e241e89c2392faf7d7fe6a0d636ac1a03698efebd86fa3e58b9966e2b8ccb9bcf2ce",
+      "size": 4399
+    },
+    "licenses/upstream/effectcraft/assets/fonts/OFL-NotoSerif.txt": {
+      "mode": 420,
+      "sha256": "cee9892f9f0cc8fe882c9e9537ee6a89621d86ee7ceaf70b02e2b2b1c25c061a",
+      "sha512": "df9ec827d8c71a5566862223e195dccb6e835438c1df2756f887e19dd44cd6589c8cf6853ca47410607dd81599c87daaea698f803a2de5ca2248a67df94e23b0",
+      "size": 4396
+    },
+    "licenses/upstream/effectcraft/crates/engine/presets/backgrounds.json.attribution": {
+      "mode": 420,
+      "sha256": "33a237062ffad87657aeb351418962863b4a6cd344ae5c748c93b4d1be76455d",
+      "sha512": "cad755e57697634aa9dbca1e277a0f9c11addba2f6da3498f71d81cb4061bc9598656088570195a64f37d2579202bcd0a0e18b1a8b993e1072c1abe0b8a2ab0b",
+      "size": 791
+    },
+    "licenses/upstream/effectcraft/crates/engine/presets/text_animators.json.attribution": {
+      "mode": 420,
+      "sha256": "1ffeed04df6b827c1ccaf62f7b12bc2c0155ee7b86c7a6f0e948161eac5de80c",
+      "sha512": "56b2298b5e30ab74a5d75baf772ed03129b8d432a6dff85fa902084f8a39bf6e4e35d622f774f1b301eb4d1f7262ad3bf5170eab9112462cf38a6999cdf7edb5",
+      "size": 460
+    },
+    "licenses/upstream/effectcraft/crates/engine/presets/transitions.json.attribution": {
+      "mode": 420,
+      "sha256": "942c5d71b4fae316b0fac288c461f978976c6eb47997881e7931bae16d5eb709",
+      "sha512": "e611e6f48163d1116f67a76eb5330ac6a1579145de7f85bfe75d5ada81153305fdc8abb473019124ab1610903bf0a91763e5fda5d832644c9629b633dae5a839",
+      "size": 700
+    },
+    "licenses/upstream/effectcraft/crates/engine/scripts/Create Null at Selected Layers.jsx.attribution": {
+      "mode": 420,
+      "sha256": "892b1556f4a87fc5df6270d34f9ab183781ae1433a7bb3fbf2b1157ba66cd8c1",
+      "sha512": "a60dd05c20f73abe9e341fe86847050b5ca24437dfa5f8fb9ac9b22dc2fe2dbaa308662592f53e387400db4c29448fd4e657e688c6670928d8224368a63fa03b",
+      "size": 412
+    },
+    "licenses/upstream/effectcraft/crates/engine/scripts/Rename Layers.jsx.attribution": {
+      "mode": 420,
+      "sha256": "bc515b75c5b5bad5cd1a1f6ede3f4d7619145aeb03c9eece8ebaa6b2c97924ac",
+      "sha512": "ed5d893edea715d0a17a86a744e1a60e94f8187dba14ff63052788a3faf3f9a18ed994536bf052531e686a84d982c4362906317810064a336e527fb0e99b2326",
+      "size": 378
+    },
+    "licenses/upstream/effectcraft/crates/engine/scripts/Render Queue Batch.jsx.attribution": {
+      "mode": 420,
+      "sha256": "2555454fac8730271285cb1cdd624a8c35f437c55b9858066136a7e632c28dae",
+      "sha512": "c611d29d893a2780633b50d9ba1a3e0b70520a682ed05d264f9079cfdd8775cfd2767253b7113f658e63674c64d3c678b2c2b16eb4c73251ef7bc75ff0729b56",
+      "size": 388
+    },
+    "licenses/upstream/effectcraft/crates/engine/scripts/ScriptUI Panels/Layer Tools.jsx.attribution": {
+      "mode": 420,
+      "sha256": "a365ed48991a050089531ed4dad572020bf91bb24f62c198c22b5f1f64decd31",
+      "sha512": "d0eda0d76c4a6e7a01f4eecc9ce8b7157afc0334de72208118617860edcb120d33512525488facba35753fb8d1b3738cf922d3146cc81b5dc3450fabf3c11b35",
+      "size": 374
+    },
+    "licenses/upstream/effectcraft/crates/engine/scripts/Sort Layers by In Point.jsx.attribution": {
+      "mode": 420,
+      "sha256": "c560f707015fe3d4618d09a18dedc04b4d978f5778c7e0d04403e937510cf65e",
+      "sha512": "2ba6c785a36d49efd122a51fc8f49fb96295583f1b3aebb51b3d6e5eed1d3207b8319cf7156b6323eb8a70f9c17cb79522c1930187aebf1d21423bb409aed202",
+      "size": 398
+    },
+    "licenses/upstream/effectcraft/crates/lottie/tests/fixtures/bouncing-ball.json.attribution": {
+      "mode": 420,
+      "sha256": "aaf816a90e22df3ee9711f07bfceeea26aaa89b441a31efbf43177a1644bd70f",
+      "sha512": "9c58d0572cb0e4a9fcf2f7c5deb7a5c4c19137f2fc040666607655f9db90f0c784a27fd307064c27c690444cbf82a69854b607f6f4194c9cdaee75c320e076b4",
+      "size": 422
+    },
+    "licenses/upstream/effectcraft/crates/lottie/tests/fixtures/legacy-masks.json.attribution": {
+      "mode": 420,
+      "sha256": "a7455e6dc72fe21526b238f86543b040e70c50e41c557b7c900823e4a64a1a08",
+      "sha512": "ee7ac93f6b018c6b46d6b3454c8f53ec980e1be7c8bd3dbce88655bded47219812c9074a20906a8c1520c526031e6be117833d7f44fbec49a4eba7f41865d269",
+      "size": 457
+    },
+    "licenses/upstream/effectcraft/crates/lottie/tests/fixtures/precomp-matte-text.json.attribution": {
+      "mode": 420,
+      "sha256": "2a1727d304fc23eff2c93d82e597b6864c3b9c67b0c7fd5507f3f8e41cf5d315",
+      "sha512": "45ee2d6de82ea6bfb4625aa3d0fec40c2da11b9443724c8721c9ef1afbc00b7dac697d949be1a7a83121598b544c2ec8d795fbb06d3d69379b8830f1b7ad80f3",
+      "size": 464
+    },
+    "licenses/upstream/effectcraft/crates/lottie/tests/fixtures/shapes-gradient.json.attribution": {
+      "mode": 420,
+      "sha256": "0769c39180c9bb81ee2f14f822f5c5b30921117006ef943038b1cada4623c232",
+      "sha512": "b034558de3d4433b8513791c8fe0978955593410dfa1b0406c8ed45a9bff9e40da9c885730bfa9ac93e471c9b9ae210b8ab5d5239002c313f0daecf24e8edbcb",
+      "size": 468
+    },
+    "licenses/upstream/effectcraft/crates/model/tests/fixtures/cube.mtl.attribution": {
+      "mode": 420,
+      "sha256": "83d356cfeda0b562c1bad69fe128b72550558e753605356efae2453242fdbb07",
+      "sha512": "d331917443f24ab17fb28ac4bf19bda3a1333bdcf211aabe7b4cb2f689bbfca8bdd0539b5e665cc9c01cec35eb0e1420846ef80c38784b5746f2019d5e0003f8",
+      "size": 526
+    },
+    "licenses/upstream/effectcraft/crates/model/tests/fixtures/cube.obj.attribution": {
+      "mode": 420,
+      "sha256": "b37ce1fa1a8953a72ba861ddd725be802e95de420e97f7105ffcc2bd3834b517",
+      "sha512": "cfb844b123f9673410f2f47614ccd74d59d7df1e61879407d062d0fe6062ae2065fea0ea47ff5d3e3eb681c967c68204fa36476b60afb6cabbd37649f208df77",
+      "size": 530
+    },
+    "licenses/upstream/effectcraft/crates/model/tests/fixtures/quad.glb.attribution": {
+      "mode": 420,
+      "sha256": "78b3b98af5007a7124f8a82103cb488db7018a1496f42df68a51edf99da8fa37",
+      "sha512": "031181995e6d3020a56616d32f87ce3c4973e050d44b0c6fc31711034ff0ae9b71a32c143318c0707074e51fa277c543192b2d03162e59d8a8290d97f9e9b902",
+      "size": 541
+    },
+    "licenses/upstream/effectcraft/crates/model/tests/fixtures/quad.gltf.attribution": {
+      "mode": 420,
+      "sha256": "3b1c9ce2c979ee88b8691fd3a2e92ab565c453ee6ef9759f61dab5563ffe96d7",
+      "sha512": "a1d754d03b07bc5ae93c26fb2fa031c9302946096987a804234e52c739e892de54056e54a15de77ec5ddfe4bc6d34ce3a184156fe0550b549b96d3b594e1cd86",
+      "size": 560
+    },
+    "licenses/upstream/effectcraft/crates/svg/tests/fixtures/basic-shapes.svg.attribution": {
+      "mode": 420,
+      "sha256": "05ecdce5b3988bd1cf80ce7f0d25ae1697b5c0e77fe6e9306a451db058fe3c4b",
+      "sha512": "d557f37661f802a4afba9134f1c8b2c59c66f72bf1cff13615cbe4a7de9abcc732605747579d99328e614742639df76893002eb20862e1cd4f799f7c5ec3a232",
+      "size": 379
+    },
+    "licenses/upstream/effectcraft/crates/svg/tests/fixtures/paths-gradients.svg.attribution": {
+      "mode": 420,
+      "sha256": "aced47628c8dc5802b1f1440a14e9b4bc6c03dd44833273bacda79ec25672c3d",
+      "sha512": "43070037b6f5deb5446e763ffcc78f0e2d0c2c18dd4336ea69a30ebb02195d9723fee20aec5e3076a7b033c489e4f5428afe32c4808bc180b9ad7178c6c70ab1",
+      "size": 387
+    },
+    "licenses/upstream/effectcraft/docs/brand/LICENSE-brand.txt": {
+      "mode": 420,
+      "sha256": "7ee27fdb49f96a969ab80d5f800d8422aa17cb39d1cca286d18aa6227d8c7628",
+      "sha512": "a80f4f20746b2f0c85a574b9c56bc51dd125dbbc9bf1dd55cf82a63cb55e5e6c2bbe54e9c88d8f7852ba26518e2162267d1ab0e4e983d0930a3466f2ff523630",
+      "size": 2277
+    },
+    "licenses/upstream/effectcraft/docs/brand/artcraft-logo-white.png.attribution": {
+      "mode": 420,
+      "sha256": "565e5dd760e0ec12e076a734e69ea40f64cad8274fab860230f07d7be045e73d",
+      "sha512": "43031e3b397de15c127559049e4093504e1ca47876ef6c4bdd1f221e9ab250cc05c5adabf50674da029150384857013ed04adc988bd3e1d8f6513f3bfcaaa036",
+      "size": 882
+    },
+    "licenses/upstream/effectcraft/docs/brand/artcraft-logo-white.svg.attribution": {
+      "mode": 420,
+      "sha256": "5f0cea4e227993f10439947958c3af2e498159b93e304c80ddc92b8bd5e60f16",
+      "sha512": "e612eadff034ccb6739773d63329c8dddfa579f1cd7c30694bf879a6698de06b6bcd435a287cf8df182b4232135bd9399c0939c5b678dcaee7a11aeeddfc93c0",
+      "size": 882
+    },
+    "licenses/upstream/effectcraft/docs/brand/artcraft-logo.png.attribution": {
+      "mode": 420,
+      "sha256": "765433ab27edfb01b290fee8d01554b1bde9aee8291b01ec68188340b3c99c86",
+      "sha512": "e6bd36c4d632b669091be61aad0680c4341d43be4e78ff51edc10982f49399b10c549a3980ce95df023b307ee491fcca0a9ef74b33f80d89de57f10f95ef3d39",
+      "size": 898
+    },
+    "licenses/upstream/effectcraft/docs/brand/artcraft-logo.svg.attribution": {
+      "mode": 420,
+      "sha256": "243fbca3754883dcf5d5ad900bcce37264ec1057dbd3c9b44e7564a3f253017f",
+      "sha512": "8a8e12f23ce0c1c6e4bd4fe8a55c37b4c7d19a997881e96bcb58be5bc8a92fbc3ca481131f4be0cca2f694d8000725b03d94d577a1d9d81fd920fd3bc3fef43a",
+      "size": 898
+    },
+    "licenses/upstream/effectcraft/docs/brand/artcraft-mark-black.png.attribution": {
+      "mode": 420,
+      "sha256": "756b30b82424ab3f24685ec4b2470e7a9af5b52351c60be4fbd63137abff6ad6",
+      "sha512": "8927557bc66472d7e09d82a63724e947b33d2f68431c68c260ba3af3708155e5800324d9c5ba46e11d4c74b52f9b82c37d7df285f81a3d731260d73be6cd9651",
+      "size": 866
+    },
+    "licenses/upstream/effectcraft/docs/brand/artcraft-mark-black.svg.attribution": {
+      "mode": 420,
+      "sha256": "301c3b1d288c04f3369127e2b9ee43207915603957b442e103681efe90b8c8a5",
+      "sha512": "4e69a580e7bc7cd4105fc82974459fe188d215c80053db4b892d77f4fcd1fe43fe1f8aa1e971e8bcffda74e7512ff7ccb70e3f83e11a282f8f9b5067e311ee48",
+      "size": 866
+    },
+    "licenses/upstream/effectcraft/docs/brand/artcraft-mark.png.attribution": {
+      "mode": 420,
+      "sha256": "0bf8b2c81716a1da38e93bdcf4035de3cad3a120a8fd62eee842039badeebc29",
+      "sha512": "f162576163f09f7b7fa290178d8149510dff1a189ac99364aed56ee39a034480dbb56cfcd29d001b24c876486b91877734368cbfa1194cffa6b674b278c328e1",
+      "size": 859
+    },
+    "licenses/upstream/effectcraft/docs/brand/artcraft-mark.svg.attribution": {
+      "mode": 420,
+      "sha256": "0f9c387b3d4ada1a6d8c5238694cd7854b5c522a6f1e12283f41d666f4773fc4",
+      "sha512": "a2c5f3300d28bcf02c1b1069cbfdd2d64bb9488379f44e78ff953af60c3524fe20643027edaeeb988ce301f572edce87ba78c05ac2dd3fc5c55eb51ccba15ab4",
+      "size": 859
+    },
+    "licenses/upstream/effectcraft/docs/images/effectcraft-3d.png.attribution": {
+      "mode": 420,
+      "sha256": "0b21db17692ca5e6aad28bc54f641473d27f20062dba310d9f85d879d115d2db",
+      "sha512": "7d74e372d055b72d6f0dde33ba699e38f3e65e32eaed2ef84bc11e584ccc4e5212cce8ac245f3777d9e661cfaaee32593527f1e736919dc109e85880f7da2d90",
+      "size": 638
+    },
+    "licenses/upstream/effectcraft/docs/images/effectcraft-effects.png.attribution": {
+      "mode": 420,
+      "sha256": "519e1fc421cd8b997df55e15f5f0747a7bbc345f764a3074ffb6580bef1efcc3",
+      "sha512": "85410a2a27152af8a1b78105bd0e2b3c309d899f29d939f9146f57819eb8dabf649806a17e1541184664adcd9f95e93545e3736af67ff5729029dbc262afed3a",
+      "size": 609
+    },
+    "licenses/upstream/effectcraft/docs/images/effectcraft-graph-editor.png.attribution": {
+      "mode": 420,
+      "sha256": "9892ad3d9de2190c31112ff203144ff3901e650ffa753e277d94de7f06a9c617",
+      "sha512": "2c52b35801806244ed3a8e000505f8c5df121873913295f0f5f2e22303758b912bc160d8765707628391cc9bda820cf109723deb1aa6e3b7dbff17483e5922d2",
+      "size": 623
+    },
+    "licenses/upstream/effectcraft/docs/images/effectcraft-hero.png.attribution": {
+      "mode": 420,
+      "sha256": "33981b8f1ad5bc744d377c1af61909ec215f5ee7d9e77f943251e1169e5bd024",
+      "sha512": "dda2cd8d2aac1bbd546ef76eaf6b5d486f48f63948c0eeba2ac54cdd0c3abc3bd3cd8d75822e47fd54df0b7d2298cbc8dd2b0bf99616c0b68f0136b40f80c555",
+      "size": 690
+    },
+    "licenses/upstream/effectcraft/docs/images/effectcraft-render-queue.png.attribution": {
+      "mode": 420,
+      "sha256": "b03fad053b9e9d918831e2c8e43af4dab64eaea9a4fc05677f5a0b29c3330773",
+      "sha512": "800ddb60c4862dfd7cc27a4734741573d573b2d1dd546052eba09836e644a9d320b49bba9f7bd17dbbbef1f83bffc533127b72baa63fcc39cc351612708a5294",
+      "size": 642
+    },
+    "licenses/upstream/effectcraft/extensions/scriptui-panels/Ease Presets.jsx.attribution": {
+      "mode": 420,
+      "sha256": "dc36bc852709c0d649ffd851f8f0e07b9fc7044429d80baac89c6196194df389",
+      "sha512": "19703380363cef35cff23a602a62867926107a6f06327dc392ef598e941912d8970fa63cbe512b580a426883e51602803bc1aee869dc951fe306064f1ecd2eb5",
+      "size": 561
+    },
+    "licenses/upstream/effectcraft/packaging/macos/dmg/background.svg.attribution": {
+      "mode": 420,
+      "sha256": "2c7182aa1fe60364797a8ecf2e4870f9e5aac3f7fb3d74742a62235c670641c0",
+      "sha512": "4f89559409efd6070ff8c369dd011b72bec1724b104f555248b55f54b3a1675cd96a764d8f8cd6c17a4e26c015d62fed728f9df30fb78467eaa30f5190ef1e9b",
+      "size": 566
+    },
+    "licenses/upstream/figcraft/ATTRIBUTION.md": {
+      "mode": 420,
+      "sha256": "9ec4448e1327edcd1bf1793f6bf04564913c7653cd9398468d8a8c8a3d3b476b",
+      "sha512": "ea871b12a0492c3c2198cf7b3749b084e6f730e6b81fac19a8da8cc917004da23070ea8b5c647628f53c22b3ccd7ccee12d628e8daf1b483b3863cfe2f61123e",
+      "size": 2985
+    },
+    "licenses/upstream/figcraft/LICENSE-APACHE": {
+      "mode": 420,
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "sha512": "27b8c0252eae50ca3ce02ab7c5670664c0c824e03eb3da1089f3f0a00d23e648a956bcb9f53645c6d79674a87c4cc86d1085dc335911be0210d691336b121857",
+      "size": 10174
+    },
+    "licenses/upstream/figcraft/LICENSE-MIT": {
+      "mode": 420,
+      "sha256": "360c12b61568ef50808e731c98ae84110ea6f674dc34ac1ecb05d7abb9a6079a",
+      "sha512": "7e8261e9d56fa93a37e802cbaadf28ab14c5be8a935859aa93a5fe42e7fc3adea8c9d18b9409d5b446f9a53186c766c403db0539a22ce4f960259a374286ada1",
+      "size": 1100
+    },
+    "licenses/upstream/figcraft/NOTICE": {
+      "mode": 420,
+      "sha256": "3de704e57b81ffcb2a699f21fcf912559b28cb1d0f1584a7fbb3a080b4b695d6",
+      "sha512": "feffb764d5ba37a225ac0d5c11e7095f0d6e34320bcca34d8c680449c5328d96b6e385037a475b12a0048b9b3a0c096ae3b0a445f8905e80fca9143f012ba0cf",
+      "size": 1096
+    },
+    "licenses/upstream/figcraft/assets/app-icon/LICENSE.txt": {
+      "mode": 420,
+      "sha256": "9a58cbf7d438bb0fadc981423002adccd267aab21d0ab1c1e5c43d998b7702d2",
+      "sha512": "cbc247557f095670d9b540e177d34e422e1580333e3a479051465d777c2152f8e6c5d28c5927b513a6e967a6a911317eb0f538e6b3bd81b0fbc73e17084a3ff0",
+      "size": 539
+    },
+    "licenses/upstream/figcraft/docs/brand/LICENSE-brand.txt": {
+      "mode": 420,
+      "sha256": "904f8307a25cbb220f949846d84561aee9bf8f0cdd64380362f07ee674d80323",
+      "sha512": "9b0a1f748977e8fea44db22db4c3ec5e345aef7200fd0f0f2410e184b39455912409e600f0be915e657792098620ec7da2b12ef2a43efc4cea92d00218bf05fb",
+      "size": 2256
+    },
+    "licenses/upstream/filmcraft/ATTRIBUTION.md": {
+      "mode": 420,
+      "sha256": "e8a1f1ad8335878370b3cd9994a20a1af0bfcf5cb33040496042d831325a703e",
+      "sha512": "c06fb71d7b1a76ad1f26a133e0890f1669e61f11c4f899a8eb5e95822a4d1c8b675c099e22220e52cc36eb7f07f512c97050d676d5949b6c12d7cde901a58c38",
+      "size": 24365
+    },
+    "licenses/upstream/filmcraft/LICENSE-APACHE": {
+      "mode": 420,
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "sha512": "27b8c0252eae50ca3ce02ab7c5670664c0c824e03eb3da1089f3f0a00d23e648a956bcb9f53645c6d79674a87c4cc86d1085dc335911be0210d691336b121857",
+      "size": 10174
+    },
+    "licenses/upstream/filmcraft/LICENSE-MIT": {
+      "mode": 420,
+      "sha256": "d2d8416f0883694c23b473e26372506e9e11f5f41b55a92b7388dab921d9a207",
+      "sha512": "5181973bea40d3758b832d4397cffa35f9c3d5083658b99c588899a7cac10e3f32622f22f0124de47e2a3c36b8ed21e0bc7de45155bb631a9c4b6e4100ca9c39",
+      "size": 1101
+    },
+    "licenses/upstream/filmcraft/NOTICE": {
+      "mode": 420,
+      "sha256": "5761787313b9d6c13dd5f03da2e04209ad7bd08eff8920edfd184141d791195c",
+      "sha512": "c2abaabc0c09bcd8cd0f1eb9ed56e0f31e43892cd51473f73b215d55cc17d81b51203a1c366b3356ac819bc442f258d26c048f5fc283d15921b08f637e72aaa7",
+      "size": 1296
+    },
+    "licenses/upstream/filmcraft/apps/filmcraft-web/web/favicon.png.attribution": {
+      "mode": 420,
+      "sha256": "95525d61af0f0f785d2b0dbaa64f7012edbfa864d460ebde9fba35d23c0e3aa5",
+      "sha512": "8be242b33d6009c94b3a69f772ec6f5904dd747901956e8e08abadb1fa60654cd71bad88d85330759e8659fb60d617b32d1a5280fc0c20d6dc152078a5d6dec7",
+      "size": 524
+    },
+    "licenses/upstream/filmcraft/assets/app-icon/LICENSE.txt": {
+      "mode": 420,
+      "sha256": "79d32f0c9576355f9eaedf8ba8727a149cf3e42ed753ff5d25ac882bf072e27a",
+      "sha512": "11e5d4dd3f9b0796ccd7997295d9edb49b496ddba38ee380f68fa5e159445fbb394b09ffa3a19812232176020c85695ab842fc0b2306d835faec9593256fb4ce",
+      "size": 625
+    },
+    "licenses/upstream/filmcraft/assets/app-icon/filmcraft-1024.png.attribution": {
+      "mode": 420,
+      "sha256": "ff9a232c16c201c9961ebd0a0dfc5c79bb6064803aa5b5af15af5cbcd227ae39",
+      "sha512": "faf2d2429ca47479f7a9acc42e7ea46b7cd3a431c2719e91b4b7e35e076d0cea120ee53aa56e7bcdd93a5c4e7e9d8698b67ba520e7e1bc60b095ee478a81cfa6",
+      "size": 446
+    },
+    "licenses/upstream/filmcraft/assets/app-icon/filmcraft-macos-512.png.attribution": {
+      "mode": 420,
+      "sha256": "c4d06585561176165d4a1830821c488ee8397a81a65b92abf64b0ff446b34271",
+      "sha512": "550d2a6017a6ecce5dc868d3b33f7baa8b7db7f904c45b2fb48a2867ac24b5f8dd96328229374f089822f83d0a083d72b52914a251ca1570402ca997892abfc7",
+      "size": 576
+    },
+    "licenses/upstream/filmcraft/assets/app-icon/filmcraft-small.svg.attribution": {
+      "mode": 420,
+      "sha256": "4f7c827caca335e5363e7b3363f2947fb413a2994eb7449f0e0b1e46986dbbc8",
+      "sha512": "9b8988c71a8ca3353b59cc76bf047caebbafc220a63e7992248ea58199e598f8c14131459a4e3fdb2ba55401e7c40349dca4264398e6acdde37cd305cca03843",
+      "size": 506
+    },
+    "licenses/upstream/filmcraft/assets/app-icon/filmcraft.icns.attribution": {
+      "mode": 420,
+      "sha256": "0fffaf13b093c6986421d4afcb24924003d337c4c6da0282cbcf493b7e011e08",
+      "sha512": "b76fae7cbd2f1cc98f9e8735e782df6eaefba2c9c0c11322af1a6c198d2b4a708419c16314db01cec9be0948b2fb68fa2ea8c4a8d79097988b86ed074397fad3",
+      "size": 474
+    },
+    "licenses/upstream/filmcraft/assets/app-icon/filmcraft.ico.attribution": {
+      "mode": 420,
+      "sha256": "ec78e93a1efcf4f11cf91bf4189f77ffbc260d5716d3780074703df65a4038bd",
+      "sha512": "9aae87109f06c9fd744ec5ca6cea3d3f840ddd7b8708361f5b1e5240f67ce0ee46ef88616592d373ba52eccffa675d66b15e9b4d91092aa273da26023bb1c2c1",
+      "size": 529
+    },
+    "licenses/upstream/filmcraft/assets/app-icon/filmcraft.svg.attribution": {
+      "mode": 420,
+      "sha256": "7b65fde02ff766cb82d8c98e6de271c05c92e084523c9e3ed1d090f6e927e376",
+      "sha512": "577ddf3105b913aa01f25d10e0ece384f663735edaf181cd8e94dea132aa8934bf45ae5040232e21da3599cadc9143201c726ea5a380eefc9f5c710bba8cea53",
+      "size": 686
+    },
+    "licenses/upstream/filmcraft/assets/app-icon/hicolor/128x128/apps/ai.storyteller.filmcraft.png.attribution": {
+      "mode": 420,
+      "sha256": "aeaa30105ee0d383bae35dc8beaf6c2cd6fea5c077e825d93beabe9f991845d6",
+      "sha512": "81a6cc8a622b5c08b9abfb0fd087a1c6d945845cdeb2232fbd0bf1e0edc9e7c3c8c593d16e4ed2deda754e5e86978684a215794975fb3e7115157012ca867eac",
+      "size": 468
+    },
+    "licenses/upstream/filmcraft/assets/app-icon/hicolor/16x16/apps/ai.storyteller.filmcraft.png.attribution": {
+      "mode": 420,
+      "sha256": "1962965c111a82b8d2b6974e2a4c453e728e933f49aebe5643cc9ed1b247d33a",
+      "sha512": "c8388dbe186d05bf10288f3a0c17f450065f638583db1b3a0e3a6037c896b19916e5c69bed0e13a873372c35c682a1a0d9fb447c5cad848199bb812c5d881b97",
+      "size": 467
+    },
+    "licenses/upstream/filmcraft/assets/app-icon/hicolor/24x24/apps/ai.storyteller.filmcraft.png.attribution": {
+      "mode": 420,
+      "sha256": "3d9e2c539207b2e97531590f5cbe72233c88775af92086c093d7d3d4031739e6",
+      "sha512": "0d6e6f5b9fb37e68dbcf78b8b6ae08037921d5cd9050884d67216a5f86e6ac0d0cfac8ccfdd8901aa1841ec91939239991eb9c024ad8541a8ac67701763e1c35",
+      "size": 467
+    },
+    "licenses/upstream/filmcraft/assets/app-icon/hicolor/256x256/apps/ai.storyteller.filmcraft.png.attribution": {
+      "mode": 420,
+      "sha256": "7f1593c09a170f2111ed4cefa44f680f3fdea447a0187abecc0cb43b6e4f02da",
+      "sha512": "d27ad6b3ac1cf21ddb9943a4605c1ccd8bdf428db62aab9dfaf421f1e72ad0333b794d4804edeb7734ce62642d752938d20582c73f0c56be8271bdaa0504edd1",
+      "size": 468
+    },
+    "licenses/upstream/filmcraft/assets/app-icon/hicolor/32x32/apps/ai.storyteller.filmcraft.png.attribution": {
+      "mode": 420,
+      "sha256": "5677a001098a33a526255e83651056b45c03efaea2b6cff8798195e3c9a2f510",
+      "sha512": "4439d67fd223c9f670399e0a02f3414f575e2a071d81887fc8d87ef9926d471e36f24f41e6f8687c2c898fdbc7b195374e682d644dbcc62f60a211fd484d052b",
+      "size": 467
+    },
+    "licenses/upstream/filmcraft/assets/app-icon/hicolor/48x48/apps/ai.storyteller.filmcraft.png.attribution": {
+      "mode": 420,
+      "sha256": "8a64646a10252d871c3434f1edfbaff9a9278387cfea84fadd8e463918baae0e",
+      "sha512": "b1839597db004ba7ebf8e54e92257567d9be615b9cd5a51a5b52634a404f4c691ee11fdf76af99406f6b755767d40470084bf1cf06f8b5910321510acbe791ca",
+      "size": 467
+    },
+    "licenses/upstream/filmcraft/assets/app-icon/hicolor/512x512/apps/ai.storyteller.filmcraft.png.attribution": {
+      "mode": 420,
+      "sha256": "f51a748ac9f60a89e7eb27d71d5103a2459a27b11aa1afce1981a13a8274d84b",
+      "sha512": "a5e4e8d1adb35fdea196711afd4362f8ce94bbc506e35b0d1aeece305835e175fba9e412537c1644cd91b7859bf95d9c90ae180279598cd8a8dbe76a145c3b8d",
+      "size": 468
+    },
+    "licenses/upstream/filmcraft/assets/app-icon/hicolor/64x64/apps/ai.storyteller.filmcraft.png.attribution": {
+      "mode": 420,
+      "sha256": "3380f020eeb3ac7b32ac44b4d027e7fdaadf3e17a9b3d4adc87b2907cc00d32e",
+      "sha512": "29d1dd4f44e4946c4be02d45a99ea5dd39cbe0dc50b321a266458ed8c98ce9b865fe31368b715b95389d2c3e95a042a15d966243ce19e89c8d48fc78ea811aa6",
+      "size": 467
+    },
+    "licenses/upstream/filmcraft/assets/app-icon/hicolor/scalable/apps/ai.storyteller.filmcraft.svg.attribution": {
+      "mode": 420,
+      "sha256": "bb9928c4587e7690cff9cdd249d80f9537cd819478266740e235848bd4ff3e09",
+      "sha512": "95e0b354cb3edea6022d97f9e0ae3234956c85053d65fa5dae7fd7b78cb3df0614cb5c46fa589f8eb0a83e431a596cca23987424ddc2a382a21c6e4e1ea9cfb9",
+      "size": 465
+    },
+    "licenses/upstream/filmcraft/assets/fonts/Inter-Bold.ttf.attribution": {
+      "mode": 420,
+      "sha256": "207d44f72d0e4ff451a9dfca26c9da686a06d2cfb3c8e0b02fb2af2aae105405",
+      "sha512": "b08a8f2be60e8f033fd796e8b291bbb83518a5a66ccf2da67f18f46e4f03ba6fc4d1c3daaf5c17259637dd91781e8d651a527a08a9000ed04c927523547eaf56",
+      "size": 490
+    },
+    "licenses/upstream/filmcraft/assets/fonts/Inter-Italic.ttf.attribution": {
+      "mode": 420,
+      "sha256": "767ad7b0c79fddb0e1b16dbcac3b57bd59df86f72c2dd98fbe23ac92bdebcb5d",
+      "sha512": "69dc882f5e8288d021871e2c4cdae0a7bf460723fe1c1b1162bfe86cf8ef2e2852fd01c5bfe3ebfcae7e894333c3f501ccce83b2a0e746625da3419d39870586",
+      "size": 494
+    },
+    "licenses/upstream/filmcraft/assets/fonts/Inter-Medium.ttf.attribution": {
+      "mode": 420,
+      "sha256": "ec46a12fd5df95dfd044c675b1a02d414de0d4f3b7f8511f45289c14499459b6",
+      "sha512": "55e0613e17554bc3444e509c62e3e265a4f4ea346c8e5c785cafcfce4cebb28a2d58ee5e98c46638ec2740b5d8fffbfe821a4ffaa2cc69f033ecca21d2e7d20f",
+      "size": 482
+    },
+    "licenses/upstream/filmcraft/assets/fonts/Inter-Regular.ttf.attribution": {
+      "mode": 420,
+      "sha256": "0e6e9b503157c34daeede7c0b0f1ba7f0ebb4e84cd0f05568ed74c618368b52e",
+      "sha512": "9dde3f226d1fbf6923637578af6d6b75107d72c392a2149c23dac7a8a82cf2912bbb7786d183eb0ac752fe1b3074909c2552a0a4ecc5b5fbe7a6138df278e6a7",
+      "size": 484
+    },
+    "licenses/upstream/filmcraft/assets/fonts/Inter-SemiBold.ttf.attribution": {
+      "mode": 420,
+      "sha256": "019da1edbbe1c6e1bcc036fae249fad1a23c5ba62572b2a7567fbdb98557bc42",
+      "sha512": "304689c641d1789a4106ee580a5d713cdda57de7dd6d4af1f68d9ef3cd71f6d7a0672976a511059a462ec866bb7680248d2be3821369a5ad8512e4804d724983",
+      "size": 535
+    },
+    "licenses/upstream/filmcraft/assets/fonts/JetBrainsMono-Regular.ttf.attribution": {
+      "mode": 420,
+      "sha256": "ec548030afc176d90291b6f5ea93df4843184cec2fd8e867e8f453bf4fe83343",
+      "sha512": "8ec5e3c9f12cd9f31e56b305bdee457dbf7b7d4e6049cb7f463ff42c33eca113a8f63fe902a6cf7667a615949d14c5be73727710ab0acebe0c215c37fac2f25a",
+      "size": 516
+    },
+    "licenses/upstream/filmcraft/assets/fonts/NotoSerif-Regular.ttf.attribution": {
+      "mode": 420,
+      "sha256": "e4a5764962e0ef024db4f718b66efc5e7395a7196a3b5abb75de8bee919009b6",
+      "sha512": "a6b244a7918b516529937060b5438815b7d340d817a463b43a512796d2dfcbd4d59f2d49d87b5a2008f36f6794c2496b1dd3ebdb884e9cbfeb2495c1d28a0719",
+      "size": 523
+    },
+    "licenses/upstream/filmcraft/assets/fonts/OFL-Inter.txt": {
+      "mode": 420,
+      "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+      "sha512": "593d608d18186478ee378027cbf8ec480055862acdbd437626f3c36b65b61f08024ac90d2ce007d718e55a4134e61f6e9df46e18ccbd5fcd7499737ede288b2b",
+      "size": 4380
+    },
+    "licenses/upstream/filmcraft/assets/fonts/OFL-JetBrainsMono.txt": {
+      "mode": 420,
+      "sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+      "sha512": "82b369c518db1bbf733d05efd7a33318abd569d3149aa3f3e3fe58952ad2e241e89c2392faf7d7fe6a0d636ac1a03698efebd86fa3e58b9966e2b8ccb9bcf2ce",
+      "size": 4399
+    },
+    "licenses/upstream/filmcraft/assets/fonts/OFL-NotoSerif.txt": {
+      "mode": 420,
+      "sha256": "cee9892f9f0cc8fe882c9e9537ee6a89621d86ee7ceaf70b02e2b2b1c25c061a",
+      "sha512": "df9ec827d8c71a5566862223e195dccb6e835438c1df2756f887e19dd44cd6589c8cf6853ca47410607dd81599c87daaea698f803a2de5ca2248a67df94e23b0",
+      "size": 4396
+    },
+    "licenses/upstream/filmcraft/crates/golden/goldens/blend_modes.png.attribution": {
+      "mode": 420,
+      "sha256": "f7893383460783b3ee39d6c9e6cfc47ce9f9e90fa79082e0cba18fb3d5734a08",
+      "sha512": "90a7c6b9f0cb5490eedaf21266de60a629678c766c9ca5963ac956836cde80fec165c290761ac486e5c825b7870770af709e17940918d2602b6026d5ee14c111",
+      "size": 531
+    },
+    "licenses/upstream/filmcraft/crates/golden/goldens/crop.png.attribution": {
+      "mode": 420,
+      "sha256": "30688f3a4ffcb72cc0210e463cbee918679cc531c3245c87c462f2a64e8524fa",
+      "sha512": "d986fc54459c1d0bc252c0d0a74ee0392a4399c94d2904ac001d6410c4331933e8ab66180749c627485f59c9985737c1f27bea1abebbbf00f74bb0377404753b",
+      "size": 477
+    },
+    "licenses/upstream/filmcraft/crates/golden/goldens/gaussian_blur.png.attribution": {
+      "mode": 420,
+      "sha256": "2b0618dc792ef4e7b748aba528e56062c62a4d942460f451a6175f79c1a1d2e1",
+      "sha512": "5646e923b35f4681544652a4b84b80f04102cce788930b6689ad5a3a974c1fd8560f01fde60009ac6a67d07483ffad64a955a3d2e4501b0e19e69dd6210e3c90",
+      "size": 504
+    },
+    "licenses/upstream/filmcraft/crates/golden/goldens/graphic_rich_text.png.attribution": {
+      "mode": 420,
+      "sha256": "801289ac4c5e819bd105fa60c4348151549aaca47245cec62df43403c4e1f9b7",
+      "sha512": "d919367e3e9b79ec89051e48eaa471fcf0db509225c10a1ab6809ea949a7552900a594b3c433fe3d5ede7dcc894ac449930a8597678297a25b8957846549c144",
+      "size": 550
+    },
+    "licenses/upstream/filmcraft/crates/golden/goldens/graphic_shapes.png.attribution": {
+      "mode": 420,
+      "sha256": "eb4374585ed0a429fad149af6a6c84d28ea04bebf71cd2b7129c1c485a62b196",
+      "sha512": "23e7fb288f66afe4760ec0fe81d6c06cbbe170f9f724e22b4406f9172db6973b5f6145bd1a4dc50027477302c62671c20b58f0da0c7ef52cbccedb26d73eaea6",
+      "size": 555
+    },
+    "licenses/upstream/filmcraft/crates/golden/goldens/graphic_template.png.attribution": {
+      "mode": 420,
+      "sha256": "862e0176c226712c1b23e949290ed2fce273e3d6c98eea0d33722b6d2c9dc009",
+      "sha512": "de7e4437a16133f82862d2f07b56116566099dab4842c8cc7bfd8605b833160968b6d2a889b7930a6a77d5f113a440abb1d0b4eec20f67f7cb06a5a0328784bd",
+      "size": 557
+    },
+    "licenses/upstream/filmcraft/crates/golden/goldens/graphic_title.png.attribution": {
+      "mode": 420,
+      "sha256": "4656b0c05759f121d539bee7ff76a9280f6a5ba5aec9d9a8bb7fbd3ab6fb5cc7",
+      "sha512": "2d6fe711c2c5c8bf7f5c10127b6467ab1e0e3e15607b22f69f629aba46a0867a77725e650734b38f1c644599ea6a5a670fd76b24b40c2afa2ff013ad7c443c30",
+      "size": 548
+    },
+    "licenses/upstream/filmcraft/crates/golden/goldens/hdr_tone_map.png.attribution": {
+      "mode": 420,
+      "sha256": "bc25317f5a2815a5b5807692f3016acdd0990057817e4737e148dc1f46d4639e",
+      "sha512": "413ae8a32e44088a4b06033acfe5d68fe81cb4defb4120d90dd86bdd471044484a45ca74695564e26f93859112adabed2759f092ce86afdc253db60df0affb22",
+      "size": 558
+    },
+    "licenses/upstream/filmcraft/crates/golden/goldens/log_to_rec709.png.attribution": {
+      "mode": 420,
+      "sha256": "85305f82edae2a54c42b6c190739be5f31f23f5c9ffad27e0cab4424f38a51ed",
+      "sha512": "7fd6af980b51e5025c73fc5c4e919639168877bcd0713031ee6045d81d73e67cec95378f0aabe080cf987925d5459ac16808f52925390db90561fe310b03f89b",
+      "size": 557
+    },
+    "licenses/upstream/filmcraft/crates/golden/goldens/lumetri_basic.png.attribution": {
+      "mode": 420,
+      "sha256": "40694f09da38dfb973139534b7ce30c334c4a85077f4e2b639dc71b694ad79f3",
+      "sha512": "f9fc02d8adf621fd398a435d402f410e392c4eb9576c6fc9d3b1b5e44f2ed30c4cdbce650f73af82fd0fca24df2330c82ebfc64aba09ca0095c5330c9bebf943",
+      "size": 514
+    },
+    "licenses/upstream/filmcraft/crates/golden/goldens/lumetri_hdr_pq.png.attribution": {
+      "mode": 420,
+      "sha256": "290d1320bb72b0d9fbc6c158cb1cd035e0bc4a72795bfa041d612071a19a0521",
+      "sha512": "c30b2787ba54dff66d6f1011810da8416e492ba1ddf5f3c1bf05f3f5cb37aeaeebc2162ba6a29d4539978c6077fa0298859c84209c65ac6d48f774d15ed5d1c8",
+      "size": 567
+    },
+    "licenses/upstream/filmcraft/crates/golden/goldens/lumetri_presets_grid.png.attribution": {
+      "mode": 420,
+      "sha256": "9950841415e775980e4deb3af9aa13f9057798fd4e6e3dccb6197114863cd628",
+      "sha512": "213d03344e9fdba1d39945543619ad505f3a244b204121db1cb1394caa5a7623c7db1e6ba25bc8f6f033cc504b6875bfdad93a90c5b08f28bd9cab2f867a37a2",
+      "size": 528
+    },
+    "licenses/upstream/filmcraft/crates/golden/goldens/mask_blur.png.attribution": {
+      "mode": 420,
+      "sha256": "2a35e088429b072b93b0e9f53ac87f37c86763f721f0cf518dfaee664e4e7454",
+      "sha512": "d07bb28a54ab58b67fd8d35a2b08acef9d074b4a09bab0005be9b3fe87f5253f102984fdd72957de51f58b0fa761f9be0fe449872a4e67009764d6ad97f8a352",
+      "size": 528
+    },
+    "licenses/upstream/filmcraft/crates/golden/goldens/mask_color.png.attribution": {
+      "mode": 420,
+      "sha256": "db911e28412a0a04185fb84b63c287baa61d5b8e10bc319eeda188cfc04669b1",
+      "sha512": "1eb3f8d6b7b83d063c6305a1f71816f6b47d3c6e548724cc8d63a22b344a26b6597590503ce5e088daf0f344fca7c4442f9f31c68ea03a677a62a56298108566",
+      "size": 555
+    },
+    "licenses/upstream/filmcraft/crates/golden/goldens/mask_inverted.png.attribution": {
+      "mode": 420,
+      "sha256": "9ff440a8da5dd9246f414203487c4a53b4e00440edc0a8ef13ed9a764a8adf38",
+      "sha512": "7265866b2a95efdd6e029a55dd2737ec0b1c68e2ed0774c1e130a7cb902fe0b641c017901787cbc98767e45a78306e67744fab3191d1c0ff0088b3bd6062b47a",
+      "size": 545
+    },
+    "licenses/upstream/filmcraft/crates/golden/goldens/mask_opacity.png.attribution": {
+      "mode": 420,
+      "sha256": "cf06c71f8fe2b20eac27da50b922f74443006326238050fb6fac606ba54d3f8a",
+      "sha512": "61c1d3b9b614c9cd53227cbfd9371fac2e5081776cddfe8c8513d77a0de9cf0ec2d4f5898e7bcb53fda3893e407e93e510ca1b375e1de67b5c76c92fa5b5bef0",
+      "size": 542
+    },
+    "licenses/upstream/filmcraft/crates/golden/goldens/text_burnin.png.attribution": {
+      "mode": 420,
+      "sha256": "c488dd9a071eecdcd10db4cd9a4ea6214c46ac494bf9925c6852845cfd1f2254",
+      "sha512": "8d5284445d8b349f64e110e7ffc9743ab941c5214563a093f699860af0316d3ff95389a9a0d82fb322660acd56ed4758ad5614f941dd7b736e2cb45a0f9b46d4",
+      "size": 515
+    },
+    "licenses/upstream/filmcraft/crates/golden/goldens/transform_opacity.png.attribution": {
+      "mode": 420,
+      "sha256": "32728c886f687028345034e1c5c1abf041d69a48e71c167e71d092692d6d7c6f",
+      "sha512": "17e03e4a46a6618217eab76e9d19ea6041d9a1fe0b7c6ef29ead27bc5b46d1df1e925cd628aee852d3a35a738c9cd9e65e86d911394a543c7f8ba8c988c0afdf",
+      "size": 520
+    },
+    "licenses/upstream/filmcraft/crates/golden/goldens/transition_cross_dissolve.png.attribution": {
+      "mode": 420,
+      "sha256": "ab62186964f0cd21d7157a4f1f3476977dbd2425cf8db0c3eba4b7cea4d1b56e",
+      "sha512": "a02f442e6d3075d290f15440450541ac5a9c2a935aa19d7ac234a88a06750e715857f30c123325c493969627b8577d9ab935b66783ceadc766d7eb2a8059f105",
+      "size": 529
+    },
+    "licenses/upstream/filmcraft/crates/golden/goldens/transition_dip_to_black.png.attribution": {
+      "mode": 420,
+      "sha256": "45fe39d8f69ae6e1a2b7f7a0a157e9a4529d7efc05838a01f30e332f9fd24570",
+      "sha512": "d7a4e2d627b01dcf749d24949fe792c87ba86da754e24480021d225d21d0ea6443a8f3f40fed86d274ec184086f572faf2009850cc0627d1aeeca31db377999a",
+      "size": 523
+    },
+    "licenses/upstream/filmcraft/crates/golden/goldens/transition_wipe.png.attribution": {
+      "mode": 420,
+      "sha256": "0d6c5b98643c8b6ccdb4e33902d3cea755accd0d8af695143daa102d166c8cbb",
+      "sha512": "0d21f4589bddd00d0e524f4dd07036d8f6311902c963a1bdb535947f4b7d2aaec9d78a8a512da7f1a83e77ef1fc5f78a537d8b79994b1b19ba33df6272cd0f37",
+      "size": 499
+    },
+    "licenses/upstream/filmcraft/crates/golden/goldens/vfx_distort.png.attribution": {
+      "mode": 420,
+      "sha256": "f947d2647feb5f14bacc35a880d6b180e7e5c93a29c614d92bcfc04295856bed",
+      "sha512": "177e7922b2102fc359692b9c3864927bda5f6b5c7d146916d7fe34ab1e32670a4e829bf8db71eb5ce43598b96adfe4f56329df16022695e7c90e9b1198a4b9f5",
+      "size": 514
+    },
+    "licenses/upstream/filmcraft/crates/golden/goldens/vfx_glows.png.attribution": {
+      "mode": 420,
+      "sha256": "7fb8921bdb4a9d83b311d83c3903e6380d32d462ae553098ce3e629ea1a60fab",
+      "sha512": "6ed25925175db1ab54e11a7ce130fd4b2a98dc6ad917bd4107ea7d303bfc1c38b4e0dda9bcecb1b62ff2e1b4102b2ec24ff7c968de8317c3d290801ecf43caa9",
+      "size": 497
+    },
+    "licenses/upstream/filmcraft/crates/golden/goldens/vfx_spacer_stroke_shadow.png.attribution": {
+      "mode": 420,
+      "sha256": "3c00431121f5aaabc08f17e6f07460f88b07520a3f50aa6b2a774ef75fd997fb",
+      "sha512": "751efe9d171d0c1760739592ef1490a117b4bd00748c261cfa6d42205fbccacfb6797a61dd4b36d4d102aae50a70c88baf8076579fbee6ec7ce144980f874289",
+      "size": 552
+    },
+    "licenses/upstream/filmcraft/crates/golden/goldens/vfx_stylize.png.attribution": {
+      "mode": 420,
+      "sha256": "9882096583feb009dfdd21ccfb0a3ab8e89cce0870f8fb0436ff753fdad10c3e",
+      "sha512": "017df952df1ae308cebbf5141ff41709f0c4f0967a13283cb1721134f2b068201a39d069fdbb1c834d97507bb9c6b3d9a92ad5e1e93cec16ebb54cac54f4313a",
+      "size": 522
+    },
+    "licenses/upstream/filmcraft/crates/golden/goldens/vfx_ultra_key.png.attribution": {
+      "mode": 420,
+      "sha256": "8572d8c263f473b69a929bca38a6c89a932c86d36c9bbb427ebd43cfe6fb0d49",
+      "sha512": "8717d970fd3eae5483ad65d43d1ca428656e6a9ad3a52d336dae4e60e8bfb444c18832cfb710cd7c122645ee324eb6f6711d275e81e68992181a87f55068897a",
+      "size": 521
+    },
+    "licenses/upstream/filmcraft/crates/golden/goldens/vfx_vr_rotate.png.attribution": {
+      "mode": 420,
+      "sha256": "3e79a69c95a033ffb611123bacff79a9708918c8a662e1764076b1ce54ce95b7",
+      "sha512": "056ce4c6b5c3a50828b6084222a938e0ffcaf87f75883f16a1c712aa252ca2a96b3f2a0000ad5b6096c9059c4035e64dc37ad8b1a350868cefe948ba8e6bd2f1",
+      "size": 500
+    },
+    "licenses/upstream/filmcraft/crates/ui-egui/src/i18n/fr.tsv.attribution": {
+      "mode": 420,
+      "sha256": "fe1ead4240cb0ecbc00a18b5b3454381ed37358b376755e9fb6d53268daaa9ec",
+      "sha512": "c04e38fc53d38fda58e84b8ebb462fe623209fd08e7dfe664d6715c67e8cce50d15208ffbeacd64e6864b8ad8bd067e12ca5ef59aef3a3d218a25796c041abdb",
+      "size": 348
+    },
+    "licenses/upstream/filmcraft/crates/ui-egui/src/i18n/id.tsv.attribution": {
+      "mode": 420,
+      "sha256": "6961b84d2cad3ea5f89a105a8d4903e34d568f3146ba7f75cf8d6b4fb4b4eb18",
+      "sha512": "6d7e226ad92a3855126b94ac24b3b54c1c235cce7935e51e1760a204d52e8297f7e67c5bf2ccb3865da17a75d43c91069ca360037f691d2e365270cc1bf9b03f",
+      "size": 356
+    },
+    "licenses/upstream/filmcraft/crates/ui-egui/src/i18n/it.tsv.attribution": {
+      "mode": 420,
+      "sha256": "6429531658aed082f1e527fc4a55127f1a4b78aac88d265d275dffb9e9c94f74",
+      "sha512": "2fed1dde121f7d8f11ad52063cefe5cf01c85420c2e108d73cae483919a6884f2656faf50f8730e52fa17220b3e318b5a9222d829634f0b7ae76169d72ffb390",
+      "size": 349
+    },
+    "licenses/upstream/filmcraft/crates/ui-egui/src/i18n/ko.tsv.attribution": {
+      "mode": 420,
+      "sha256": "8928736097aa5c55cfaf530e103a22f7a878a368dc1e1c7cfaeed9ba77e44cf2",
+      "sha512": "6998e90c8e53425d43d02ff184ca5064ac9f3d5571b82d777206c2b2924242bd0d0707fd6c998120c0a8ac05a34a28039c3374cda1aae2f63b67a8f2dcda7262",
+      "size": 336
+    },
+    "licenses/upstream/filmcraft/crates/ui-egui/src/i18n/pt-br.tsv.attribution": {
+      "mode": 420,
+      "sha256": "cb32d459d5f3ca25f87434e01d79f644a9c97239b53bdaf75c3eb4d476d1d77d",
+      "sha512": "e8a5fe37ca93e59afdfd0ac76ce1ff4c74b6382a7142935edbc4d023a118908564e8dbd5835223c5d074981d79b4b9cb716f64b7ba51472f157313581eb8aaa4",
+      "size": 379
+    },
+    "licenses/upstream/filmcraft/crates/ui-egui/src/i18n/ru.tsv.attribution": {
+      "mode": 420,
+      "sha256": "aa47e7e83c77ec3f2252e9fedf1604106fc3e33e1d05beeb455aae5547066f81",
+      "sha512": "662cf655eac842960d0a5601ece122c6999d805799da2e2d384658e18c879a7550b8840b1aa87d7cea40ccd500faa78e225982c14cd19971b0fc085c536975ee",
+      "size": 345
+    },
+    "licenses/upstream/filmcraft/crates/ui-egui/src/i18n/uk.tsv.attribution": {
+      "mode": 420,
+      "sha256": "f80aa33baef14b23b13f3ba1226bb11860cf8c4073fe9d319fe96a317c0ba0f0",
+      "sha512": "bcfc3c376a35950df73b7471b652d77c716ecb1e7aaa2f930ac8515bb20b439ba7a27839bbf1b64c8cf4087a12a2573d96a9cb054d797a57e4d03bdaca70a3c6",
+      "size": 355
+    },
+    "licenses/upstream/filmcraft/docs/brand/LICENSE-brand.txt": {
+      "mode": 420,
+      "sha256": "d30f3aee39b72be3d1c1bdf994b75470ff53a354ca8ba6039c3a70a647b732fe",
+      "sha512": "983e3b99e90536052656a981082f0ad7c8cc81fe90dc7fc7f34a4de6c9204a0f48e5a9260719253f260ba5f682de9aed88e84ae2e9ec895b313c4afc1bebc656",
+      "size": 2263
+    },
+    "licenses/upstream/filmcraft/docs/brand/artcraft-logo-white.png.attribution": {
+      "mode": 420,
+      "sha256": "4b646906c4f40e0f80e4f01d4c237bbcfee16a1186ed573e818b88ca4ec0cfd7",
+      "sha512": "678da91f2c6d02d340932b9b85b4036659a24e76072d83a997ec542215b77123699039a48d745a18ee817813c07e50fdc2d4cd8908a95bcd0651b67cbd772368",
+      "size": 885
+    },
+    "licenses/upstream/filmcraft/docs/brand/artcraft-logo-white.svg.attribution": {
+      "mode": 420,
+      "sha256": "cd548fde79eb62f1a63a631984b742db2d9ca6df7d1e4c10812fefdcd8c2ad80",
+      "sha512": "e73606a3499243fa161e82ae39a6c758e37e480e9f075ea91ac78c2ef294d3b359118cbf970a8c8aaa18e8ab8946e04036a34c227a73b5837700c3270b588f1e",
+      "size": 876
+    },
+    "licenses/upstream/filmcraft/docs/brand/artcraft-logo.png.attribution": {
+      "mode": 420,
+      "sha256": "39d4e34d3809af67505d607d5b24c5854e4b506abc09edceaeef3c1525c2ec4a",
+      "sha512": "05571c22f878248814916cf9bb939ffa51d7dbe4f70a2312d9dc6c6c1733b34507e51141586b38f5774630d9af7399d4cf6bd2e24691128a0565e6eef8bce897",
+      "size": 901
+    },
+    "licenses/upstream/filmcraft/docs/brand/artcraft-logo.svg.attribution": {
+      "mode": 420,
+      "sha256": "38f6ee6b7c40edcd8f27514f45fdaff4a63df6d3e07cf7d149b91538c942dc5a",
+      "sha512": "5a2783bdc0995c4786039e1bc51191b9beab3356d2b3faaf62ec83a9af0eb56dcbc517bf794035d9e1d36ee2a16d22c3a8768c9c367e5fa836473fe56e377e9f",
+      "size": 892
+    },
+    "licenses/upstream/filmcraft/docs/brand/artcraft-mark-black.png.attribution": {
+      "mode": 420,
+      "sha256": "353569f0b4a6b550e751e9a04baaa82043a3f3a4c26e046ea191c0ae04724f47",
+      "sha512": "4c1dea18badd163697c7a100669751b12bed42e3d2af8f4deb10806e698e6506bfac6525df68bda7dd6826c1cb13c904ee6acffff7a5220ff3f681d1e63929df",
+      "size": 826
+    },
+    "licenses/upstream/filmcraft/docs/brand/artcraft-mark-black.svg.attribution": {
+      "mode": 420,
+      "sha256": "fa993eafbf7fde7c3e7765cec8730fd4b1958fd844fec6d25b2c3ff2aecf1d9e",
+      "sha512": "e06cd5802772dd1856c6a68ec27364025503a742f4635c93a8a02272f7b2c472a27b7be99e29584ce19bf620b63ec609d56bf5d1b8156ec19adf7e52326e528a",
+      "size": 816
+    },
+    "licenses/upstream/filmcraft/docs/brand/artcraft-mark.png.attribution": {
+      "mode": 420,
+      "sha256": "87e1bbadcc26f7a25f45a6e3d5d37d71eb16be28242f0534e2f55494623496b0",
+      "sha512": "44bb8317430d5abbfaaf4875f9a132740d470f763f8075d1c23e1a6d638f003c3c66d4feaee19dbff1cf9917434d86bfe7005c099b7175ce798c528f08ec0067",
+      "size": 863
+    },
+    "licenses/upstream/filmcraft/docs/brand/artcraft-mark.svg.attribution": {
+      "mode": 420,
+      "sha256": "aa9e80a64d25142602c33a562dd099e6e63b9d451cda05fd7938398085fe78d4",
+      "sha512": "b36688830648b499c4312a464c575dce23ba6463799e1e5db45bf630fd1e90253ca0340fa37c640eccc79b543e0646197e8d7d98af5c8ebce51eb5001ce66faf",
+      "size": 853
+    },
+    "licenses/upstream/filmcraft/docs/images/filmcraft-assembly.png.attribution": {
+      "mode": 420,
+      "sha256": "07aaac62eee3101b44323b2acf848c23a9531e9c72e36b4745fcd596ffe2cc2b",
+      "sha512": "15300e0d5369747b4f711bf6a41cdab4aa46e16aa5bc957fafd7416cbfd5fa32335d6bec72157915bb0f562444b77b500f88dccf5b28a4b1b8af60ae139877da",
+      "size": 1863
+    },
+    "licenses/upstream/filmcraft/docs/images/filmcraft-color.png.attribution": {
+      "mode": 420,
+      "sha256": "21d90998914fcc3ee147757c7af2838a98ce5555ac478896b02b2205e13de8e0",
+      "sha512": "a8cabdf2fcd39c1d1fa3274782c225654d90cb2351b529e1578c6db598fe4d1cf397a0e2801204315a6dedbd66c7b1e828b50aeae343ea3f9b163debd4ede72f",
+      "size": 1793
+    },
+    "licenses/upstream/filmcraft/docs/images/filmcraft-effects.png.attribution": {
+      "mode": 420,
+      "sha256": "d659ff045a9ed1b6889f7d371d78cd31b4012d7558826c0347aa395cfa8c2dc4",
+      "sha512": "bde2854c56cebf628c9be0e7bf932dc58a7d4aa2de77f11463c4050b0d4d54e860012f5b6ad6056fe3d9361af13a6bdbafaa984b20210114525c741eab42be2a",
+      "size": 1787
+    },
+    "licenses/upstream/filmcraft/docs/images/filmcraft-export.png.attribution": {
+      "mode": 420,
+      "sha256": "830001e9430a630ddb5732a4228c6c56115c2a59727293a317a0098d2d2d13d2",
+      "sha512": "7988b57d63da5b12ea723779d5c68cfff12af7f12137a672572d0c61bfd6cb3323d9481cf23fdf55cf2ec307f2b179f75067ccdd956b9db83675746f5de0f1c6",
+      "size": 1761
+    },
+    "licenses/upstream/filmcraft/docs/images/filmcraft-hero.png.attribution": {
+      "mode": 420,
+      "sha256": "67ec2a6d01e866429e6b00410073f38bc0010109b41e0717612b9ba0e8968261",
+      "sha512": "20b88d7fb17dff3962eab2ac489a4538ae6870d63e0af2a6645812fbb79ca5cfa2aba0a9ddf0d27b5a63a7f8c0e136a475809253577ee41a8845614b6e1b5798",
+      "size": 5517
+    },
+    "licenses/upstream/filmcraft/docs/images/filmcraft-keyframes.png.attribution": {
+      "mode": 420,
+      "sha256": "a12eff2cfe8eeafed3fa503b911750188ad74401ec22a3ae28b848449cdbd336",
+      "sha512": "033b9ca12be66b5af062299bd86ade7a5cf7c7fc2ba291d809ec1d109fe3ec0b4446bded035ae15fa0e5bbbcc4e43572686efdd130520b05e8caac02db593830",
+      "size": 1838
+    },
+    "licenses/upstream/filmcraft/docs/images/filmcraft-lumetri.png.attribution": {
+      "mode": 420,
+      "sha256": "8ae26acdcc6e72fe6a0ed4c7d09f405a36eb2f29f3290c135b0f3e54b6eda986",
+      "sha512": "5a796b21ca100b68e3832f6c08636b0c769ee8e7f13ccc099f535bbedd908f3d87f2016d46ac70ef6d3174e3f4d9cef922ea2ad1b215cf88041eecbad888585e",
+      "size": 1772
+    },
+    "licenses/upstream/filmcraft/docs/images/filmcraft-scopes.png.attribution": {
+      "mode": 420,
+      "sha256": "cb21e42a43f131f09891c731305b5ac96925d636dc84bc0c53e35bb90534fc33",
+      "sha512": "bed013a054298a71fac9b53a1bb509cfdee4bc8a5d153ba360570e0dc1d4496eb06cbdab3622222e52569f4ee30729d2f3c0d424fb23e6139e725e949909d5f6",
+      "size": 1739
+    },
+    "licenses/upstream/filmcraft/docs/images/filmcraft-timeline.png.attribution": {
+      "mode": 420,
+      "sha256": "1794ad25ca5ed15a5bbd4d13931ae77613018e9b3da32c62c806da778b3f556f",
+      "sha512": "16a5f521b3b40b66157906fa0e5685b74ab547996ac30768a5db7ea17b1f3565688b3bd5ad8b5cd1a9b77723fc46528e9d7c16ebe4de549df4262604a9fadf48",
+      "size": 1817
+    },
+    "licenses/upstream/filmcraft/packaging/macos/dmg/background.svg.attribution": {
+      "mode": 420,
+      "sha256": "1eb6e2ed2e80fdfa777ef8e3b96a7fd2b73bfdb61645c3f6866571a272e8cf8f",
+      "sha512": "4802cd54459dbacfa280ba4c2e46c91e2f226278600805134f9257561dc7c633088214f8743cc6260bb7c45a2e5cf13b78154b3ee5f482922b3b2c10de1d3124",
+      "size": 595
+    },
+    "licenses/upstream/filmcraft/packaging/macos/dmg/background.tiff.attribution": {
+      "mode": 420,
+      "sha256": "8e89b388d9c7ae0eaaded3a47eb84cd271509d10813b99fbc64158ba89ec4ed6",
+      "sha512": "11d7dee94b3555dd5936e0251e2646d784360a52b94d049374620baffcd2252f4a687711b023481071ca65a5b448348c8d46e56ba8ce64c87914264cf2974211",
+      "size": 499
+    },
+    "licenses/upstream/gridcraft/ATTRIBUTION.md": {
+      "mode": 420,
+      "sha256": "56b465eebb50e1b424c33291119529e45c8636b806d4432199ba7d57bc555c50",
+      "sha512": "b0738fc9834a21f141693a655febf61e6f518090d4908afeb2ec0d27071d130f6dc2159f9c994ef380f5eb0322e60625d49e26c8f3f7aeac3b8c25f320fce2d3",
+      "size": 8370
+    },
+    "licenses/upstream/gridcraft/LICENSE-APACHE": {
+      "mode": 420,
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "sha512": "27b8c0252eae50ca3ce02ab7c5670664c0c824e03eb3da1089f3f0a00d23e648a956bcb9f53645c6d79674a87c4cc86d1085dc335911be0210d691336b121857",
+      "size": 10174
+    },
+    "licenses/upstream/gridcraft/LICENSE-MIT": {
+      "mode": 420,
+      "sha256": "a87109bbb1ad43ca3920a5d7ff3806863b7e8470a73f4ded97a1447ac93333f5",
+      "sha512": "3bf3aec4beecd084abb3d4b9a0078cdf7f43b09933aaa7d0e2eb26a5572c64b98c3e0191be4b70abc65bbdd6513e817a893f9d025f3199be1f8f7c6942a1acba",
+      "size": 1101
+    },
+    "licenses/upstream/gridcraft/NOTICE": {
+      "mode": 420,
+      "sha256": "7c948d5b56639a6d53c362ce0b54a79badd6f272c542f0fc0f22e9ec31c61c2b",
+      "sha512": "b859c8827fc400309c851e6f76d1b9d202349154b331bf36cc9ac11a41c1d4856d6ab51c9d706b89d5e56b0725514b8109825a1ad96d912061a018c6411d7205",
+      "size": 742
+    },
+    "licenses/upstream/gridcraft/assets/app-icon/LICENSE.txt": {
+      "mode": 420,
+      "sha256": "9596de48b5e42fbf727c924bb3863f0e28fcd9e38c47cca284e1174bd06481ce",
+      "sha512": "68d13bd237a69f0ed167b360d53500b2d7d2c1680cbb4fae6d95b49cfbfeae856a2dddc956fe0c2c1bb6880b7d46b20d55ddddeb1309a44950519d6d8bb380a1",
+      "size": 577
+    },
+    "licenses/upstream/gridcraft/docs/brand/LICENSE-brand.txt": {
+      "mode": 420,
+      "sha256": "d60f1608b31dde193c34e4afb5d922d2c700ead06c4bb3735959334a09b1ff2c",
+      "sha512": "431a0a9ccf658b60a0a3c090e25f2c712a1007067996b865a808b9f4a74b61ffea4a1cee0f334e6bc51990b2b471b205f168caabc35e9743f94880a2a9ef4ad2",
+      "size": 2263
+    },
+    "licenses/upstream/lightcraft/LICENSE-APACHE": {
+      "mode": 420,
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "sha512": "27b8c0252eae50ca3ce02ab7c5670664c0c824e03eb3da1089f3f0a00d23e648a956bcb9f53645c6d79674a87c4cc86d1085dc335911be0210d691336b121857",
+      "size": 10174
+    },
+    "licenses/upstream/lightcraft/LICENSE-MIT": {
+      "mode": 420,
+      "sha256": "1470a5d44a88a9d385d9530763ea411ca199670d07f561a61d54256323972b92",
+      "sha512": "b04da116d4c2f899ac9331df17057320a081c7207f1e874f7bf861b92a8c20b5d771e89bfc16d55922756c923b0f8afd367bb92ac3ce85b66dd09c77cddf866d",
+      "size": 1102
+    },
+    "licenses/upstream/lightcraft/NOTICE": {
+      "mode": 420,
+      "sha256": "00a7cfc350859e56cb36d28d6e91e997dc1f67137496a1a4a299dd014ff74a56",
+      "sha512": "f47d9aba19e888599593b187b4849dfbf9a2ee168edd976fae3b5698d5aa4d10fcf0b207d84cd465198274afa224b3a5318770fb149d0fbb049693e13b0eb1a7",
+      "size": 4229
+    },
+    "licenses/upstream/lightcraft/assets/ATTRIBUTION.md": {
+      "mode": 420,
+      "sha256": "4b1497c3ea1afbf162c360708f0377896227b44d7a4141105f8a51dd0b9d6a0d",
+      "sha512": "ff3ffb7f708d8625b7808b0c91062031bc68d10903214c893c8a7cf701166fee4bcbfb573ec90e004af9b4c9425419865f9e30f0b8ef21580b08c9521d42b51c",
+      "size": 9427
+    },
+    "licenses/upstream/lightcraft/assets/app-icon/LICENSE.txt": {
+      "mode": 420,
+      "sha256": "6426c23f529938deddfbaed543e7135e08b514fa6a75b330734331d877c78faf",
+      "sha512": "c6535089ee1c4fbae5cb491cbb9b6ef9b96b461c8c0e0f2a091dcba384ae00f7a9f7d8cabdaa9c60ceca9e3b5acb650d976eb9eb444d76fbfb1c3481826211c9",
+      "size": 569
+    },
+    "licenses/upstream/lightcraft/assets/fonts/OFL-Inter.txt": {
+      "mode": 420,
+      "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+      "sha512": "593d608d18186478ee378027cbf8ec480055862acdbd437626f3c36b65b61f08024ac90d2ce007d718e55a4134e61f6e9df46e18ccbd5fcd7499737ede288b2b",
+      "size": 4380
+    },
+    "licenses/upstream/lightcraft/docs/brand/LICENSE-brand.txt": {
+      "mode": 420,
+      "sha256": "d516dfeae4a19d636c0d16f389d0a8593efd9dd259b8832bb06722a3dc09e0ce",
+      "sha512": "48b3310e3d3dc136f46a8c6c7c3d5e433d151a1476ded08451a90fe4e64671e7482bd53b3e853dca78122ef6fc6d770fa87176f6597b7f4bc1a081e8499919db",
+      "size": 2270
+    },
+    "licenses/upstream/pdfcraft/ATTRIBUTION.md": {
+      "mode": 420,
+      "sha256": "1b324a5b8fabaccb9ee6bbb3cb889b6be82cacffe76de8e28b8f23d7d09c2f05",
+      "sha512": "c7b3bd540edd7bd81473cc200dfaccb11b375151b55cd3efa9fd5fd4305e96b2be18ff1394b4c87457b0ce7ca6ca165f14cbfc5a736ea768b6f1723cc5af58f7",
+      "size": 87107
+    },
+    "licenses/upstream/pdfcraft/ATTRIBUTION.toml": {
+      "mode": 420,
+      "sha256": "79d7984b29199676206be7f5c076a858090d9bff2f0f539d94e6cce5e831b618",
+      "sha512": "3dba7f3104cce78d12fba53519d15bcfbc1ef9bfe04a8d8fe00921559a645111fe258a0cb3e1e82ca2a6e956f26f31de2af906c9c275ed4855b146c86d71f530",
+      "size": 151778
+    },
+    "licenses/upstream/pdfcraft/LICENSE-APACHE": {
+      "mode": 420,
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "sha512": "27b8c0252eae50ca3ce02ab7c5670664c0c824e03eb3da1089f3f0a00d23e648a956bcb9f53645c6d79674a87c4cc86d1085dc335911be0210d691336b121857",
+      "size": 10174
+    },
+    "licenses/upstream/pdfcraft/LICENSE-MIT": {
+      "mode": 420,
+      "sha256": "cd7032ea33b71427f188e34ffb4aee9d6868a57fd196037c5c8b2be03a2a0352",
+      "sha512": "294c8ace2a626f6031e2f96b54a336fad0f3e5b8f00176b69730349ab1e0997b845335aff8afb94d743ecae14b77183fe32ed7fa0d94b4e93d92097dc4dff2a1",
+      "size": 1100
+    },
+    "licenses/upstream/pdfcraft/NOTICE": {
+      "mode": 420,
+      "sha256": "496946cff190a3fec32fe0241ea60d40539c73a9da1865073eb0c73ee822c8d5",
+      "sha512": "bfd059fba7026e2f18081fcb3db15a11e271c1b207077aa5a6a2c6dca2b7b66767a0a459f433340a595a234b65c62648d7201f262829607cb303a5f2b6ffc758",
+      "size": 4184
+    },
+    "licenses/upstream/pdfcraft/assets/app-icon/LICENSE-document.txt": {
+      "mode": 420,
+      "sha256": "64a3137e3d5cc41e5b78d2ad8dd9ddddd6588283f9f7b3128aa6a8a50852fb9a",
+      "sha512": "df31033ec2dc54b0e195a2d50f08f25ffc788807ae9b7855836719f9765f92e89e7cca148abb2878539414dc1bfc260704b4920fece82d8cfa2f5a8559978fcd",
+      "size": 1580
+    },
+    "licenses/upstream/pdfcraft/assets/app-icon/LICENSE.txt": {
+      "mode": 420,
+      "sha256": "b768acafe6cbad8247eedf86b5b5381feefcd4ee0f8c7808b86811bc687cf37b",
+      "sha512": "3402b4595d81b63ccfa944309713c0611c2cd396dbfe42f3ff4d976b8c848b89c4ac91752bc2343428c04b6363ffac3adc6c4e229fde46baa9a2cdcfeac861de",
+      "size": 555
+    },
+    "licenses/upstream/pdfcraft/assets/fonts/OFL-DancingScript.txt": {
+      "mode": 420,
+      "sha256": "6f090277c00af96651ce6dbcc38ff1591047a3bffef486e80b6a32e8276a8201",
+      "sha512": "178fe2949be74d24ad688d80f4644c53d0f23053d7115bf00bcb991f553a68994cf3530c69de2c004ac009235b363206e5db26a0a6dd10742d133cf0a30afc84",
+      "size": 4443
+    },
+    "licenses/upstream/pdfcraft/assets/fonts/OFL-Inter.txt": {
+      "mode": 420,
+      "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+      "sha512": "593d608d18186478ee378027cbf8ec480055862acdbd437626f3c36b65b61f08024ac90d2ce007d718e55a4134e61f6e9df46e18ccbd5fcd7499737ede288b2b",
+      "size": 4380
+    },
+    "licenses/upstream/pdfcraft/assets/fonts/OFL-JetBrainsMono.txt": {
+      "mode": 420,
+      "sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+      "sha512": "82b369c518db1bbf733d05efd7a33318abd569d3149aa3f3e3fe58952ad2e241e89c2392faf7d7fe6a0d636ac1a03698efebd86fa3e58b9966e2b8ccb9bcf2ce",
+      "size": 4399
+    },
+    "licenses/upstream/pdfcraft/assets/icons/LICENSE-lucide.txt": {
+      "mode": 420,
+      "sha256": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57",
+      "sha512": "830b4d154c9ab59abf639d06505dec7aaa31dd54fcb9e2bfdfdf3a495b0c86c6769abfea5dbd6735f4dbb1b955c87e441e89345580ecacbff862e59f37688625",
+      "size": 3208
+    },
+    "licenses/upstream/pdfcraft/docs/brand/LICENSE-brand.txt": {
+      "mode": 420,
+      "sha256": "0f33f48e7a96cd359d4e4e5b11424b13cebeb59cc70c77928186695e4173585c",
+      "sha512": "d4645993003601fb377a19166a75ec37e30ccb572a829fb8fda1cdb9028c2d8d9901410e94b119c9c8df88d622a10f76c1f4987fe497c1f9455a036568e71381",
+      "size": 2256
+    },
+    "licenses/upstream/pdfcraft/vendor/egui-wgpu/LICENSE-APACHE": {
+      "mode": 420,
+      "sha256": "8173d5c29b4f956d532781d2b86e4e30f83e6b7878dce18c919451d6ba707c90",
+      "sha512": "ca322e7f48f3e2621dc336e0d05f91b70f9af3b7de928a59d39c1b737b4e5bf16f5ad2060b67b3ab0c76b6644cd75b8c3e967b67e5e8c02cad4d8855ebed0c96",
+      "size": 10850
+    },
+    "licenses/upstream/pdfcraft/vendor/egui-wgpu/LICENSE-MIT": {
+      "mode": 420,
+      "sha256": "95ca92f5f8ea5231f1580b3a2a799e8260af3114b900e1def5355a7f44bcf60c",
+      "sha512": "f825a4433b3f1569197e23726e6576b7dd4408757ed1f6326a21934a9b35f26490fff453bc7c6e66b91620989caa39a29457d48638c1d415ceaa849e337fae57",
+      "size": 1092
+    },
+    "licenses/upstream/pdfcraft/vendor/hayro-interpret/LICENSE-APACHE": {
+      "mode": 420,
+      "sha256": "0cec06e0e55fbc3dc5cee4fca9b607f66cb8f4e4dbcf3b3c013594dd156732e9",
+      "sha512": "8d68a21e58dce28df9eb68ca54f0b99c38f997653746ef6cea96b1d9d983f5e5df5d61204ca6ab9fc8abda59ff305d91cc1df2a4a11a1e4f19410230a68621d8",
+      "size": 10173
+    },
+    "licenses/upstream/pdfcraft/vendor/hayro-interpret/LICENSE-MIT": {
+      "mode": 420,
+      "sha256": "51b50e6120c344dcc146bbd6375ca1c78e079d97c8bea76e67a53d6ff0efebac",
+      "sha512": "108cd263c8c929ef80cae821982b45d2ae21d22e5949df85aa97a93a8b59c3f5d0600f01c1569ced37795af504ddf1e255d9ea444f19159364b2fd6994d167b4",
+      "size": 1063
+    },
+    "licenses/upstream/pdfcraft/vendor/hayro-interpret/assets/CGATS_LICENSE.txt": {
+      "mode": 420,
+      "sha256": "469d87b5fa48f8aaf69e25f4fcac3a309c97dbb7d561b917638abdb640e004d9",
+      "sha512": "4441270dc34af6f38f69d865255f8d26dba39fc99fcfb31510e80c3948f0c1c2da7a8af99665e7063950e23efeb076315babfbf0fb84a72a83e31d114298bcce",
+      "size": 6552
+    },
+    "licenses/upstream/pdfcraft/vendor/hayro-interpret/assets/LICENSE_FOXIT": {
+      "mode": 420,
+      "sha256": "b578cdd2345840ada550bd12519533812320d5f1d21cf4c1c7e1b1b0a31c98b7",
+      "sha512": "3f21463d1a6e109596ea7a884ba739cc89daacde70eb991a3c5bd8560528a5d720af5603ea1d8abd2927c4cf0de5164ea40cd3a07df2626d2e30b9cdb0c6b3d5",
+      "size": 1553
+    },
+    "licenses/upstream/pdfcraft/vendor/hayro-jbig2/LICENSE-APACHE": {
+      "mode": 420,
+      "sha256": "0cec06e0e55fbc3dc5cee4fca9b607f66cb8f4e4dbcf3b3c013594dd156732e9",
+      "sha512": "8d68a21e58dce28df9eb68ca54f0b99c38f997653746ef6cea96b1d9d983f5e5df5d61204ca6ab9fc8abda59ff305d91cc1df2a4a11a1e4f19410230a68621d8",
+      "size": 10173
+    },
+    "licenses/upstream/pdfcraft/vendor/hayro-jbig2/LICENSE-MIT": {
+      "mode": 420,
+      "sha256": "51b50e6120c344dcc146bbd6375ca1c78e079d97c8bea76e67a53d6ff0efebac",
+      "sha512": "108cd263c8c929ef80cae821982b45d2ae21d22e5949df85aa97a93a8b59c3f5d0600f01c1569ced37795af504ddf1e255d9ea444f19159364b2fd6994d167b4",
+      "size": 1063
+    },
+    "licenses/upstream/pdfcraft/vendor/hayro-syntax/LICENSE-APACHE": {
+      "mode": 420,
+      "sha256": "0cec06e0e55fbc3dc5cee4fca9b607f66cb8f4e4dbcf3b3c013594dd156732e9",
+      "sha512": "8d68a21e58dce28df9eb68ca54f0b99c38f997653746ef6cea96b1d9d983f5e5df5d61204ca6ab9fc8abda59ff305d91cc1df2a4a11a1e4f19410230a68621d8",
+      "size": 10173
+    },
+    "licenses/upstream/pdfcraft/vendor/hayro-syntax/LICENSE-MIT": {
+      "mode": 420,
+      "sha256": "51b50e6120c344dcc146bbd6375ca1c78e079d97c8bea76e67a53d6ff0efebac",
+      "sha512": "108cd263c8c929ef80cae821982b45d2ae21d22e5949df85aa97a93a8b59c3f5d0600f01c1569ced37795af504ddf1e255d9ea444f19159364b2fd6994d167b4",
+      "size": 1063
+    },
+    "licenses/upstream/pdfcraft/vendor/hayro/LICENSE-APACHE": {
+      "mode": 420,
+      "sha256": "0cec06e0e55fbc3dc5cee4fca9b607f66cb8f4e4dbcf3b3c013594dd156732e9",
+      "sha512": "8d68a21e58dce28df9eb68ca54f0b99c38f997653746ef6cea96b1d9d983f5e5df5d61204ca6ab9fc8abda59ff305d91cc1df2a4a11a1e4f19410230a68621d8",
+      "size": 10173
+    },
+    "licenses/upstream/pdfcraft/vendor/hayro/LICENSE-MIT": {
+      "mode": 420,
+      "sha256": "51b50e6120c344dcc146bbd6375ca1c78e079d97c8bea76e67a53d6ff0efebac",
+      "sha512": "108cd263c8c929ef80cae821982b45d2ae21d22e5949df85aa97a93a8b59c3f5d0600f01c1569ced37795af504ddf1e255d9ea444f19159364b2fd6994d167b4",
+      "size": 1063
+    },
+    "licenses/upstream/pdfcraft/vendor/lopdf/LICENSE": {
+      "mode": 420,
+      "sha256": "2fb01e6708ea9d53e8b7e74bd82af23bce5256f19f4de93915027a53173c50d8",
+      "sha512": "5e3389c2cf0412302a70860c4aac23b8feda9bde0111540345667a22ac078dcabe6d6fe93b28fbafd9925135b5d048a515399206d92353d2b7f854d5e413202b",
+      "size": 1068
+    },
+    "licenses/upstream/pdfcraft/vendor/winit/LICENSE": {
+      "mode": 420,
+      "sha256": "6dc0e068dcf3a5bc8e054205b85b7720e1d49265bbc64bf515d2cf79197df69a",
+      "sha512": "5d3cf6d914a53d239ede4dd90d2f6936785374340e253ac7ab98c8bb726f556e5aa97aadeadb861af8ae3083d7f46be4dba97e451c247483a8d94bc55a4603e2",
+      "size": 11323
+    },
+    "licenses/upstream/photocraft/ATTRIBUTION.md": {
+      "mode": 420,
+      "sha256": "6f5464b818b1273eea0592989d9f980eb8b31d3ccf8dde09067018a7cd210ad3",
+      "sha512": "2553e32717e56f99f837e7de8297efe4b4f9c27fa0426ceb55c81f30836c1a50feccc9189e65118de8e98506c81176c494703db3eddfc1c9b3a21b7808ea2a07",
+      "size": 21918
+    },
+    "licenses/upstream/photocraft/LICENSE-APACHE": {
+      "mode": 420,
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "sha512": "27b8c0252eae50ca3ce02ab7c5670664c0c824e03eb3da1089f3f0a00d23e648a956bcb9f53645c6d79674a87c4cc86d1085dc335911be0210d691336b121857",
+      "size": 10174
+    },
+    "licenses/upstream/photocraft/LICENSE-MIT": {
+      "mode": 420,
+      "sha256": "1a8f66d8a86b146f5336fa0d4b1186576c8aa98e60823080c85c7811cfd810af",
+      "sha512": "7e76fe2775f88734b68ed4a3ed9c529abe8f5de38314c6df6a8b38520bad732760011d6c6ac25f7354ec1ff04efc6e0892318181d49be0e4e413f7e3d2714dbf",
+      "size": 1102
+    },
+    "licenses/upstream/photocraft/NOTICE": {
+      "mode": 420,
+      "sha256": "fb7d6f0e57c396b6c94f6315d3dba13048a296d81e7546d33e2b7c77c71ea147",
+      "sha512": "324aad8047577876b12989b401e79a76c6b05dfc523ed624b1d9dde90598622951d3cb5a91e678937919550caf300913f4e8703d5d7078de2d9c41f1644e8666",
+      "size": 1399
+    },
+    "licenses/upstream/photocraft/assets/app-icon/LICENSE.txt": {
+      "mode": 420,
+      "sha256": "a5cf25f3f3c2fe2c6d294db04f1bfea7259ac21e8edde5c7fabaa4c379e94795",
+      "sha512": "ab2aab5a864dd4306dae45992a4d5ded8158ab6d4a1bc6bca19d6581e4694930b91654360037e676bb74d6cf3f8f531b6d20c715b78c84558d6598b4fd65754b",
+      "size": 586
+    },
+    "licenses/upstream/photocraft/assets/dict/LICENSE-SCOWL.txt": {
+      "mode": 420,
+      "sha256": "e2a852424fe4ee684225a6a8a34c73f8944f11ad825b7fc3a58ddcee617ed23d",
+      "sha512": "8fc3d361cf73299159db96919d391bba1d2054254d3e3077eb693c3b6d9bb8ae92d72938c8fb6767f8217ad6925e40fddd1b15aed26061cd3e677194dfa73a00",
+      "size": 12561
+    },
+    "licenses/upstream/photocraft/assets/fonts/OFL-Inter.txt": {
+      "mode": 420,
+      "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+      "sha512": "593d608d18186478ee378027cbf8ec480055862acdbd437626f3c36b65b61f08024ac90d2ce007d718e55a4134e61f6e9df46e18ccbd5fcd7499737ede288b2b",
+      "size": 4380
+    },
+    "licenses/upstream/photocraft/assets/fonts/OFL-JetBrainsMono.txt": {
+      "mode": 420,
+      "sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+      "sha512": "82b369c518db1bbf733d05efd7a33318abd569d3149aa3f3e3fe58952ad2e241e89c2392faf7d7fe6a0d636ac1a03698efebd86fa3e58b9966e2b8ccb9bcf2ce",
+      "size": 4399
+    },
+    "licenses/upstream/photocraft/assets/icons/LICENSE-lucide.txt": {
+      "mode": 420,
+      "sha256": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57",
+      "sha512": "830b4d154c9ab59abf639d06505dec7aaa31dd54fcb9e2bfdfdf3a495b0c86c6769abfea5dbd6735f4dbb1b955c87e441e89345580ecacbff862e59f37688625",
+      "size": 3208
+    },
+    "licenses/upstream/photocraft/assets/icons/LICENSE-noun-magnetic-lasso.txt": {
+      "mode": 420,
+      "sha256": "667185ed8a375d40aff0d19f02ce880e786e355253b7c5adba2be7471b70c36a",
+      "sha512": "5512045d40b63010d0c4e864c7c434b413da3151d3e5f656f4951b53712b6fb68a5e6704f8eb2490eb1bf1446638f88a5de36b2579b0dd2d7db220ff37fa746c",
+      "size": 20102
+    },
+    "licenses/upstream/photocraft/assets/icons/LICENSE-symmetry-axes.txt": {
+      "mode": 420,
+      "sha256": "d43c48d168983b4d2a48e3d0d1b3c8f3ff662e8161da2d91d229b587f5e421ec",
+      "sha512": "5928333abc5f30b943bfccd3a18f18da6f471cdbbc68ff3f5238624a75caab40890ba77a914ad91e1056bc2025f13c3326d41ed0fa1d20dfb955e12c33607db4",
+      "size": 11525
+    },
+    "licenses/upstream/photocraft/book/src/project/licenses.md": {
+      "mode": 420,
+      "sha256": "e7bd6ca6bba15abc56de2c8dd4cc923b90d9e5268c4c19c0e158a7c2e4885b3f",
+      "sha512": "b65f4185e9e457219e6be1fa617cc758f06c93abf8fc972845206839144b84b050aa3ace574e85dd33919ab8b9a234b0aca7bbd8b7e9f994e33e864a8e9d4606",
+      "size": 879
+    },
+    "licenses/upstream/photocraft/crates/ui-egui/src/LICENSE-solarized.txt": {
+      "mode": 420,
+      "sha256": "04268daec181d192ff99530d1af65cb30bfc6a315e1567332a14892a5b3c4c56",
+      "sha512": "d5441950c4a43cea8b7ffa20a7ff7c95fcaec41eac4195776c227e5a734c99dd1597274c08e219c15a8d2d682540cf7d26a4517967535e6bd02298743cbc5bd0",
+      "size": 1302
+    },
+    "licenses/upstream/photocraft/crates/ui-egui/src/i18n/LICENSE-translations.txt": {
+      "mode": 420,
+      "sha256": "9aafb5654e1e306b1278fddfb8b7388f0ce299748e16f7f798176d22e08762c5",
+      "sha512": "550077ab8f36586b4e05964ee0c09acfbeaa5621a6362b9f537a1ee2a6eb33985fcde0bd6b68c1c026d1cd63d679a44762acc9cbe5981f059625e27179d60d39",
+      "size": 1791
+    },
+    "licenses/upstream/photocraft/docs/brand/LICENSE-brand.txt": {
+      "mode": 420,
+      "sha256": "f0a582a0645a2ec9c979ac2619e9503315483a33f1bb39b56fe5b55632b0ca79",
+      "sha512": "b5588618104edb660d9a4ac486b0e1e49c8bd38f6c0d98086693731d04f0a3a050320a0c79e75e42e1a063a9dbdb3ccba551e13c5d04ff84b17dce2dee2203d9",
+      "size": 2270
+    },
+    "licenses/upstream/soundcraft/ATTRIBUTION.md": {
+      "mode": 420,
+      "sha256": "aaf3fa13f18d7bd84d6827b40a5a2added7548ffcef3ecde9aa322ccfaa5698b",
+      "sha512": "901d4f99df0eeb5c4dc0aa0240fd90c794baca73e5be3579d5727fdcd177425c103bd3ee08b618f749b99b46247ec2b9feeb99365988ba882d65a818e31f080a",
+      "size": 3266
+    },
+    "licenses/upstream/soundcraft/LICENSE-APACHE": {
+      "mode": 420,
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "sha512": "27b8c0252eae50ca3ce02ab7c5670664c0c824e03eb3da1089f3f0a00d23e648a956bcb9f53645c6d79674a87c4cc86d1085dc335911be0210d691336b121857",
+      "size": 10174
+    },
+    "licenses/upstream/soundcraft/LICENSE-MIT": {
+      "mode": 420,
+      "sha256": "6aff3a3f0d8eb4c2d4fca151a00cdf26d8ff3020889402a453381a12dba3381e",
+      "sha512": "7a1dc0f1c6337fcf2178a10e48f79d32bc69e75d3a5a5d05f6075a7b62878c272ad9363c857d0553a874a9545924c6a0f1e1aa875667f1aaf17e1ed6738c26b3",
+      "size": 1102
+    },
+    "licenses/upstream/soundcraft/NOTICE": {
+      "mode": 420,
+      "sha256": "977949446409bf907b265d765f024d3194c09251c2a65a4ca418cf5cb2dc84c0",
+      "sha512": "98d6fb30079522dcc748b1fdc10cd824c41f17e9caeeaca31d36206a7a073a1959d5ed2bccf5af2b4439257c077d49b5032cc646ad7ecce82324f0a5d95e4f60",
+      "size": 832
+    },
+    "licenses/upstream/soundcraft/docs/brand/LICENSE-brand.txt": {
+      "mode": 420,
+      "sha256": "dbd6e8555a7f6d393f89a47cd44773e1f1f415c22551a78449bd4b43bec49903",
+      "sha512": "652a216cbcd4ee4f0e9bc9ea7a80852e50351f2db586234f6f17c85a32a0f776d16d9e87c45848fc1d91757688f4a703055bf6da29e2974266541f03385cfbaf",
+      "size": 2270
+    },
+    "licenses/upstream/vectorcraft/ASSETS.md": {
+      "mode": 420,
+      "sha256": "aff82a234214efafae8f7f0037c4901dd23a56535326c589cd390dd4eb62ca40",
+      "sha512": "1096a8cf9a0160509c167b92ce8d8f20b5b0b0cd53fabcde7587a9c3170725e0a63f7441d577f5d37a78b26b617b182a061e4975d1ebb6ea5a84a53a3db6f81a",
+      "size": 62104
+    },
+    "licenses/upstream/vectorcraft/LICENSE-APACHE": {
+      "mode": 420,
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "sha512": "27b8c0252eae50ca3ce02ab7c5670664c0c824e03eb3da1089f3f0a00d23e648a956bcb9f53645c6d79674a87c4cc86d1085dc335911be0210d691336b121857",
+      "size": 10174
+    },
+    "licenses/upstream/vectorcraft/LICENSE-MIT": {
+      "mode": 420,
+      "sha256": "8b6025dc4b707e0fb08b9c2054096f1be3ae61529399aa2c348dec676562dc71",
+      "sha512": "0713101b94d58a2e51c32174cd551ea2513d873d2433381f08e084325117fdd235a9aa22fce9b78b1e227440f2961adf16b4671c3834ddf8b0fa415a1b4e788e",
+      "size": 1103
+    },
+    "licenses/upstream/vectorcraft/NOTICE": {
+      "mode": 420,
+      "sha256": "cda4d86b58c5200204e786092ac634e8b60f9beda54219f334726f49e2065e82",
+      "sha512": "528cf1cbfbae0c7ab63341c09d0e63cb198c232a5e0e0cf55478e17bee571ffceea706a39db150225c959029dae8dea66bd1d0c157bdc4b575f4a949197efe53",
+      "size": 5583
+    },
+    "licenses/upstream/vectorcraft/assets/app-icon/LICENSE.txt": {
+      "mode": 420,
+      "sha256": "7323e2ad58efcf69f0871f419531f707ae6bee61d00c7d84de6f8300d7ad19f7",
+      "sha512": "2796f28611800850d3e779a882cf7f28ceaad69cc89e86b8176a1b24632c4f6b0d36c2b07453a2aea0b6fc718ffbb718164788631e0e1c78be8686d7b1889bef",
+      "size": 606
+    },
+    "licenses/upstream/vectorcraft/assets/fonts/OFL-Inter.txt": {
+      "mode": 420,
+      "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+      "sha512": "593d608d18186478ee378027cbf8ec480055862acdbd437626f3c36b65b61f08024ac90d2ce007d718e55a4134e61f6e9df46e18ccbd5fcd7499737ede288b2b",
+      "size": 4380
+    },
+    "licenses/upstream/vectorcraft/assets/fonts/OFL-JetBrainsMono.txt": {
+      "mode": 420,
+      "sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+      "sha512": "82b369c518db1bbf733d05efd7a33318abd569d3149aa3f3e3fe58952ad2e241e89c2392faf7d7fe6a0d636ac1a03698efebd86fa3e58b9966e2b8ccb9bcf2ce",
+      "size": 4399
+    },
+    "licenses/upstream/vectorcraft/assets/fonts/OFL-SourceSans3.txt": {
+      "mode": 420,
+      "sha256": "56af9b9c6715597e458284a474dc118a50a4150e9d547c70f7b4a33c3e6a9328",
+      "sha512": "07e4974ab59d6a9bb7029b14eb57c907586d361ac74bb77b2826eab1e9d01fb9635afa4e69cd443b948ffb9778ae4489cf6b64ba3ce0f01f6665b23ba61bd366",
+      "size": 4486
+    },
+    "licenses/upstream/vectorcraft/assets/fonts/OFL-SourceSerif4.txt": {
+      "mode": 420,
+      "sha256": "c21d7293d87b6d7ab1d0229a2f55b77f33a7613a6a4e66f6693d68d7d8d09464",
+      "sha512": "9e3bf068bb8a05b0022a48b4d8097b3f2e155cabfefa2c468474adcbcdce0f73bb7b1037b6db091d9c75f99cceb33810815e2f3d7612a526fd00c37c04862078",
+      "size": 4491
+    },
+    "licenses/upstream/vectorcraft/assets/icons/LICENSE-lucide.txt": {
+      "mode": 420,
+      "sha256": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57",
+      "sha512": "830b4d154c9ab59abf639d06505dec7aaa31dd54fcb9e2bfdfdf3a495b0c86c6769abfea5dbd6735f4dbb1b955c87e441e89345580ecacbff862e59f37688625",
+      "size": 3208
+    },
+    "licenses/upstream/vectorcraft/docs/brand/LICENSE-brand.txt": {
+      "mode": 420,
+      "sha256": "197b20a10ffd9474e63c08893440abb7724a410c975829d809390f2ce21fac1e",
+      "sha512": "520ca6958cb2f16aec5a9d762ac5a8e037259c35c7feb3f7ccb6303c150dc4ac9379ff3aebc969bd2ef1ec355e79b0fda4507687eeb46ff320dfd1cfe930eb55",
+      "size": 2277
+    },
+    "licenses/upstream/vectorcraft/licenses/pdf-backend/hayro-cmap/LICENSE-APACHE": {
+      "mode": 420,
+      "sha256": "0cec06e0e55fbc3dc5cee4fca9b607f66cb8f4e4dbcf3b3c013594dd156732e9",
+      "sha512": "8d68a21e58dce28df9eb68ca54f0b99c38f997653746ef6cea96b1d9d983f5e5df5d61204ca6ab9fc8abda59ff305d91cc1df2a4a11a1e4f19410230a68621d8",
+      "size": 10173
+    },
+    "licenses/upstream/vectorcraft/licenses/pdf-backend/hayro-cmap/LICENSE-MIT": {
+      "mode": 420,
+      "sha256": "51b50e6120c344dcc146bbd6375ca1c78e079d97c8bea76e67a53d6ff0efebac",
+      "sha512": "108cd263c8c929ef80cae821982b45d2ae21d22e5949df85aa97a93a8b59c3f5d0600f01c1569ced37795af504ddf1e255d9ea444f19159364b2fd6994d167b4",
+      "size": 1063
+    },
+    "licenses/upstream/vectorcraft/licenses/pdf-backend/hayro-cmap/LICENSE.txt": {
+      "mode": 420,
+      "sha256": "742665db9c8e1bc72603c6d319ca3e90b83bd6d95202f0cd4ef11068a07a9c29",
+      "sha512": "010e6cfb0f238f8ea5e7edfc393f846c029c9676f963a15e54850d00f6d10a70fec8853998ee2c5606f94be0a929e18d5aee089a30f82abebd0317c4f6fa7ebc",
+      "size": 1453
+    },
+    "licenses/upstream/vectorcraft/licenses/pdf-backend/hayro-interpret/LICENSE-APACHE": {
+      "mode": 420,
+      "sha256": "0cec06e0e55fbc3dc5cee4fca9b607f66cb8f4e4dbcf3b3c013594dd156732e9",
+      "sha512": "8d68a21e58dce28df9eb68ca54f0b99c38f997653746ef6cea96b1d9d983f5e5df5d61204ca6ab9fc8abda59ff305d91cc1df2a4a11a1e4f19410230a68621d8",
+      "size": 10173
+    },
+    "licenses/upstream/vectorcraft/licenses/pdf-backend/hayro-interpret/LICENSE-MIT": {
+      "mode": 420,
+      "sha256": "51b50e6120c344dcc146bbd6375ca1c78e079d97c8bea76e67a53d6ff0efebac",
+      "sha512": "108cd263c8c929ef80cae821982b45d2ae21d22e5949df85aa97a93a8b59c3f5d0600f01c1569ced37795af504ddf1e255d9ea444f19159364b2fd6994d167b4",
+      "size": 1063
+    },
+    "licenses/upstream/vectorcraft/licenses/pdf-backend/hayro-interpret/assets/CGATS_LICENSE.txt": {
+      "mode": 420,
+      "sha256": "469d87b5fa48f8aaf69e25f4fcac3a309c97dbb7d561b917638abdb640e004d9",
+      "sha512": "4441270dc34af6f38f69d865255f8d26dba39fc99fcfb31510e80c3948f0c1c2da7a8af99665e7063950e23efeb076315babfbf0fb84a72a83e31d114298bcce",
+      "size": 6552
+    },
+    "licenses/upstream/vectorcraft/licenses/pdf-backend/hayro-interpret/assets/LICENSE_FOXIT": {
+      "mode": 420,
+      "sha256": "b578cdd2345840ada550bd12519533812320d5f1d21cf4c1c7e1b1b0a31c98b7",
+      "sha512": "3f21463d1a6e109596ea7a884ba739cc89daacde70eb991a3c5bd8560528a5d720af5603ea1d8abd2927c4cf0de5164ea40cd3a07df2626d2e30b9cdb0c6b3d5",
+      "size": 1553
+    },
+    "licenses/upstream/vectorcraft/licenses/pdf-backend/hayro-jbig2/LICENSE-APACHE": {
+      "mode": 420,
+      "sha256": "0cec06e0e55fbc3dc5cee4fca9b607f66cb8f4e4dbcf3b3c013594dd156732e9",
+      "sha512": "8d68a21e58dce28df9eb68ca54f0b99c38f997653746ef6cea96b1d9d983f5e5df5d61204ca6ab9fc8abda59ff305d91cc1df2a4a11a1e4f19410230a68621d8",
+      "size": 10173
+    },
+    "licenses/upstream/vectorcraft/licenses/pdf-backend/hayro-jbig2/LICENSE-MIT": {
+      "mode": 420,
+      "sha256": "51b50e6120c344dcc146bbd6375ca1c78e079d97c8bea76e67a53d6ff0efebac",
+      "sha512": "108cd263c8c929ef80cae821982b45d2ae21d22e5949df85aa97a93a8b59c3f5d0600f01c1569ced37795af504ddf1e255d9ea444f19159364b2fd6994d167b4",
+      "size": 1063
+    },
+    "licenses/upstream/vectorcraft/licenses/pdf-backend/hayro-syntax/LICENSE-APACHE": {
+      "mode": 420,
+      "sha256": "0cec06e0e55fbc3dc5cee4fca9b607f66cb8f4e4dbcf3b3c013594dd156732e9",
+      "sha512": "8d68a21e58dce28df9eb68ca54f0b99c38f997653746ef6cea96b1d9d983f5e5df5d61204ca6ab9fc8abda59ff305d91cc1df2a4a11a1e4f19410230a68621d8",
+      "size": 10173
+    },
+    "licenses/upstream/vectorcraft/licenses/pdf-backend/hayro-syntax/LICENSE-MIT": {
+      "mode": 420,
+      "sha256": "51b50e6120c344dcc146bbd6375ca1c78e079d97c8bea76e67a53d6ff0efebac",
+      "sha512": "108cd263c8c929ef80cae821982b45d2ae21d22e5949df85aa97a93a8b59c3f5d0600f01c1569ced37795af504ddf1e255d9ea444f19159364b2fd6994d167b4",
+      "size": 1063
+    },
+    "licenses/upstream/vectorcraft/vendor/windows-link/license-apache-2.0": {
+      "mode": 420,
+      "sha256": "c16f8dcf1a368b83be78d826ea23de4079fe1b4469a0ab9ee20563f37ff3d44b",
+      "sha512": "d3f385f4765cfd95d92372821bbad124468be7cbd55fb1af74b5bcf8929d577a15329c836e7541e7c4f826e8d4d05ac33fe1cb6d9c6a40ef239f36c8bff79493",
+      "size": 11351
+    },
+    "licenses/upstream/vectorcraft/vendor/windows-link/license-mit": {
+      "mode": 420,
+      "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+      "sha512": "1d0688424f69c0e7322aeb720e4e28d9af3b5a7a2dc18b8b198156e377a61a6e05bc824528fca0f8e61ac39b137a028029ff82e5229ad400a3cc22e2bdb687ad",
+      "size": 1141
+    },
+    "licenses/upstream/wordcraft/ATTRIBUTION.md": {
+      "mode": 420,
+      "sha256": "2a28a5dae997462cce0b6bcb64d8f4de800f61ad3c6c09a33fdeec3f54ca13c2",
+      "sha512": "26a541e399fc776765fa7a663e54333fcebf6f0e6a35973e12e242d9202dbf38c8e58a8635fafb288b76c7d33521ebc3bd44037da92e5b79896bf58f10440f33",
+      "size": 19013
+    },
+    "licenses/upstream/wordcraft/LICENSE-APACHE": {
+      "mode": 420,
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "sha512": "27b8c0252eae50ca3ce02ab7c5670664c0c824e03eb3da1089f3f0a00d23e648a956bcb9f53645c6d79674a87c4cc86d1085dc335911be0210d691336b121857",
+      "size": 10174
+    },
+    "licenses/upstream/wordcraft/LICENSE-MIT": {
+      "mode": 420,
+      "sha256": "fc257de83c44ae49e4aad1cf777b886794be3ac9c8d00c010ef55935d5bbeba5",
+      "sha512": "2739a7a1b3b9d22c306967e70fb73baa15ac26ccaef31cc90753f324d7daa922ae44d6f158caf0024f8c1f3a6530e5da5d53ba5a388e178c8232d7f1624086da",
+      "size": 1101
+    },
+    "licenses/upstream/wordcraft/NOTICE": {
+      "mode": 420,
+      "sha256": "8db865867d13975e1199a1ead02e61aeec45c7535cab0d6d48d039b8b6c72915",
+      "sha512": "458a2df052b89dc0aea3c116554165e85717c28d50110db6f10dc238fa3fc7ecf640302fe0aece81854961341db4f50830387acb4188cc2e2eb02c390846e6a4",
+      "size": 5538
+    },
+    "licenses/upstream/wordcraft/assets/fonts/OFL-Inter.txt": {
+      "mode": 420,
+      "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+      "sha512": "593d608d18186478ee378027cbf8ec480055862acdbd437626f3c36b65b61f08024ac90d2ce007d718e55a4134e61f6e9df46e18ccbd5fcd7499737ede288b2b",
+      "size": 4380
+    },
+    "licenses/upstream/wordcraft/assets/fonts/OFL-JetBrainsMono.txt": {
+      "mode": 420,
+      "sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+      "sha512": "82b369c518db1bbf733d05efd7a33318abd569d3149aa3f3e3fe58952ad2e241e89c2392faf7d7fe6a0d636ac1a03698efebd86fa3e58b9966e2b8ccb9bcf2ce",
+      "size": 4399
+    },
+    "licenses/upstream/wordcraft/assets/fonts/OFL-SourceSans3.txt": {
+      "mode": 420,
+      "sha256": "56af9b9c6715597e458284a474dc118a50a4150e9d547c70f7b4a33c3e6a9328",
+      "sha512": "07e4974ab59d6a9bb7029b14eb57c907586d361ac74bb77b2826eab1e9d01fb9635afa4e69cd443b948ffb9778ae4489cf6b64ba3ce0f01f6665b23ba61bd366",
+      "size": 4486
+    },
+    "licenses/upstream/wordcraft/assets/fonts/OFL-SourceSerif4.txt": {
+      "mode": 420,
+      "sha256": "c21d7293d87b6d7ab1d0229a2f55b77f33a7613a6a4e66f6693d68d7d8d09464",
+      "sha512": "9e3bf068bb8a05b0022a48b4d8097b3f2e155cabfefa2c468474adcbcdce0f73bb7b1037b6db091d9c75f99cceb33810815e2f3d7612a526fd00c37c04862078",
+      "size": 4491
+    },
+    "licenses/upstream/wordcraft/assets/hyphenation/pl.pat": {
+      "mode": 420,
+      "sha256": "83ddbbd21bc06a44bc4f4a4c49c38782e809cff5f026b764c044daa29e818843",
+      "sha512": "6e68ad5c400a4be37e6bb6773de0df5713ef3e24a4d4ff80b2d944b422c05cc1eaae09924429c3d35cfceacd96a3f1b4980f6aa966ebdca922e6ed571957fa5d",
+      "size": 34118
+    },
+    "licenses/upstream/wordcraft/docs/brand/LICENSE-brand.txt": {
+      "mode": 420,
+      "sha256": "ed4475eacf972c9584aa335001c59dfa646eb222549b928ffd6aefd4c805b41a",
+      "sha512": "9fdc49c98389f6bbbc6854bedc86cd63a2b3740c669476f1fd75fd802cc8b9923d416167f7d304e852555da009e6bacdc41b59cd66d253178b1a96f7c86f5cc4",
+      "size": 2263
+    },
+    "package-lock.json": {
+      "mode": 420,
+      "sha256": "b6dece6e5e636065cd42204bbf331efba29e249c84c230eae1f534050131d27e",
+      "sha512": "6fed7701721bdc198a07ba194f0d378c649af7421c3798f8072abcfeaa79414f94c37eff330b999a54bbf55c1e401631a480901d5022f1620bec0e501abc4c49",
+      "size": 8727
+    },
+    "package.json": {
+      "mode": 420,
+      "sha256": "8b985631de9eb9f6054a1761b4a58198578359b0634dd8528b5cd333e5b55c13",
+      "sha512": "3cabd68c47c24ca8c546ce7f78a5429178fa9fafda5510e32cc6df00570f7ba1d3682a1dc71b6173f8c497cbe2355052652b3f619c4ef6f925dc3a9a5f8a51c2",
+      "size": 209
+    },
+    "playwright.config.mjs": {
+      "mode": 420,
+      "sha256": "70864eb8f9300d10a3a04dc7f938eabe4878b877f88982bba3b2940e2f80190d",
+      "sha512": "1744433eacef3ec7720d112e35aad5b8cea6ca7fa8474da46e462c9f209f9e07814cfc0970f357cb584742382a4b7f8d9556822679f60669650ffcdbde47d736",
+      "size": 368
+    },
+    "requirements-dev.txt": {
+      "mode": 420,
+      "sha256": "35308202dfa86190ed68229b9325a09b914ee79c49a5a0433fcbc3df0eb5300c",
+      "sha512": "d82884d3597352113c06c2ae6ed804780d8c7aa3b7afb5a545ca91c9f6e16b4541b4bea9fa7e31523f74a59c80eb0c1890af33bd57b821d0ef4caa8a0e97f776",
+      "size": 7790
+    },
+    "requirements.lock": {
+      "mode": 420,
+      "sha256": "fa591e682a8cf61fee152b45d5476251d4c804679f1f95f8c0e9e1610b638224",
+      "sha512": "b63af460ad56c00f024636ae77db0459b795942150876136ca5c2c0fb40ed1a59be799f7888ba0bf85bcfaad8e48469c8c2a3263bcb8598b4d8748b9bc6f49c9",
+      "size": 30348
+    },
+    "scripts/acceptance.py": {
+      "mode": 493,
+      "sha256": "ecac7c45de88d1104ff458b834f7c8268f83a9972f4de328966a39b2b46ebbb6",
+      "sha512": "36e0bec5414183a1d5bffe7e8e89be742afe83abdb4afd36b87a7887688f34bf7698a9375361882db96582fb5e264a1bc79368ce5e1049e6deb5f861edb28c94",
+      "size": 5906
+    },
+    "scripts/check_runtime.py": {
+      "mode": 420,
+      "sha256": "089308c3b44045bf6b460f3bc120c03a0704f2ffd68e5952d580de1e47a9a2b6",
+      "sha512": "abf655053bbec6b9266793093fbfbc38118e00e36346efdfe7e297309596ba543dbe6794d27414dba1dd5d1e4322feebc134d2260a688619de16376d0677a2ca",
+      "size": 2709
+    },
+    "scripts/docker_acceptance.sh": {
+      "mode": 493,
+      "sha256": "d3ccedb9d2cfbc8c13dd1e6cb38eec5a6a678b0c2740bf6d5614cd8d187d1924",
+      "sha512": "63dc3c94c7ee7d0d02bad5d626fb8ce1882ff262a1d535766188d76d2ce259475211b0e9b25da418b0be57df509e3366a27ac3edb030180935cdde14b7b494ca",
+      "size": 2542
+    },
+    "scripts/fetch_apps.py": {
+      "mode": 493,
+      "sha256": "3b61c18b2fcff51b138f28c2249001eb6dfe28bc0de158d40460f9197f4d24d6",
+      "sha512": "a7b366113f560bfe848d004b3551b1f072a153090b4aa777cf4d48700c769afe7dfc1a07cf6daafe0912bffae4be21953e7ade844e416ef16661c4d27999e10d",
+      "size": 5049
+    },
+    "scripts/package_source.py": {
+      "mode": 493,
+      "sha256": "4cac3d43507e4ee75a670f7f35f542d5012f26a7b13ab6489e8343174467b989",
+      "sha512": "b75ca1f0692ab01c62358b154c0018fc634e3aa0fe5faeb1cba704050d810b709dabd4993cad9a65bb4713d75ce580837679f212057cff4b35a20a3e0f2eae4d",
+      "size": 1057
+    },
+    "scripts/verify_release.py": {
+      "mode": 420,
+      "sha256": "11bfe8389c3f05860adcf6a4d4ed0545ee41f598821728dab76a7423ef280168",
+      "sha512": "7c726d59d62506541966e0924113a65d468f9bbc5448ccae1de1149da39b3a55df59361d98384b9346150d3c055beea73a70c33e68172834a7e45e08fa844262",
+      "size": 1216
+    },
+    "tests/bridge.test.mjs": {
+      "mode": 420,
+      "sha256": "afccdff0f741a269db8ab8c9ec862c8b5f7e318c0224bed369355c23ebed4e8d",
+      "sha512": "8b11764fd9474583c5712bb120eb4aa9fbae1f0c316063ea9bbefc6d97f18063a9baa8e60dddbbd55278fa272beba99329c3cc96bc74f945ef50a8222e1b3a91",
+      "size": 4540
+    },
+    "tests/browser/demo.spec.mjs": {
+      "mode": 420,
+      "sha256": "cdf3fc2cb25b42079e2a8614b710b879048868f1019c6eb1078bc962c7b2f54b",
+      "sha512": "42817d0ddf31eee89534d166365b15a4a57574889d78ab4c9450c82ffd47330108ae61255d5f0afd8bec874956013866725aed186235a2ecdbcb743c22cba22d",
+      "size": 5813
+    },
+    "tests/browser/production.spec.mjs": {
+      "mode": 420,
+      "sha256": "3af59c9682626be76f3d8923738f86c738ef35c7520aebfd91bdef708f68a82c",
+      "sha512": "ea7135e0d22b68d51e8f696f0c0ff51d8af491456206856a0cb8c2af5e64721cf86f95af20e0b0cd60937d8226444042537cc1eb675cc22310dc6e51b0ad8e6f",
+      "size": 7236
+    },
+    "tests/conftest.py": {
+      "mode": 420,
+      "sha256": "607cada2feeedf11d70d8290a335d446d068b48df22104a5ed2669db79a12f1a",
+      "sha512": "cd8e3879085577da8dce1c2825863e346fe5b160b39f278a686094b20b0f7f34388bc6d0b456d77c4ef503136597337b8999d1fbf49ce16f51a1ed0830d065a6",
+      "size": 1885
+    },
+    "tests/demo-guard.test.mjs": {
+      "mode": 420,
+      "sha256": "83f55d363dd3729ccbf78fcfc6781161072a25a04c4039d31baa62492f0f084d",
+      "sha512": "38667c26997d7c0d92e19c0853d84470ac03b04472e4eeafe8d9c1bcd6a3621dd2ccfaa445a9b4e86009887b10834fef4c876262c30897b43ee05009db9b7255",
+      "size": 1301
+    },
+    "tests/editor-channel.test.mjs": {
+      "mode": 420,
+      "sha256": "88b90e6daf2dd86a251bc52ed2e00cf965864020d1c6cf6ec30b29b4aac70450",
+      "sha512": "f883ffa05e123b04ea7a638e923fad2614628770dfc131ea5ac07afdad0a9c5366ca6ee5e02bbec16f41db31c11196a1f0432141e1ae328a48bd985f0744ca54",
+      "size": 2806
+    },
+    "tests/editor-runtime.test.mjs": {
+      "mode": 420,
+      "sha256": "309e6f623dd1e71cd50144a8447d3d56a81b7cd977ba21a063264071ad5babe8",
+      "sha512": "78a91f719c64495fed19e5714bf478f4ee3e49f22511e58c5d91361ac0508dd8a63305d044d372381d890065265bcde158a626ed6ee28f595eec03f52dc14a08",
+      "size": 2231
+    },
+    "tests/editor-storage.test.mjs": {
+      "mode": 420,
+      "sha256": "a1f9ea89472ac769ae2344819e0f57bbdfd173316bfbca80ac9f36c8c50dcc02",
+      "sha512": "6f8548fb8b583897ce07e365670db1e8355caa925a799ab1e02de008d6231e102abd0eb99b8ffda2c809a0b5d0b230437c1132c617da437aae7645e6e83788fa",
+      "size": 2085
+    },
+    "tests/fixtures/v1-schema.sql": {
+      "mode": 420,
+      "sha256": "39ec38baa135001d0355adedd9390d46fac73aa37cf2ea881cc0f0792f1c6c5f",
+      "sha512": "bc1a8b6aba05aa17b50d7ba171cb54a09f06152cc0f35c269025cddca285d307566501beb38fff72a72dceb89a09349798fedce7cf380b2fcef2d4393ae39a54",
+      "size": 2435
+    },
+    "tests/light-editor.test.mjs": {
+      "mode": 420,
+      "sha256": "54c3ee45615e1ddc5095fc30e332d2f7c91a05b3d327c3c10fe38cdc39906e90",
+      "sha512": "3f0c0612c17c99c1948cfc876ebbc867093939838f09b61b76f3b0a7201c08ebe5432dc844787ddb1fe7889f82faa4ddf2126573db7137f002aa9556d23e4bff",
+      "size": 1282
+    },
+    "tests/test_account_lifecycle.py": {
+      "mode": 420,
+      "sha256": "acf8c6f6fd372b5cbc9c69a67469581cc9efc524618be750fde6b520bbb1b0ad",
+      "sha512": "e29f0da0ce20580f6ea607c31b284d9f2bccb065da3d25ef44f097a1a0940da9a0e9f26922ac11a0996d974ec0d627c8f852eaa4c04bb6986aaa64f152c43c81",
+      "size": 4199
+    },
+    "tests/test_apps.py": {
+      "mode": 420,
+      "sha256": "87b6eb95b4e09633c12841bad172e1f48adca7a740058f3637dadeb7c9f21f81",
+      "sha512": "82a3b9709239310e215fd0bfe8192373d1d3b21970fd2d1d0e239b7dd9abed9d3a326d95e3c4bd3c14acdeb41656ebd77ee68bb85e2d4b114d38b60e6e61850e",
+      "size": 3024
+    },
+    "tests/test_auth.py": {
+      "mode": 420,
+      "sha256": "aa5107a5b2b0807176e1342519c705810ff56712a198cc08cd3bb80e68dea385",
+      "sha512": "24e4becd40d9fcb4c2dc89acc588bc747e145a4e5d43a1812cc9dcf312a224d0e290426294938b0d335b9a5a0e9d596db417e8d248fda07975d0cc007588e0d1",
+      "size": 5936
+    },
+    "tests/test_demo.py": {
+      "mode": 420,
+      "sha256": "c6f0abb08029a4bcb3d51f0f15015b8cd21c8c7df5bff60645de39b670104188",
+      "sha512": "77e7bfa7a9a80072e165a9b589133d9d371a6a3994cca11b48593c1cf11aead1adc0b0e93801745f6c39885bc89d5ad9044eea13530249a5e920a7a6666e8983",
+      "size": 2815
+    },
+    "tests/test_drive.py": {
+      "mode": 420,
+      "sha256": "4811ab2eb73351a56920ccd91d349836528a07ce87e0c8a8c78d00b80c71b6e1",
+      "sha512": "7d9588a9b743704d62a88e0eb975f04ddab35023b2de330fd8e3314009f6f3d212cc03fc5e0737400c50b14f0ed4010409025e09d58ce5b128a2fc66c1c2169b",
+      "size": 5649
+    },
+    "tests/test_editor_isolation.py": {
+      "mode": 420,
+      "sha256": "264f8994444fba2f8cf6c00ce26860d55fc1e467972e1673d44a2ee1d71e5738",
+      "sha512": "4929b6b16e575f1b6fef6806f8a53430c536d6b3fdcbd30cdded133526135952223c528b7699e1d7dbfb9ce2b79a8c0af4d4b0cf7c6e23e9329a33b8da8217bc",
+      "size": 2625
+    },
+    "tests/test_launcher.py": {
+      "mode": 420,
+      "sha256": "106a457f7691bf1e691fe4c6fce29cc4032dd22e46a6880717cb002cf5b12335",
+      "sha512": "4ecbbe8d47a1199c9f78d5b48edb0cf5d52c635b4820cc4a95926391ff9fcfc206cd1320df344cf62dae84d6741f9c31d70e2dfbb220a5859a4f551178ae7879",
+      "size": 1001
+    },
+    "tests/test_operations.py": {
+      "mode": 420,
+      "sha256": "819a04e2abf755c0555753b0292e9e0b85a06eaf4beb2f4e4dba04637accc030",
+      "sha512": "b9ec95a684fe369c00ebf8b05c1c35a68d99b507b775e63df26225a359d25d117835d8777f47470761daf844a9b941b9411fa279e2deb5c27e267763fa3afed6",
+      "size": 5581
+    },
+    "tests/test_storage_hardening.py": {
+      "mode": 420,
+      "sha256": "61213646ab7a4ba76971de30cd08eb01b46a2202ac05004d50b28ff0b96b1225",
+      "sha512": "3f6d762ed5968dc4fc07e0cb97b5ff1076eeaafd3e4f4bd2453619ed4cfbf70d5eac415dfbc001576902b79e73d1a03b5fae8e6ad88307ebceec33c312c2245a",
+      "size": 3185
+    },
+    "tests/test_upgrade.py": {
+      "mode": 420,
+      "sha256": "b89a09bec5354aca364bd29f82cc1fc6ea995c969713bfb44985391c57648301",
+      "sha512": "abc3ddcf9b58248680554323dbf819dea77afabb2b6bba1da86a00b42da8eb0c74a0cdfc3005ed90de4fe65fc05fd4f60ad941869eda64885275ab4ff43a2b12",
+      "size": 2589
+    },
+    "tests/ui-dom.test.mjs": {
+      "mode": 420,
+      "sha256": "658aa13f1ce3ff6e4013f2334c3103be596afe3b2cb527463398cb1e04eb3ad3",
+      "sha512": "7a46826134f3df972166637a30ac196c87e5fb60392f3bd6464b5e066d522149732e1b38eb480a29fd7f0ac2740dcc35d2ebe5ad90be686d1d567395cfd5a3cb",
+      "size": 3216
+    },
+    "upstream.lock.json": {
+      "mode": 420,
+      "sha256": "a598df9b43abb31aef92d3a5f7a64f6cce7936f846a44379ed40baeca4b80c27",
+      "sha512": "f07d273be16dd78e5613c790d12451b9a8a2b7a0b9b0d3f65eefc9c3167c3241d381f82ce1cd260d409593c74cacbaa72f7325d93f55014a5d551306d47effba",
+      "size": 8185
+    }
+  },
+  "format": "secops-codemark-integrity-v1",
+  "project_id": "77ee92c4-5b90-4839-bc43-05fdf32394b7",
+  "tool_version": "0.4.1",
+  "total_bytes": 2738975
+}

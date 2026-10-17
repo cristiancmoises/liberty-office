@@ -4,7 +4,20 @@ The hosted portal is [office.securityops.co](https://office.securityops.co). [of
 
 For a self-hosted instance, copy `.env.example` to `.env`, set the two origins, and run `docker compose up -d --build`. The default host ports bind to loopback. A proxy on another host needs an explicitly scoped LAN binding or a shared Docker network. Set the proxy body limit above `MAX_UPLOAD_BYTES` and allow up to 360 seconds for large transfers. Never expose the Docker socket to the application.
 
-## First administrator
+## Public demonstration
+
+`/demo` is anonymous and explicitly labelled. Set `DEMO_EDITOR_ORIGIN` to a third,
+distinct HTTPS origin (the hosted instance uses `https://demo-editoffice.securityops.co`).
+Proxy port 8099 to that host, preserve Host, and allow only GET/HEAD with a small
+request-body limit. Never point the demo origin at the private editor origin.
+Demo editors cannot import files or invoke the private Drive bridge. Their
+storage is isolated from the authenticated editor origin. The lightweight text
+editor is a compatibility mode, not a DOCX replacement.
+
+The hosted Liberty service runs in its own Proxmox CT154. Preserve its persistent
+volume and private runtime configuration when rebuilding the application.
+
+## Administrator setup
 
 Run `./libertyctl token` on the host and use the one-time token in the portal. Store it privately; do not paste it into logs or tickets. There is no default password. Complete TOTP enrollment and save the recovery codes. Accounts created later receive one-time invitations from an administrator.
 

@@ -8,9 +8,11 @@ services:
     ports:
       - "${LIBERTY_BIND:-127.0.0.1}:${LIBERTY_PORT:-8097}:8097"
       - "${LIBERTY_BIND:-127.0.0.1}:${EDITOR_PORT:-8098}:8097"
+      - "${LIBERTY_BIND:-127.0.0.1}:${DEMO_EDITOR_PORT:-8099}:8097"
     environment:
       PUBLIC_ORIGIN: ${PUBLIC_ORIGIN:-http://localhost:8097}
       EDITOR_ORIGIN: ${EDITOR_ORIGIN:-http://localhost:8098}
+      DEMO_EDITOR_ORIGIN: ${DEMO_EDITOR_ORIGIN:-http://localhost:8099}
       LIBERTY_DATA: /data
       LIBERTY_APPS: /opt/artcraft
       GLOBAL_QUOTA_BYTES: ${GLOBAL_QUOTA_BYTES:-53687091200}

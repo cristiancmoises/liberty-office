@@ -1,0 +1,8 @@
+{
+  "project": "liberty",
+  "codemark_version": "0.4.1",
+  "pq_fingerprint": "SHA256:4YvvVDNYFQek7rCdr1ki7t1k2eEBgQ1/i9R6rO0lXow",
+  "classical_fingerprint": "SHA256:DvmM9B5wXh4O1ov7bM7HPW0RxGRzRj3uboyCdfuS7Z8",
+  "checkpoint": "d898d24046f2123d34476041199d6e27d207aab1d99f9e781dc27f1f625d2b777ef71808241d7d6b54b031207b7b334a320351a2c87036a995e93a1d1673d8b4",
+  "gpg_fingerprint": "0CFA43B9AA9642EAAF2BE983C4C661C9ECFB46E8"
+}

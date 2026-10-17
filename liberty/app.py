@@ -43,7 +43,7 @@ def create_app(settings=None):
     @app.exception_handler(RequestValidationError)
     async def validation_error(request,exc):
         return JSONResponse({'detail':[{key:error[key] for key in ('loc','msg','type')} for error in exc.errors()]},status_code=422)
-    app.add_middleware(TrustedHostMiddleware,allowed_hosts=[urlsplit(settings.origin).hostname,urlsplit(settings.editor_origin).hostname])
+    app.add_middleware(TrustedHostMiddleware,allowed_hosts=[urlsplit(origin).hostname for origin in (settings.origin,settings.editor_origin,settings.demo_editor_origin)])
 
     @app.middleware('http')
     async def security_headers(request: Request,call_next):
@@ -53,9 +53,10 @@ def create_app(settings=None):
     app.include_router(auth.router)
     app.include_router(admin.router)
     # Components are imported here to keep CLI/database operations independent of web routing.
-    from . import drive, catalog
+    from . import drive, catalog, demo
     app.include_router(drive.router)
     app.include_router(catalog.router)
+    app.include_router(demo.router)
     static=Path(__file__).parent/'static'
     app.mount('/static',StaticFiles(directory=static),name='static')
 

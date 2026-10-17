@@ -1,0 +1,12 @@
+html,body{margin:0!important;width:100%;height:100%;overflow:hidden!important;background:#e9edf1!important;color:#182a36;font:14px system-ui,sans-serif}
+body.light-editor{display:grid;grid-template-rows:auto auto minmax(0,1fr) auto}
+.light-heading{padding:14px 24px;background:#f9fbfc;border-bottom:1px solid #cbd5dc;display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px}
+.light-heading h1{font-size:18px;margin:0}.light-heading p{order:3;flex-basis:100%;font-size:12px;line-height:1.5;margin:0;color:#405667}
+.light-heading input{margin-left:auto;max-width:250px;min-width:120px;padding:8px;border:1px solid #a4b5c0;border-radius:5px;font:inherit;background:white;color:#182a36}
+.light-toolbar{display:flex;gap:8px;padding:9px 24px;background:#fff;overflow-x:auto;border-bottom:1px solid #cbd5dc}
+.light-toolbar button{padding:8px 13px;background:#eff4f6;border:1px solid #bdcbd5;border-radius:5px;white-space:nowrap;color:#203e50;font:inherit;cursor:pointer;min-height:38px}
+.light-toolbar button:last-child{margin-left:auto;background:#075e6b;color:white;border-color:#075e6b;position:sticky;right:0;box-shadow:-8px 0 8px #fff}.light-toolbar button:disabled{opacity:.6;cursor:wait}
+.light-sheet{overflow:auto;padding:28px 20px}.light-document{box-sizing:border-box;max-width:820px;min-height:100%;padding:48px 56px;margin:auto;background:white;border:1px solid #d0d8dd;box-shadow:0 3px 16px #1432460c;white-space:pre-wrap;overflow-wrap:anywhere;font:17px/1.65 Georgia,serif;color:#152b3b;outline-offset:3px}
+.light-status{margin:0;padding:9px 24px;background:#f9fbfc;border-top:1px solid #cbd5dc;font-size:12px;color:#304e60;overflow-wrap:anywhere}
+button:focus-visible,input:focus-visible,[contenteditable]:focus-visible{outline:2px solid #087d91;outline-offset:2px}
+@media(max-width:600px){.light-heading{padding:10px 12px;gap:6px}.light-heading h1{font-size:15px}.light-heading input{width:125px;font-size:12px}.light-heading p{font-size:11px}.light-toolbar{padding:8px 12px}.light-toolbar button{font-size:12px;padding:7px 10px}.light-sheet{padding:12px}.light-document{padding:22px 18px;font-size:16px}.light-status{padding:8px 12px}}

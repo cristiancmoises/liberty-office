@@ -1,144 +1,39 @@
 # Liberty Office
 
-Portal web self-hosted com os 13 editores reais do Artcraft, Drive privado, administração de contas e MFA obrigatório. Interface em português, com identidade visual própria. **Versão 0.2.0-rc.1.**
+Liberty Office is a self-hosted web portal for 13 Artcraft editors, a private file drive, account administration, and mandatory TOTP multi-factor authentication. The interface is in Portuguese. [Documentação em português](README.pt-BR.md).
 
-**Acessar:** [office.securityops.co](https://office.securityops.co) · [office.securityops.com.br](https://office.securityops.com.br) (redirecionamento para a origem principal). Os editores usam [editoffice.securityops.co](https://editoffice.securityops.co). [English documentation](README.en.md).
+Visit [office.securityops.co](https://office.securityops.co) or [try the demo](https://office.securityops.co/demo). The [Brazilian domain](https://office.securityops.com.br) redirects to the primary origin.
 
-## Deploy com Docker
+![Liberty Office application catalog](docs/screenshots/liberty-desktop.png)
 
-Use Docker Engine com Compose v2 em Linux. O primeiro build baixa releases oficiais verificadas por tamanho e SHA-256. Não compila Rust, não requer GPU no servidor e não baixa código no startup. O navegador desktop atualizado precisa de WebAssembly/WebGL; funções avançadas de áudio/vídeo dependem das capacidades do navegador.
+## Try it without an account
 
-Extraia o pacote, entre na pasta e execute:
+The public demo has a permanent demo notice, disables uploads and runs editors on a separate origin from private workspaces. It cannot write to your Drive. Editing is temporary; export a local copy if you need to keep an experiment.
 
-```sh
-./libertyctl up
-./libertyctl token
-```
+The lightweight text mode works without WebGL and supports basic writing and formatting. It does not provide full DOCX fidelity. Full graphical editors require working WebGL2 or WebGPU support in the browser. Startup errors are displayed explicitly, with a compatible option when one exists.
 
-Abra **http://localhost:8097**. O editor usa **http://localhost:8098**, uma origem separada. O token inicial é aleatório e fica no volume; não existe senha padrão. Crie o administrador, cadastre seu autenticador TOTP e guarde os dez códigos de recuperação. Arquivos e aplicativos ficam bloqueados até confirmar MFA.
+<details><summary>Text editing and small-screen layout</summary>
 
-As duas portas são publicadas em loopback por padrão. `./libertyctl up http://localhost:19097` ajusta automaticamente as portas locais para 19097 e 19098. O comando equivalente sem launcher é `docker compose up -d --build`.
+![Liberty lightweight text editor](docs/screenshots/liberty-word-lite.png)
 
-## Domínio e HTTPS
+![Liberty Office on a small screen](docs/screenshots/liberty-mobile.png)
 
-Defina **duas origens distintas** antes de criar convites:
+</details>
 
-```sh
-./libertyctl up https://office.seu-dominio.com https://edit.office.seu-dominio.com
-```
+## Run it yourself
 
-Com Nginx Proxy Manager em Docker na rede existente `npm-bridge`:
+Linux with Docker Engine and Compose v2 is required. Copy `.env.example` to `.env`, set distinct HTTPS `PUBLIC_ORIGIN` and `EDITOR_ORIGIN` values when publishing, then run `docker compose up -d --build`. The first build downloads pinned upstream editor archives and checks their sizes and SHA-256 hashes. The portal listens on port 8097 and the editor origin on port 8098; both bind to loopback by default. Place an HTTPS reverse proxy in front of them. See [operations in English](docs/OPERATIONS.en.md) or [Portuguese](docs/OPERATIONS.md) for proxy settings, backup, restore, and upgrades.
 
-```sh
-docker compose -f compose.yaml -f deploy/compose.npm.yaml up -d --build
-```
+The first administrator is created with a one-time bootstrap token stored in the persistent volume. Run `./libertyctl token` on the host to retrieve it privately. There is no default password or public registration. Complete TOTP enrollment and save the recovery codes before using files or editors.
 
-Crie dois Proxy Hosts no NPM:
+## Data and limits
 
-| Origem pública | Encaminhamento |
-| --- | --- |
-| `office.seu-dominio.com` | `http://liberty-office:8097` |
-| `edit.office.seu-dominio.com` | `http://liberty-office:8097` |
+Keep the database, file blobs, MFA key, and bootstrap state in one persistent volume. Run one application instance and one worker per volume; the database uses SQLite WAL on local storage. Back up and test a restore before upgrades. The server can read stored files: this is not end-to-end encryption. Editor compatibility depends on each upstream web application and the browser; there is no universal autosave or live collaboration guarantee.
 
-Ambos devem ter TLS, Force SSL e preservar o cabeçalho `Host` original. O backend decide por esse cabeçalho quais recursos permitir. A origem dos editores não disponibiliza API de usuários, arquivos ou sessão. O portal não serve os bundles de edição. HTTPS é obrigatório fora de localhost, e subpastas como `/office` não são suportadas.
+The Liberty source is AGPL-3.0-or-later and is offered at `/source.zip`. Upstream editors retain their own licenses and notices under `licenses/upstream/`; see [licensing and integration conditions](docs/LICENSING.md). The project is not affiliated with Microsoft, Adobe, or Artcraft.
 
-Para outra rede, configure `NPM_NETWORK`. Ao operar com overrides, preserve `COMPOSE_FILE=compose.yaml:deploy/compose.npm.yaml` em todos os comandos do launcher. Veja [operação](docs/OPERATIONS.md) para limites de proxy e armazenamento.
+## Development and validation
 
-## Aplicativos incluídos
+Source integrity is recorded with SecOps CodeMark. See [verification instructions](docs/INTEGRITY.md); private signing keys are never distributed.
 
-
-| Aplicativo | Uso | Release fixada |
-| --- | --- | --- |
-| WordCraft | Documentos e escrita | 0.7.0 |
-| GridCraft | Planilhas e dados | 0.7.0 |
-| DeckCraft | Apresentações | 0.7.0 |
-| PdfCraft | Leitura e organização de PDFs | 0.8.0 |
-| PhotoCraft | Edição de imagens | 0.9.0 |
-| VectorCraft | Ilustração vetorial | 0.12.0 |
-| LightCraft | Fotografia e RAW | 0.8.0 |
-| FilmCraft | Edição de vídeo | 0.8.0 |
-| EffectCraft | Motion design e efeitos | 0.10.0 |
-| DesignCraft | Layout e publicação | 0.8.0 |
-| FigCraft | Interfaces e protótipos | 0.6.0 |
-| SoundCraft | Áudio | 0.7.0 |
-| CADCraft | Desenho técnico | 0.7.0 |
-
-Todos são os editores upstream reais. O Liberty não simula suas funções. A disponibilidade dos pacotes web foi verificada, inclusive a do FilmCraft, que ainda não era indicada na página geral do catálogo. Os aplicativos permanecem em evolução e não têm promessa de equivalência completa com Microsoft ou Adobe.
-
-## Drive e edição
-
-1. Envie um arquivo ao Drive ou abra um aplicativo para criar um projeto.
-2. Clique no arquivo e escolha o aplicativo. Na barra do Liberty, **Carregar do Drive** oferece o conteúdo ao editor; dentro dele escolha **Arquivo → Abrir**.
-3. Use **Arquivo → Salvar/Exportar** e confira **Salvo no Drive**. Uma exportação com o mesmo nome do arquivo próprio aberto cria uma revisão, com proteção ETag contra alterações concorrentes. Outro formato/nome cria outro arquivo.
-4. Se o editor usar um mecanismo incompatível com o adaptador, baixe o original e use o seletor do aplicativo. **Enviar exportação ao Drive** oferece o caminho manual de volta.
-
-O adaptador usa um canal privado entre origens. O editor recebe o arquivo escolhido e um protocolo limitado de exportação; cookies, CSRF e decisões sobre proprietário/ETag ficam no portal. Uma exportação de arquivo compartilhado cria uma cópia da pessoa que editou. Não há autosave universal ou colaboração centralizada.
-
-Se a sessão expirar, preserve a exportação, entre na **mesma conta** em outra aba e use **Reconectar** para repetir o salvamento. Isso não recarrega o documento. Recarregar a página do editor pode perder alterações que ainda não foram exportadas. O estado local do aplicativo no navegador não equivale a arquivo persistido no Drive.
-
-## Contas e armazenamento
-
-Em **Administração**, crie contas e entregue o link de convite de uso único, válido por 48 horas. A pessoa escolhe senha e cadastra MFA. O painel permite reemitir convites, gerar recuperação de senha, alterar papel/cota e desativar/reativar contas. A recuperação de senha conserva o MFA existente; se o cadastro estava incompleto, reinicia o enrollment obrigatório. Não existe cadastro público nem opção de desligar MFA.
-
-Em **Minha conta**, altere a senha e revogue sessões de outros dispositivos. Ações sensíveis exigem autenticação recente por senha e um novo TOTP. Desativação e mudança de papel revogam sessões, preservando os documentos.
-
-O Drive oferece pastas, upload/download, renomeação, movimentação, pesquisa, compartilhamento interno de leitura, histórico privado, restauração de revisão como uma nova versão, lixeira e exclusão definitiva. Revisões antigas podem ser excluídas individualmente; a revisão atual fica protegida. Lixeira e todas as revisões ocupam cota até a exclusão.
-
-| Configuração | Padrão | Uso |
-| --- | --- | --- |
-| `PUBLIC_ORIGIN` | `http://localhost:8097` | Origem exata do portal |
-| `EDITOR_ORIGIN` | `http://localhost:8098` | Origem isolada dos editores |
-| `LIBERTY_PORT` / `EDITOR_PORT` | 8097 / 8098 | Portas publicadas no host |
-| `LIBERTY_BIND` | `127.0.0.1` | Interface de publicação |
-| `GLOBAL_QUOTA_BYTES` | 50 GiB | Blobs, revisões, lixeira e reservas de envio |
-| `DEFAULT_QUOTA_BYTES` | 5 GiB | Cota de novas contas |
-| `MAX_UPLOAD_BYTES` | 100 MiB | Máximo por upload/exportação |
-| `LIBERTY_VOLUME_NAME` | `liberty_office_data` | Volume persistente |
-
-Cotas são aplicadas no backend sob transação, inclusive em uploads simultâneos. O limite global não limita imagem, banco, logs ou backups. Alterar a cota padrão não altera contas existentes. Cota zero impede novos dados. Após mudar `.env`, use `docker compose up -d` para recriar o serviço sem remover o volume.
-
-Para escolher disco ou diretório, use `deploy/compose.storage.yaml`. Uma instância e um worker por volume são suportados; SQLite WAL exige filesystem local. Não monte o mesmo banco em réplicas.
-
-## Operação
-
-```sh
-./libertyctl status
-./libertyctl verify
-./libertyctl backup /caminho/privado/liberty-backup.tar.gz
-./libertyctl recover nome-do-usuario
-./libertyctl password-reset nome-do-usuario
-```
-
-Backup e recuperação operacional param o serviço e o reiniciam ao final. O backup contém banco, blobs, revisões e chave MFA. `recover` emite um código único para quem ainda conhece a senha e perdeu o autenticador; a pessoa deverá cadastrar novo MFA. `password-reset` emite um link de 30 minutos para redefinir a senha, inclusive do único administrador, conservando a exigência de MFA. Os dois mecanismos revogam sessões existentes. Guarde seus resultados em canal privado.
-
-A chave `mfa.key` deve acompanhar o banco no backup. O startup recusa banco com chave ausente/incompatível. Restauração exige destino vazio, valida integridade SQLite, chaves, referências e hashes dos blobs, e revoga sessões antigas. Procedimento completo em [OPERATIONS.md](docs/OPERATIONS.md).
-
-## Verificação da entrega
-
-```sh
-python scripts/verify_release.py
-python -m venv .venv
-.venv/bin/python -m pip install --require-hashes -r requirements-dev.txt
-.venv/bin/python -m pytest -q
-npm ci
-npm test
-```
-
-Para homologar Docker e navegador em **dados descartáveis**, em um host Linux com Docker:
-
-```sh
-npx playwright install --with-deps chromium
-scripts/docker_acceptance.sh
-```
-
-Esse gate constrói uma imagem própria de teste e um volume novo, verifica API/MFA, os 13 editores, reinício, integridade dos bundles, canal de exportação no Chromium e backup/restauração em outro volume. O seed sintético de teste é removido ao final. Não usa nem apaga o volume de produção. Há também um workflow de CI, sem publicação automática.
-
-**Os testes de API, DOM, hashes, HTTP com os bundles reais e backup/restauração foram executados.** A imagem Docker foi construída no CT de implantação, os testes Python e Node passaram, e o serviço responde por HTTPS. O gate completo com Chromium ainda não foi executado; esta candidata à release não está homologada para produção. Consulte [aceitação](docs/ACCEPTANCE.md) e [operação](docs/OPERATIONS.md).
-
-## Privacidade e licença
-
-Os documentos ficam no armazenamento do seu servidor, legíveis pelo operador do host. **Não há E2EE equivalente ao CryptPad.** O isolamento por origem protege o portal dos scripts de edição; o navegador ainda mantém dados locais específicos dos aplicativos. Ao trocar a conta, o adaptador limpa Web Storage, IndexedDB, CacheStorage e OPFS antes de executar os motores e interrompe editores anteriores em outras abas. Salve no Drive antes de trocar de conta. Perfis separados de navegador continuam adequados para computadores compartilhados.
-
-A imagem executa sem root, sem Docker socket, com raiz somente leitura, capabilities removidas, healthcheck e logs limitados. Senhas usam Argon2id; TOTP tem proteção contra replay e segredos criptografados por chave persistente. Leia [segurança](docs/SECURITY.md) para as fronteiras do modelo.
-
-Código Liberty: **AGPL-3.0-or-later**, com fonte oferecido em `/source.zip`. Artcraft: **MIT OR Apache-2.0**, com atribuições e termos de assets preservados em `licenses/upstream/` e nos pacotes. Não há afiliação com Microsoft, Adobe ou Artcraft. Fontes oficiais: https://getartcraft.com/apps e https://github.com/storytold.
+Use Python 3.12+, install `requirements-dev.txt` with `pip install --require-hashes`, and run `python -m pytest -q`. JavaScript tests run with `npm ci` and `npm test`. Browser acceptance uses isolated synthetic data; see [acceptance criteria](docs/ACCEPTANCE.md). The release remains a candidate: verify the formats and editors you depend on before using important files.

@@ -6,6 +6,7 @@ __pycache__/
 .superpowers/
 .venv/
 node_modules/
+node_modules
 *.pyc
 AGENTS.md
 PROMPT*.md

@@ -1,0 +1,3115 @@
+{
+  "schema": 1,
+  "apps": [
+    {
+      "id": "wordcraft",
+      "version": "v0.7.0",
+      "repository": "https://github.com/storytold/wordcraft",
+      "commit": "fc41918814f62645b6746ed68e71e8c2c2e85d6f",
+      "archive_url": "https://codeload.github.com/storytold/wordcraft/tar.gz/fc41918814f62645b6746ed68e71e8c2c2e85d6f",
+      "archive_sha256": "ea7a64508f9df85878481f41ad961f8396be0e6a4cf0f9842844a86dc7a48fb6",
+      "archive_size": 9370348,
+      "files": [
+        {
+          "path": "ATTRIBUTION.md",
+          "sha256": "2a28a5dae997462cce0b6bcb64d8f4de800f61ad3c6c09a33fdeec3f54ca13c2",
+          "url": "https://raw.githubusercontent.com/storytold/wordcraft/fc41918814f62645b6746ed68e71e8c2c2e85d6f/ATTRIBUTION.md"
+        },
+        {
+          "path": "LICENSE-APACHE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+          "url": "https://raw.githubusercontent.com/storytold/wordcraft/fc41918814f62645b6746ed68e71e8c2c2e85d6f/LICENSE-APACHE"
+        },
+        {
+          "path": "LICENSE-MIT",
+          "sha256": "fc257de83c44ae49e4aad1cf777b886794be3ac9c8d00c010ef55935d5bbeba5",
+          "url": "https://raw.githubusercontent.com/storytold/wordcraft/fc41918814f62645b6746ed68e71e8c2c2e85d6f/LICENSE-MIT"
+        },
+        {
+          "path": "NOTICE",
+          "sha256": "8db865867d13975e1199a1ead02e61aeec45c7535cab0d6d48d039b8b6c72915",
+          "url": "https://raw.githubusercontent.com/storytold/wordcraft/fc41918814f62645b6746ed68e71e8c2c2e85d6f/NOTICE"
+        },
+        {
+          "path": "assets/fonts/OFL-Inter.txt",
+          "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+          "url": "https://raw.githubusercontent.com/storytold/wordcraft/fc41918814f62645b6746ed68e71e8c2c2e85d6f/assets/fonts/OFL-Inter.txt"
+        },
+        {
+          "path": "assets/fonts/OFL-JetBrainsMono.txt",
+          "sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+          "url": "https://raw.githubusercontent.com/storytold/wordcraft/fc41918814f62645b6746ed68e71e8c2c2e85d6f/assets/fonts/OFL-JetBrainsMono.txt"
+        },
+        {
+          "path": "assets/fonts/OFL-SourceSans3.txt",
+          "sha256": "56af9b9c6715597e458284a474dc118a50a4150e9d547c70f7b4a33c3e6a9328",
+          "url": "https://raw.githubusercontent.com/storytold/wordcraft/fc41918814f62645b6746ed68e71e8c2c2e85d6f/assets/fonts/OFL-SourceSans3.txt"
+        },
+        {
+          "path": "assets/fonts/OFL-SourceSerif4.txt",
+          "sha256": "c21d7293d87b6d7ab1d0229a2f55b77f33a7613a6a4e66f6693d68d7d8d09464",
+          "url": "https://raw.githubusercontent.com/storytold/wordcraft/fc41918814f62645b6746ed68e71e8c2c2e85d6f/assets/fonts/OFL-SourceSerif4.txt"
+        },
+        {
+          "path": "docs/brand/LICENSE-brand.txt",
+          "sha256": "ed4475eacf972c9584aa335001c59dfa646eb222549b928ffd6aefd4c805b41a",
+          "url": "https://raw.githubusercontent.com/storytold/wordcraft/fc41918814f62645b6746ed68e71e8c2c2e85d6f/docs/brand/LICENSE-brand.txt"
+        },
+        {
+          "path": "assets/hyphenation/pl.pat",
+          "sha256": "83ddbbd21bc06a44bc4f4a4c49c38782e809cff5f026b764c044daa29e818843",
+          "url": "https://raw.githubusercontent.com/storytold/wordcraft/fc41918814f62645b6746ed68e71e8c2c2e85d6f/assets/hyphenation/pl.pat"
+        }
+      ],
+      "reviewed_build_metadata": [
+        {
+          "path": ".github/workflows/freebsd.yml",
+          "kind": "build-metadata",
+          "sha256": "9c7f5b327c5ff4e7d14b710422f1f25dd96dda0ffc807bf8c87b5aa9b2b477cd",
+          "url": "https://raw.githubusercontent.com/storytold/wordcraft/fc41918814f62645b6746ed68e71e8c2c2e85d6f/.github/workflows/freebsd.yml"
+        },
+        {
+          "path": ".github/workflows/packaging-lint.yml",
+          "kind": "build-metadata",
+          "sha256": "906ed94773036da81a25e2940bd458dee10c85b9f54789011ea423c2352d94ba",
+          "url": "https://raw.githubusercontent.com/storytold/wordcraft/fc41918814f62645b6746ed68e71e8c2c2e85d6f/.github/workflows/packaging-lint.yml"
+        },
+        {
+          "path": ".github/workflows/printing.yml",
+          "kind": "build-metadata",
+          "sha256": "a809b96b3ea2439324133a2663043f4a68ba17993eeda1bbffd410e483006939",
+          "url": "https://raw.githubusercontent.com/storytold/wordcraft/fc41918814f62645b6746ed68e71e8c2c2e85d6f/.github/workflows/printing.yml"
+        },
+        {
+          "path": ".github/workflows/release.yml",
+          "kind": "build-metadata",
+          "sha256": "b43c73a5bbd70d97e70682a899868eb153097581fbe5cd730b7ebcd140b956f9",
+          "url": "https://raw.githubusercontent.com/storytold/wordcraft/fc41918814f62645b6746ed68e71e8c2c2e85d6f/.github/workflows/release.yml"
+        },
+        {
+          "path": ".github/workflows/windows-arm64.yml",
+          "kind": "build-metadata",
+          "sha256": "0552a92d90d1b777ed66d6bc459ae9a1514a247fd41d814ccd04050f750c1c3b",
+          "url": "https://raw.githubusercontent.com/storytold/wordcraft/fc41918814f62645b6746ed68e71e8c2c2e85d6f/.github/workflows/windows-arm64.yml"
+        },
+        {
+          "path": "Cargo.lock",
+          "kind": "build-metadata",
+          "sha256": "4cd08e46c389033f3f3d031026c3f674f74765899790e9f05b475557377bff68",
+          "url": "https://raw.githubusercontent.com/storytold/wordcraft/fc41918814f62645b6746ed68e71e8c2c2e85d6f/Cargo.lock"
+        },
+        {
+          "path": "Cargo.toml",
+          "kind": "build-metadata",
+          "sha256": "7ab76a496637ac574b30fa96204dd54c56951c3bff11f5c21b1e2a9233df10c5",
+          "url": "https://raw.githubusercontent.com/storytold/wordcraft/fc41918814f62645b6746ed68e71e8c2c2e85d6f/Cargo.toml"
+        }
+      ],
+      "craft_fonts_commits": [
+        "8dcdacd5153e64560d109541a47d806f26f048c0"
+      ]
+    },
+    {
+      "id": "gridcraft",
+      "version": "v0.7.0",
+      "repository": "https://github.com/storytold/gridcraft",
+      "commit": "d9d09f0baa912e88c5111107903fc8c640214b57",
+      "archive_url": "https://codeload.github.com/storytold/gridcraft/tar.gz/d9d09f0baa912e88c5111107903fc8c640214b57",
+      "archive_sha256": "3f4fc387e910a3a4c6e435f33b9b123abb6d3347399d589f9b791a9f53c50b25",
+      "archive_size": 4191411,
+      "files": [
+        {
+          "path": "ATTRIBUTION.md",
+          "sha256": "56b465eebb50e1b424c33291119529e45c8636b806d4432199ba7d57bc555c50",
+          "url": "https://raw.githubusercontent.com/storytold/gridcraft/d9d09f0baa912e88c5111107903fc8c640214b57/ATTRIBUTION.md"
+        },
+        {
+          "path": "LICENSE-APACHE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+          "url": "https://raw.githubusercontent.com/storytold/gridcraft/d9d09f0baa912e88c5111107903fc8c640214b57/LICENSE-APACHE"
+        },
+        {
+          "path": "LICENSE-MIT",
+          "sha256": "a87109bbb1ad43ca3920a5d7ff3806863b7e8470a73f4ded97a1447ac93333f5",
+          "url": "https://raw.githubusercontent.com/storytold/gridcraft/d9d09f0baa912e88c5111107903fc8c640214b57/LICENSE-MIT"
+        },
+        {
+          "path": "NOTICE",
+          "sha256": "7c948d5b56639a6d53c362ce0b54a79badd6f272c542f0fc0f22e9ec31c61c2b",
+          "url": "https://raw.githubusercontent.com/storytold/gridcraft/d9d09f0baa912e88c5111107903fc8c640214b57/NOTICE"
+        },
+        {
+          "path": "assets/app-icon/LICENSE.txt",
+          "sha256": "9596de48b5e42fbf727c924bb3863f0e28fcd9e38c47cca284e1174bd06481ce",
+          "url": "https://raw.githubusercontent.com/storytold/gridcraft/d9d09f0baa912e88c5111107903fc8c640214b57/assets/app-icon/LICENSE.txt"
+        },
+        {
+          "path": "docs/brand/LICENSE-brand.txt",
+          "sha256": "d60f1608b31dde193c34e4afb5d922d2c700ead06c4bb3735959334a09b1ff2c",
+          "url": "https://raw.githubusercontent.com/storytold/gridcraft/d9d09f0baa912e88c5111107903fc8c640214b57/docs/brand/LICENSE-brand.txt"
+        }
+      ],
+      "reviewed_build_metadata": [
+        {
+          "path": ".github/workflows/ci.yml",
+          "kind": "build-metadata",
+          "sha256": "960d10f37097127bc35e9ba9569b79377fecc8b3f468cd5fdda9d9a8038fef21",
+          "url": "https://raw.githubusercontent.com/storytold/gridcraft/d9d09f0baa912e88c5111107903fc8c640214b57/.github/workflows/ci.yml"
+        },
+        {
+          "path": ".github/workflows/flatpak-pages.yml",
+          "kind": "build-metadata",
+          "sha256": "e05a08e953f2c740b168c8ac6e0cebf27769068831aa39193f1a161956203edd",
+          "url": "https://raw.githubusercontent.com/storytold/gridcraft/d9d09f0baa912e88c5111107903fc8c640214b57/.github/workflows/flatpak-pages.yml"
+        },
+        {
+          "path": ".github/workflows/freebsd.yml",
+          "kind": "build-metadata",
+          "sha256": "31c8a2e2b6e20ea751370ed3315d4bca66330620fbfae9209a603fdfccabcef3",
+          "url": "https://raw.githubusercontent.com/storytold/gridcraft/d9d09f0baa912e88c5111107903fc8c640214b57/.github/workflows/freebsd.yml"
+        },
+        {
+          "path": ".github/workflows/packaging-lint.yml",
+          "kind": "build-metadata",
+          "sha256": "b7f4d9e8c6952b1a407aedbc968a6ace8806b1050df3cc58eef8b46188932256",
+          "url": "https://raw.githubusercontent.com/storytold/gridcraft/d9d09f0baa912e88c5111107903fc8c640214b57/.github/workflows/packaging-lint.yml"
+        },
+        {
+          "path": ".github/workflows/release.yml",
+          "kind": "build-metadata",
+          "sha256": "e01d26709c407023d8c3508f5e56cf1465e778fc6e8c3f6db30b83d9d4c0d688",
+          "url": "https://raw.githubusercontent.com/storytold/gridcraft/d9d09f0baa912e88c5111107903fc8c640214b57/.github/workflows/release.yml"
+        },
+        {
+          "path": ".github/workflows/windows-arm64.yml",
+          "kind": "build-metadata",
+          "sha256": "60fe937a19de1f133ddd9871a34084f0c5d27974c96a5ecb97e8fa0cba650481",
+          "url": "https://raw.githubusercontent.com/storytold/gridcraft/d9d09f0baa912e88c5111107903fc8c640214b57/.github/workflows/windows-arm64.yml"
+        },
+        {
+          "path": "Cargo.lock",
+          "kind": "build-metadata",
+          "sha256": "cf9d5d467a0298265ff866b05d806f503785c15de1689c69a666cc04bf01b84f",
+          "url": "https://raw.githubusercontent.com/storytold/gridcraft/d9d09f0baa912e88c5111107903fc8c640214b57/Cargo.lock"
+        },
+        {
+          "path": "Cargo.toml",
+          "kind": "build-metadata",
+          "sha256": "e39d550dd9a0374f3102be48b8b2e87f689d37d2d4aa667b6fa05c87346ae5db",
+          "url": "https://raw.githubusercontent.com/storytold/gridcraft/d9d09f0baa912e88c5111107903fc8c640214b57/Cargo.toml"
+        }
+      ],
+      "craft_fonts_commits": [
+        "abb83316d96aa59c1cf64784289e378fe9fa5695"
+      ]
+    },
+    {
+      "id": "deckcraft",
+      "version": "v0.7.0",
+      "repository": "https://github.com/storytold/deckcraft",
+      "commit": "d78e657e4cb1e490ceb5445785c052d9cf5ad963",
+      "archive_url": "https://codeload.github.com/storytold/deckcraft/tar.gz/d78e657e4cb1e490ceb5445785c052d9cf5ad963",
+      "archive_sha256": "e5dfbccdcbfe7d36566299e3d396bae606d49013fbfe8b2bb8afbfeda62a3f55",
+      "archive_size": 3244089,
+      "files": [
+        {
+          "path": "ATTRIBUTION.md",
+          "sha256": "e698cd8478b6b5d8b8dd78bc633948e50700435b57a6634a9f03bb1c6c6f285b",
+          "url": "https://raw.githubusercontent.com/storytold/deckcraft/d78e657e4cb1e490ceb5445785c052d9cf5ad963/ATTRIBUTION.md"
+        },
+        {
+          "path": "LICENSE-APACHE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+          "url": "https://raw.githubusercontent.com/storytold/deckcraft/d78e657e4cb1e490ceb5445785c052d9cf5ad963/LICENSE-APACHE"
+        },
+        {
+          "path": "LICENSE-MIT",
+          "sha256": "90e96fef569474cd526350e716e4b05dd32f179ca96d39d61e6b928485e35406",
+          "url": "https://raw.githubusercontent.com/storytold/deckcraft/d78e657e4cb1e490ceb5445785c052d9cf5ad963/LICENSE-MIT"
+        },
+        {
+          "path": "NOTICE",
+          "sha256": "77b755b4c3c7c2076076547580001a2ecdefd270dcd6536ed8a7da1b64960a45",
+          "url": "https://raw.githubusercontent.com/storytold/deckcraft/d78e657e4cb1e490ceb5445785c052d9cf5ad963/NOTICE"
+        },
+        {
+          "path": "docs/brand/LICENSE-brand.txt",
+          "sha256": "c5ad8e77d0dd8939161b4c4eca7aaba2437d6340c29e7809fa4679f0f2a82f62",
+          "url": "https://raw.githubusercontent.com/storytold/deckcraft/d78e657e4cb1e490ceb5445785c052d9cf5ad963/docs/brand/LICENSE-brand.txt"
+        }
+      ],
+      "reviewed_build_metadata": [
+        {
+          "path": ".github/workflows/ci.yml",
+          "kind": "build-metadata",
+          "sha256": "4776cf7dd35eb6f85f62a8ea6f120c6a1665d58d2f7738d6d330b0a1e3dd9773",
+          "url": "https://raw.githubusercontent.com/storytold/deckcraft/d78e657e4cb1e490ceb5445785c052d9cf5ad963/.github/workflows/ci.yml"
+        },
+        {
+          "path": ".github/workflows/freebsd.yml",
+          "kind": "build-metadata",
+          "sha256": "a95c8db4148578ed9ffa59ccd206b2cdb31e62878a9b8ea7f3f135ad8534f4c4",
+          "url": "https://raw.githubusercontent.com/storytold/deckcraft/d78e657e4cb1e490ceb5445785c052d9cf5ad963/.github/workflows/freebsd.yml"
+        },
+        {
+          "path": ".github/workflows/packaging-lint.yml",
+          "kind": "build-metadata",
+          "sha256": "906ed94773036da81a25e2940bd458dee10c85b9f54789011ea423c2352d94ba",
+          "url": "https://raw.githubusercontent.com/storytold/deckcraft/d78e657e4cb1e490ceb5445785c052d9cf5ad963/.github/workflows/packaging-lint.yml"
+        },
+        {
+          "path": ".github/workflows/release.yml",
+          "kind": "build-metadata",
+          "sha256": "8d70fa34d30b1cb4a22ea241821d4bcd0754c482423a5dc8a25d02809887199b",
+          "url": "https://raw.githubusercontent.com/storytold/deckcraft/d78e657e4cb1e490ceb5445785c052d9cf5ad963/.github/workflows/release.yml"
+        },
+        {
+          "path": "Cargo.lock",
+          "kind": "build-metadata",
+          "sha256": "cf3e9843995e891715587c6a1c162863052e18bc37d70718015ca31452796b9d",
+          "url": "https://raw.githubusercontent.com/storytold/deckcraft/d78e657e4cb1e490ceb5445785c052d9cf5ad963/Cargo.lock"
+        },
+        {
+          "path": "Cargo.toml",
+          "kind": "build-metadata",
+          "sha256": "7e9a62301d64fa3326693898c2b703fcfdbc09581dfc8310d1de400d8270928a",
+          "url": "https://raw.githubusercontent.com/storytold/deckcraft/d78e657e4cb1e490ceb5445785c052d9cf5ad963/Cargo.toml"
+        }
+      ],
+      "craft_fonts_commits": [
+        "43913056ce82a3fdad0ef69f6b88d1dc922a8104"
+      ]
+    },
+    {
+      "id": "photocraft",
+      "version": "v0.9.0",
+      "repository": "https://github.com/storytold/photocraft",
+      "commit": "c699e3cda69f4852b43c0b191ab0091aaeff9d6a",
+      "archive_url": "https://codeload.github.com/storytold/photocraft/tar.gz/c699e3cda69f4852b43c0b191ab0091aaeff9d6a",
+      "archive_sha256": "3f682751d94a36d9f85b80fb5e34bf9b893c97e64dd9d9d8f02c68daac4b4c35",
+      "archive_size": 18442275,
+      "files": [
+        {
+          "path": "ATTRIBUTION.md",
+          "sha256": "6f5464b818b1273eea0592989d9f980eb8b31d3ccf8dde09067018a7cd210ad3",
+          "url": "https://raw.githubusercontent.com/storytold/photocraft/c699e3cda69f4852b43c0b191ab0091aaeff9d6a/ATTRIBUTION.md"
+        },
+        {
+          "path": "LICENSE-APACHE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+          "url": "https://raw.githubusercontent.com/storytold/photocraft/c699e3cda69f4852b43c0b191ab0091aaeff9d6a/LICENSE-APACHE"
+        },
+        {
+          "path": "LICENSE-MIT",
+          "sha256": "1a8f66d8a86b146f5336fa0d4b1186576c8aa98e60823080c85c7811cfd810af",
+          "url": "https://raw.githubusercontent.com/storytold/photocraft/c699e3cda69f4852b43c0b191ab0091aaeff9d6a/LICENSE-MIT"
+        },
+        {
+          "path": "NOTICE",
+          "sha256": "fb7d6f0e57c396b6c94f6315d3dba13048a296d81e7546d33e2b7c77c71ea147",
+          "url": "https://raw.githubusercontent.com/storytold/photocraft/c699e3cda69f4852b43c0b191ab0091aaeff9d6a/NOTICE"
+        },
+        {
+          "path": "assets/app-icon/LICENSE.txt",
+          "sha256": "a5cf25f3f3c2fe2c6d294db04f1bfea7259ac21e8edde5c7fabaa4c379e94795",
+          "url": "https://raw.githubusercontent.com/storytold/photocraft/c699e3cda69f4852b43c0b191ab0091aaeff9d6a/assets/app-icon/LICENSE.txt"
+        },
+        {
+          "path": "assets/dict/LICENSE-SCOWL.txt",
+          "sha256": "e2a852424fe4ee684225a6a8a34c73f8944f11ad825b7fc3a58ddcee617ed23d",
+          "url": "https://raw.githubusercontent.com/storytold/photocraft/c699e3cda69f4852b43c0b191ab0091aaeff9d6a/assets/dict/LICENSE-SCOWL.txt"
+        },
+        {
+          "path": "assets/fonts/OFL-Inter.txt",
+          "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+          "url": "https://raw.githubusercontent.com/storytold/photocraft/c699e3cda69f4852b43c0b191ab0091aaeff9d6a/assets/fonts/OFL-Inter.txt"
+        },
+        {
+          "path": "assets/fonts/OFL-JetBrainsMono.txt",
+          "sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+          "url": "https://raw.githubusercontent.com/storytold/photocraft/c699e3cda69f4852b43c0b191ab0091aaeff9d6a/assets/fonts/OFL-JetBrainsMono.txt"
+        },
+        {
+          "path": "assets/icons/LICENSE-lucide.txt",
+          "sha256": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57",
+          "url": "https://raw.githubusercontent.com/storytold/photocraft/c699e3cda69f4852b43c0b191ab0091aaeff9d6a/assets/icons/LICENSE-lucide.txt"
+        },
+        {
+          "path": "assets/icons/LICENSE-noun-magnetic-lasso.txt",
+          "sha256": "667185ed8a375d40aff0d19f02ce880e786e355253b7c5adba2be7471b70c36a",
+          "url": "https://raw.githubusercontent.com/storytold/photocraft/c699e3cda69f4852b43c0b191ab0091aaeff9d6a/assets/icons/LICENSE-noun-magnetic-lasso.txt"
+        },
+        {
+          "path": "assets/icons/LICENSE-symmetry-axes.txt",
+          "sha256": "d43c48d168983b4d2a48e3d0d1b3c8f3ff662e8161da2d91d229b587f5e421ec",
+          "url": "https://raw.githubusercontent.com/storytold/photocraft/c699e3cda69f4852b43c0b191ab0091aaeff9d6a/assets/icons/LICENSE-symmetry-axes.txt"
+        },
+        {
+          "path": "book/src/project/licenses.md",
+          "sha256": "e7bd6ca6bba15abc56de2c8dd4cc923b90d9e5268c4c19c0e158a7c2e4885b3f",
+          "url": "https://raw.githubusercontent.com/storytold/photocraft/c699e3cda69f4852b43c0b191ab0091aaeff9d6a/book/src/project/licenses.md"
+        },
+        {
+          "path": "crates/ui-egui/src/LICENSE-solarized.txt",
+          "sha256": "04268daec181d192ff99530d1af65cb30bfc6a315e1567332a14892a5b3c4c56",
+          "url": "https://raw.githubusercontent.com/storytold/photocraft/c699e3cda69f4852b43c0b191ab0091aaeff9d6a/crates/ui-egui/src/LICENSE-solarized.txt"
+        },
+        {
+          "path": "crates/ui-egui/src/i18n/LICENSE-translations.txt",
+          "sha256": "9aafb5654e1e306b1278fddfb8b7388f0ce299748e16f7f798176d22e08762c5",
+          "url": "https://raw.githubusercontent.com/storytold/photocraft/c699e3cda69f4852b43c0b191ab0091aaeff9d6a/crates/ui-egui/src/i18n/LICENSE-translations.txt"
+        },
+        {
+          "path": "docs/brand/LICENSE-brand.txt",
+          "sha256": "f0a582a0645a2ec9c979ac2619e9503315483a33f1bb39b56fe5b55632b0ca79",
+          "url": "https://raw.githubusercontent.com/storytold/photocraft/c699e3cda69f4852b43c0b191ab0091aaeff9d6a/docs/brand/LICENSE-brand.txt"
+        }
+      ],
+      "reviewed_build_metadata": [
+        {
+          "path": ".github/workflows/ci.yml",
+          "kind": "build-metadata",
+          "sha256": "8ba82f2d9077ff8f096980507dfa8166fe7142126da589bced1f894026f2d121",
+          "url": "https://raw.githubusercontent.com/storytold/photocraft/c699e3cda69f4852b43c0b191ab0091aaeff9d6a/.github/workflows/ci.yml"
+        },
+        {
+          "path": ".github/workflows/docs.yml",
+          "kind": "build-metadata",
+          "sha256": "6e9645a191914d93dc10d9662bf5aa6c8aacda7683e583a2906d79c49cf78d0e",
+          "url": "https://raw.githubusercontent.com/storytold/photocraft/c699e3cda69f4852b43c0b191ab0091aaeff9d6a/.github/workflows/docs.yml"
+        },
+        {
+          "path": ".github/workflows/freebsd.yml",
+          "kind": "build-metadata",
+          "sha256": "eff55649027c92f7626ad58448c1a78ba5a12b4a99b89d521de57343a3cd30b7",
+          "url": "https://raw.githubusercontent.com/storytold/photocraft/c699e3cda69f4852b43c0b191ab0091aaeff9d6a/.github/workflows/freebsd.yml"
+        },
+        {
+          "path": ".github/workflows/packaging-lint.yml",
+          "kind": "build-metadata",
+          "sha256": "252919543781e37c9c83b09d523da052fbe1f3db696797300508376af5be4ddb",
+          "url": "https://raw.githubusercontent.com/storytold/photocraft/c699e3cda69f4852b43c0b191ab0091aaeff9d6a/.github/workflows/packaging-lint.yml"
+        },
+        {
+          "path": ".github/workflows/perf-nightly.yml",
+          "kind": "build-metadata",
+          "sha256": "bf7cea4a91b7a68097f931afada2a372108357406cf2382b0087bbc5153037a3",
+          "url": "https://raw.githubusercontent.com/storytold/photocraft/c699e3cda69f4852b43c0b191ab0091aaeff9d6a/.github/workflows/perf-nightly.yml"
+        },
+        {
+          "path": ".github/workflows/release.yml",
+          "kind": "build-metadata",
+          "sha256": "894339d2c8f52caaa85e188474b9faf2ab94e285b9f7ed2bee46dd928a558d3a",
+          "url": "https://raw.githubusercontent.com/storytold/photocraft/c699e3cda69f4852b43c0b191ab0091aaeff9d6a/.github/workflows/release.yml"
+        },
+        {
+          "path": ".github/workflows/windows-arm64.yml",
+          "kind": "build-metadata",
+          "sha256": "8bdef3b241b36b7807083e1936c957ae9f6ab83513dd62e3b831bd7984fb5c52",
+          "url": "https://raw.githubusercontent.com/storytold/photocraft/c699e3cda69f4852b43c0b191ab0091aaeff9d6a/.github/workflows/windows-arm64.yml"
+        },
+        {
+          "path": "Cargo.lock",
+          "kind": "build-metadata",
+          "sha256": "19ac704a3a1da36733bb1d62c857880d46201f9a5228d92733e7676d9e499100",
+          "url": "https://raw.githubusercontent.com/storytold/photocraft/c699e3cda69f4852b43c0b191ab0091aaeff9d6a/Cargo.lock"
+        },
+        {
+          "path": "Cargo.toml",
+          "kind": "build-metadata",
+          "sha256": "6fd5847796b746e461e98eb121e9575f0ed93c79a28d08f55f20997e99dbfb12",
+          "url": "https://raw.githubusercontent.com/storytold/photocraft/c699e3cda69f4852b43c0b191ab0091aaeff9d6a/Cargo.toml"
+        }
+      ],
+      "craft_fonts_commits": [
+        "abb83316d96aa59c1cf64784289e378fe9fa5695"
+      ]
+    },
+    {
+      "id": "vectorcraft",
+      "version": "v0.12.0",
+      "repository": "https://github.com/storytold/vectorcraft",
+      "commit": "8bc65329286dc1b84aa392997bb205613c3e96cb",
+      "archive_url": "https://codeload.github.com/storytold/vectorcraft/tar.gz/8bc65329286dc1b84aa392997bb205613c3e96cb",
+      "archive_sha256": "036b2a0eb8ba44074a4c16491b8cd0b6d27f78a132c0c3e57bbcad771820a2ff",
+      "archive_size": 19124711,
+      "files": [
+        {
+          "path": "ASSETS.md",
+          "sha256": "aff82a234214efafae8f7f0037c4901dd23a56535326c589cd390dd4eb62ca40",
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/8bc65329286dc1b84aa392997bb205613c3e96cb/ASSETS.md"
+        },
+        {
+          "path": "LICENSE-APACHE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/8bc65329286dc1b84aa392997bb205613c3e96cb/LICENSE-APACHE"
+        },
+        {
+          "path": "LICENSE-MIT",
+          "sha256": "8b6025dc4b707e0fb08b9c2054096f1be3ae61529399aa2c348dec676562dc71",
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/8bc65329286dc1b84aa392997bb205613c3e96cb/LICENSE-MIT"
+        },
+        {
+          "path": "NOTICE",
+          "sha256": "cda4d86b58c5200204e786092ac634e8b60f9beda54219f334726f49e2065e82",
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/8bc65329286dc1b84aa392997bb205613c3e96cb/NOTICE"
+        },
+        {
+          "path": "assets/app-icon/LICENSE.txt",
+          "sha256": "7323e2ad58efcf69f0871f419531f707ae6bee61d00c7d84de6f8300d7ad19f7",
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/8bc65329286dc1b84aa392997bb205613c3e96cb/assets/app-icon/LICENSE.txt"
+        },
+        {
+          "path": "assets/fonts/OFL-Inter.txt",
+          "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/8bc65329286dc1b84aa392997bb205613c3e96cb/assets/fonts/OFL-Inter.txt"
+        },
+        {
+          "path": "assets/fonts/OFL-JetBrainsMono.txt",
+          "sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/8bc65329286dc1b84aa392997bb205613c3e96cb/assets/fonts/OFL-JetBrainsMono.txt"
+        },
+        {
+          "path": "assets/fonts/OFL-SourceSans3.txt",
+          "sha256": "56af9b9c6715597e458284a474dc118a50a4150e9d547c70f7b4a33c3e6a9328",
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/8bc65329286dc1b84aa392997bb205613c3e96cb/assets/fonts/OFL-SourceSans3.txt"
+        },
+        {
+          "path": "assets/fonts/OFL-SourceSerif4.txt",
+          "sha256": "c21d7293d87b6d7ab1d0229a2f55b77f33a7613a6a4e66f6693d68d7d8d09464",
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/8bc65329286dc1b84aa392997bb205613c3e96cb/assets/fonts/OFL-SourceSerif4.txt"
+        },
+        {
+          "path": "assets/icons/LICENSE-lucide.txt",
+          "sha256": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57",
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/8bc65329286dc1b84aa392997bb205613c3e96cb/assets/icons/LICENSE-lucide.txt"
+        },
+        {
+          "path": "docs/brand/LICENSE-brand.txt",
+          "sha256": "197b20a10ffd9474e63c08893440abb7724a410c975829d809390f2ce21fac1e",
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/8bc65329286dc1b84aa392997bb205613c3e96cb/docs/brand/LICENSE-brand.txt"
+        },
+        {
+          "path": "licenses/pdf-backend/hayro-cmap/LICENSE-APACHE",
+          "sha256": "0cec06e0e55fbc3dc5cee4fca9b607f66cb8f4e4dbcf3b3c013594dd156732e9",
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/8bc65329286dc1b84aa392997bb205613c3e96cb/licenses/pdf-backend/hayro-cmap/LICENSE-APACHE"
+        },
+        {
+          "path": "licenses/pdf-backend/hayro-cmap/LICENSE-MIT",
+          "sha256": "51b50e6120c344dcc146bbd6375ca1c78e079d97c8bea76e67a53d6ff0efebac",
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/8bc65329286dc1b84aa392997bb205613c3e96cb/licenses/pdf-backend/hayro-cmap/LICENSE-MIT"
+        },
+        {
+          "path": "licenses/pdf-backend/hayro-cmap/LICENSE.txt",
+          "sha256": "742665db9c8e1bc72603c6d319ca3e90b83bd6d95202f0cd4ef11068a07a9c29",
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/8bc65329286dc1b84aa392997bb205613c3e96cb/licenses/pdf-backend/hayro-cmap/LICENSE.txt"
+        },
+        {
+          "path": "licenses/pdf-backend/hayro-interpret/LICENSE-APACHE",
+          "sha256": "0cec06e0e55fbc3dc5cee4fca9b607f66cb8f4e4dbcf3b3c013594dd156732e9",
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/8bc65329286dc1b84aa392997bb205613c3e96cb/licenses/pdf-backend/hayro-interpret/LICENSE-APACHE"
+        },
+        {
+          "path": "licenses/pdf-backend/hayro-interpret/LICENSE-MIT",
+          "sha256": "51b50e6120c344dcc146bbd6375ca1c78e079d97c8bea76e67a53d6ff0efebac",
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/8bc65329286dc1b84aa392997bb205613c3e96cb/licenses/pdf-backend/hayro-interpret/LICENSE-MIT"
+        },
+        {
+          "path": "licenses/pdf-backend/hayro-interpret/assets/CGATS_LICENSE.txt",
+          "sha256": "469d87b5fa48f8aaf69e25f4fcac3a309c97dbb7d561b917638abdb640e004d9",
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/8bc65329286dc1b84aa392997bb205613c3e96cb/licenses/pdf-backend/hayro-interpret/assets/CGATS_LICENSE.txt"
+        },
+        {
+          "path": "licenses/pdf-backend/hayro-interpret/assets/LICENSE_FOXIT",
+          "sha256": "b578cdd2345840ada550bd12519533812320d5f1d21cf4c1c7e1b1b0a31c98b7",
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/8bc65329286dc1b84aa392997bb205613c3e96cb/licenses/pdf-backend/hayro-interpret/assets/LICENSE_FOXIT"
+        },
+        {
+          "path": "licenses/pdf-backend/hayro-jbig2/LICENSE-APACHE",
+          "sha256": "0cec06e0e55fbc3dc5cee4fca9b607f66cb8f4e4dbcf3b3c013594dd156732e9",
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/8bc65329286dc1b84aa392997bb205613c3e96cb/licenses/pdf-backend/hayro-jbig2/LICENSE-APACHE"
+        },
+        {
+          "path": "licenses/pdf-backend/hayro-jbig2/LICENSE-MIT",
+          "sha256": "51b50e6120c344dcc146bbd6375ca1c78e079d97c8bea76e67a53d6ff0efebac",
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/8bc65329286dc1b84aa392997bb205613c3e96cb/licenses/pdf-backend/hayro-jbig2/LICENSE-MIT"
+        },
+        {
+          "path": "licenses/pdf-backend/hayro-syntax/LICENSE-APACHE",
+          "sha256": "0cec06e0e55fbc3dc5cee4fca9b607f66cb8f4e4dbcf3b3c013594dd156732e9",
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/8bc65329286dc1b84aa392997bb205613c3e96cb/licenses/pdf-backend/hayro-syntax/LICENSE-APACHE"
+        },
+        {
+          "path": "licenses/pdf-backend/hayro-syntax/LICENSE-MIT",
+          "sha256": "51b50e6120c344dcc146bbd6375ca1c78e079d97c8bea76e67a53d6ff0efebac",
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/8bc65329286dc1b84aa392997bb205613c3e96cb/licenses/pdf-backend/hayro-syntax/LICENSE-MIT"
+        },
+        {
+          "path": "vendor/windows-link/license-apache-2.0",
+          "sha256": "c16f8dcf1a368b83be78d826ea23de4079fe1b4469a0ab9ee20563f37ff3d44b",
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/8bc65329286dc1b84aa392997bb205613c3e96cb/vendor/windows-link/license-apache-2.0"
+        },
+        {
+          "path": "vendor/windows-link/license-mit",
+          "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/8bc65329286dc1b84aa392997bb205613c3e96cb/vendor/windows-link/license-mit"
+        }
+      ],
+      "reviewed_build_metadata": [
+        {
+          "path": ".github/workflows/affinity-corpus.yml",
+          "kind": "build-metadata",
+          "sha256": "e5c200a60dd2d3ab91f55443c10438c675396dfcf828360b4bfb12b41bcaa419",
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/8bc65329286dc1b84aa392997bb205613c3e96cb/.github/workflows/affinity-corpus.yml"
+        },
+        {
+          "path": ".github/workflows/freebsd.yml",
+          "kind": "build-metadata",
+          "sha256": "67915c87f1c2cdf7fc6bfe9a74acb4348cb5bb51738927e7f39aa931a8a0d238",
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/8bc65329286dc1b84aa392997bb205613c3e96cb/.github/workflows/freebsd.yml"
+        },
+        {
+          "path": ".github/workflows/nix.yml",
+          "kind": "build-metadata",
+          "sha256": "b539c9c86f38a38140e85e5e92dbb3e91c8b53c59aa5463bd1a9486e35e7f832",
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/8bc65329286dc1b84aa392997bb205613c3e96cb/.github/workflows/nix.yml"
+        },
+        {
+          "path": ".github/workflows/packaging-lint.yml",
+          "kind": "build-metadata",
+          "sha256": "026fbc0061c1fd6f83feb5df3d03ba83a3b954e8e229cbe153202588a3173a6a",
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/8bc65329286dc1b84aa392997bb205613c3e96cb/.github/workflows/packaging-lint.yml"
+        },
+        {
+          "path": ".github/workflows/print.yml",
+          "kind": "build-metadata",
+          "sha256": "a85792b7feea8c55692afe7dd3e9dc69a006a8b267929af9135e4a069a984dcb",
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/8bc65329286dc1b84aa392997bb205613c3e96cb/.github/workflows/print.yml"
+        },
+        {
+          "path": ".github/workflows/release.yml",
+          "kind": "build-metadata",
+          "sha256": "099a0006e7d75ff0f5dc951e3de61bfd68199b7f70460458177bcb14e5254e9f",
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/8bc65329286dc1b84aa392997bb205613c3e96cb/.github/workflows/release.yml"
+        },
+        {
+          "path": ".github/workflows/windows-arm64.yml",
+          "kind": "build-metadata",
+          "sha256": "be1b2975df2fc101749dd805df6bcbdc0d7579d9c41c81da61463cfc9b573971",
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/8bc65329286dc1b84aa392997bb205613c3e96cb/.github/workflows/windows-arm64.yml"
+        },
+        {
+          "path": ".github/workflows/windows7.yml",
+          "kind": "build-metadata",
+          "sha256": "7c9521121f79baa45e29a843311d9163ba85cd202348531189c154c55bb3291d",
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/8bc65329286dc1b84aa392997bb205613c3e96cb/.github/workflows/windows7.yml"
+        },
+        {
+          "path": "Cargo.lock",
+          "kind": "build-metadata",
+          "sha256": "5391281050940276538746c4f212c2cfe85704fe8fccc7be3af23f8ffb5aaa7a",
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/8bc65329286dc1b84aa392997bb205613c3e96cb/Cargo.lock"
+        },
+        {
+          "path": "Cargo.toml",
+          "kind": "build-metadata",
+          "sha256": "3c06ee739355128c48ed726f18a97b2609d6fe4940ca5e8d00f6d68619f79caf",
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/8bc65329286dc1b84aa392997bb205613c3e96cb/Cargo.toml"
+        }
+      ],
+      "craft_fonts_commits": [
+        "3d9ab3a132ed0eff457e424226a435a901da30d3"
+      ]
+    },
+    {
+      "id": "filmcraft",
+      "version": "v0.8.0",
+      "repository": "https://github.com/storytold/filmcraft",
+      "commit": "f03e21556d8e3a7155b91892d958debd5255d7af",
+      "archive_url": "https://codeload.github.com/storytold/filmcraft/tar.gz/f03e21556d8e3a7155b91892d958debd5255d7af",
+      "archive_sha256": "ee62f9048c0088ae47283b4b7ae37a31a2319a27ebdd6af36b43f4999ea55d45",
+      "archive_size": 20295015,
+      "files": [
+        {
+          "path": "ATTRIBUTION.md",
+          "sha256": "e8a1f1ad8335878370b3cd9994a20a1af0bfcf5cb33040496042d831325a703e",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/ATTRIBUTION.md"
+        },
+        {
+          "path": "LICENSE-APACHE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/LICENSE-APACHE"
+        },
+        {
+          "path": "LICENSE-MIT",
+          "sha256": "d2d8416f0883694c23b473e26372506e9e11f5f41b55a92b7388dab921d9a207",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/LICENSE-MIT"
+        },
+        {
+          "path": "NOTICE",
+          "sha256": "5761787313b9d6c13dd5f03da2e04209ad7bd08eff8920edfd184141d791195c",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/NOTICE"
+        },
+        {
+          "path": "apps/filmcraft-web/web/favicon.png.attribution",
+          "sha256": "95525d61af0f0f785d2b0dbaa64f7012edbfa864d460ebde9fba35d23c0e3aa5",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/apps/filmcraft-web/web/favicon.png.attribution"
+        },
+        {
+          "path": "assets/app-icon/LICENSE.txt",
+          "sha256": "79d32f0c9576355f9eaedf8ba8727a149cf3e42ed753ff5d25ac882bf072e27a",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/assets/app-icon/LICENSE.txt"
+        },
+        {
+          "path": "assets/app-icon/filmcraft-1024.png.attribution",
+          "sha256": "ff9a232c16c201c9961ebd0a0dfc5c79bb6064803aa5b5af15af5cbcd227ae39",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/assets/app-icon/filmcraft-1024.png.attribution"
+        },
+        {
+          "path": "assets/app-icon/filmcraft-macos-512.png.attribution",
+          "sha256": "c4d06585561176165d4a1830821c488ee8397a81a65b92abf64b0ff446b34271",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/assets/app-icon/filmcraft-macos-512.png.attribution"
+        },
+        {
+          "path": "assets/app-icon/filmcraft-small.svg.attribution",
+          "sha256": "4f7c827caca335e5363e7b3363f2947fb413a2994eb7449f0e0b1e46986dbbc8",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/assets/app-icon/filmcraft-small.svg.attribution"
+        },
+        {
+          "path": "assets/app-icon/filmcraft.icns.attribution",
+          "sha256": "0fffaf13b093c6986421d4afcb24924003d337c4c6da0282cbcf493b7e011e08",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/assets/app-icon/filmcraft.icns.attribution"
+        },
+        {
+          "path": "assets/app-icon/filmcraft.ico.attribution",
+          "sha256": "ec78e93a1efcf4f11cf91bf4189f77ffbc260d5716d3780074703df65a4038bd",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/assets/app-icon/filmcraft.ico.attribution"
+        },
+        {
+          "path": "assets/app-icon/filmcraft.svg.attribution",
+          "sha256": "7b65fde02ff766cb82d8c98e6de271c05c92e084523c9e3ed1d090f6e927e376",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/assets/app-icon/filmcraft.svg.attribution"
+        },
+        {
+          "path": "assets/app-icon/hicolor/128x128/apps/ai.storyteller.filmcraft.png.attribution",
+          "sha256": "aeaa30105ee0d383bae35dc8beaf6c2cd6fea5c077e825d93beabe9f991845d6",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/assets/app-icon/hicolor/128x128/apps/ai.storyteller.filmcraft.png.attribution"
+        },
+        {
+          "path": "assets/app-icon/hicolor/16x16/apps/ai.storyteller.filmcraft.png.attribution",
+          "sha256": "1962965c111a82b8d2b6974e2a4c453e728e933f49aebe5643cc9ed1b247d33a",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/assets/app-icon/hicolor/16x16/apps/ai.storyteller.filmcraft.png.attribution"
+        },
+        {
+          "path": "assets/app-icon/hicolor/24x24/apps/ai.storyteller.filmcraft.png.attribution",
+          "sha256": "3d9e2c539207b2e97531590f5cbe72233c88775af92086c093d7d3d4031739e6",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/assets/app-icon/hicolor/24x24/apps/ai.storyteller.filmcraft.png.attribution"
+        },
+        {
+          "path": "assets/app-icon/hicolor/256x256/apps/ai.storyteller.filmcraft.png.attribution",
+          "sha256": "7f1593c09a170f2111ed4cefa44f680f3fdea447a0187abecc0cb43b6e4f02da",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/assets/app-icon/hicolor/256x256/apps/ai.storyteller.filmcraft.png.attribution"
+        },
+        {
+          "path": "assets/app-icon/hicolor/32x32/apps/ai.storyteller.filmcraft.png.attribution",
+          "sha256": "5677a001098a33a526255e83651056b45c03efaea2b6cff8798195e3c9a2f510",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/assets/app-icon/hicolor/32x32/apps/ai.storyteller.filmcraft.png.attribution"
+        },
+        {
+          "path": "assets/app-icon/hicolor/48x48/apps/ai.storyteller.filmcraft.png.attribution",
+          "sha256": "8a64646a10252d871c3434f1edfbaff9a9278387cfea84fadd8e463918baae0e",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/assets/app-icon/hicolor/48x48/apps/ai.storyteller.filmcraft.png.attribution"
+        },
+        {
+          "path": "assets/app-icon/hicolor/512x512/apps/ai.storyteller.filmcraft.png.attribution",
+          "sha256": "f51a748ac9f60a89e7eb27d71d5103a2459a27b11aa1afce1981a13a8274d84b",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/assets/app-icon/hicolor/512x512/apps/ai.storyteller.filmcraft.png.attribution"
+        },
+        {
+          "path": "assets/app-icon/hicolor/64x64/apps/ai.storyteller.filmcraft.png.attribution",
+          "sha256": "3380f020eeb3ac7b32ac44b4d027e7fdaadf3e17a9b3d4adc87b2907cc00d32e",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/assets/app-icon/hicolor/64x64/apps/ai.storyteller.filmcraft.png.attribution"
+        },
+        {
+          "path": "assets/app-icon/hicolor/scalable/apps/ai.storyteller.filmcraft.svg.attribution",
+          "sha256": "bb9928c4587e7690cff9cdd249d80f9537cd819478266740e235848bd4ff3e09",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/assets/app-icon/hicolor/scalable/apps/ai.storyteller.filmcraft.svg.attribution"
+        },
+        {
+          "path": "assets/fonts/Inter-Bold.ttf.attribution",
+          "sha256": "207d44f72d0e4ff451a9dfca26c9da686a06d2cfb3c8e0b02fb2af2aae105405",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/assets/fonts/Inter-Bold.ttf.attribution"
+        },
+        {
+          "path": "assets/fonts/Inter-Italic.ttf.attribution",
+          "sha256": "767ad7b0c79fddb0e1b16dbcac3b57bd59df86f72c2dd98fbe23ac92bdebcb5d",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/assets/fonts/Inter-Italic.ttf.attribution"
+        },
+        {
+          "path": "assets/fonts/Inter-Medium.ttf.attribution",
+          "sha256": "ec46a12fd5df95dfd044c675b1a02d414de0d4f3b7f8511f45289c14499459b6",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/assets/fonts/Inter-Medium.ttf.attribution"
+        },
+        {
+          "path": "assets/fonts/Inter-Regular.ttf.attribution",
+          "sha256": "0e6e9b503157c34daeede7c0b0f1ba7f0ebb4e84cd0f05568ed74c618368b52e",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/assets/fonts/Inter-Regular.ttf.attribution"
+        },
+        {
+          "path": "assets/fonts/Inter-SemiBold.ttf.attribution",
+          "sha256": "019da1edbbe1c6e1bcc036fae249fad1a23c5ba62572b2a7567fbdb98557bc42",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/assets/fonts/Inter-SemiBold.ttf.attribution"
+        },
+        {
+          "path": "assets/fonts/JetBrainsMono-Regular.ttf.attribution",
+          "sha256": "ec548030afc176d90291b6f5ea93df4843184cec2fd8e867e8f453bf4fe83343",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/assets/fonts/JetBrainsMono-Regular.ttf.attribution"
+        },
+        {
+          "path": "assets/fonts/NotoSerif-Regular.ttf.attribution",
+          "sha256": "e4a5764962e0ef024db4f718b66efc5e7395a7196a3b5abb75de8bee919009b6",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/assets/fonts/NotoSerif-Regular.ttf.attribution"
+        },
+        {
+          "path": "assets/fonts/OFL-Inter.txt",
+          "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/assets/fonts/OFL-Inter.txt"
+        },
+        {
+          "path": "assets/fonts/OFL-JetBrainsMono.txt",
+          "sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/assets/fonts/OFL-JetBrainsMono.txt"
+        },
+        {
+          "path": "assets/fonts/OFL-NotoSerif.txt",
+          "sha256": "cee9892f9f0cc8fe882c9e9537ee6a89621d86ee7ceaf70b02e2b2b1c25c061a",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/assets/fonts/OFL-NotoSerif.txt"
+        },
+        {
+          "path": "crates/golden/goldens/blend_modes.png.attribution",
+          "sha256": "f7893383460783b3ee39d6c9e6cfc47ce9f9e90fa79082e0cba18fb3d5734a08",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/crates/golden/goldens/blend_modes.png.attribution"
+        },
+        {
+          "path": "crates/golden/goldens/crop.png.attribution",
+          "sha256": "30688f3a4ffcb72cc0210e463cbee918679cc531c3245c87c462f2a64e8524fa",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/crates/golden/goldens/crop.png.attribution"
+        },
+        {
+          "path": "crates/golden/goldens/gaussian_blur.png.attribution",
+          "sha256": "2b0618dc792ef4e7b748aba528e56062c62a4d942460f451a6175f79c1a1d2e1",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/crates/golden/goldens/gaussian_blur.png.attribution"
+        },
+        {
+          "path": "crates/golden/goldens/graphic_rich_text.png.attribution",
+          "sha256": "801289ac4c5e819bd105fa60c4348151549aaca47245cec62df43403c4e1f9b7",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/crates/golden/goldens/graphic_rich_text.png.attribution"
+        },
+        {
+          "path": "crates/golden/goldens/graphic_shapes.png.attribution",
+          "sha256": "eb4374585ed0a429fad149af6a6c84d28ea04bebf71cd2b7129c1c485a62b196",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/crates/golden/goldens/graphic_shapes.png.attribution"
+        },
+        {
+          "path": "crates/golden/goldens/graphic_template.png.attribution",
+          "sha256": "862e0176c226712c1b23e949290ed2fce273e3d6c98eea0d33722b6d2c9dc009",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/crates/golden/goldens/graphic_template.png.attribution"
+        },
+        {
+          "path": "crates/golden/goldens/graphic_title.png.attribution",
+          "sha256": "4656b0c05759f121d539bee7ff76a9280f6a5ba5aec9d9a8bb7fbd3ab6fb5cc7",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/crates/golden/goldens/graphic_title.png.attribution"
+        },
+        {
+          "path": "crates/golden/goldens/hdr_tone_map.png.attribution",
+          "sha256": "bc25317f5a2815a5b5807692f3016acdd0990057817e4737e148dc1f46d4639e",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/crates/golden/goldens/hdr_tone_map.png.attribution"
+        },
+        {
+          "path": "crates/golden/goldens/log_to_rec709.png.attribution",
+          "sha256": "85305f82edae2a54c42b6c190739be5f31f23f5c9ffad27e0cab4424f38a51ed",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/crates/golden/goldens/log_to_rec709.png.attribution"
+        },
+        {
+          "path": "crates/golden/goldens/lumetri_basic.png.attribution",
+          "sha256": "40694f09da38dfb973139534b7ce30c334c4a85077f4e2b639dc71b694ad79f3",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/crates/golden/goldens/lumetri_basic.png.attribution"
+        },
+        {
+          "path": "crates/golden/goldens/lumetri_hdr_pq.png.attribution",
+          "sha256": "290d1320bb72b0d9fbc6c158cb1cd035e0bc4a72795bfa041d612071a19a0521",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/crates/golden/goldens/lumetri_hdr_pq.png.attribution"
+        },
+        {
+          "path": "crates/golden/goldens/lumetri_presets_grid.png.attribution",
+          "sha256": "9950841415e775980e4deb3af9aa13f9057798fd4e6e3dccb6197114863cd628",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/crates/golden/goldens/lumetri_presets_grid.png.attribution"
+        },
+        {
+          "path": "crates/golden/goldens/mask_blur.png.attribution",
+          "sha256": "2a35e088429b072b93b0e9f53ac87f37c86763f721f0cf518dfaee664e4e7454",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/crates/golden/goldens/mask_blur.png.attribution"
+        },
+        {
+          "path": "crates/golden/goldens/mask_color.png.attribution",
+          "sha256": "db911e28412a0a04185fb84b63c287baa61d5b8e10bc319eeda188cfc04669b1",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/crates/golden/goldens/mask_color.png.attribution"
+        },
+        {
+          "path": "crates/golden/goldens/mask_inverted.png.attribution",
+          "sha256": "9ff440a8da5dd9246f414203487c4a53b4e00440edc0a8ef13ed9a764a8adf38",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/crates/golden/goldens/mask_inverted.png.attribution"
+        },
+        {
+          "path": "crates/golden/goldens/mask_opacity.png.attribution",
+          "sha256": "cf06c71f8fe2b20eac27da50b922f74443006326238050fb6fac606ba54d3f8a",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/crates/golden/goldens/mask_opacity.png.attribution"
+        },
+        {
+          "path": "crates/golden/goldens/text_burnin.png.attribution",
+          "sha256": "c488dd9a071eecdcd10db4cd9a4ea6214c46ac494bf9925c6852845cfd1f2254",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/crates/golden/goldens/text_burnin.png.attribution"
+        },
+        {
+          "path": "crates/golden/goldens/transform_opacity.png.attribution",
+          "sha256": "32728c886f687028345034e1c5c1abf041d69a48e71c167e71d092692d6d7c6f",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/crates/golden/goldens/transform_opacity.png.attribution"
+        },
+        {
+          "path": "crates/golden/goldens/transition_cross_dissolve.png.attribution",
+          "sha256": "ab62186964f0cd21d7157a4f1f3476977dbd2425cf8db0c3eba4b7cea4d1b56e",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/crates/golden/goldens/transition_cross_dissolve.png.attribution"
+        },
+        {
+          "path": "crates/golden/goldens/transition_dip_to_black.png.attribution",
+          "sha256": "45fe39d8f69ae6e1a2b7f7a0a157e9a4529d7efc05838a01f30e332f9fd24570",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/crates/golden/goldens/transition_dip_to_black.png.attribution"
+        },
+        {
+          "path": "crates/golden/goldens/transition_wipe.png.attribution",
+          "sha256": "0d6c5b98643c8b6ccdb4e33902d3cea755accd0d8af695143daa102d166c8cbb",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/crates/golden/goldens/transition_wipe.png.attribution"
+        },
+        {
+          "path": "crates/golden/goldens/vfx_distort.png.attribution",
+          "sha256": "f947d2647feb5f14bacc35a880d6b180e7e5c93a29c614d92bcfc04295856bed",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/crates/golden/goldens/vfx_distort.png.attribution"
+        },
+        {
+          "path": "crates/golden/goldens/vfx_glows.png.attribution",
+          "sha256": "7fb8921bdb4a9d83b311d83c3903e6380d32d462ae553098ce3e629ea1a60fab",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/crates/golden/goldens/vfx_glows.png.attribution"
+        },
+        {
+          "path": "crates/golden/goldens/vfx_spacer_stroke_shadow.png.attribution",
+          "sha256": "3c00431121f5aaabc08f17e6f07460f88b07520a3f50aa6b2a774ef75fd997fb",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/crates/golden/goldens/vfx_spacer_stroke_shadow.png.attribution"
+        },
+        {
+          "path": "crates/golden/goldens/vfx_stylize.png.attribution",
+          "sha256": "9882096583feb009dfdd21ccfb0a3ab8e89cce0870f8fb0436ff753fdad10c3e",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/crates/golden/goldens/vfx_stylize.png.attribution"
+        },
+        {
+          "path": "crates/golden/goldens/vfx_ultra_key.png.attribution",
+          "sha256": "8572d8c263f473b69a929bca38a6c89a932c86d36c9bbb427ebd43cfe6fb0d49",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/crates/golden/goldens/vfx_ultra_key.png.attribution"
+        },
+        {
+          "path": "crates/golden/goldens/vfx_vr_rotate.png.attribution",
+          "sha256": "3e79a69c95a033ffb611123bacff79a9708918c8a662e1764076b1ce54ce95b7",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/crates/golden/goldens/vfx_vr_rotate.png.attribution"
+        },
+        {
+          "path": "crates/ui-egui/src/i18n/fr.tsv.attribution",
+          "sha256": "fe1ead4240cb0ecbc00a18b5b3454381ed37358b376755e9fb6d53268daaa9ec",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/crates/ui-egui/src/i18n/fr.tsv.attribution"
+        },
+        {
+          "path": "crates/ui-egui/src/i18n/id.tsv.attribution",
+          "sha256": "6961b84d2cad3ea5f89a105a8d4903e34d568f3146ba7f75cf8d6b4fb4b4eb18",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/crates/ui-egui/src/i18n/id.tsv.attribution"
+        },
+        {
+          "path": "crates/ui-egui/src/i18n/it.tsv.attribution",
+          "sha256": "6429531658aed082f1e527fc4a55127f1a4b78aac88d265d275dffb9e9c94f74",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/crates/ui-egui/src/i18n/it.tsv.attribution"
+        },
+        {
+          "path": "crates/ui-egui/src/i18n/ko.tsv.attribution",
+          "sha256": "8928736097aa5c55cfaf530e103a22f7a878a368dc1e1c7cfaeed9ba77e44cf2",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/crates/ui-egui/src/i18n/ko.tsv.attribution"
+        },
+        {
+          "path": "crates/ui-egui/src/i18n/pt-br.tsv.attribution",
+          "sha256": "cb32d459d5f3ca25f87434e01d79f644a9c97239b53bdaf75c3eb4d476d1d77d",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/crates/ui-egui/src/i18n/pt-br.tsv.attribution"
+        },
+        {
+          "path": "crates/ui-egui/src/i18n/ru.tsv.attribution",
+          "sha256": "aa47e7e83c77ec3f2252e9fedf1604106fc3e33e1d05beeb455aae5547066f81",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/crates/ui-egui/src/i18n/ru.tsv.attribution"
+        },
+        {
+          "path": "crates/ui-egui/src/i18n/uk.tsv.attribution",
+          "sha256": "f80aa33baef14b23b13f3ba1226bb11860cf8c4073fe9d319fe96a317c0ba0f0",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/crates/ui-egui/src/i18n/uk.tsv.attribution"
+        },
+        {
+          "path": "docs/brand/LICENSE-brand.txt",
+          "sha256": "d30f3aee39b72be3d1c1bdf994b75470ff53a354ca8ba6039c3a70a647b732fe",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/docs/brand/LICENSE-brand.txt"
+        },
+        {
+          "path": "docs/brand/artcraft-logo-white.png.attribution",
+          "sha256": "4b646906c4f40e0f80e4f01d4c237bbcfee16a1186ed573e818b88ca4ec0cfd7",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/docs/brand/artcraft-logo-white.png.attribution"
+        },
+        {
+          "path": "docs/brand/artcraft-logo-white.svg.attribution",
+          "sha256": "cd548fde79eb62f1a63a631984b742db2d9ca6df7d1e4c10812fefdcd8c2ad80",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/docs/brand/artcraft-logo-white.svg.attribution"
+        },
+        {
+          "path": "docs/brand/artcraft-logo.png.attribution",
+          "sha256": "39d4e34d3809af67505d607d5b24c5854e4b506abc09edceaeef3c1525c2ec4a",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/docs/brand/artcraft-logo.png.attribution"
+        },
+        {
+          "path": "docs/brand/artcraft-logo.svg.attribution",
+          "sha256": "38f6ee6b7c40edcd8f27514f45fdaff4a63df6d3e07cf7d149b91538c942dc5a",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/docs/brand/artcraft-logo.svg.attribution"
+        },
+        {
+          "path": "docs/brand/artcraft-mark-black.png.attribution",
+          "sha256": "353569f0b4a6b550e751e9a04baaa82043a3f3a4c26e046ea191c0ae04724f47",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/docs/brand/artcraft-mark-black.png.attribution"
+        },
+        {
+          "path": "docs/brand/artcraft-mark-black.svg.attribution",
+          "sha256": "fa993eafbf7fde7c3e7765cec8730fd4b1958fd844fec6d25b2c3ff2aecf1d9e",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/docs/brand/artcraft-mark-black.svg.attribution"
+        },
+        {
+          "path": "docs/brand/artcraft-mark.png.attribution",
+          "sha256": "87e1bbadcc26f7a25f45a6e3d5d37d71eb16be28242f0534e2f55494623496b0",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/docs/brand/artcraft-mark.png.attribution"
+        },
+        {
+          "path": "docs/brand/artcraft-mark.svg.attribution",
+          "sha256": "aa9e80a64d25142602c33a562dd099e6e63b9d451cda05fd7938398085fe78d4",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/docs/brand/artcraft-mark.svg.attribution"
+        },
+        {
+          "path": "docs/images/filmcraft-assembly.png.attribution",
+          "sha256": "07aaac62eee3101b44323b2acf848c23a9531e9c72e36b4745fcd596ffe2cc2b",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/docs/images/filmcraft-assembly.png.attribution"
+        },
+        {
+          "path": "docs/images/filmcraft-color.png.attribution",
+          "sha256": "21d90998914fcc3ee147757c7af2838a98ce5555ac478896b02b2205e13de8e0",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/docs/images/filmcraft-color.png.attribution"
+        },
+        {
+          "path": "docs/images/filmcraft-effects.png.attribution",
+          "sha256": "d659ff045a9ed1b6889f7d371d78cd31b4012d7558826c0347aa395cfa8c2dc4",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/docs/images/filmcraft-effects.png.attribution"
+        },
+        {
+          "path": "docs/images/filmcraft-export.png.attribution",
+          "sha256": "830001e9430a630ddb5732a4228c6c56115c2a59727293a317a0098d2d2d13d2",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/docs/images/filmcraft-export.png.attribution"
+        },
+        {
+          "path": "docs/images/filmcraft-hero.png.attribution",
+          "sha256": "67ec2a6d01e866429e6b00410073f38bc0010109b41e0717612b9ba0e8968261",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/docs/images/filmcraft-hero.png.attribution"
+        },
+        {
+          "path": "docs/images/filmcraft-keyframes.png.attribution",
+          "sha256": "a12eff2cfe8eeafed3fa503b911750188ad74401ec22a3ae28b848449cdbd336",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/docs/images/filmcraft-keyframes.png.attribution"
+        },
+        {
+          "path": "docs/images/filmcraft-lumetri.png.attribution",
+          "sha256": "8ae26acdcc6e72fe6a0ed4c7d09f405a36eb2f29f3290c135b0f3e54b6eda986",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/docs/images/filmcraft-lumetri.png.attribution"
+        },
+        {
+          "path": "docs/images/filmcraft-scopes.png.attribution",
+          "sha256": "cb21e42a43f131f09891c731305b5ac96925d636dc84bc0c53e35bb90534fc33",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/docs/images/filmcraft-scopes.png.attribution"
+        },
+        {
+          "path": "docs/images/filmcraft-timeline.png.attribution",
+          "sha256": "1794ad25ca5ed15a5bbd4d13931ae77613018e9b3da32c62c806da778b3f556f",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/docs/images/filmcraft-timeline.png.attribution"
+        },
+        {
+          "path": "packaging/macos/dmg/background.svg.attribution",
+          "sha256": "1eb6e2ed2e80fdfa777ef8e3b96a7fd2b73bfdb61645c3f6866571a272e8cf8f",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/packaging/macos/dmg/background.svg.attribution"
+        },
+        {
+          "path": "packaging/macos/dmg/background.tiff.attribution",
+          "sha256": "8e89b388d9c7ae0eaaded3a47eb84cd271509d10813b99fbc64158ba89ec4ed6",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/packaging/macos/dmg/background.tiff.attribution"
+        }
+      ],
+      "reviewed_build_metadata": [
+        {
+          "path": ".github/workflows/freebsd.yml",
+          "kind": "build-metadata",
+          "sha256": "2890b2c51fa1e37dd6901ff688a88f603440b72c210087e17369ae6e2efcaba8",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/.github/workflows/freebsd.yml"
+        },
+        {
+          "path": ".github/workflows/packaging-lint.yml",
+          "kind": "build-metadata",
+          "sha256": "906ed94773036da81a25e2940bd458dee10c85b9f54789011ea423c2352d94ba",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/.github/workflows/packaging-lint.yml"
+        },
+        {
+          "path": ".github/workflows/release.yml",
+          "kind": "build-metadata",
+          "sha256": "2278588b0cb8b6c921ec910bcd848e44f677712fa6c73bc0ab801a9ee0370ea2",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/.github/workflows/release.yml"
+        },
+        {
+          "path": ".github/workflows/windows-arm64.yml",
+          "kind": "build-metadata",
+          "sha256": "29c2700511d8899852ae06deff2c46272de2f2b2f4df99e2fe034bca0e95b02c",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/.github/workflows/windows-arm64.yml"
+        },
+        {
+          "path": "Cargo.lock",
+          "kind": "build-metadata",
+          "sha256": "f81cd5110692a17cc546b5693c7970b2716ca5706a5cff31681870cc955f239b",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/Cargo.lock"
+        },
+        {
+          "path": "Cargo.toml",
+          "kind": "build-metadata",
+          "sha256": "cb5176a2e9452dff1b5cda3eae6784463fb1d70a745ee12d0ad80ab7cb2060f9",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/Cargo.toml"
+        }
+      ],
+      "craft_fonts_commits": [
+        "abb83316d96aa59c1cf64784289e378fe9fa5695"
+      ]
+    },
+    {
+      "id": "lightcraft",
+      "version": "v0.8.0",
+      "repository": "https://github.com/storytold/lightcraft",
+      "commit": "16dbb90499d3c63a6582fcbba1b2550a6e2da032",
+      "archive_url": "https://codeload.github.com/storytold/lightcraft/tar.gz/16dbb90499d3c63a6582fcbba1b2550a6e2da032",
+      "archive_sha256": "6d0d035eacb385f2b810db1d6166c13190c71c8ae8904a3d410cc1530a88a588",
+      "archive_size": 16214739,
+      "files": [
+        {
+          "path": "LICENSE-APACHE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+          "url": "https://raw.githubusercontent.com/storytold/lightcraft/16dbb90499d3c63a6582fcbba1b2550a6e2da032/LICENSE-APACHE"
+        },
+        {
+          "path": "LICENSE-MIT",
+          "sha256": "1470a5d44a88a9d385d9530763ea411ca199670d07f561a61d54256323972b92",
+          "url": "https://raw.githubusercontent.com/storytold/lightcraft/16dbb90499d3c63a6582fcbba1b2550a6e2da032/LICENSE-MIT"
+        },
+        {
+          "path": "NOTICE",
+          "sha256": "00a7cfc350859e56cb36d28d6e91e997dc1f67137496a1a4a299dd014ff74a56",
+          "url": "https://raw.githubusercontent.com/storytold/lightcraft/16dbb90499d3c63a6582fcbba1b2550a6e2da032/NOTICE"
+        },
+        {
+          "path": "assets/ATTRIBUTION.md",
+          "sha256": "4b1497c3ea1afbf162c360708f0377896227b44d7a4141105f8a51dd0b9d6a0d",
+          "url": "https://raw.githubusercontent.com/storytold/lightcraft/16dbb90499d3c63a6582fcbba1b2550a6e2da032/assets/ATTRIBUTION.md"
+        },
+        {
+          "path": "assets/app-icon/LICENSE.txt",
+          "sha256": "6426c23f529938deddfbaed543e7135e08b514fa6a75b330734331d877c78faf",
+          "url": "https://raw.githubusercontent.com/storytold/lightcraft/16dbb90499d3c63a6582fcbba1b2550a6e2da032/assets/app-icon/LICENSE.txt"
+        },
+        {
+          "path": "assets/fonts/OFL-Inter.txt",
+          "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+          "url": "https://raw.githubusercontent.com/storytold/lightcraft/16dbb90499d3c63a6582fcbba1b2550a6e2da032/assets/fonts/OFL-Inter.txt"
+        },
+        {
+          "path": "docs/brand/LICENSE-brand.txt",
+          "sha256": "d516dfeae4a19d636c0d16f389d0a8593efd9dd259b8832bb06722a3dc09e0ce",
+          "url": "https://raw.githubusercontent.com/storytold/lightcraft/16dbb90499d3c63a6582fcbba1b2550a6e2da032/docs/brand/LICENSE-brand.txt"
+        }
+      ],
+      "reviewed_build_metadata": [
+        {
+          "path": ".github/workflows/freebsd.yml",
+          "kind": "build-metadata",
+          "sha256": "e8f33b2864f8f03dc9a8587776b4405ed365a1351637e8279576a69cee395a2c",
+          "url": "https://raw.githubusercontent.com/storytold/lightcraft/16dbb90499d3c63a6582fcbba1b2550a6e2da032/.github/workflows/freebsd.yml"
+        },
+        {
+          "path": ".github/workflows/packaging-lint.yml",
+          "kind": "build-metadata",
+          "sha256": "7049056b3e0c67387738c5f2fe38691bd7977827b2d3e1044a34fcad32276bac",
+          "url": "https://raw.githubusercontent.com/storytold/lightcraft/16dbb90499d3c63a6582fcbba1b2550a6e2da032/.github/workflows/packaging-lint.yml"
+        },
+        {
+          "path": ".github/workflows/release.yml",
+          "kind": "build-metadata",
+          "sha256": "793412ba383f5adf0f8014416f4b5f3eeb3fd461f44e0be56912d58236c99f21",
+          "url": "https://raw.githubusercontent.com/storytold/lightcraft/16dbb90499d3c63a6582fcbba1b2550a6e2da032/.github/workflows/release.yml"
+        },
+        {
+          "path": ".github/workflows/windows-arm64.yml",
+          "kind": "build-metadata",
+          "sha256": "0c3905fc3dc4d98e8a79f9efb83c6d352e7eb7e2a87bdc37e38b8d5097bc99b6",
+          "url": "https://raw.githubusercontent.com/storytold/lightcraft/16dbb90499d3c63a6582fcbba1b2550a6e2da032/.github/workflows/windows-arm64.yml"
+        },
+        {
+          "path": "Cargo.lock",
+          "kind": "build-metadata",
+          "sha256": "5e9e1bf4775d733e3dba407a01dd5623262480c612488f66e332cd39d7211e96",
+          "url": "https://raw.githubusercontent.com/storytold/lightcraft/16dbb90499d3c63a6582fcbba1b2550a6e2da032/Cargo.lock"
+        },
+        {
+          "path": "Cargo.toml",
+          "kind": "build-metadata",
+          "sha256": "90e722524ecf710a8e9aef808f0e1df3e92830e156588c90c300d63d203f2a3e",
+          "url": "https://raw.githubusercontent.com/storytold/lightcraft/16dbb90499d3c63a6582fcbba1b2550a6e2da032/Cargo.toml"
+        }
+      ],
+      "craft_fonts_commits": [
+        "8dcdacd5153e64560d109541a47d806f26f048c0"
+      ]
+    },
+    {
+      "id": "pdfcraft",
+      "version": "v0.8.0",
+      "repository": "https://github.com/storytold/pdfcraft",
+      "commit": "9931329b9fae0b05373b4dc3ac7c58541f0891a4",
+      "archive_url": "https://codeload.github.com/storytold/pdfcraft/tar.gz/9931329b9fae0b05373b4dc3ac7c58541f0891a4",
+      "archive_sha256": "953f32944503e09323c4d66aac2528974cb04f94acfc1a4dfe50c1a86f0091ed",
+      "archive_size": 14600876,
+      "files": [
+        {
+          "path": "ATTRIBUTION.md",
+          "sha256": "1b324a5b8fabaccb9ee6bbb3cb889b6be82cacffe76de8e28b8f23d7d09c2f05",
+          "url": "https://raw.githubusercontent.com/storytold/pdfcraft/9931329b9fae0b05373b4dc3ac7c58541f0891a4/ATTRIBUTION.md"
+        },
+        {
+          "path": "ATTRIBUTION.toml",
+          "sha256": "79d7984b29199676206be7f5c076a858090d9bff2f0f539d94e6cce5e831b618",
+          "url": "https://raw.githubusercontent.com/storytold/pdfcraft/9931329b9fae0b05373b4dc3ac7c58541f0891a4/ATTRIBUTION.toml"
+        },
+        {
+          "path": "LICENSE-APACHE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+          "url": "https://raw.githubusercontent.com/storytold/pdfcraft/9931329b9fae0b05373b4dc3ac7c58541f0891a4/LICENSE-APACHE"
+        },
+        {
+          "path": "LICENSE-MIT",
+          "sha256": "cd7032ea33b71427f188e34ffb4aee9d6868a57fd196037c5c8b2be03a2a0352",
+          "url": "https://raw.githubusercontent.com/storytold/pdfcraft/9931329b9fae0b05373b4dc3ac7c58541f0891a4/LICENSE-MIT"
+        },
+        {
+          "path": "NOTICE",
+          "sha256": "496946cff190a3fec32fe0241ea60d40539c73a9da1865073eb0c73ee822c8d5",
+          "url": "https://raw.githubusercontent.com/storytold/pdfcraft/9931329b9fae0b05373b4dc3ac7c58541f0891a4/NOTICE"
+        },
+        {
+          "path": "assets/app-icon/LICENSE-document.txt",
+          "sha256": "64a3137e3d5cc41e5b78d2ad8dd9ddddd6588283f9f7b3128aa6a8a50852fb9a",
+          "url": "https://raw.githubusercontent.com/storytold/pdfcraft/9931329b9fae0b05373b4dc3ac7c58541f0891a4/assets/app-icon/LICENSE-document.txt"
+        },
+        {
+          "path": "assets/app-icon/LICENSE.txt",
+          "sha256": "b768acafe6cbad8247eedf86b5b5381feefcd4ee0f8c7808b86811bc687cf37b",
+          "url": "https://raw.githubusercontent.com/storytold/pdfcraft/9931329b9fae0b05373b4dc3ac7c58541f0891a4/assets/app-icon/LICENSE.txt"
+        },
+        {
+          "path": "assets/fonts/OFL-DancingScript.txt",
+          "sha256": "6f090277c00af96651ce6dbcc38ff1591047a3bffef486e80b6a32e8276a8201",
+          "url": "https://raw.githubusercontent.com/storytold/pdfcraft/9931329b9fae0b05373b4dc3ac7c58541f0891a4/assets/fonts/OFL-DancingScript.txt"
+        },
+        {
+          "path": "assets/fonts/OFL-Inter.txt",
+          "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+          "url": "https://raw.githubusercontent.com/storytold/pdfcraft/9931329b9fae0b05373b4dc3ac7c58541f0891a4/assets/fonts/OFL-Inter.txt"
+        },
+        {
+          "path": "assets/fonts/OFL-JetBrainsMono.txt",
+          "sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+          "url": "https://raw.githubusercontent.com/storytold/pdfcraft/9931329b9fae0b05373b4dc3ac7c58541f0891a4/assets/fonts/OFL-JetBrainsMono.txt"
+        },
+        {
+          "path": "assets/icons/LICENSE-lucide.txt",
+          "sha256": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57",
+          "url": "https://raw.githubusercontent.com/storytold/pdfcraft/9931329b9fae0b05373b4dc3ac7c58541f0891a4/assets/icons/LICENSE-lucide.txt"
+        },
+        {
+          "path": "docs/brand/LICENSE-brand.txt",
+          "sha256": "0f33f48e7a96cd359d4e4e5b11424b13cebeb59cc70c77928186695e4173585c",
+          "url": "https://raw.githubusercontent.com/storytold/pdfcraft/9931329b9fae0b05373b4dc3ac7c58541f0891a4/docs/brand/LICENSE-brand.txt"
+        },
+        {
+          "path": "vendor/egui-wgpu/LICENSE-APACHE",
+          "sha256": "8173d5c29b4f956d532781d2b86e4e30f83e6b7878dce18c919451d6ba707c90",
+          "url": "https://raw.githubusercontent.com/storytold/pdfcraft/9931329b9fae0b05373b4dc3ac7c58541f0891a4/vendor/egui-wgpu/LICENSE-APACHE"
+        },
+        {
+          "path": "vendor/egui-wgpu/LICENSE-MIT",
+          "sha256": "95ca92f5f8ea5231f1580b3a2a799e8260af3114b900e1def5355a7f44bcf60c",
+          "url": "https://raw.githubusercontent.com/storytold/pdfcraft/9931329b9fae0b05373b4dc3ac7c58541f0891a4/vendor/egui-wgpu/LICENSE-MIT"
+        },
+        {
+          "path": "vendor/hayro-interpret/LICENSE-APACHE",
+          "sha256": "0cec06e0e55fbc3dc5cee4fca9b607f66cb8f4e4dbcf3b3c013594dd156732e9",
+          "url": "https://raw.githubusercontent.com/storytold/pdfcraft/9931329b9fae0b05373b4dc3ac7c58541f0891a4/vendor/hayro-interpret/LICENSE-APACHE"
+        },
+        {
+          "path": "vendor/hayro-interpret/LICENSE-MIT",
+          "sha256": "51b50e6120c344dcc146bbd6375ca1c78e079d97c8bea76e67a53d6ff0efebac",
+          "url": "https://raw.githubusercontent.com/storytold/pdfcraft/9931329b9fae0b05373b4dc3ac7c58541f0891a4/vendor/hayro-interpret/LICENSE-MIT"
+        },
+        {
+          "path": "vendor/hayro-interpret/assets/CGATS_LICENSE.txt",
+          "sha256": "469d87b5fa48f8aaf69e25f4fcac3a309c97dbb7d561b917638abdb640e004d9",
+          "url": "https://raw.githubusercontent.com/storytold/pdfcraft/9931329b9fae0b05373b4dc3ac7c58541f0891a4/vendor/hayro-interpret/assets/CGATS_LICENSE.txt"
+        },
+        {
+          "path": "vendor/hayro-interpret/assets/LICENSE_FOXIT",
+          "sha256": "b578cdd2345840ada550bd12519533812320d5f1d21cf4c1c7e1b1b0a31c98b7",
+          "url": "https://raw.githubusercontent.com/storytold/pdfcraft/9931329b9fae0b05373b4dc3ac7c58541f0891a4/vendor/hayro-interpret/assets/LICENSE_FOXIT"
+        },
+        {
+          "path": "vendor/hayro-jbig2/LICENSE-APACHE",
+          "sha256": "0cec06e0e55fbc3dc5cee4fca9b607f66cb8f4e4dbcf3b3c013594dd156732e9",
+          "url": "https://raw.githubusercontent.com/storytold/pdfcraft/9931329b9fae0b05373b4dc3ac7c58541f0891a4/vendor/hayro-jbig2/LICENSE-APACHE"
+        },
+        {
+          "path": "vendor/hayro-jbig2/LICENSE-MIT",
+          "sha256": "51b50e6120c344dcc146bbd6375ca1c78e079d97c8bea76e67a53d6ff0efebac",
+          "url": "https://raw.githubusercontent.com/storytold/pdfcraft/9931329b9fae0b05373b4dc3ac7c58541f0891a4/vendor/hayro-jbig2/LICENSE-MIT"
+        },
+        {
+          "path": "vendor/hayro-syntax/LICENSE-APACHE",
+          "sha256": "0cec06e0e55fbc3dc5cee4fca9b607f66cb8f4e4dbcf3b3c013594dd156732e9",
+          "url": "https://raw.githubusercontent.com/storytold/pdfcraft/9931329b9fae0b05373b4dc3ac7c58541f0891a4/vendor/hayro-syntax/LICENSE-APACHE"
+        },
+        {
+          "path": "vendor/hayro-syntax/LICENSE-MIT",
+          "sha256": "51b50e6120c344dcc146bbd6375ca1c78e079d97c8bea76e67a53d6ff0efebac",
+          "url": "https://raw.githubusercontent.com/storytold/pdfcraft/9931329b9fae0b05373b4dc3ac7c58541f0891a4/vendor/hayro-syntax/LICENSE-MIT"
+        },
+        {
+          "path": "vendor/hayro/LICENSE-APACHE",
+          "sha256": "0cec06e0e55fbc3dc5cee4fca9b607f66cb8f4e4dbcf3b3c013594dd156732e9",
+          "url": "https://raw.githubusercontent.com/storytold/pdfcraft/9931329b9fae0b05373b4dc3ac7c58541f0891a4/vendor/hayro/LICENSE-APACHE"
+        },
+        {
+          "path": "vendor/hayro/LICENSE-MIT",
+          "sha256": "51b50e6120c344dcc146bbd6375ca1c78e079d97c8bea76e67a53d6ff0efebac",
+          "url": "https://raw.githubusercontent.com/storytold/pdfcraft/9931329b9fae0b05373b4dc3ac7c58541f0891a4/vendor/hayro/LICENSE-MIT"
+        },
+        {
+          "path": "vendor/lopdf/LICENSE",
+          "sha256": "2fb01e6708ea9d53e8b7e74bd82af23bce5256f19f4de93915027a53173c50d8",
+          "url": "https://raw.githubusercontent.com/storytold/pdfcraft/9931329b9fae0b05373b4dc3ac7c58541f0891a4/vendor/lopdf/LICENSE"
+        },
+        {
+          "path": "vendor/winit/LICENSE",
+          "sha256": "6dc0e068dcf3a5bc8e054205b85b7720e1d49265bbc64bf515d2cf79197df69a",
+          "url": "https://raw.githubusercontent.com/storytold/pdfcraft/9931329b9fae0b05373b4dc3ac7c58541f0891a4/vendor/winit/LICENSE"
+        }
+      ],
+      "reviewed_build_metadata": [
+        {
+          "path": ".github/workflows/ci.yml",
+          "kind": "build-metadata",
+          "sha256": "673333a2f5e932561ffd1a2114f95dc8dfa82280da4537033a8f9a9dc24017fe",
+          "url": "https://raw.githubusercontent.com/storytold/pdfcraft/9931329b9fae0b05373b4dc3ac7c58541f0891a4/.github/workflows/ci.yml"
+        },
+        {
+          "path": ".github/workflows/freebsd.yml",
+          "kind": "build-metadata",
+          "sha256": "e603c2f3b191bff5cd9eadd6b8711258efb5bdcf0e6ebdcce7b5b44c8e94f554",
+          "url": "https://raw.githubusercontent.com/storytold/pdfcraft/9931329b9fae0b05373b4dc3ac7c58541f0891a4/.github/workflows/freebsd.yml"
+        },
+        {
+          "path": ".github/workflows/packaging-lint.yml",
+          "kind": "build-metadata",
+          "sha256": "906ed94773036da81a25e2940bd458dee10c85b9f54789011ea423c2352d94ba",
+          "url": "https://raw.githubusercontent.com/storytold/pdfcraft/9931329b9fae0b05373b4dc3ac7c58541f0891a4/.github/workflows/packaging-lint.yml"
+        },
+        {
+          "path": ".github/workflows/release.yml",
+          "kind": "build-metadata",
+          "sha256": "d0a186deb83028050c6c80108cc3420c235ba974078ad0cf5cd2f2847b815e2b",
+          "url": "https://raw.githubusercontent.com/storytold/pdfcraft/9931329b9fae0b05373b4dc3ac7c58541f0891a4/.github/workflows/release.yml"
+        },
+        {
+          "path": ".github/workflows/windows-arm64.yml",
+          "kind": "build-metadata",
+          "sha256": "e580cee6f8f78658427a97a135a7be063e266e69ac2fad5942ed8b661ce1c321",
+          "url": "https://raw.githubusercontent.com/storytold/pdfcraft/9931329b9fae0b05373b4dc3ac7c58541f0891a4/.github/workflows/windows-arm64.yml"
+        },
+        {
+          "path": "Cargo.lock",
+          "kind": "build-metadata",
+          "sha256": "4b378b35f2f982f4befdbe90e8dfa1ad03ccdb13da9e87857087d19daff4fc64",
+          "url": "https://raw.githubusercontent.com/storytold/pdfcraft/9931329b9fae0b05373b4dc3ac7c58541f0891a4/Cargo.lock"
+        },
+        {
+          "path": "Cargo.toml",
+          "kind": "build-metadata",
+          "sha256": "5704435bf957fb52e324730d6226d85fae91dcc1a9f37d25aa1e746b5c5e2336",
+          "url": "https://raw.githubusercontent.com/storytold/pdfcraft/9931329b9fae0b05373b4dc3ac7c58541f0891a4/Cargo.toml"
+        }
+      ],
+      "craft_fonts_commits": [
+        "3d9ab3a132ed0eff457e424226a435a901da30d3"
+      ]
+    },
+    {
+      "id": "effectcraft",
+      "version": "v0.10.0",
+      "repository": "https://github.com/storytold/effectcraft",
+      "commit": "05955c08b4fd025f1a09882df72e6dbff1a8148a",
+      "archive_url": "https://codeload.github.com/storytold/effectcraft/tar.gz/05955c08b4fd025f1a09882df72e6dbff1a8148a",
+      "archive_sha256": "a160b94d9837906e3f129697f8c62ffb80d8342cb2787b2cfa439c0485098f43",
+      "archive_size": 11625180,
+      "files": [
+        {
+          "path": "ATTRIBUTION.md",
+          "sha256": "0186518bf46d473e5841d34234ee117f2059dfcaf8b4616ae6dfb6da5745dc38",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/ATTRIBUTION.md"
+        },
+        {
+          "path": "LICENSE-APACHE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/LICENSE-APACHE"
+        },
+        {
+          "path": "LICENSE-MIT",
+          "sha256": "7b6db9a363688683feacdf9b528f059637f2e5d2edbacd8720fc9b26781c9abe",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/LICENSE-MIT"
+        },
+        {
+          "path": "NOTICE",
+          "sha256": "d0bf841555c56b6136745a61ec529c9a558c9dd7404d377d82f86d10e0e9b530",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/NOTICE"
+        },
+        {
+          "path": "apps/effectcraft-web/web/favicon.svg.attribution",
+          "sha256": "251067e86df910861eaeb6eb36fbc3a62b44e2e86bb991961c8842222ed2a7a2",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/apps/effectcraft-web/web/favicon.svg.attribution"
+        },
+        {
+          "path": "assets/app-icon/LICENSE.txt",
+          "sha256": "6f7a100b47da67df0c9e8e06397a7222766932c36cdebeff2e89cb2cd2917b85",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/assets/app-icon/LICENSE.txt"
+        },
+        {
+          "path": "assets/app-icon/effectcraft-1024.png.attribution",
+          "sha256": "a8d53ce0b6b922c415fc190381e3d242cbe3fef3761667bd9ce9af9a53021a94",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/assets/app-icon/effectcraft-1024.png.attribution"
+        },
+        {
+          "path": "assets/app-icon/effectcraft-macos-512.png.attribution",
+          "sha256": "5838dd1e2d59809c4ef4bc93785dae6014ec03af59f84733b37eca573279c993",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/assets/app-icon/effectcraft-macos-512.png.attribution"
+        },
+        {
+          "path": "assets/app-icon/effectcraft-small.svg.attribution",
+          "sha256": "15db893cd2957f98a48a7d45ae34d5d3a679960bde2334d30b8e914355b862da",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/assets/app-icon/effectcraft-small.svg.attribution"
+        },
+        {
+          "path": "assets/app-icon/effectcraft.icns.attribution",
+          "sha256": "39708b29f022b161914353c1cf152b4c13eb9a2dd3530a90f8166ace4f2e606e",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/assets/app-icon/effectcraft.icns.attribution"
+        },
+        {
+          "path": "assets/app-icon/effectcraft.ico.attribution",
+          "sha256": "66334e72007d10980a6b465c5377baf43759d3f28e96b6aad0f03c93a1b1df98",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/assets/app-icon/effectcraft.ico.attribution"
+        },
+        {
+          "path": "assets/app-icon/effectcraft.svg.attribution",
+          "sha256": "fb05c2b09b2887e21f820447b8e9b45052b7b7872156ff93f3cce017eaabf215",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/assets/app-icon/effectcraft.svg.attribution"
+        },
+        {
+          "path": "assets/app-icon/hicolor/128x128/apps/ai.storyteller.effectcraft.png.attribution",
+          "sha256": "0126aa42ee8348d15f715e9f34572afabdfa513094d76efe54852eb07ce5b8bd",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/assets/app-icon/hicolor/128x128/apps/ai.storyteller.effectcraft.png.attribution"
+        },
+        {
+          "path": "assets/app-icon/hicolor/16x16/apps/ai.storyteller.effectcraft.png.attribution",
+          "sha256": "7d18ee30dc5dea577c3da7cccaa939b0dd3d390d6441dbe4b85872d065ed3f55",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/assets/app-icon/hicolor/16x16/apps/ai.storyteller.effectcraft.png.attribution"
+        },
+        {
+          "path": "assets/app-icon/hicolor/24x24/apps/ai.storyteller.effectcraft.png.attribution",
+          "sha256": "c2df1f29d0b59e7d00589dd356e13267405585786fb40689e51ee22451578f5e",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/assets/app-icon/hicolor/24x24/apps/ai.storyteller.effectcraft.png.attribution"
+        },
+        {
+          "path": "assets/app-icon/hicolor/256x256/apps/ai.storyteller.effectcraft.png.attribution",
+          "sha256": "e665dce6336da74f1e1436529b437403bed6155338b39aabeb291e295b6c6c29",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/assets/app-icon/hicolor/256x256/apps/ai.storyteller.effectcraft.png.attribution"
+        },
+        {
+          "path": "assets/app-icon/hicolor/32x32/apps/ai.storyteller.effectcraft.png.attribution",
+          "sha256": "c9dc5c5811d442946f866563fe80d980f44da7b15383c8cb7fa674b76b3c4f24",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/assets/app-icon/hicolor/32x32/apps/ai.storyteller.effectcraft.png.attribution"
+        },
+        {
+          "path": "assets/app-icon/hicolor/48x48/apps/ai.storyteller.effectcraft.png.attribution",
+          "sha256": "e0c51be7508e5d92ea6f24ea7467597c5038396efeec1454ae54a78ea7c3a71e",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/assets/app-icon/hicolor/48x48/apps/ai.storyteller.effectcraft.png.attribution"
+        },
+        {
+          "path": "assets/app-icon/hicolor/512x512/apps/ai.storyteller.effectcraft.png.attribution",
+          "sha256": "de6b71367a6b27e7faecfb82a89add08d3f6f36233ddfd5082da94f63a1622f6",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/assets/app-icon/hicolor/512x512/apps/ai.storyteller.effectcraft.png.attribution"
+        },
+        {
+          "path": "assets/app-icon/hicolor/64x64/apps/ai.storyteller.effectcraft.png.attribution",
+          "sha256": "9f8ff016589b9cb6c8f96076da68579d9fcb44dafde2cdc739c7408f401765bb",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/assets/app-icon/hicolor/64x64/apps/ai.storyteller.effectcraft.png.attribution"
+        },
+        {
+          "path": "assets/app-icon/hicolor/scalable/apps/ai.storyteller.effectcraft.svg.attribution",
+          "sha256": "97e73a509f6f432f5dd5fb8c72fc19b3abac8b52fcc96817d590be48e2583e11",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/assets/app-icon/hicolor/scalable/apps/ai.storyteller.effectcraft.svg.attribution"
+        },
+        {
+          "path": "assets/fonts/Inter-Bold.ttf.attribution",
+          "sha256": "caf2a2e8ecdcd42abef2e0a05c41a97450eb7320381980599b555abd6b36771f",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/assets/fonts/Inter-Bold.ttf.attribution"
+        },
+        {
+          "path": "assets/fonts/Inter-Italic.ttf.attribution",
+          "sha256": "192adc49aca402eb8e60703c52024db425238e9fd3daf5e4c9da2ed98af99150",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/assets/fonts/Inter-Italic.ttf.attribution"
+        },
+        {
+          "path": "assets/fonts/Inter-Medium.ttf.attribution",
+          "sha256": "36d8f9319e543cb10ac35c54969fd16fc6c6354ed72a38e91387d31c4530aba6",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/assets/fonts/Inter-Medium.ttf.attribution"
+        },
+        {
+          "path": "assets/fonts/Inter-Regular.ttf.attribution",
+          "sha256": "3c6dba474d83a03ef433b54acf495cabdaca2e288741ff4dc5a8b6383e0acfb9",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/assets/fonts/Inter-Regular.ttf.attribution"
+        },
+        {
+          "path": "assets/fonts/Inter-SemiBold.ttf.attribution",
+          "sha256": "3d23c3c7585236563062a54229f1124f6af8d6ccd25b55ff59fe1a08a09693f8",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/assets/fonts/Inter-SemiBold.ttf.attribution"
+        },
+        {
+          "path": "assets/fonts/JetBrainsMono-Regular.ttf.attribution",
+          "sha256": "00599ced628e9da0445787ef90d93ac9c3008ba214f17aa588a42673d08c65f4",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/assets/fonts/JetBrainsMono-Regular.ttf.attribution"
+        },
+        {
+          "path": "assets/fonts/NotoSerif-Regular.ttf.attribution",
+          "sha256": "d358224da9ac620fffd3bd00ca64bdac35c505dfd1a9ae113e03ad5b695126be",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/assets/fonts/NotoSerif-Regular.ttf.attribution"
+        },
+        {
+          "path": "assets/fonts/OFL-Inter.txt",
+          "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/assets/fonts/OFL-Inter.txt"
+        },
+        {
+          "path": "assets/fonts/OFL-JetBrainsMono.txt",
+          "sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/assets/fonts/OFL-JetBrainsMono.txt"
+        },
+        {
+          "path": "assets/fonts/OFL-NotoSerif.txt",
+          "sha256": "cee9892f9f0cc8fe882c9e9537ee6a89621d86ee7ceaf70b02e2b2b1c25c061a",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/assets/fonts/OFL-NotoSerif.txt"
+        },
+        {
+          "path": "crates/engine/presets/backgrounds.json.attribution",
+          "sha256": "33a237062ffad87657aeb351418962863b4a6cd344ae5c748c93b4d1be76455d",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/crates/engine/presets/backgrounds.json.attribution"
+        },
+        {
+          "path": "crates/engine/presets/text_animators.json.attribution",
+          "sha256": "1ffeed04df6b827c1ccaf62f7b12bc2c0155ee7b86c7a6f0e948161eac5de80c",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/crates/engine/presets/text_animators.json.attribution"
+        },
+        {
+          "path": "crates/engine/presets/transitions.json.attribution",
+          "sha256": "942c5d71b4fae316b0fac288c461f978976c6eb47997881e7931bae16d5eb709",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/crates/engine/presets/transitions.json.attribution"
+        },
+        {
+          "path": "crates/engine/scripts/Create Null at Selected Layers.jsx.attribution",
+          "sha256": "892b1556f4a87fc5df6270d34f9ab183781ae1433a7bb3fbf2b1157ba66cd8c1",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/crates/engine/scripts/Create Null at Selected Layers.jsx.attribution"
+        },
+        {
+          "path": "crates/engine/scripts/Rename Layers.jsx.attribution",
+          "sha256": "bc515b75c5b5bad5cd1a1f6ede3f4d7619145aeb03c9eece8ebaa6b2c97924ac",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/crates/engine/scripts/Rename Layers.jsx.attribution"
+        },
+        {
+          "path": "crates/engine/scripts/Render Queue Batch.jsx.attribution",
+          "sha256": "2555454fac8730271285cb1cdd624a8c35f437c55b9858066136a7e632c28dae",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/crates/engine/scripts/Render Queue Batch.jsx.attribution"
+        },
+        {
+          "path": "crates/engine/scripts/ScriptUI Panels/Layer Tools.jsx.attribution",
+          "sha256": "a365ed48991a050089531ed4dad572020bf91bb24f62c198c22b5f1f64decd31",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/crates/engine/scripts/ScriptUI Panels/Layer Tools.jsx.attribution"
+        },
+        {
+          "path": "crates/engine/scripts/Sort Layers by In Point.jsx.attribution",
+          "sha256": "c560f707015fe3d4618d09a18dedc04b4d978f5778c7e0d04403e937510cf65e",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/crates/engine/scripts/Sort Layers by In Point.jsx.attribution"
+        },
+        {
+          "path": "crates/lottie/tests/fixtures/bouncing-ball.json.attribution",
+          "sha256": "aaf816a90e22df3ee9711f07bfceeea26aaa89b441a31efbf43177a1644bd70f",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/crates/lottie/tests/fixtures/bouncing-ball.json.attribution"
+        },
+        {
+          "path": "crates/lottie/tests/fixtures/legacy-masks.json.attribution",
+          "sha256": "a7455e6dc72fe21526b238f86543b040e70c50e41c557b7c900823e4a64a1a08",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/crates/lottie/tests/fixtures/legacy-masks.json.attribution"
+        },
+        {
+          "path": "crates/lottie/tests/fixtures/precomp-matte-text.json.attribution",
+          "sha256": "2a1727d304fc23eff2c93d82e597b6864c3b9c67b0c7fd5507f3f8e41cf5d315",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/crates/lottie/tests/fixtures/precomp-matte-text.json.attribution"
+        },
+        {
+          "path": "crates/lottie/tests/fixtures/shapes-gradient.json.attribution",
+          "sha256": "0769c39180c9bb81ee2f14f822f5c5b30921117006ef943038b1cada4623c232",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/crates/lottie/tests/fixtures/shapes-gradient.json.attribution"
+        },
+        {
+          "path": "crates/model/tests/fixtures/cube.mtl.attribution",
+          "sha256": "83d356cfeda0b562c1bad69fe128b72550558e753605356efae2453242fdbb07",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/crates/model/tests/fixtures/cube.mtl.attribution"
+        },
+        {
+          "path": "crates/model/tests/fixtures/cube.obj.attribution",
+          "sha256": "b37ce1fa1a8953a72ba861ddd725be802e95de420e97f7105ffcc2bd3834b517",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/crates/model/tests/fixtures/cube.obj.attribution"
+        },
+        {
+          "path": "crates/model/tests/fixtures/quad.glb.attribution",
+          "sha256": "78b3b98af5007a7124f8a82103cb488db7018a1496f42df68a51edf99da8fa37",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/crates/model/tests/fixtures/quad.glb.attribution"
+        },
+        {
+          "path": "crates/model/tests/fixtures/quad.gltf.attribution",
+          "sha256": "3b1c9ce2c979ee88b8691fd3a2e92ab565c453ee6ef9759f61dab5563ffe96d7",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/crates/model/tests/fixtures/quad.gltf.attribution"
+        },
+        {
+          "path": "crates/svg/tests/fixtures/basic-shapes.svg.attribution",
+          "sha256": "05ecdce5b3988bd1cf80ce7f0d25ae1697b5c0e77fe6e9306a451db058fe3c4b",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/crates/svg/tests/fixtures/basic-shapes.svg.attribution"
+        },
+        {
+          "path": "crates/svg/tests/fixtures/paths-gradients.svg.attribution",
+          "sha256": "aced47628c8dc5802b1f1440a14e9b4bc6c03dd44833273bacda79ec25672c3d",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/crates/svg/tests/fixtures/paths-gradients.svg.attribution"
+        },
+        {
+          "path": "docs/brand/LICENSE-brand.txt",
+          "sha256": "7ee27fdb49f96a969ab80d5f800d8422aa17cb39d1cca286d18aa6227d8c7628",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/docs/brand/LICENSE-brand.txt"
+        },
+        {
+          "path": "docs/brand/artcraft-logo-white.png.attribution",
+          "sha256": "565e5dd760e0ec12e076a734e69ea40f64cad8274fab860230f07d7be045e73d",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/docs/brand/artcraft-logo-white.png.attribution"
+        },
+        {
+          "path": "docs/brand/artcraft-logo-white.svg.attribution",
+          "sha256": "5f0cea4e227993f10439947958c3af2e498159b93e304c80ddc92b8bd5e60f16",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/docs/brand/artcraft-logo-white.svg.attribution"
+        },
+        {
+          "path": "docs/brand/artcraft-logo.png.attribution",
+          "sha256": "765433ab27edfb01b290fee8d01554b1bde9aee8291b01ec68188340b3c99c86",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/docs/brand/artcraft-logo.png.attribution"
+        },
+        {
+          "path": "docs/brand/artcraft-logo.svg.attribution",
+          "sha256": "243fbca3754883dcf5d5ad900bcce37264ec1057dbd3c9b44e7564a3f253017f",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/docs/brand/artcraft-logo.svg.attribution"
+        },
+        {
+          "path": "docs/brand/artcraft-mark-black.png.attribution",
+          "sha256": "756b30b82424ab3f24685ec4b2470e7a9af5b52351c60be4fbd63137abff6ad6",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/docs/brand/artcraft-mark-black.png.attribution"
+        },
+        {
+          "path": "docs/brand/artcraft-mark-black.svg.attribution",
+          "sha256": "301c3b1d288c04f3369127e2b9ee43207915603957b442e103681efe90b8c8a5",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/docs/brand/artcraft-mark-black.svg.attribution"
+        },
+        {
+          "path": "docs/brand/artcraft-mark.png.attribution",
+          "sha256": "0bf8b2c81716a1da38e93bdcf4035de3cad3a120a8fd62eee842039badeebc29",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/docs/brand/artcraft-mark.png.attribution"
+        },
+        {
+          "path": "docs/brand/artcraft-mark.svg.attribution",
+          "sha256": "0f9c387b3d4ada1a6d8c5238694cd7854b5c522a6f1e12283f41d666f4773fc4",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/docs/brand/artcraft-mark.svg.attribution"
+        },
+        {
+          "path": "docs/images/effectcraft-3d.png.attribution",
+          "sha256": "0b21db17692ca5e6aad28bc54f641473d27f20062dba310d9f85d879d115d2db",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/docs/images/effectcraft-3d.png.attribution"
+        },
+        {
+          "path": "docs/images/effectcraft-effects.png.attribution",
+          "sha256": "519e1fc421cd8b997df55e15f5f0747a7bbc345f764a3074ffb6580bef1efcc3",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/docs/images/effectcraft-effects.png.attribution"
+        },
+        {
+          "path": "docs/images/effectcraft-graph-editor.png.attribution",
+          "sha256": "9892ad3d9de2190c31112ff203144ff3901e650ffa753e277d94de7f06a9c617",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/docs/images/effectcraft-graph-editor.png.attribution"
+        },
+        {
+          "path": "docs/images/effectcraft-hero.png.attribution",
+          "sha256": "33981b8f1ad5bc744d377c1af61909ec215f5ee7d9e77f943251e1169e5bd024",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/docs/images/effectcraft-hero.png.attribution"
+        },
+        {
+          "path": "docs/images/effectcraft-render-queue.png.attribution",
+          "sha256": "b03fad053b9e9d918831e2c8e43af4dab64eaea9a4fc05677f5a0b29c3330773",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/docs/images/effectcraft-render-queue.png.attribution"
+        },
+        {
+          "path": "extensions/scriptui-panels/Ease Presets.jsx.attribution",
+          "sha256": "dc36bc852709c0d649ffd851f8f0e07b9fc7044429d80baac89c6196194df389",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/extensions/scriptui-panels/Ease Presets.jsx.attribution"
+        },
+        {
+          "path": "packaging/macos/dmg/background.svg.attribution",
+          "sha256": "2c7182aa1fe60364797a8ecf2e4870f9e5aac3f7fb3d74742a62235c670641c0",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/packaging/macos/dmg/background.svg.attribution"
+        }
+      ],
+      "reviewed_build_metadata": [
+        {
+          "path": ".github/workflows/freebsd.yml",
+          "kind": "build-metadata",
+          "sha256": "b2e11f5b86dc5ef643ab38fcd3adc642b00402ae49dc54e5335bd3d52556d1ec",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/.github/workflows/freebsd.yml"
+        },
+        {
+          "path": ".github/workflows/packaging-lint.yml",
+          "kind": "build-metadata",
+          "sha256": "05d607bb277b7757463bde56b0fac1fe575377b825ffcaafc314043922abebcf",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/.github/workflows/packaging-lint.yml"
+        },
+        {
+          "path": ".github/workflows/release.yml",
+          "kind": "build-metadata",
+          "sha256": "da62c1755ac4fe9884396a95fc1a81a76f2cf17b0504a957123f0154d74378ce",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/.github/workflows/release.yml"
+        },
+        {
+          "path": ".github/workflows/windows-arm64.yml",
+          "kind": "build-metadata",
+          "sha256": "00024dad290064af6bbddb7b6a88b17dfac583007d7fca52c6e9e5a22592ee2d",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/.github/workflows/windows-arm64.yml"
+        },
+        {
+          "path": "Cargo.lock",
+          "kind": "build-metadata",
+          "sha256": "975228a3c1d4834d2b2c127cb3f524526e54afcc1ac96e744353b994eae00c3f",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/Cargo.lock"
+        },
+        {
+          "path": "Cargo.toml",
+          "kind": "build-metadata",
+          "sha256": "e4e1ecf19212560e34aa7967227625df06436f887671bbcdfc78af5665e097f0",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/Cargo.toml"
+        }
+      ],
+      "craft_fonts_commits": []
+    },
+    {
+      "id": "designcraft",
+      "version": "v0.8.0",
+      "repository": "https://github.com/storytold/designcraft",
+      "commit": "11a51d5b665aec8d6e675bd107a8a01514f10d00",
+      "archive_url": "https://codeload.github.com/storytold/designcraft/tar.gz/11a51d5b665aec8d6e675bd107a8a01514f10d00",
+      "archive_sha256": "5044162f9e7c2260156419b7e2c69c87801c5facc88e6b7aaa3552aca70c2acf",
+      "archive_size": 7805542,
+      "files": [
+        {
+          "path": "ASSETS.md",
+          "sha256": "e0ef96525996e350e6d23792658adbabd03847a775e36698f0e93b81cede2952",
+          "url": "https://raw.githubusercontent.com/storytold/designcraft/11a51d5b665aec8d6e675bd107a8a01514f10d00/ASSETS.md"
+        },
+        {
+          "path": "LICENSE-APACHE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+          "url": "https://raw.githubusercontent.com/storytold/designcraft/11a51d5b665aec8d6e675bd107a8a01514f10d00/LICENSE-APACHE"
+        },
+        {
+          "path": "LICENSE-MIT",
+          "sha256": "d543d31e3120c64b70abc77cfadcbdc2249c78de1c8efa2e3d62540bb79de816",
+          "url": "https://raw.githubusercontent.com/storytold/designcraft/11a51d5b665aec8d6e675bd107a8a01514f10d00/LICENSE-MIT"
+        },
+        {
+          "path": "NOTICE",
+          "sha256": "59da5d57095806a032148fb768b257b90f9f2de89171d7c3f6c48bf4fea7258e",
+          "url": "https://raw.githubusercontent.com/storytold/designcraft/11a51d5b665aec8d6e675bd107a8a01514f10d00/NOTICE"
+        },
+        {
+          "path": "assets/app-icon/LICENSE.txt",
+          "sha256": "eb3f3cfc6437fd370e31ca8449c7312314c191d15347bd70934d9ce2df5331bd",
+          "url": "https://raw.githubusercontent.com/storytold/designcraft/11a51d5b665aec8d6e675bd107a8a01514f10d00/assets/app-icon/LICENSE.txt"
+        },
+        {
+          "path": "assets/fonts/OFL-Inter.txt",
+          "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+          "url": "https://raw.githubusercontent.com/storytold/designcraft/11a51d5b665aec8d6e675bd107a8a01514f10d00/assets/fonts/OFL-Inter.txt"
+        },
+        {
+          "path": "assets/fonts/OFL-JetBrainsMono.txt",
+          "sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+          "url": "https://raw.githubusercontent.com/storytold/designcraft/11a51d5b665aec8d6e675bd107a8a01514f10d00/assets/fonts/OFL-JetBrainsMono.txt"
+        },
+        {
+          "path": "assets/fonts/OFL-SourceSans3.txt",
+          "sha256": "56af9b9c6715597e458284a474dc118a50a4150e9d547c70f7b4a33c3e6a9328",
+          "url": "https://raw.githubusercontent.com/storytold/designcraft/11a51d5b665aec8d6e675bd107a8a01514f10d00/assets/fonts/OFL-SourceSans3.txt"
+        },
+        {
+          "path": "assets/fonts/OFL-SourceSerif4.txt",
+          "sha256": "c21d7293d87b6d7ab1d0229a2f55b77f33a7613a6a4e66f6693d68d7d8d09464",
+          "url": "https://raw.githubusercontent.com/storytold/designcraft/11a51d5b665aec8d6e675bd107a8a01514f10d00/assets/fonts/OFL-SourceSerif4.txt"
+        },
+        {
+          "path": "docs/brand/LICENSE-brand.txt",
+          "sha256": "68fb0e786130f8ead0350a352f66d7027d0f8a8ebebcf30d51de9146405f670e",
+          "url": "https://raw.githubusercontent.com/storytold/designcraft/11a51d5b665aec8d6e675bd107a8a01514f10d00/docs/brand/LICENSE-brand.txt"
+        }
+      ],
+      "reviewed_build_metadata": [
+        {
+          "path": ".github/workflows/freebsd.yml",
+          "kind": "build-metadata",
+          "sha256": "df1b97f537ad85022be0c379f401491b61df247013991f9d48ab91baeb190c07",
+          "url": "https://raw.githubusercontent.com/storytold/designcraft/11a51d5b665aec8d6e675bd107a8a01514f10d00/.github/workflows/freebsd.yml"
+        },
+        {
+          "path": ".github/workflows/packaging-lint.yml",
+          "kind": "build-metadata",
+          "sha256": "906ed94773036da81a25e2940bd458dee10c85b9f54789011ea423c2352d94ba",
+          "url": "https://raw.githubusercontent.com/storytold/designcraft/11a51d5b665aec8d6e675bd107a8a01514f10d00/.github/workflows/packaging-lint.yml"
+        },
+        {
+          "path": ".github/workflows/release.yml",
+          "kind": "build-metadata",
+          "sha256": "70a59353696b00c36361f46954506d855e1e0dae1aaec0a0061f65a3a89cfc05",
+          "url": "https://raw.githubusercontent.com/storytold/designcraft/11a51d5b665aec8d6e675bd107a8a01514f10d00/.github/workflows/release.yml"
+        },
+        {
+          "path": ".github/workflows/windows-arm64.yml",
+          "kind": "build-metadata",
+          "sha256": "14751a11c4d6892e1a1f61bf1d506ccd9927fc922a0bedef50f964f05b2777de",
+          "url": "https://raw.githubusercontent.com/storytold/designcraft/11a51d5b665aec8d6e675bd107a8a01514f10d00/.github/workflows/windows-arm64.yml"
+        },
+        {
+          "path": "Cargo.lock",
+          "kind": "build-metadata",
+          "sha256": "00042a1bfbbc6462085469d8fe5953bdd9ab89a0828cbc39fc48abc7fa17cdd3",
+          "url": "https://raw.githubusercontent.com/storytold/designcraft/11a51d5b665aec8d6e675bd107a8a01514f10d00/Cargo.lock"
+        },
+        {
+          "path": "Cargo.toml",
+          "kind": "build-metadata",
+          "sha256": "e20e13934dbc90cc2b715dfb72836ceb0b98df71a762cbd41020ff795285eda2",
+          "url": "https://raw.githubusercontent.com/storytold/designcraft/11a51d5b665aec8d6e675bd107a8a01514f10d00/Cargo.toml"
+        }
+      ],
+      "craft_fonts_commits": [
+        "abb83316d96aa59c1cf64784289e378fe9fa5695"
+      ]
+    },
+    {
+      "id": "figcraft",
+      "version": "v0.6.0",
+      "repository": "https://github.com/storytold/figcraft",
+      "commit": "833f0d2c27f0acbae5394848930ae531fc89c724",
+      "archive_url": "https://codeload.github.com/storytold/figcraft/tar.gz/833f0d2c27f0acbae5394848930ae531fc89c724",
+      "archive_sha256": "f327701beaf7a025a0f124c8551472ab998d2b07baf3949c8a2d86ebcf457e59",
+      "archive_size": 8079741,
+      "files": [
+        {
+          "path": "ATTRIBUTION.md",
+          "sha256": "9ec4448e1327edcd1bf1793f6bf04564913c7653cd9398468d8a8c8a3d3b476b",
+          "url": "https://raw.githubusercontent.com/storytold/figcraft/833f0d2c27f0acbae5394848930ae531fc89c724/ATTRIBUTION.md"
+        },
+        {
+          "path": "LICENSE-APACHE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+          "url": "https://raw.githubusercontent.com/storytold/figcraft/833f0d2c27f0acbae5394848930ae531fc89c724/LICENSE-APACHE"
+        },
+        {
+          "path": "LICENSE-MIT",
+          "sha256": "360c12b61568ef50808e731c98ae84110ea6f674dc34ac1ecb05d7abb9a6079a",
+          "url": "https://raw.githubusercontent.com/storytold/figcraft/833f0d2c27f0acbae5394848930ae531fc89c724/LICENSE-MIT"
+        },
+        {
+          "path": "NOTICE",
+          "sha256": "3de704e57b81ffcb2a699f21fcf912559b28cb1d0f1584a7fbb3a080b4b695d6",
+          "url": "https://raw.githubusercontent.com/storytold/figcraft/833f0d2c27f0acbae5394848930ae531fc89c724/NOTICE"
+        },
+        {
+          "path": "assets/app-icon/LICENSE.txt",
+          "sha256": "9a58cbf7d438bb0fadc981423002adccd267aab21d0ab1c1e5c43d998b7702d2",
+          "url": "https://raw.githubusercontent.com/storytold/figcraft/833f0d2c27f0acbae5394848930ae531fc89c724/assets/app-icon/LICENSE.txt"
+        },
+        {
+          "path": "docs/brand/LICENSE-brand.txt",
+          "sha256": "904f8307a25cbb220f949846d84561aee9bf8f0cdd64380362f07ee674d80323",
+          "url": "https://raw.githubusercontent.com/storytold/figcraft/833f0d2c27f0acbae5394848930ae531fc89c724/docs/brand/LICENSE-brand.txt"
+        }
+      ],
+      "reviewed_build_metadata": [
+        {
+          "path": ".github/workflows/ci.yml",
+          "kind": "build-metadata",
+          "sha256": "269f561616f799d80292e2303fdf195d4327f2920b1ba3ad973b12f5fc455c26",
+          "url": "https://raw.githubusercontent.com/storytold/figcraft/833f0d2c27f0acbae5394848930ae531fc89c724/.github/workflows/ci.yml"
+        },
+        {
+          "path": ".github/workflows/freebsd.yml",
+          "kind": "build-metadata",
+          "sha256": "90d19270f5333ef47588702826f7bc0002d52e2cd6a48c3ecb3ada7a5ea592e3",
+          "url": "https://raw.githubusercontent.com/storytold/figcraft/833f0d2c27f0acbae5394848930ae531fc89c724/.github/workflows/freebsd.yml"
+        },
+        {
+          "path": ".github/workflows/packaging-lint.yml",
+          "kind": "build-metadata",
+          "sha256": "ae90ccde479716c584430aa6164c952861e6994f841bc977d380923f1ac944fb",
+          "url": "https://raw.githubusercontent.com/storytold/figcraft/833f0d2c27f0acbae5394848930ae531fc89c724/.github/workflows/packaging-lint.yml"
+        },
+        {
+          "path": ".github/workflows/release.yml",
+          "kind": "build-metadata",
+          "sha256": "75485bc330949a45592162da5227e4813b5298e9e38a557783a48bda584f1915",
+          "url": "https://raw.githubusercontent.com/storytold/figcraft/833f0d2c27f0acbae5394848930ae531fc89c724/.github/workflows/release.yml"
+        },
+        {
+          "path": ".github/workflows/windows-arm64.yml",
+          "kind": "build-metadata",
+          "sha256": "ef069bc195781438b406af04e2fb5eaeddc3b8b3b90fd9737d49b4ea92fa4363",
+          "url": "https://raw.githubusercontent.com/storytold/figcraft/833f0d2c27f0acbae5394848930ae531fc89c724/.github/workflows/windows-arm64.yml"
+        },
+        {
+          "path": "Cargo.lock",
+          "kind": "build-metadata",
+          "sha256": "927ab98bf28199b5f407edb250accbfd55d512a8d98206a331bc0795fcaa3569",
+          "url": "https://raw.githubusercontent.com/storytold/figcraft/833f0d2c27f0acbae5394848930ae531fc89c724/Cargo.lock"
+        },
+        {
+          "path": "Cargo.toml",
+          "kind": "build-metadata",
+          "sha256": "e22ef6373d9d9ecc27f5eaa9e1cba01166c8c83061526c53aea6cf44a7228d50",
+          "url": "https://raw.githubusercontent.com/storytold/figcraft/833f0d2c27f0acbae5394848930ae531fc89c724/Cargo.toml"
+        }
+      ],
+      "craft_fonts_commits": [
+        "43913056ce82a3fdad0ef69f6b88d1dc922a8104"
+      ]
+    },
+    {
+      "id": "soundcraft",
+      "version": "v0.7.0",
+      "repository": "https://github.com/storytold/soundcraft",
+      "commit": "3a28a657692c1b98b28c276d8f61df9471074f0f",
+      "archive_url": "https://codeload.github.com/storytold/soundcraft/tar.gz/3a28a657692c1b98b28c276d8f61df9471074f0f",
+      "archive_sha256": "72a936c404b66a1210a74d3f81142910e868ea51150edd6bee10e6faba5d0325",
+      "archive_size": 5186470,
+      "files": [
+        {
+          "path": "ATTRIBUTION.md",
+          "sha256": "aaf3fa13f18d7bd84d6827b40a5a2added7548ffcef3ecde9aa322ccfaa5698b",
+          "url": "https://raw.githubusercontent.com/storytold/soundcraft/3a28a657692c1b98b28c276d8f61df9471074f0f/ATTRIBUTION.md"
+        },
+        {
+          "path": "LICENSE-APACHE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+          "url": "https://raw.githubusercontent.com/storytold/soundcraft/3a28a657692c1b98b28c276d8f61df9471074f0f/LICENSE-APACHE"
+        },
+        {
+          "path": "LICENSE-MIT",
+          "sha256": "6aff3a3f0d8eb4c2d4fca151a00cdf26d8ff3020889402a453381a12dba3381e",
+          "url": "https://raw.githubusercontent.com/storytold/soundcraft/3a28a657692c1b98b28c276d8f61df9471074f0f/LICENSE-MIT"
+        },
+        {
+          "path": "NOTICE",
+          "sha256": "977949446409bf907b265d765f024d3194c09251c2a65a4ca418cf5cb2dc84c0",
+          "url": "https://raw.githubusercontent.com/storytold/soundcraft/3a28a657692c1b98b28c276d8f61df9471074f0f/NOTICE"
+        },
+        {
+          "path": "docs/brand/LICENSE-brand.txt",
+          "sha256": "dbd6e8555a7f6d393f89a47cd44773e1f1f415c22551a78449bd4b43bec49903",
+          "url": "https://raw.githubusercontent.com/storytold/soundcraft/3a28a657692c1b98b28c276d8f61df9471074f0f/docs/brand/LICENSE-brand.txt"
+        }
+      ],
+      "reviewed_build_metadata": [
+        {
+          "path": ".github/workflows/freebsd.yml",
+          "kind": "build-metadata",
+          "sha256": "8e461416840825308128e72d89b920c3e5ba60e2a6b1bc736a7fcbe300c936d2",
+          "url": "https://raw.githubusercontent.com/storytold/soundcraft/3a28a657692c1b98b28c276d8f61df9471074f0f/.github/workflows/freebsd.yml"
+        },
+        {
+          "path": ".github/workflows/packaging-lint.yml",
+          "kind": "build-metadata",
+          "sha256": "906ed94773036da81a25e2940bd458dee10c85b9f54789011ea423c2352d94ba",
+          "url": "https://raw.githubusercontent.com/storytold/soundcraft/3a28a657692c1b98b28c276d8f61df9471074f0f/.github/workflows/packaging-lint.yml"
+        },
+        {
+          "path": ".github/workflows/release.yml",
+          "kind": "build-metadata",
+          "sha256": "611849b0c2e39b7b922c7b70e2abba271a9a43d9d3706a171f91905a0c70a27f",
+          "url": "https://raw.githubusercontent.com/storytold/soundcraft/3a28a657692c1b98b28c276d8f61df9471074f0f/.github/workflows/release.yml"
+        },
+        {
+          "path": ".github/workflows/windows-arm64.yml",
+          "kind": "build-metadata",
+          "sha256": "09cd677ded9e6712a4a543e72598814efff43ee7eb6b885d32c3090a6360cfd6",
+          "url": "https://raw.githubusercontent.com/storytold/soundcraft/3a28a657692c1b98b28c276d8f61df9471074f0f/.github/workflows/windows-arm64.yml"
+        },
+        {
+          "path": "Cargo.lock",
+          "kind": "build-metadata",
+          "sha256": "65a3e7a64c5e8b65ddf47c121f1c5cd02888dc2b8678b3ad8dcb4b42cd7d9009",
+          "url": "https://raw.githubusercontent.com/storytold/soundcraft/3a28a657692c1b98b28c276d8f61df9471074f0f/Cargo.lock"
+        },
+        {
+          "path": "Cargo.toml",
+          "kind": "build-metadata",
+          "sha256": "22cfc5532a97e815ed139a81b8f5288716dcb702248b79f825e75630d38b4eee",
+          "url": "https://raw.githubusercontent.com/storytold/soundcraft/3a28a657692c1b98b28c276d8f61df9471074f0f/Cargo.toml"
+        }
+      ],
+      "craft_fonts_commits": []
+    },
+    {
+      "id": "cadcraft",
+      "version": "v0.7.0",
+      "repository": "https://github.com/storytold/cadcraft",
+      "commit": "fc4e98315a8d771b5ab832f0ade0b5e7b106df7f",
+      "archive_url": "https://codeload.github.com/storytold/cadcraft/tar.gz/fc4e98315a8d771b5ab832f0ade0b5e7b106df7f",
+      "archive_sha256": "039ee54bfbf6c25f49a24770a5ba0ef4c2d3125c26fa88bafa06da4048b34d17",
+      "archive_size": 3979882,
+      "files": [
+        {
+          "path": "ATTRIBUTION.md",
+          "sha256": "59cd0595dd708a1087b0126ed7620b757be6a2c4352570566a8074601083580c",
+          "url": "https://raw.githubusercontent.com/storytold/cadcraft/fc4e98315a8d771b5ab832f0ade0b5e7b106df7f/ATTRIBUTION.md"
+        },
+        {
+          "path": "LICENSE-APACHE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+          "url": "https://raw.githubusercontent.com/storytold/cadcraft/fc4e98315a8d771b5ab832f0ade0b5e7b106df7f/LICENSE-APACHE"
+        },
+        {
+          "path": "LICENSE-MIT",
+          "sha256": "54b0fc87ed7b61b59c20340070dd2b8c7f9d0b53795347819c3bd7c67ea2508a",
+          "url": "https://raw.githubusercontent.com/storytold/cadcraft/fc4e98315a8d771b5ab832f0ade0b5e7b106df7f/LICENSE-MIT"
+        },
+        {
+          "path": "NOTICE",
+          "sha256": "cdfbfa6606bc6c389758cfdc5addeccb47a2a2cc7bfb7fcc4be9a2b783bd1561",
+          "url": "https://raw.githubusercontent.com/storytold/cadcraft/fc4e98315a8d771b5ab832f0ade0b5e7b106df7f/NOTICE"
+        },
+        {
+          "path": "docs/brand/LICENSE-brand.txt",
+          "sha256": "382b7443d4346ba31115a9d7a1f3fcfc16e44c39c94654b01998e09cef8a2679",
+          "url": "https://raw.githubusercontent.com/storytold/cadcraft/fc4e98315a8d771b5ab832f0ade0b5e7b106df7f/docs/brand/LICENSE-brand.txt"
+        }
+      ],
+      "reviewed_build_metadata": [
+        {
+          "path": ".github/workflows/packaging-lint.yml",
+          "kind": "build-metadata",
+          "sha256": "906ed94773036da81a25e2940bd458dee10c85b9f54789011ea423c2352d94ba",
+          "url": "https://raw.githubusercontent.com/storytold/cadcraft/fc4e98315a8d771b5ab832f0ade0b5e7b106df7f/.github/workflows/packaging-lint.yml"
+        },
+        {
+          "path": ".github/workflows/release.yml",
+          "kind": "build-metadata",
+          "sha256": "c38f942b6388bccd5825e2016206bd412469fd4aa26c11e491b93a156bb2503d",
+          "url": "https://raw.githubusercontent.com/storytold/cadcraft/fc4e98315a8d771b5ab832f0ade0b5e7b106df7f/.github/workflows/release.yml"
+        },
+        {
+          "path": "Cargo.lock",
+          "kind": "build-metadata",
+          "sha256": "f4fae3426d67e7b81b358d966b7539f209f65554de47ab5bea3ed77f6ac903d0",
+          "url": "https://raw.githubusercontent.com/storytold/cadcraft/fc4e98315a8d771b5ab832f0ade0b5e7b106df7f/Cargo.lock"
+        },
+        {
+          "path": "Cargo.toml",
+          "kind": "build-metadata",
+          "sha256": "55cc71ed64e65ad736746a9be34a70d70fc401ec1ff3986f81720c7f51288e1d",
+          "url": "https://raw.githubusercontent.com/storytold/cadcraft/fc4e98315a8d771b5ab832f0ade0b5e7b106df7f/Cargo.toml"
+        }
+      ],
+      "craft_fonts_commits": [
+        "3d9ab3a132ed0eff457e424226a435a901da30d3"
+      ]
+    }
+  ],
+  "craft_fonts": [
+    {
+      "repository": "https://github.com/storytold/craft-fonts",
+      "commit": "3d9ab3a132ed0eff457e424226a435a901da30d3",
+      "apps": [
+        "vectorcraft",
+        "pdfcraft",
+        "cadcraft"
+      ],
+      "files": [
+        {
+          "path": "ATTRIBUTION.md",
+          "sha256": "387bc959b6c332b955f03d30b13a5efd0e616a02881dc1942b14a9dc57d3d656",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/3d9ab3a132ed0eff457e424226a435a901da30d3/ATTRIBUTION.md"
+        },
+        {
+          "path": "LICENSE-APACHE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/3d9ab3a132ed0eff457e424226a435a901da30d3/LICENSE-APACHE"
+        },
+        {
+          "path": "LICENSE-MIT",
+          "sha256": "e360d6f5941863521687517eee951fac3328ee9f379fcb11bb5031fe6614fc8f",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/3d9ab3a132ed0eff457e424226a435a901da30d3/LICENSE-MIT"
+        },
+        {
+          "path": "fonts/biz-ud-mincho/OFL.txt",
+          "sha256": "ef0ed524b3bd012f37015e986809eed6f67905456ebfc1ebd7fcc2765282ee01",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/3d9ab3a132ed0eff457e424226a435a901da30d3/fonts/biz-ud-mincho/OFL.txt"
+        },
+        {
+          "path": "fonts/biz-ud-pgothic/OFL.txt",
+          "sha256": "e753d7155d53c747d037a445e584c8ecfca6dd79846db610417e282a736b28bc",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/3d9ab3a132ed0eff457e424226a435a901da30d3/fonts/biz-ud-pgothic/OFL.txt"
+        },
+        {
+          "path": "fonts/manifest.txt",
+          "sha256": "803dac6cb77e1d04b03495378545867df63a4da36a7baf193c5281f929bd7a46",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/3d9ab3a132ed0eff457e424226a435a901da30d3/fonts/manifest.txt"
+        },
+        {
+          "path": "fonts/noto-sans-arabic/OFL.txt",
+          "sha256": "07fc70bfeb985cc1a87a8587d0a0c80bab11c86c9dc3fd95b6f0cb332f983e96",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/3d9ab3a132ed0eff457e424226a435a901da30d3/fonts/noto-sans-arabic/OFL.txt"
+        },
+        {
+          "path": "fonts/noto-sans-cjk-sc/OFL.txt",
+          "sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/3d9ab3a132ed0eff457e424226a435a901da30d3/fonts/noto-sans-cjk-sc/OFL.txt"
+        },
+        {
+          "path": "fonts/noto-sans-thai/OFL.txt",
+          "sha256": "2e98fd23a52d253db8612cd5942c8f2ff4111b21d2367050fdca91d8ccc374a0",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/3d9ab3a132ed0eff457e424226a435a901da30d3/fonts/noto-sans-thai/OFL.txt"
+        },
+        {
+          "path": "fonts/shippori-mincho/OFL.txt",
+          "sha256": "41fba056279be5f45ff9a99e44b7b53897b42732f5806d8e666e0ab49ac6bd38",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/3d9ab3a132ed0eff457e424226a435a901da30d3/fonts/shippori-mincho/OFL.txt"
+        }
+      ]
+    },
+    {
+      "repository": "https://github.com/storytold/craft-fonts",
+      "commit": "43913056ce82a3fdad0ef69f6b88d1dc922a8104",
+      "apps": [
+        "deckcraft",
+        "figcraft"
+      ],
+      "files": [
+        {
+          "path": "ATTRIBUTION.md",
+          "sha256": "35b47c2d660235ccaff400ee42c73d1806d65abc02aabe0a06787b116fffddab",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/ATTRIBUTION.md"
+        },
+        {
+          "path": "LICENSE-APACHE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/LICENSE-APACHE"
+        },
+        {
+          "path": "LICENSE-MIT",
+          "sha256": "e360d6f5941863521687517eee951fac3328ee9f379fcb11bb5031fe6614fc8f",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/LICENSE-MIT"
+        },
+        {
+          "path": "fonts/biz-ud-mincho/OFL.txt",
+          "sha256": "ef0ed524b3bd012f37015e986809eed6f67905456ebfc1ebd7fcc2765282ee01",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/biz-ud-mincho/OFL.txt"
+        },
+        {
+          "path": "fonts/biz-ud-pgothic/OFL.txt",
+          "sha256": "e753d7155d53c747d037a445e584c8ecfca6dd79846db610417e282a736b28bc",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/biz-ud-pgothic/OFL.txt"
+        },
+        {
+          "path": "fonts/caladea/OFL.txt",
+          "sha256": "ccdab61d371d8c8683a128a92cd7d498dbdb1d37689f7cb21f1bf6b16658d213",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/caladea/OFL.txt"
+        },
+        {
+          "path": "fonts/carlito/OFL.txt",
+          "sha256": "58402f82a7c332a700294988fe7554fbb0a63a8d27ccc1ee3bbc640311990a00",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/carlito/OFL.txt"
+        },
+        {
+          "path": "fonts/inter/OFL.txt",
+          "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/inter/OFL.txt"
+        },
+        {
+          "path": "fonts/lato/OFL.txt",
+          "sha256": "74ba064d03f1f1c4a952da936c3eb71866c34404916734de3cae73b34357e59e",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/lato/OFL.txt"
+        },
+        {
+          "path": "fonts/liberation-mono/OFL.txt",
+          "sha256": "93fed46019c38bbe566b479d22148e2e8a1e85ada614accb0211c37b2c61c19b",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/liberation-mono/OFL.txt"
+        },
+        {
+          "path": "fonts/liberation-sans/OFL.txt",
+          "sha256": "93fed46019c38bbe566b479d22148e2e8a1e85ada614accb0211c37b2c61c19b",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/liberation-sans/OFL.txt"
+        },
+        {
+          "path": "fonts/liberation-serif/OFL.txt",
+          "sha256": "93fed46019c38bbe566b479d22148e2e8a1e85ada614accb0211c37b2c61c19b",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/liberation-serif/OFL.txt"
+        },
+        {
+          "path": "fonts/manifest.txt",
+          "sha256": "3bb90a214de61317ffaadf2c7f3035224c498b4bbc2165798f983e8f982aa092",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/manifest.txt"
+        },
+        {
+          "path": "fonts/merriweather/OFL.txt",
+          "sha256": "a7ba785ad99b6eae0444ab89910e512d4af9865937fddbcb5c72c4f59f55d6ad",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/merriweather/OFL.txt"
+        },
+        {
+          "path": "fonts/montserrat/OFL.txt",
+          "sha256": "8b7141c03fa4f8d44e6345d5d4931709290f0f67875e452e95ac1fd3a027802e",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/montserrat/OFL.txt"
+        },
+        {
+          "path": "fonts/noto-sans-arabic/OFL.txt",
+          "sha256": "07fc70bfeb985cc1a87a8587d0a0c80bab11c86c9dc3fd95b6f0cb332f983e96",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/noto-sans-arabic/OFL.txt"
+        },
+        {
+          "path": "fonts/noto-sans-cjk-sc/OFL.txt",
+          "sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/noto-sans-cjk-sc/OFL.txt"
+        },
+        {
+          "path": "fonts/nunito-sans/OFL.txt",
+          "sha256": "efbb0c9e864cef973982d9a17567e6be5c3d1759695574586f3f18c7ecca064b",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/nunito-sans/OFL.txt"
+        },
+        {
+          "path": "fonts/open-sans/OFL.txt",
+          "sha256": "fbbbcfef55318de350562559b671360de6d597112ecc5c73881b05092db89602",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/open-sans/OFL.txt"
+        },
+        {
+          "path": "fonts/playfair-display/OFL.txt",
+          "sha256": "566be814f8e96e93dfa16101331557eb6b5467e9e03f627c0910fe93ca12300e",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/playfair-display/OFL.txt"
+        },
+        {
+          "path": "fonts/poppins/OFL.txt",
+          "sha256": "6be04893d770899a015649c7aa3b582f871b272f8747a92b78b17c3e5c8b2573",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/poppins/OFL.txt"
+        },
+        {
+          "path": "fonts/roboto/OFL.txt",
+          "sha256": "061402327a96aadb0bfb694a960ed289ecd38d383e396243831ab81feb109c41",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/roboto/OFL.txt"
+        },
+        {
+          "path": "fonts/shippori-mincho/OFL.txt",
+          "sha256": "41fba056279be5f45ff9a99e44b7b53897b42732f5806d8e666e0ab49ac6bd38",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/shippori-mincho/OFL.txt"
+        },
+        {
+          "path": "fonts/source-sans-3/OFL.txt",
+          "sha256": "89ad2c4f66dd29127527493e729c31e731f111cf10faf5774c3db9275ed0c22c",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/source-sans-3/OFL.txt"
+        },
+        {
+          "path": "fonts/source-serif-4/OFL.txt",
+          "sha256": "75784a295293a8992f5a8d99210566e0064a012e6dab6731305e3787f15896c7",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/43913056ce82a3fdad0ef69f6b88d1dc922a8104/fonts/source-serif-4/OFL.txt"
+        }
+      ]
+    },
+    {
+      "repository": "https://github.com/storytold/craft-fonts",
+      "commit": "8dcdacd5153e64560d109541a47d806f26f048c0",
+      "apps": [
+        "wordcraft",
+        "lightcraft"
+      ],
+      "files": [
+        {
+          "path": "ATTRIBUTION.md",
+          "sha256": "28095b1a86d7b726983de24d4edb029257becd26abcd3056a63b4d959ed24f51",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/8dcdacd5153e64560d109541a47d806f26f048c0/ATTRIBUTION.md"
+        },
+        {
+          "path": "LICENSE-APACHE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/8dcdacd5153e64560d109541a47d806f26f048c0/LICENSE-APACHE"
+        },
+        {
+          "path": "LICENSE-MIT",
+          "sha256": "e360d6f5941863521687517eee951fac3328ee9f379fcb11bb5031fe6614fc8f",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/8dcdacd5153e64560d109541a47d806f26f048c0/LICENSE-MIT"
+        },
+        {
+          "path": "fonts/biz-ud-mincho/OFL.txt",
+          "sha256": "ef0ed524b3bd012f37015e986809eed6f67905456ebfc1ebd7fcc2765282ee01",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/8dcdacd5153e64560d109541a47d806f26f048c0/fonts/biz-ud-mincho/OFL.txt"
+        },
+        {
+          "path": "fonts/biz-ud-pgothic/OFL.txt",
+          "sha256": "e753d7155d53c747d037a445e584c8ecfca6dd79846db610417e282a736b28bc",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/8dcdacd5153e64560d109541a47d806f26f048c0/fonts/biz-ud-pgothic/OFL.txt"
+        },
+        {
+          "path": "fonts/manifest.txt",
+          "sha256": "3bb90a214de61317ffaadf2c7f3035224c498b4bbc2165798f983e8f982aa092",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/8dcdacd5153e64560d109541a47d806f26f048c0/fonts/manifest.txt"
+        },
+        {
+          "path": "fonts/noto-sans-arabic/OFL.txt",
+          "sha256": "07fc70bfeb985cc1a87a8587d0a0c80bab11c86c9dc3fd95b6f0cb332f983e96",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/8dcdacd5153e64560d109541a47d806f26f048c0/fonts/noto-sans-arabic/OFL.txt"
+        },
+        {
+          "path": "fonts/noto-sans-cjk-sc/OFL.txt",
+          "sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/8dcdacd5153e64560d109541a47d806f26f048c0/fonts/noto-sans-cjk-sc/OFL.txt"
+        },
+        {
+          "path": "fonts/shippori-mincho/OFL.txt",
+          "sha256": "41fba056279be5f45ff9a99e44b7b53897b42732f5806d8e666e0ab49ac6bd38",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/8dcdacd5153e64560d109541a47d806f26f048c0/fonts/shippori-mincho/OFL.txt"
+        }
+      ]
+    },
+    {
+      "repository": "https://github.com/storytold/craft-fonts",
+      "commit": "abb83316d96aa59c1cf64784289e378fe9fa5695",
+      "apps": [
+        "gridcraft",
+        "photocraft",
+        "filmcraft",
+        "designcraft"
+      ],
+      "files": [
+        {
+          "path": "ATTRIBUTION.md",
+          "sha256": "15b594735378181a33ab60da8800e64767d1d81232b922e46eb94879df59b155",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/abb83316d96aa59c1cf64784289e378fe9fa5695/ATTRIBUTION.md"
+        },
+        {
+          "path": "LICENSE-APACHE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/abb83316d96aa59c1cf64784289e378fe9fa5695/LICENSE-APACHE"
+        },
+        {
+          "path": "LICENSE-MIT",
+          "sha256": "e360d6f5941863521687517eee951fac3328ee9f379fcb11bb5031fe6614fc8f",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/abb83316d96aa59c1cf64784289e378fe9fa5695/LICENSE-MIT"
+        },
+        {
+          "path": "fonts/biz-ud-mincho/OFL.txt",
+          "sha256": "ef0ed524b3bd012f37015e986809eed6f67905456ebfc1ebd7fcc2765282ee01",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/abb83316d96aa59c1cf64784289e378fe9fa5695/fonts/biz-ud-mincho/OFL.txt"
+        },
+        {
+          "path": "fonts/biz-ud-pgothic/OFL.txt",
+          "sha256": "e753d7155d53c747d037a445e584c8ecfca6dd79846db610417e282a736b28bc",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/abb83316d96aa59c1cf64784289e378fe9fa5695/fonts/biz-ud-pgothic/OFL.txt"
+        },
+        {
+          "path": "fonts/manifest.txt",
+          "sha256": "2cb08e06c497e2b0a71355bd3137841c44812c3848319d5fed7889fec018f8d2",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/abb83316d96aa59c1cf64784289e378fe9fa5695/fonts/manifest.txt"
+        },
+        {
+          "path": "fonts/shippori-mincho/OFL.txt",
+          "sha256": "41fba056279be5f45ff9a99e44b7b53897b42732f5806d8e666e0ab49ac6bd38",
+          "url": "https://raw.githubusercontent.com/storytold/craft-fonts/abb83316d96aa59c1cf64784289e378fe9fa5695/fonts/shippori-mincho/OFL.txt"
+        }
+      ]
+    }
+  ],
+  "examined_crates": [
+    {
+      "name": "acadrust",
+      "version": "0.6.4",
+      "license": "MPL-2.0",
+      "source_url": "https://static.crates.io/crates/acadrust/acadrust-0.6.4.crate",
+      "source_sha256": "94862189cab6e282ed0433a801a216cd1a712953813284a48fa81c67223e38f6",
+      "source_size": 3699053,
+      "source_repository": "https://github.com/hakanaktt/acadrust",
+      "apps": [
+        "cadcraft"
+      ],
+      "files": [
+        {
+          "path": "LICENSE",
+          "sha256": "9e83d639d5f01d42bd019923d48cc485155f10d20c81f6294902976fe2715fca"
+        },
+        {
+          "path": "tests/fixtures/dynamic-blocks/LICENSE",
+          "sha256": "4ab9f4b6fa9796739b367c859f46a783d5d3ea612b101323bf7b94a975e04882"
+        }
+      ],
+      "source_commit": "8d5c46d423941ad96575760bf77979f8c46156fb"
+    },
+    {
+      "name": "epaint_default_fonts",
+      "version": "0.36.2",
+      "license": "(MIT OR Apache-2.0) AND OFL-1.1 AND Ubuntu-font-1.0",
+      "source_url": "https://static.crates.io/crates/epaint_default_fonts/epaint_default_fonts-0.36.2.crate",
+      "source_sha256": "773fa9c96dd0dbef887e39d0ed6177f141cce4d68e6041df77570aa3702dfa13",
+      "source_size": 789970,
+      "source_repository": "https://github.com/emilk/egui/tree/main/crates/epaint_default_fonts",
+      "apps": [
+        "wordcraft",
+        "gridcraft",
+        "deckcraft",
+        "photocraft",
+        "vectorcraft",
+        "filmcraft",
+        "lightcraft",
+        "pdfcraft",
+        "effectcraft",
+        "designcraft",
+        "figcraft",
+        "soundcraft",
+        "cadcraft"
+      ],
+      "files": [
+        {
+          "path": "fonts/OFL.txt",
+          "sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2"
+        },
+        {
+          "path": "fonts/emoji-icon-font-mit-license.txt",
+          "sha256": "b9d2c1d909aa149996fd4c91dcb92b2362a04431640c1d200959da94caf8cde1"
+        },
+        {
+          "path": "fonts/Hack-Regular.txt",
+          "sha256": "47c0cccbeec7e8614548cc485588b28149e7874188df5f41b36efebcee285c87"
+        },
+        {
+          "path": "fonts/UFL.txt",
+          "sha256": "2f0015108d68627bd788d313f529c21ff4da2c2c42a5e1f3883acc83480f9002"
+        },
+        {
+          "path": "LICENSE-APACHE",
+          "sha256": "8173d5c29b4f956d532781d2b86e4e30f83e6b7878dce18c919451d6ba707c90",
+          "url": "https://raw.githubusercontent.com/emilk/egui/49682f8baa058bf49e011035cfbd6e825f88a5ef/LICENSE-APACHE"
+        },
+        {
+          "path": "LICENSE-MIT",
+          "sha256": "95ca92f5f8ea5231f1580b3a2a799e8260af3114b900e1def5355a7f44bcf60c",
+          "url": "https://raw.githubusercontent.com/emilk/egui/49682f8baa058bf49e011035cfbd6e825f88a5ef/LICENSE-MIT"
+        }
+      ],
+      "source_commit": "49682f8baa058bf49e011035cfbd6e825f88a5ef"
+    },
+    {
+      "name": "symphonia",
+      "version": "0.5.5",
+      "license": "MPL-2.0",
+      "source_url": "https://static.crates.io/crates/symphonia/symphonia-0.5.5.crate",
+      "source_sha256": "5773a4c030a19d9bfaa090f49746ff35c75dfddfa700df7a5939d5e076a57039",
+      "source_size": 12085,
+      "source_repository": "https://github.com/pdeljanov/Symphonia",
+      "apps": [
+        "deckcraft",
+        "filmcraft",
+        "effectcraft",
+        "soundcraft"
+      ],
+      "files": [
+        {
+          "path": "LICENSE",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30",
+          "url": "https://raw.githubusercontent.com/pdeljanov/Symphonia/6d533f26150953a882a6a111ebd13f0abf7129d5/LICENSE"
+        }
+      ],
+      "source_commit": "6d533f26150953a882a6a111ebd13f0abf7129d5"
+    },
+    {
+      "name": "symphonia-bundle-flac",
+      "version": "0.5.5",
+      "license": "MPL-2.0",
+      "source_url": "https://static.crates.io/crates/symphonia-bundle-flac/symphonia-bundle-flac-0.5.5.crate",
+      "source_sha256": "c91565e180aea25d9b80a910c546802526ffd0072d0b8974e3ebe59b686c9976",
+      "source_size": 24141,
+      "source_repository": "https://github.com/pdeljanov/Symphonia",
+      "apps": [
+        "deckcraft",
+        "filmcraft",
+        "effectcraft",
+        "soundcraft"
+      ],
+      "files": [
+        {
+          "path": "LICENSE",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30",
+          "url": "https://raw.githubusercontent.com/pdeljanov/Symphonia/6d533f26150953a882a6a111ebd13f0abf7129d5/LICENSE"
+        }
+      ],
+      "source_commit": "6d533f26150953a882a6a111ebd13f0abf7129d5"
+    },
+    {
+      "name": "symphonia-bundle-mp3",
+      "version": "0.5.5",
+      "license": "MPL-2.0",
+      "source_url": "https://static.crates.io/crates/symphonia-bundle-mp3/symphonia-bundle-mp3-0.5.5.crate",
+      "source_sha256": "4872dd6bb56bf5eac799e3e957aa1981086c3e613b27e0ac23b176054f7c57ed",
+      "source_size": 61019,
+      "source_repository": "https://github.com/pdeljanov/Symphonia",
+      "apps": [
+        "deckcraft",
+        "filmcraft",
+        "effectcraft",
+        "soundcraft"
+      ],
+      "files": [
+        {
+          "path": "LICENSE",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30",
+          "url": "https://raw.githubusercontent.com/pdeljanov/Symphonia/6d533f26150953a882a6a111ebd13f0abf7129d5/LICENSE"
+        }
+      ],
+      "source_commit": "6d533f26150953a882a6a111ebd13f0abf7129d5"
+    },
+    {
+      "name": "symphonia-codec-aac",
+      "version": "0.5.5",
+      "license": "MPL-2.0",
+      "source_url": "https://static.crates.io/crates/symphonia-codec-aac/symphonia-codec-aac-0.5.5.crate",
+      "source_sha256": "4c263845aa86881416849c1729a54c7f55164f8b96111dba59de46849e73a790",
+      "source_size": 26471,
+      "source_repository": "https://github.com/pdeljanov/Symphonia",
+      "apps": [
+        "deckcraft",
+        "filmcraft",
+        "effectcraft",
+        "soundcraft"
+      ],
+      "files": [
+        {
+          "path": "LICENSE",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30",
+          "url": "https://raw.githubusercontent.com/pdeljanov/Symphonia/6d533f26150953a882a6a111ebd13f0abf7129d5/LICENSE"
+        }
+      ],
+      "source_commit": "6d533f26150953a882a6a111ebd13f0abf7129d5"
+    },
+    {
+      "name": "symphonia-codec-adpcm",
+      "version": "0.5.5",
+      "license": "MPL-2.0",
+      "source_url": "https://static.crates.io/crates/symphonia-codec-adpcm/symphonia-codec-adpcm-0.5.5.crate",
+      "source_sha256": "2dddc50e2bbea4cfe027441eece77c46b9f319748605ab8f3443350129ddd07f",
+      "source_size": 5843,
+      "source_repository": "https://github.com/pdeljanov/Symphonia",
+      "apps": [
+        "deckcraft",
+        "soundcraft"
+      ],
+      "files": [
+        {
+          "path": "LICENSE",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30",
+          "url": "https://raw.githubusercontent.com/pdeljanov/Symphonia/6d533f26150953a882a6a111ebd13f0abf7129d5/LICENSE"
+        }
+      ],
+      "source_commit": "6d533f26150953a882a6a111ebd13f0abf7129d5"
+    },
+    {
+      "name": "symphonia-codec-alac",
+      "version": "0.5.5",
+      "license": "MPL-2.0",
+      "source_url": "https://static.crates.io/crates/symphonia-codec-alac/symphonia-codec-alac-0.5.5.crate",
+      "source_sha256": "8413fa754942ac16a73634c9dfd1500ed5c61430956b33728567f667fdd393ab",
+      "source_size": 9531,
+      "source_repository": "https://github.com/pdeljanov/Symphonia",
+      "apps": [
+        "deckcraft",
+        "filmcraft",
+        "effectcraft",
+        "soundcraft"
+      ],
+      "files": [
+        {
+          "path": "LICENSE",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30",
+          "url": "https://raw.githubusercontent.com/pdeljanov/Symphonia/6d533f26150953a882a6a111ebd13f0abf7129d5/LICENSE"
+        }
+      ],
+      "source_commit": "6d533f26150953a882a6a111ebd13f0abf7129d5"
+    },
+    {
+      "name": "symphonia-codec-pcm",
+      "version": "0.5.5",
+      "license": "MPL-2.0",
+      "source_url": "https://static.crates.io/crates/symphonia-codec-pcm/symphonia-codec-pcm-0.5.5.crate",
+      "source_sha256": "4e89d716c01541ad3ebe7c91ce4c8d38a7cf266a3f7b2f090b108fb0cb031d95",
+      "source_size": 6795,
+      "source_repository": "https://github.com/pdeljanov/Symphonia",
+      "apps": [
+        "deckcraft",
+        "filmcraft",
+        "effectcraft",
+        "soundcraft"
+      ],
+      "files": [
+        {
+          "path": "LICENSE",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30",
+          "url": "https://raw.githubusercontent.com/pdeljanov/Symphonia/6d533f26150953a882a6a111ebd13f0abf7129d5/LICENSE"
+        }
+      ],
+      "source_commit": "6d533f26150953a882a6a111ebd13f0abf7129d5"
+    },
+    {
+      "name": "symphonia-codec-vorbis",
+      "version": "0.5.5",
+      "license": "MPL-2.0",
+      "source_url": "https://static.crates.io/crates/symphonia-codec-vorbis/symphonia-codec-vorbis-0.5.5.crate",
+      "source_sha256": "f025837c309cd69ffef572750b4a2257b59552c5399a5e49707cc5b1b85d1c73",
+      "source_size": 25527,
+      "source_repository": "https://github.com/pdeljanov/Symphonia",
+      "apps": [
+        "deckcraft",
+        "filmcraft",
+        "effectcraft",
+        "soundcraft"
+      ],
+      "files": [
+        {
+          "path": "LICENSE",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30",
+          "url": "https://raw.githubusercontent.com/pdeljanov/Symphonia/6d533f26150953a882a6a111ebd13f0abf7129d5/LICENSE"
+        }
+      ],
+      "source_commit": "6d533f26150953a882a6a111ebd13f0abf7129d5"
+    },
+    {
+      "name": "symphonia-core",
+      "version": "0.5.5",
+      "license": "MPL-2.0",
+      "source_url": "https://static.crates.io/crates/symphonia-core/symphonia-core-0.5.5.crate",
+      "source_sha256": "ea00cc4f79b7f6bb7ff87eddc065a1066f3a43fe1875979056672c9ef948c2af",
+      "source_size": 99682,
+      "source_repository": "https://github.com/pdeljanov/Symphonia",
+      "apps": [
+        "deckcraft",
+        "filmcraft",
+        "effectcraft",
+        "soundcraft"
+      ],
+      "files": [
+        {
+          "path": "LICENSE",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30",
+          "url": "https://raw.githubusercontent.com/pdeljanov/Symphonia/6d533f26150953a882a6a111ebd13f0abf7129d5/LICENSE"
+        }
+      ],
+      "source_commit": "6d533f26150953a882a6a111ebd13f0abf7129d5"
+    },
+    {
+      "name": "symphonia-format-caf",
+      "version": "0.5.5",
+      "license": "MPL-2.0",
+      "source_url": "https://static.crates.io/crates/symphonia-format-caf/symphonia-format-caf-0.5.5.crate",
+      "source_sha256": "b8faf379316b6b6e6bbc274d00e7a592e0d63ff1a7e182ce8ba25e24edd3d096",
+      "source_size": 9785,
+      "source_repository": "https://github.com/pdeljanov/Symphonia",
+      "apps": [
+        "deckcraft",
+        "soundcraft"
+      ],
+      "files": [
+        {
+          "path": "LICENSE",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30",
+          "url": "https://raw.githubusercontent.com/pdeljanov/Symphonia/6d533f26150953a882a6a111ebd13f0abf7129d5/LICENSE"
+        }
+      ],
+      "source_commit": "6d533f26150953a882a6a111ebd13f0abf7129d5"
+    },
+    {
+      "name": "symphonia-format-isomp4",
+      "version": "0.5.5",
+      "license": "MPL-2.0",
+      "source_url": "https://static.crates.io/crates/symphonia-format-isomp4/symphonia-format-isomp4-0.5.5.crate",
+      "source_sha256": "243739585d11f81daf8dac8d9f3d18cc7898f6c09a259675fc364b382c30e0a5",
+      "source_size": 37184,
+      "source_repository": "https://github.com/pdeljanov/Symphonia",
+      "apps": [
+        "deckcraft",
+        "filmcraft",
+        "effectcraft",
+        "soundcraft"
+      ],
+      "files": [
+        {
+          "path": "LICENSE",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30",
+          "url": "https://raw.githubusercontent.com/pdeljanov/Symphonia/6d533f26150953a882a6a111ebd13f0abf7129d5/LICENSE"
+        }
+      ],
+      "source_commit": "6d533f26150953a882a6a111ebd13f0abf7129d5"
+    },
+    {
+      "name": "symphonia-format-mkv",
+      "version": "0.5.5",
+      "license": "MPL-2.0",
+      "source_url": "https://static.crates.io/crates/symphonia-format-mkv/symphonia-format-mkv-0.5.5.crate",
+      "source_sha256": "122d786d2c43a49beb6f397551b4a050d8229eaa54c7ddf9ee4b98899b8742d0",
+      "source_size": 18343,
+      "source_repository": "https://github.com/pdeljanov/Symphonia",
+      "apps": [
+        "deckcraft",
+        "soundcraft"
+      ],
+      "files": [
+        {
+          "path": "LICENSE",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30",
+          "url": "https://raw.githubusercontent.com/pdeljanov/Symphonia/6d533f26150953a882a6a111ebd13f0abf7129d5/LICENSE"
+        }
+      ],
+      "source_commit": "6d533f26150953a882a6a111ebd13f0abf7129d5"
+    },
+    {
+      "name": "symphonia-format-ogg",
+      "version": "0.5.5",
+      "license": "MPL-2.0",
+      "source_url": "https://static.crates.io/crates/symphonia-format-ogg/symphonia-format-ogg-0.5.5.crate",
+      "source_sha256": "2b4955c67c1ed3aa8ae8428d04ca8397fbef6a19b2b051e73b5da8b1435639cb",
+      "source_size": 24285,
+      "source_repository": "https://github.com/pdeljanov/Symphonia",
+      "apps": [
+        "deckcraft",
+        "filmcraft",
+        "effectcraft",
+        "soundcraft"
+      ],
+      "files": [
+        {
+          "path": "LICENSE",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30",
+          "url": "https://raw.githubusercontent.com/pdeljanov/Symphonia/6d533f26150953a882a6a111ebd13f0abf7129d5/LICENSE"
+        }
+      ],
+      "source_commit": "6d533f26150953a882a6a111ebd13f0abf7129d5"
+    },
+    {
+      "name": "symphonia-format-riff",
+      "version": "0.5.5",
+      "license": "MPL-2.0",
+      "source_url": "https://static.crates.io/crates/symphonia-format-riff/symphonia-format-riff-0.5.5.crate",
+      "source_sha256": "c2d7c3df0e7d94efb68401d81906eae73c02b40d5ec1a141962c592d0f11a96f",
+      "source_size": 17993,
+      "source_repository": "https://github.com/pdeljanov/Symphonia",
+      "apps": [
+        "deckcraft",
+        "filmcraft",
+        "effectcraft",
+        "soundcraft"
+      ],
+      "files": [
+        {
+          "path": "LICENSE",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30",
+          "url": "https://raw.githubusercontent.com/pdeljanov/Symphonia/6d533f26150953a882a6a111ebd13f0abf7129d5/LICENSE"
+        }
+      ],
+      "source_commit": "6d533f26150953a882a6a111ebd13f0abf7129d5"
+    },
+    {
+      "name": "symphonia-metadata",
+      "version": "0.5.5",
+      "license": "MPL-2.0",
+      "source_url": "https://static.crates.io/crates/symphonia-metadata/symphonia-metadata-0.5.5.crate",
+      "source_sha256": "36306ff42b9ffe6e5afc99d49e121e0bd62fe79b9db7b9681d48e29fa19e6b16",
+      "source_size": 24184,
+      "source_repository": "https://github.com/pdeljanov/Symphonia",
+      "apps": [
+        "deckcraft",
+        "filmcraft",
+        "effectcraft",
+        "soundcraft"
+      ],
+      "files": [
+        {
+          "path": "LICENSE",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30",
+          "url": "https://raw.githubusercontent.com/pdeljanov/Symphonia/6d533f26150953a882a6a111ebd13f0abf7129d5/LICENSE"
+        }
+      ],
+      "source_commit": "6d533f26150953a882a6a111ebd13f0abf7129d5"
+    },
+    {
+      "name": "symphonia-utils-xiph",
+      "version": "0.5.5",
+      "license": "MPL-2.0",
+      "source_url": "https://static.crates.io/crates/symphonia-utils-xiph/symphonia-utils-xiph-0.5.5.crate",
+      "source_sha256": "ee27c85ab799a338446b68eec77abf42e1a6f1bb490656e121c6e27bfbab9f16",
+      "source_size": 6617,
+      "source_repository": "https://github.com/pdeljanov/Symphonia",
+      "apps": [
+        "deckcraft",
+        "filmcraft",
+        "effectcraft",
+        "soundcraft"
+      ],
+      "files": [
+        {
+          "path": "LICENSE",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30",
+          "url": "https://raw.githubusercontent.com/pdeljanov/Symphonia/6d533f26150953a882a6a111ebd13f0abf7129d5/LICENSE"
+        }
+      ],
+      "source_commit": "6d533f26150953a882a6a111ebd13f0abf7129d5"
+    },
+    {
+      "name": "hayro-ccitt",
+      "version": "0.3.0",
+      "license": "Apache-2.0 OR MIT",
+      "source_url": "https://static.crates.io/crates/hayro-ccitt/hayro-ccitt-0.3.0.crate",
+      "source_sha256": "9f4d0e94ddd48749f06bbe4e5389fb9799a0c45bcaf00495042076ef05e3241a",
+      "source_size": 14462,
+      "source_repository": "https://github.com/LaurenzV/hayro",
+      "apps": [
+        "wordcraft",
+        "vectorcraft",
+        "pdfcraft",
+        "designcraft"
+      ],
+      "files": [
+        {
+          "path": "LICENSE-APACHE",
+          "sha256": "0cec06e0e55fbc3dc5cee4fca9b607f66cb8f4e4dbcf3b3c013594dd156732e9"
+        },
+        {
+          "path": "LICENSE-MIT",
+          "sha256": "51b50e6120c344dcc146bbd6375ca1c78e079d97c8bea76e67a53d6ff0efebac"
+        }
+      ],
+      "source_commit": "4ad1532e1cd719170c4f4baf669f13ec0f406abb"
+    },
+    {
+      "name": "hayro-ccitt",
+      "version": "0.4.0",
+      "license": "Apache-2.0 OR MIT",
+      "source_url": "https://static.crates.io/crates/hayro-ccitt/hayro-ccitt-0.4.0.crate",
+      "source_sha256": "2866f0d976e76497480b853d5e258dab6e4b89ecfe991124e08f15dfa8fd03ad",
+      "source_size": 13971,
+      "source_repository": "https://github.com/LaurenzV/hayro",
+      "apps": [
+        "wordcraft",
+        "deckcraft"
+      ],
+      "files": [
+        {
+          "path": "LICENSE-APACHE",
+          "sha256": "0cec06e0e55fbc3dc5cee4fca9b607f66cb8f4e4dbcf3b3c013594dd156732e9"
+        },
+        {
+          "path": "LICENSE-MIT",
+          "sha256": "51b50e6120c344dcc146bbd6375ca1c78e079d97c8bea76e67a53d6ff0efebac"
+        }
+      ],
+      "source_commit": "ea9c81dc70cde40c64205986fdcfcd481fe934d8"
+    },
+    {
+      "name": "hayro-cmap",
+      "version": "0.1.0",
+      "license": "Apache-2.0 OR MIT",
+      "source_url": "https://static.crates.io/crates/hayro-cmap/hayro-cmap-0.1.0.crate",
+      "source_sha256": "24d285dc30731c8485de5fa732fbdf2b3affdf01e4da7c2135022ca6fa664bf6",
+      "source_size": 277495,
+      "source_repository": "https://github.com/LaurenzV/hayro",
+      "apps": [
+        "wordcraft",
+        "vectorcraft",
+        "pdfcraft",
+        "designcraft"
+      ],
+      "files": [
+        {
+          "path": "LICENSE-APACHE",
+          "sha256": "0cec06e0e55fbc3dc5cee4fca9b607f66cb8f4e4dbcf3b3c013594dd156732e9"
+        },
+        {
+          "path": "LICENSE-MIT",
+          "sha256": "51b50e6120c344dcc146bbd6375ca1c78e079d97c8bea76e67a53d6ff0efebac"
+        },
+        {
+          "path": "assets/LICENSE.txt",
+          "sha256": "742665db9c8e1bc72603c6d319ca3e90b83bd6d95202f0cd4ef11068a07a9c29"
+        }
+      ],
+      "source_commit": "a2354aebaf86f5ab13e5fd6b6b0521306488bf9d"
+    },
+    {
+      "name": "hayro-interpret",
+      "version": "0.7.0",
+      "license": "Apache-2.0 OR MIT",
+      "source_url": "https://static.crates.io/crates/hayro-interpret/hayro-interpret-0.7.0.crate",
+      "source_sha256": "f2613d0406898995042d0794c4245b2f2fba1246490c8ac593769bba6551129d",
+      "source_size": 407744,
+      "source_repository": "https://github.com/LaurenzV/hayro",
+      "apps": [
+        "wordcraft"
+      ],
+      "files": [
+        {
+          "path": "LICENSE-APACHE",
+          "sha256": "0cec06e0e55fbc3dc5cee4fca9b607f66cb8f4e4dbcf3b3c013594dd156732e9"
+        },
+        {
+          "path": "LICENSE-MIT",
+          "sha256": "51b50e6120c344dcc146bbd6375ca1c78e079d97c8bea76e67a53d6ff0efebac"
+        },
+        {
+          "path": "assets/CGATS_LICENSE.txt",
+          "sha256": "469d87b5fa48f8aaf69e25f4fcac3a309c97dbb7d561b917638abdb640e004d9"
+        },
+        {
+          "path": "assets/LICENSE_FOXIT",
+          "sha256": "b578cdd2345840ada550bd12519533812320d5f1d21cf4c1c7e1b1b0a31c98b7"
+        }
+      ],
+      "source_commit": "0c98904d2ced8e37b63ed2bd1e60f95bc0c7c774"
+    },
+    {
+      "name": "hayro-jbig2",
+      "version": "0.3.1",
+      "license": "Apache-2.0 OR MIT",
+      "source_url": "https://static.crates.io/crates/hayro-jbig2/hayro-jbig2-0.3.1.crate",
+      "source_sha256": "000e025850f4592ddcaee85640db70704151f2bafd43b6f431aa5b6a2c6a35a9",
+      "source_size": 72232,
+      "source_repository": "https://github.com/LaurenzV/hayro",
+      "apps": [
+        "wordcraft",
+        "deckcraft"
+      ],
+      "files": [
+        {
+          "path": "LICENSE-APACHE",
+          "sha256": "0cec06e0e55fbc3dc5cee4fca9b607f66cb8f4e4dbcf3b3c013594dd156732e9"
+        },
+        {
+          "path": "LICENSE-MIT",
+          "sha256": "51b50e6120c344dcc146bbd6375ca1c78e079d97c8bea76e67a53d6ff0efebac"
+        }
+      ],
+      "source_commit": "ea9c81dc70cde40c64205986fdcfcd481fe934d8"
+    },
+    {
+      "name": "hayro-jpeg2000",
+      "version": "0.3.5",
+      "license": "Apache-2.0 OR MIT",
+      "source_url": "https://static.crates.io/crates/hayro-jpeg2000/hayro-jpeg2000-0.3.5.crate",
+      "source_sha256": "c75ab947623ef4ccaa7acf0579edf7cbb5a73838e3839a7be73335e522f433a1",
+      "source_size": 88790,
+      "source_repository": "https://github.com/LaurenzV/hayro",
+      "apps": [
+        "wordcraft",
+        "deckcraft",
+        "vectorcraft",
+        "pdfcraft",
+        "designcraft"
+      ],
+      "files": [
+        {
+          "path": "LICENSE-APACHE",
+          "sha256": "0cec06e0e55fbc3dc5cee4fca9b607f66cb8f4e4dbcf3b3c013594dd156732e9"
+        },
+        {
+          "path": "LICENSE-MIT",
+          "sha256": "51b50e6120c344dcc146bbd6375ca1c78e079d97c8bea76e67a53d6ff0efebac"
+        },
+        {
+          "path": "assets/LICENSE.txt",
+          "sha256": "469d87b5fa48f8aaf69e25f4fcac3a309c97dbb7d561b917638abdb640e004d9"
+        }
+      ],
+      "source_commit": "a2354aebaf86f5ab13e5fd6b6b0521306488bf9d"
+    },
+    {
+      "name": "hayro-postscript",
+      "version": "0.1.0",
+      "license": "Apache-2.0 OR MIT",
+      "source_url": "https://static.crates.io/crates/hayro-postscript/hayro-postscript-0.1.0.crate",
+      "source_sha256": "885c5ef0654933139a9b9546fc2c69e18d37f38aa2520f079092b1be18f1fcaa",
+      "source_size": 15198,
+      "source_repository": "https://github.com/LaurenzV/hayro",
+      "apps": [
+        "wordcraft",
+        "vectorcraft",
+        "pdfcraft",
+        "designcraft"
+      ],
+      "files": [
+        {
+          "path": "LICENSE-APACHE",
+          "sha256": "0cec06e0e55fbc3dc5cee4fca9b607f66cb8f4e4dbcf3b3c013594dd156732e9"
+        },
+        {
+          "path": "LICENSE-MIT",
+          "sha256": "51b50e6120c344dcc146bbd6375ca1c78e079d97c8bea76e67a53d6ff0efebac"
+        }
+      ],
+      "source_commit": "a2354aebaf86f5ab13e5fd6b6b0521306488bf9d"
+    },
+    {
+      "name": "hayro-syntax",
+      "version": "0.7.2",
+      "license": "Apache-2.0 OR MIT",
+      "source_url": "https://static.crates.io/crates/hayro-syntax/hayro-syntax-0.7.2.crate",
+      "source_sha256": "0edeafd70aa2db743de8ede8637d07ec87db05efe69cde371d03f1b185fcef27",
+      "source_size": 106740,
+      "source_repository": "https://github.com/LaurenzV/hayro",
+      "apps": [
+        "wordcraft",
+        "deckcraft"
+      ],
+      "files": [
+        {
+          "path": "LICENSE-APACHE",
+          "sha256": "0cec06e0e55fbc3dc5cee4fca9b607f66cb8f4e4dbcf3b3c013594dd156732e9"
+        },
+        {
+          "path": "LICENSE-MIT",
+          "sha256": "51b50e6120c344dcc146bbd6375ca1c78e079d97c8bea76e67a53d6ff0efebac"
+        }
+      ],
+      "source_commit": "34834627c0b4afa9c83c9b64d4d978b127030c77"
+    },
+    {
+      "name": "hayro-write",
+      "version": "0.7.0",
+      "license": "Apache-2.0 OR MIT",
+      "source_url": "https://static.crates.io/crates/hayro-write/hayro-write-0.7.0.crate",
+      "source_sha256": "a0b3db92c4917aad24ff30d61413a9a7509ae88b27aee1ae34eff881e1d2723a",
+      "source_size": 12936,
+      "source_repository": "https://github.com/LaurenzV/hayro",
+      "apps": [
+        "wordcraft",
+        "deckcraft",
+        "designcraft"
+      ],
+      "files": [
+        {
+          "path": "LICENSE-APACHE",
+          "sha256": "0cec06e0e55fbc3dc5cee4fca9b607f66cb8f4e4dbcf3b3c013594dd156732e9"
+        },
+        {
+          "path": "LICENSE-MIT",
+          "sha256": "51b50e6120c344dcc146bbd6375ca1c78e079d97c8bea76e67a53d6ff0efebac"
+        }
+      ],
+      "source_commit": "2e31e347e202afa2696642e990f87eaabb705952"
+    },
+    {
+      "name": "jpeg-encoder",
+      "version": "0.6.1",
+      "license": "(MIT OR Apache-2.0) AND IJG",
+      "source_url": "https://static.crates.io/crates/jpeg-encoder/jpeg-encoder-0.6.1.crate",
+      "source_sha256": "b454d911ac55068f53495488d8ccd0646eaa540c033a28ee15b07838afafb01f",
+      "source_size": 36836,
+      "source_repository": "https://github.com/vstroebel/jpeg-encoder",
+      "apps": [
+        "photocraft",
+        "vectorcraft"
+      ],
+      "files": [
+        {
+          "path": "LICENSE-APACHE",
+          "sha256": "85a884980abd6032fc6b5439ba918ab16db9ac9051b5cf18db9c27c587df07c0"
+        },
+        {
+          "path": "LICENSE-MIT",
+          "sha256": "4d022727ea392ebba2fe5e9a5f78c610a0eae506b491f3db29c78b6d430d6503"
+        }
+      ],
+      "source_commit": "d85bc4c329b1d9060e1c87ac8fff79a48cc4c734"
+    },
+    {
+      "name": "jpeg-encoder",
+      "version": "0.7.1",
+      "license": "(MIT OR Apache-2.0) AND IJG",
+      "source_url": "https://static.crates.io/crates/jpeg-encoder/jpeg-encoder-0.7.1.crate",
+      "source_sha256": "a0370574b86f7eca156b9f298392b5e69a23f8c86f3f865add60bbc2e79467a6",
+      "source_size": 41296,
+      "source_repository": "https://github.com/vstroebel/jpeg-encoder",
+      "apps": [
+        "lightcraft"
+      ],
+      "files": [
+        {
+          "path": "LICENSE-APACHE",
+          "sha256": "85a884980abd6032fc6b5439ba918ab16db9ac9051b5cf18db9c27c587df07c0"
+        },
+        {
+          "path": "LICENSE-IJG",
+          "sha256": "a21e92ec88aefc6823f0c51994783571a849e8d9b43d9ade61ec9d886776721e"
+        },
+        {
+          "path": "LICENSE-MIT",
+          "sha256": "4d022727ea392ebba2fe5e9a5f78c610a0eae506b491f3db29c78b6d430d6503"
+        }
+      ],
+      "source_commit": "baf40191ae25a32e56a884fa6e001c4fe938d451"
+    }
+  ],
+  "scope": "Original legal and attribution files in thirteen pinned application sources, declared craft-fonts release revisions, embedded Polish hyphenation notice, and exact Cargo.lock sources for explicitly examined MPL, default-font, PDF and JPEG components. This is not a license audit of every transitive Cargo dependency or a proof of exact link-time contents of upstream WASM. Application source commits are resolved from release tags; binary reproducibility has not been established. Complete downloaded application and examined-crate source archives were retained by the integrator."
+}

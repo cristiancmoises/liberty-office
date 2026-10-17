@@ -12,3 +12,5 @@ def test_local_origins_update_published_ports(tmp_path):
     assert config['EDITOR_ORIGIN']=='http://localhost:19098'
     assert config['LIBERTY_PORT']=='19097'
     assert config['EDITOR_PORT']=='19098'
+    assert config['DEMO_EDITOR_ORIGIN']=='http://localhost:19099'
+    assert config['DEMO_EDITOR_PORT']=='19099'

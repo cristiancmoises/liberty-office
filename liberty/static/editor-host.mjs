@@ -1,5 +1,7 @@
 import {attachBridge} from './bridge.mjs';
 import {clearEditorIdentity} from './editor-storage.mjs';
+import {watchEditorRuntime} from './editor-runtime.mjs';
+import {graphicsAvailable,mountLightEditor} from './light-editor.mjs';
 const config=JSON.parse(document.getElementById('__liberty-config').textContent);
 const documentId=crypto.randomUUID();
 let port=null,sequence=0;const pending=new Map();
@@ -37,7 +39,11 @@ async function start(){
   }
   window.addEventListener('message',connect);window.parent.postMessage({type:'liberty.ready',nonce:config.nonce,documentId},config.portalOrigin);
  });
- document.documentElement.dataset.libertyState='ready';
+ if(config.appId==='wordcraft'&&(new URLSearchParams(location.search).has('light')||!await graphicsAvailable(window))){
+  mountLightEditor(window,{onSave:exportBlob,onState:state});return;
+ }
+ document.documentElement.dataset.libertyState='loading';
+ watchEditorRuntime(window,(phase,text)=>{document.documentElement.dataset.libertyState=phase;state(text)});
  // Start the original modules only after identity cleanup and bridge initialization.
  for(const inert of document.querySelectorAll('script[type="application/x-liberty-module"]')){
   const script=document.createElement('script');for(const attr of inert.attributes)if(attr.name!=='type')script.setAttribute(attr.name,attr.value);

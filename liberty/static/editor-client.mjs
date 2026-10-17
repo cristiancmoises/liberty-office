@@ -35,7 +35,7 @@ export function connectEditor(frame,config,{onExport,onState=()=>{},onBackup=()=
    }finally{active--}
   };
   connection.start();frame.contentWindow.postMessage({type:'liberty.connect',nonce:config.nonce,documentId:event.data.documentId},config.origin,[channel.port2]);
-  env.clearTimeout(timeout);readyResolve();onState('Editor conectado. Salvamento pelo menu Salvar/Exportar.');
+  env.clearTimeout(timeout);readyResolve();onState('Conexão segura estabelecida. Iniciando o aplicativo…');
  };
  env.addEventListener('message',handshake);
  return {

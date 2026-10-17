@@ -22,16 +22,31 @@ case "${1:-help}" in
     esac
    fi
    if ! printf '%s\n' "$editor" | grep -Eq '^(https://[A-Za-z0-9.-]+(:[0-9]+)?|http://(localhost|127\.0\.0\.1)(:[0-9]+)?)$'; then printf '%s\n' 'Origem de edição inválida.' >&2; exit 1; fi
-   portal_port=; editor_port=
+   demo=${4:-}
+   if [ -z "$demo" ]; then
+    case "$origin" in
+     https://*) demo="https://demo-edit.${origin#https://}" ;;
+     http://*)
+      hostport=${origin#http://}; host=${hostport%%:*}
+      port=$(printf '%s\n' "$origin" | awk -F: '{print ($3==""?80:$3)+0}')
+      [ "$port" -ge 1 ] && [ "$port" -lt 65534 ] || { printf '%s\n' 'Informe uma porta local entre 1 e 65533 para incluir a demonstração.' >&2; exit 1; }
+      demo="http://$host:$((port + 2))" ;;
+    esac
+   fi
+   if ! printf '%s\n' "$demo" | grep -Eq '^(https://[A-Za-z0-9.-]+(:[0-9]+)?|http://(localhost|127\.0\.0\.1)(:[0-9]+)?)$'; then printf '%s\n' 'Origem de demonstração inválida.' >&2; exit 1; fi
+   portal_port=; editor_port=; demo_port=
    case "$origin" in http://*) portal_port=$(printf '%s\n' "$origin" | awk -F: '{print ($3==""?80:$3)+0}');; esac
    case "$editor" in http://*) editor_port=$(printf '%s\n' "$editor" | awk -F: '{print ($3==""?80:$3)+0}');; esac
-   awk -v public="$origin" -v editor="$editor" -v pp="$portal_port" -v ep="$editor_port" '
+   case "$demo" in http://*) demo_port=$(printf '%s\n' "$demo" | awk -F: '{print ($3==""?80:$3)+0}');; esac
+   awk -v public="$origin" -v editor="$editor" -v demo="$demo" -v pp="$portal_port" -v ep="$editor_port" -v dp="$demo_port" '
     /^PUBLIC_ORIGIN=/{print "PUBLIC_ORIGIN=" public;p=1;next}
     /^EDITOR_ORIGIN=/{print "EDITOR_ORIGIN=" editor;e=1;next}
+    /^DEMO_EDITOR_ORIGIN=/{print "DEMO_EDITOR_ORIGIN=" demo;d=1;next}
     /^LIBERTY_PORT=/ && pp!="" {print "LIBERTY_PORT=" pp;next}
     /^EDITOR_PORT=/ && ep!="" {print "EDITOR_PORT=" ep;next}
+    /^DEMO_EDITOR_PORT=/ && dp!="" {print "DEMO_EDITOR_PORT=" dp;next}
     {print}
-    END{if(!p)print "PUBLIC_ORIGIN=" public;if(!e)print "EDITOR_ORIGIN=" editor}
+    END{if(!p)print "PUBLIC_ORIGIN=" public;if(!e)print "EDITOR_ORIGIN=" editor;if(!d)print "DEMO_EDITOR_ORIGIN=" demo}
    ' .env > .env.new
    chmod 600 .env.new; mv .env.new .env
   fi
@@ -60,5 +75,5 @@ case "${1:-help}" in
    mv "$output.partial" "$output"; printf 'Backup: %s\n' "$output"
   else rm -f "$output.partial"; exit 1; fi
   ;;
- *) printf '%s\n' 'Liberty Office 0.2.0-rc.1' 'Uso: ./libertyctl up [https://seu-dominio] [https://editor.seu-dominio]' '     ./libertyctl token | status | verify | logs | stop' '     ./libertyctl backup /caminho/backup.tar.gz' '     ./libertyctl recover usuario | password-reset usuario' ;;
+ *) printf '%s\n' 'Liberty Office 0.2.0-rc.1' 'Uso: ./libertyctl up [https://seu-dominio] [https://editor.seu-dominio] [https://demo-editor.seu-dominio]' '     ./libertyctl token | status | verify | logs | stop' '     ./libertyctl backup /caminho/backup.tar.gz' '     ./libertyctl recover usuario | password-reset usuario' ;;
 esac
