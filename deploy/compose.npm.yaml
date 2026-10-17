@@ -1,0 +1,10 @@
+# docker compose -f compose.yaml -f deploy/compose.npm.yaml up -d --build
+services:
+  office:
+    networks:
+      npm:
+        aliases: [liberty-office]
+networks:
+  npm:
+    external: true
+    name: ${NPM_NETWORK:-npm-bridge}

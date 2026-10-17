@@ -1,0 +1,261 @@
+{
+  "schema": 1,
+  "verified_at": "2026-10-16",
+  "apps": [
+    {
+      "id": "wordcraft",
+      "name": "WordCraft",
+      "category": "Documentos",
+      "description": "Escrita, revisão e documentos.",
+      "monogram": "W",
+      "color": "#527dff",
+      "extensions": [
+        "docx",
+        "doc",
+        "odt",
+        "rtf",
+        "md",
+        "txt",
+        "tex",
+        "html"
+      ],
+      "version": "v0.7.0",
+      "source": "https://github.com/storytold/wordcraft",
+      "url": "https://github.com/storytold/wordcraft/releases/download/v0.7.0/wordcraft-web-0.7.0.zip",
+      "sha256": "98df7c68a0ac788a9ac0f531fd34c31ab7d89965abb4935f57168d287dab3189",
+      "size": 15009187,
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "id": "gridcraft",
+      "name": "GridCraft",
+      "category": "Planilhas",
+      "description": "Dados, fórmulas e planilhas.",
+      "monogram": "G",
+      "color": "#42bd90",
+      "extensions": [
+        "xlsx",
+        "csv",
+        "tsv",
+        "ods"
+      ],
+      "version": "v0.7.0",
+      "source": "https://github.com/storytold/gridcraft",
+      "url": "https://github.com/storytold/gridcraft/releases/download/v0.7.0/gridcraft-web-0.7.0.zip",
+      "sha256": "ad10af2baf9c7ed4ccbd81e32b37698f5075cdf4f26b726fee7fc7938a3a8d27",
+      "size": 7113559,
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "id": "deckcraft",
+      "name": "DeckCraft",
+      "category": "Apresentações",
+      "description": "Ideias que ganham a tela.",
+      "monogram": "D",
+      "color": "#ff986c",
+      "extensions": [
+        "pptx",
+        "odp"
+      ],
+      "version": "v0.7.0",
+      "source": "https://github.com/storytold/deckcraft",
+      "url": "https://github.com/storytold/deckcraft/releases/download/v0.7.0/deckcraft-web-0.7.0.zip",
+      "sha256": "4ab91994048c096fa356b7246c31098474d978ecd572e5b252dd825a287d1c40",
+      "size": 9385879,
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "id": "photocraft",
+      "name": "PhotoCraft",
+      "category": "Criação",
+      "description": "Composição e edição de imagens.",
+      "monogram": "Ph",
+      "color": "#68baff",
+      "extensions": [
+        "psd",
+        "png",
+        "jpg",
+        "jpeg",
+        "webp",
+        "tif",
+        "tiff"
+      ],
+      "version": "v0.9.0",
+      "source": "https://github.com/storytold/photocraft",
+      "url": "https://github.com/storytold/photocraft/releases/download/v0.9.0/photocraft-web-0.9.0.zip",
+      "sha256": "b3fa5ab6a9d32bc5ff7dfdde31939a2337471a196a2e70f1ff961a61b1bb02e6",
+      "size": 11467035,
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "id": "vectorcraft",
+      "name": "VectorCraft",
+      "category": "Criação",
+      "description": "Ilustração e desenho vetorial.",
+      "monogram": "V",
+      "color": "#efbd6e",
+      "extensions": [
+        "svg",
+        "ai",
+        "eps"
+      ],
+      "version": "v0.12.0",
+      "source": "https://github.com/storytold/vectorcraft",
+      "url": "https://github.com/storytold/vectorcraft/releases/download/v0.12.0/vectorcraft-web-0.12.0.zip",
+      "sha256": "83ef4aaf0d8e535d8a79224095b5f34ad83c22a0e0bfc4fd19f22784c912529a",
+      "size": 22585168,
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "id": "filmcraft",
+      "name": "FilmCraft",
+      "category": "Vídeo",
+      "description": "Monte histórias em movimento.",
+      "monogram": "F",
+      "color": "#bd94ff",
+      "extensions": [
+        "filmcraft",
+        "mp4",
+        "mov",
+        "mkv"
+      ],
+      "version": "v0.8.0",
+      "source": "https://github.com/storytold/filmcraft",
+      "url": "https://github.com/storytold/filmcraft/releases/download/v0.8.0/filmcraft-web-0.8.0.zip",
+      "sha256": "6b13956fc741522427663517b1e483d6e0777891063fed02b1bd94bfada8a6c7",
+      "size": 13326588,
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "id": "lightcraft",
+      "name": "LightCraft",
+      "category": "Fotografia",
+      "description": "Fotografia, biblioteca e RAW.",
+      "monogram": "L",
+      "color": "#77d8dd",
+      "extensions": [
+        "raw",
+        "dng",
+        "cr2",
+        "nef",
+        "arw"
+      ],
+      "version": "v0.8.0",
+      "source": "https://github.com/storytold/lightcraft",
+      "url": "https://github.com/storytold/lightcraft/releases/download/v0.8.0/lightcraft-web-0.8.0.zip",
+      "sha256": "bfabb7edecfc8723b9d698ad2b6fa32e99fcdf977628a68b2884c4b06c6f017a",
+      "size": 66660218,
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "id": "pdfcraft",
+      "name": "PdfCraft",
+      "category": "Documentos",
+      "description": "Leia, organize e transforme PDFs.",
+      "monogram": "P",
+      "color": "#ff6d7f",
+      "extensions": [
+        "pdf"
+      ],
+      "version": "v0.8.0",
+      "source": "https://github.com/storytold/pdfcraft",
+      "url": "https://github.com/storytold/pdfcraft/releases/download/v0.8.0/pdfcraft-web-0.8.0.zip",
+      "sha256": "1f9ea51f3c1f71cc719c12814e10f236912fa41ef54a7782c7dd4a619d9eee9a",
+      "size": 14113243,
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "id": "effectcraft",
+      "name": "EffectCraft",
+      "category": "Vídeo",
+      "description": "Motion design e efeitos visuais.",
+      "monogram": "E",
+      "color": "#a7a0ff",
+      "extensions": [
+        "effectcraft"
+      ],
+      "version": "v0.10.0",
+      "source": "https://github.com/storytold/effectcraft",
+      "url": "https://github.com/storytold/effectcraft/releases/download/v0.10.0/effectcraft-web-0.10.0.zip",
+      "sha256": "b922abeda2420391a7fd887f53ebae6948730e63720bad6a6eb3dc48dc1b46a8",
+      "size": 19031497,
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "id": "designcraft",
+      "name": "DesignCraft",
+      "category": "Criação",
+      "description": "Layout, páginas e publicação.",
+      "monogram": "De",
+      "color": "#ff93b8",
+      "extensions": [
+        "designcraft",
+        "idml"
+      ],
+      "version": "v0.8.0",
+      "source": "https://github.com/storytold/designcraft",
+      "url": "https://github.com/storytold/designcraft/releases/download/v0.8.0/designcraft-web-0.8.0.zip",
+      "sha256": "f1ebe741d89949ba1d5069a50401f14b297b9a66d9d6cd2d8a88cd83e4c77888",
+      "size": 15306498,
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "id": "figcraft",
+      "name": "FigCraft",
+      "category": "Criação",
+      "description": "Interfaces e protótipos.",
+      "monogram": "Fi",
+      "color": "#cda3ff",
+      "extensions": [
+        "fig",
+        "figcraft"
+      ],
+      "version": "v0.6.0",
+      "source": "https://github.com/storytold/figcraft",
+      "url": "https://github.com/storytold/figcraft/releases/download/v0.6.0/figcraft-web-0.6.0.zip",
+      "sha256": "a414970e3857f6613efd7f90bd4c8394e5d51b31c4cf1fa0352f87820695b9c4",
+      "size": 8892594,
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "id": "soundcraft",
+      "name": "SoundCraft",
+      "category": "Áudio",
+      "description": "Grave, edite e mixe áudio.",
+      "monogram": "S",
+      "color": "#7bd1a5",
+      "extensions": [
+        "wav",
+        "flac",
+        "mp3",
+        "ogg",
+        "soundcraft"
+      ],
+      "version": "v0.7.0",
+      "source": "https://github.com/storytold/soundcraft",
+      "url": "https://github.com/storytold/soundcraft/releases/download/v0.7.0/soundcraft-web-0.7.0.zip",
+      "sha256": "b735de61fbdc21716977ace2649709bd307de832eda2d848f94d1868acef7c45",
+      "size": 5939077,
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "id": "cadcraft",
+      "name": "CADCraft",
+      "category": "Engenharia",
+      "description": "Desenho técnico e projetos CAD.",
+      "monogram": "C",
+      "color": "#73cadc",
+      "extensions": [
+        "dxf",
+        "dwg",
+        "cadcraft"
+      ],
+      "version": "v0.7.0",
+      "source": "https://github.com/storytold/cadcraft",
+      "url": "https://github.com/storytold/cadcraft/releases/download/v0.7.0/cadcraft-web-0.7.0.zip",
+      "sha256": "47df17081e31bc25ab586ba88156dc25e07962364c73513004b9c6113b575be7",
+      "size": 8492921,
+      "license": "MIT OR Apache-2.0"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+# Optional bind mount. Prepare ownership first; see docs/OPERATIONS.md.
+services:
+  office:
+    volumes:
+      - type: bind
+        source: ${LIBERTY_DATA_PATH:?Defina LIBERTY_DATA_PATH como caminho absoluto}
+        target: /data

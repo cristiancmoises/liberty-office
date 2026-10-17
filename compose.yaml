@@ -1,0 +1,35 @@
+name: liberty-office
+services:
+  office:
+    build: .
+    image: ${LIBERTY_IMAGE:-liberty-office:0.2.0-rc.1}
+    restart: unless-stopped
+    init: true
+    ports:
+      - "${LIBERTY_BIND:-127.0.0.1}:${LIBERTY_PORT:-8097}:8097"
+      - "${LIBERTY_BIND:-127.0.0.1}:${EDITOR_PORT:-8098}:8097"
+    environment:
+      PUBLIC_ORIGIN: ${PUBLIC_ORIGIN:-http://localhost:8097}
+      EDITOR_ORIGIN: ${EDITOR_ORIGIN:-http://localhost:8098}
+      LIBERTY_DATA: /data
+      LIBERTY_APPS: /opt/artcraft
+      GLOBAL_QUOTA_BYTES: ${GLOBAL_QUOTA_BYTES:-53687091200}
+      DEFAULT_QUOTA_BYTES: ${DEFAULT_QUOTA_BYTES:-5368709120}
+      MAX_UPLOAD_BYTES: ${MAX_UPLOAD_BYTES:-104857600}
+    volumes:
+      - data:/data
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=64m,mode=1777
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 768m
+    pids_limit: 128
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
+volumes:
+  data:
+    name: ${LIBERTY_VOLUME_NAME:-liberty_office_data}

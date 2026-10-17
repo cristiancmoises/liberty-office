@@ -1,0 +1,30 @@
+name: Liberty Office acceptance
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  acceptance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Install test dependencies
+        run: |
+          python -m pip install --require-hashes -r requirements-dev.txt
+          npm ci
+      - name: Unit and DOM checks
+        run: |
+          python -m pytest -q
+          npm test
+          node --input-type=module --check < liberty/static/app.js
+      - name: Install browser on CI runner
+        run: npx playwright install --with-deps chromium
+      - name: Docker and browser acceptance on disposable data
+        run: scripts/docker_acceptance.sh
