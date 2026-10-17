@@ -5,6 +5,7 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
+from starlette.exceptions import HTTPException
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from starlette.middleware.trustedhost import TrustedHostMiddleware
@@ -15,6 +16,7 @@ from .db import DB
 from .security import Service
 from .locks import VolumeLock
 from . import auth, admin
+from .i18n import translate
 
 
 def create_app(settings=None):
@@ -42,7 +44,10 @@ def create_app(settings=None):
     app.state.svc=service
     @app.exception_handler(RequestValidationError)
     async def validation_error(request,exc):
-        return JSONResponse({'detail':[{key:error[key] for key in ('loc','msg','type')} for error in exc.errors()]},status_code=422)
+        return JSONResponse({'detail':[{**{key:error[key] for key in ('loc','msg','type')},'msg':translate(error['msg'],request)} for error in exc.errors()]},status_code=422)
+    @app.exception_handler(HTTPException)
+    async def http_error(request,exc):
+        return JSONResponse({'detail':translate(exc.detail,request)},status_code=exc.status_code,headers=exc.headers)
     app.add_middleware(TrustedHostMiddleware,allowed_hosts=[urlsplit(origin).hostname for origin in (settings.origin,settings.editor_origin,settings.demo_editor_origin)])
 
     @app.middleware('http')
@@ -61,10 +66,10 @@ def create_app(settings=None):
     app.mount('/static',StaticFiles(directory=static),name='static')
 
     @app.get('/source.zip')
-    def source_offer():
+    def source_offer(request: Request):
         source=settings.source_archive
         if not source.is_file():
-            return JSONResponse({'detail':'A oferta de código fonte está incluída na imagem Docker e no pacote de distribuição.'},status_code=404)
+            return JSONResponse({'detail':translate('A oferta de código fonte está incluída na imagem Docker e no pacote de distribuição.',request)},status_code=404)
         return FileResponse(source,media_type='application/zip',filename='liberty-office-source.zip')
 
     @app.get('/healthz')

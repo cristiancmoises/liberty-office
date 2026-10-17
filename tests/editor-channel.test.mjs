@@ -21,8 +21,9 @@ test('a reloaded document gets a new port; stale save results never reach the ne
  ready('document-one');ready('document-one');assert.equal(channels.length,1);
  const saving=channels[0].port1.onmessage({data:{type:'export',id:'export-1',name:'a.txt',buffer:new ArrayBuffer(1)}});
  ready('document-two');assert.equal(channels.length,2);assert.equal(channels[0].port1.closed,true);
- finish();await saving;assert.equal(channels[1].port1.messages.length,0);
- await bridge.offer(new Blob(['next']),'next.txt');assert.equal(channels[1].port1.messages[0].type,'offer');bridge.dispose();
+ finish();await saving;assert.deepEqual(channels[1].port1.messages,[{type:'language',language:'en'}]);
+ bridge.setLanguage('pt-BR');assert.deepEqual(channels[1].port1.messages.at(-1),{type:'language',language:'pt-BR'});
+ await bridge.offer(new Blob(['next']),'next.txt');assert.equal(channels[1].port1.messages.at(-1).type,'offer');bridge.dispose();
 });
 test('export protocol accepts only bounded binary payload and safe request id',()=>{
  const good={type:'export',id:'export-1',name:'report.docx',buffer:new ArrayBuffer(3)};

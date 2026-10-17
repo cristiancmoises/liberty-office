@@ -1,55 +1,79 @@
-# Operação do Liberty Office
+# Liberty Office operations
 
-## Antes do primeiro acesso
+[Português brasileiro](OPERATIONS.pt-BR.md)
 
-Configure `PUBLIC_ORIGIN` e `EDITOR_ORIGIN` com duas origens exatas e distintas, sem barra final. Use o mesmo esquema nas duas; por exemplo `https://office.example.org` e `https://edit.office.example.org`. Para acesso remoto é necessário HTTPS em um proxy reverso. A origem também controla Host, CSRF e os links de convite. O proxy deve manter Host e Origin; os cabeçalhos X-Forwarded-* não são tratados como prova de identidade. O backend não precisa saber o IP real do usuário para aplicar MFA. O throttle combina nome da conta e IP do proxy; muitos usuários em um único proxy podem compartilhar o limite de IP.
+The hosted portal is [office.securityops.co](https://office.securityops.co), with
+an anonymous [demo](https://office.securityops.co/demo).
+[office.securityops.com.br](https://office.securityops.com.br) redirects to it.
+Private editors use `https://editoffice.securityops.co`; demo editors use
+`https://demo-editoffice.securityops.co`. Set `PUBLIC_ORIGIN`, `EDITOR_ORIGIN`
+and `DEMO_EDITOR_ORIGIN` to exact, distinct HTTPS origins without trailing
+slashes. Preserve the original Host header through every proxy. The application
+does not trust `X-Forwarded-*` as proof of identity. Users behind one proxy may
+share its IP throttle.
 
-A porta publicada em loopback não pode ser acessada de outro computador. Um NPM em Docker deve compartilhar a rede, não usar `127.0.0.1` como se fosse o host. Use o override NPM. Exemplo com `npm-bridge`:
+For a self-hosted instance, copy `.env.example` to `.env`, set all three origins,
+and run `docker compose up -d --build`. Host ports 8097/8098/8099 bind to
+loopback by default. A proxy on another host needs a scoped LAN binding or a
+shared Docker network. Set the private upload body limit to match
+`MAX_UPLOAD_BYTES` and allow up to 360 seconds for large transfers. Slow uploads
+expire after five minutes. Never expose the Docker socket to the application.
+
+With Nginx Proxy Manager on the existing `npm-bridge` Docker network:
 
 ```sh
 docker compose -f compose.yaml -f deploy/compose.npm.yaml up -d --build
-docker compose -f compose.yaml -f deploy/compose.npm.yaml exec -T office python -m liberty.cli bootstrap-token
 ```
 
-Crie dois Proxy Hosts NPM, um para o portal e outro para os editores; ambos encaminham para `http://liberty-office:8097`, preservando Host, com TLS e Force SSL. A origem de edição só permite runtime e healthcheck; a API só responde na origem do portal. As portas publicadas locais são 8097 e 8098, mas na rede Docker ambos os hosts usam a porta interna 8097. Ajuste o limite de corpo do proxy, por exemplo `client_max_body_size 100m;`, ao `MAX_UPLOAD_BYTES`. Configure também `proxy_read_timeout 360s;` e `proxy_send_timeout 360s;`. Envios muito lentos expiram após cinco minutos. WebAssembly/WebGL exigem suporte do navegador; alguns recursos de áudio e WebGPU exigem HTTPS e permissões do usuário.
+Create three TLS Proxy Hosts forwarding to `http://liberty-office:8097`, each
+preserving its original Host; restrict the demo editor host to GET/HEAD and a
+small body limit. Set `NPM_NETWORK` for another existing network. When using
+overrides, retain the same `COMPOSE_FILE` for every launcher command, including
+status, backup and recovery.
 
-Se quiser usar o launcher com overrides, defina `COMPOSE_FILE` com os mesmos arquivos, por exemplo em shell POSIX `COMPOSE_FILE=compose.yaml:deploy/compose.npm.yaml ./libertyctl status`. Em fish: `env COMPOSE_FILE=compose.yaml:deploy/compose.npm.yaml ./libertyctl status`. A mesma variável deve acompanhar backup e comandos de operação.
+## Source build and editor integrity
 
-## Escolher onde armazenar os dados
+Source builds currently require Linux x86-64. The default Docker build compiles
+FigCraft with the browser file-I/O fixes from
+its pinned Rust source, then verifies the output against `figcraft-build.lock.json`.
+The other editors use verified upstream bundles and the documented data-only
+branding preparation. Rust, wasm-bindgen, source archives and craft-fonts are
+pinned in `scripts/build_figcraft_web.sh`; Cargo uses `--locked` and one build
+job. Reserve additional build time, memory and disk for dependencies and build
+caches. The recipe refuses to start or finish below 5 GiB free; this is a
+storage floor, not a claim that 5 GiB is sufficient for the whole build.
 
-O volume padrão chama-se `liberty_office_data`. Ele inclui `liberty.db`, blobs privados, chave `mfa.key`, arquivos temporários e token inicial até o bootstrap. Não coloque esse diretório em um webroot nem apague a chave: sem ela, os segredos TOTP existentes deixam de ser decifráveis.
+No server GPU is required. Runtime images contain prepared assets, not the Rust
+toolchain, and do not fetch editor code on startup. A trusted local bundle image
+with `/out` may be supplied through the `FIGCRAFT_BUNDLE_IMAGE` build argument
+to reuse an already-tested build. Exact compiled-file and current patch/recipe
+hash checks still apply; an arbitrary or stale bundle is rejected. Preserve
+original licenses and source-build records when distributing prepared assets.
 
-Para bind mount, prepare um diretório vazio pertencente a UID/GID 10001. Exemplo no host, ajustando o caminho de forma consciente:
+## Public demonstration
 
-```sh
-sudo install -d -m 700 -o 10001 -g 10001 /srv/liberty-office-data
-```
+`/demo` is anonymous and explicitly labelled. Set `DEMO_EDITOR_ORIGIN` to a third,
+distinct HTTPS origin (the hosted instance uses `https://demo-editoffice.securityops.co`).
+Proxy port 8099 to that host, preserve Host, and allow only GET/HEAD with a small
+request-body limit. Never point the demo origin at the private editor origin.
+Demo editors cannot import files or invoke the private Drive bridge. Their
+storage is isolated from the authenticated editor origin. The lightweight text
+editor is a compatibility mode, not a DOCX replacement.
 
-Defina `LIBERTY_DATA_PATH=/srv/liberty-office-data` no `.env` e execute:
+The hosted Liberty service runs in its own Proxmox CT154. Preserve its persistent
+volume and private runtime configuration when rebuilding the application.
 
-```sh
-docker compose -f compose.yaml -f deploy/compose.storage.yaml up -d --build
-```
+## Administrator setup
 
-Os overrides podem ser combinados. Eles não migram dados automaticamente. Para migrar de volume para bind mount ou outro disco, faça backup, restaure em destino vazio e só então passe o serviço para o novo destino. Docker data-root e a imagem não são controlados pelas cotas do Drive. LightCraft é o maior pacote WASM; dimensione disco para a imagem, cache de build e dados adicionais.
+Run `./libertyctl token` on the host and use the one-time token in the portal. Store it privately; do not paste it into logs or tickets. There is no default password. Complete TOTP enrollment and save the recovery codes. Accounts created later receive one-time invitations from an administrator.
 
-## Backup consistente
+## Persistent data and backups
 
-O comando `./libertyctl backup /caminho/arquivo.tar.gz` usa Compose para parar o serviço e reiniciá-lo ao final. O diretório de saída deve existir e estar fora do volume para manter uma cópia independente. Se usa overrides, preserve `COMPOSE_FILE`. O launcher não remove volumes.
+The Docker volume `liberty_office_data` contains the SQLite database, file blobs, MFA encryption key, and bootstrap state. Keep one worker and one application instance per volume. Never point two instances at the same database. The SQLite WAL database needs a local filesystem.
 
-Para realizar manualmente:
+For a consistent backup, create a protected directory outside the volume and run `./libertyctl backup /private/path/liberty-backup.tar.gz`. The launcher stops and restarts the service around the snapshot. Copy the resulting archive to independent protected storage. It contains document content, password hashes, and the MFA key; it is not encrypted by the application.
 
-```sh
-docker compose stop office
-docker compose run --rm --no-deps -T office python -m liberty.cli backup --stdout > liberty-office-backup.tar.gz
-docker compose up -d office
-```
-
-O CLI recusa backup se o processo que serve o volume estiver ativo. O snapshot inclui todos os blobs referenciados e suas revisões, banco e chave MFA. `BACKUP.json` registra tamanhos e SHA-256. O formato não é criptografado; controle as permissões e criptografe o arquivo com sua ferramenta usual antes de enviá-lo a terceiros ou backup remoto.
-
-## Restaurar em novo volume
-
-Mantenha o volume original. Para testar restauração em outro volume, pare a instância original para evitar conflito de portas e nomes, coloque o backup no diretório atual como `liberty-office-backup.tar.gz` e execute:
+To rehearse a restore, keep the original volume and use a new empty destination:
 
 ```sh
 docker compose stop office
@@ -57,43 +81,38 @@ docker volume create liberty_office_restored
 docker run --rm -i --user 10001:10001 --mount source=liberty_office_restored,target=/data liberty-office:0.2.0-rc.1 python -m liberty.cli restore - /data < liberty-office-backup.tar.gz
 ```
 
-O volume novo deve herdar a propriedade de `/data` da imagem. Se a plataforma criar o volume com propriedade root e o comando retornar permissão negada, inicialize apenas esse volume novo com `docker run --rm --user 0:0 --mount source=liberty_office_restored,target=/data liberty-office:0.2.0-rc.1 chown 10001:10001 /data` e repita. Não execute chown recursivo em um volume desconhecido.
+The restore checks hashes, blob references, SQLite and MFA keys, rejects a
+nonempty destination and clears old sessions/reservations. The new volume must
+be writable by UID/GID 10001; reserve space for temporary extraction. Validate
+login, MFA and document downloads before switching `LIBERTY_VOLUME_NAME` to
+the restored volume. Keep the original copy. [Portuguese commands and notes](OPERATIONS.pt-BR.md)
+are also available.
 
-O exemplo transfere o backup privado por stdin: o arquivo não precisa ficar legível para UID 10001 no host. A restauração usa espaço temporário no volume para o arquivo compactado e a extração; reserve essa margem. O CLI aceita apenas arquivos esperados, valida os hashes e recusa destinos não vazios. Segredos MFA e hashes de senhas são preservados. As sessões e reservas antigas são apagadas na restauração. Em seguida, altere `LIBERTY_VOLUME_NAME=liberty_office_restored` no `.env` e recrie o serviço. Confira login com MFA e download de documentos antes de remover qualquer cópia antiga.
+For a bind mount, prepare an empty directory owned by UID/GID 10001, set
+`LIBERTY_DATA_PATH` and include `deploy/compose.storage.yaml`. This override does
+not migrate data. Keep the MFA key with the database; losing it prevents
+decryption of existing TOTP secrets. Never place the data directory in a webroot.
 
-Um backup não testado não é garantia de restauração. O teste automatizado desta entrega exercita backup offline, validação e restauração com MFA e um arquivo real. Sua validação no Docker de destino continua necessária.
+## Checks and recovery
 
-## Manutenção e limites
+Run `./libertyctl status` for read-only status and `./libertyctl verify` for installed editor hashes, database, MFA key, and disk checks. A passing check does not replace browser testing. Monitor health at `/healthz` on the portal and editor origins. Test backups regularly, including a restored document.
 
-- Para atualizar: backup, revisar `upstream.lock.json`, obter o hash oficial da release desejada, reconstruir e validar documentos de exemplo. Não use `latest` silenciosamente para editores.
-- Um worker e uma instância por volume. O bloqueio de arquivo impede startup concorrente. SQLite WAL reside em filesystem local; não é indicado manter esse banco em NFS ou entre hosts.
-- No startup após um processo encerrado, reservas de uploads e temporários interrompidos são liberados. Blobs órfãos de uma queda entre rename e commit não são removidos automaticamente; não apague blobs manualmente durante o serviço. Um backup usa apenas blobs referenciados e sua restauração em volume novo elimina órfãos.
-- Revisões não têm expiração automática. O proprietário pode baixar, restaurar como nova revisão e excluir revisões antigas no painel. A revisão atual não pode ser excluída isoladamente. Compartilhamento não libera histórico ao destinatário.
-- O painel reemite convite de contas ainda não ativadas e emite recuperação de senha para contas ativadas, inclusive com MFA incompleto. Tokens anteriores deixam de funcionar. Não altere o banco diretamente durante operação.
-- MFA web usa TOTP e códigos de recuperação. Passkeys/WebAuthn, OIDC/LDAP, grupos, S3, cotas por pasta e E2EE não estão implementados.
+For a lost authenticator, an operator can run `./libertyctl recover USER` offline; the user still needs the password and must enroll a new authenticator. `./libertyctl password-reset USER` issues a one-time password reset link and still requires MFA. Treat both outputs as secrets. Before upgrading, take a backup and keep the old image and volume. A database migrated by a newer version must not be opened by an older image; restore the old backup to a new volume for rollback.
 
-## Recuperação de contas
+The launcher restarts the service even if recovery fails. `status` is read-only;
+`doctor --deep` checks integrity and does not qualify production compatibility.
+Upgrading the original preview creates schema-2 tables idempotently while
+preserving users, MFA, blobs, revisions and shares. Configure the additional
+editor origins before switching, and reopen editors after an upgrade.
 
-`./libertyctl recover usuario` para o serviço, obtém bloqueio exclusivo, revoga sessões e códigos anteriores e imprime um código de recuperação único. O usuário entra com a senha existente e esse código, cadastra outro autenticador e só então acessa o Drive.
+Drive quotas include revisions, trash and upload reservations, but not image,
+database, logs or backup overhead. Changing the default quota does not change
+existing accounts. Revisions have no automatic expiry. Startup releases
+interrupted reservations/temp files; operators should not delete blobs manually
+while the service runs. Backup/restore retains referenced blobs, eliminating
+unreferenced blobs only in the new restored volume.
 
-`./libertyctl password-reset usuario` também opera offline e imprime um link de uso único de 30 minutos. Serve inclusive quando o único administrador esqueceu a senha. Não redefine nem revela um MFA já confirmado. Se a conta ainda estava em enrollment, o consumo do link cria um novo segredo e exige concluir o MFA. Se senha e autenticador foram perdidos, use os dois comandos e os respectivos mecanismos; o cadastro MFA continua obrigatório.
-
-Os launchers reiniciam o serviço ao final, inclusive se o CLI falhar. Esses comandos têm autoridade de operador do host. Não encaminhe os resultados para logs públicos. `status` abre o banco em modo somente leitura e nunca cria/migra um volume; `doctor --deep` verifica integridade, não certifica produção.
-
-## Atualizar de 0.1.0-preview
-
-1. Faça backup offline com a versão antiga e preserve a imagem/pacote anterior.
-2. Extraia 0.2.0-rc.1 em outro diretório. Preserve o `.env` e o nome do volume; configure `EDITOR_ORIGIN`, `EDITOR_PORT=8098` e o segundo host HTTPS antes da troca. Convites passam a usar a origem exata do portal.
-3. Pare a instância antiga. Construa e inicie a nova, mantendo apenas um worker e uma instância por volume.
-4. O banco migra da versão 1 para 2 por criação idempotente de tabelas. Usuários, TOTP, blobs, versões e compartilhamentos são preservados. Reabra o portal e os editores para obter a nova interface e as novas capacidades de sessão.
-5. Execute `./libertyctl verify`, valide MFA, download de documento antigo, exportação nova, cotas e o segundo host. Homologue com dados de teste antes de aplicar a uma implantação com documentos reais.
-
-Não faça downgrade apontando a imagem antiga para um banco migrado. Para rollback, pare a candidata e restaure o backup anterior em outro volume, usando a versão anterior. A versão atual recusa bancos com versão de esquema mais recente do que ela suporta.
-
-## Diagnóstico e aceitação
-
-`./libertyctl status` mostra contagens, versão e ocupação referenciada. `./libertyctl verify` valida Compose e hashes instalados, SQLite, MFA e disco disponível. Sua saída distingue integridade técnica de homologação de produção.
-
-A imagem tem base e dependências fixadas; não altere hashes para contornar um download inválido. O primeiro build precisa acessar GitHub e PyPI. Depois de construir, a aplicação serve seus próprios assets. Para atualizar releases Artcraft, revise as novas licenças e artefatos, fixe versão/URL/tamanho/SHA-256 e repita a homologação.
-
-O script `scripts/docker_acceptance.sh` cria projeto, imagem e volumes próprios com nomes `liberty-acceptance-*`; o Compose de produção não é selecionado. Ele exige npm dependencies e Chromium instalados no host e deixa relatórios sem o seed em `acceptance-results/` e `playwright-report/`. Consulte `docs/ACCEPTANCE.md` para o que o gate comprova e para a verificação de formatos reais.
+English is the default interface. Select Brazilian Portuguese when needed;
+changing the language must preserve current form and editor contents. Keep the
+original documents when checking editor formats, and repeat browser acceptance
+after changing pinned upstream releases or prepared editor assets.

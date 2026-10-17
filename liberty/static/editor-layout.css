@@ -8,6 +8,33 @@
 .editor .editor-actions button{flex-shrink:0;white-space:nowrap}
 .editor iframe{min-height:0;min-width:0;display:block}
 .editor .editor-status{overflow-wrap:anywhere}
+.language-selector{display:inline-flex;align-items:center;gap:8px;flex-shrink:0;font-size:13px;color:var(--muted)}
+.language-selector select{width:auto;min-height:36px;margin:0;padding:6px 8px;max-width:190px}
+#app>.language-selector{display:flex;justify-content:flex-end;padding:10px 20px;background:var(--bg)}
+.demo-banner .language-selector{margin-left:auto}
+.demo-banner .language-selector span{flex:none;min-width:0}
+.editor-top .language-selector span{display:none}
+.view-controls{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.view-controls button{white-space:nowrap;font-size:12px;padding:7px 10px}
+.editor.is-focused .editor-actions,.editor.is-focused .editor-filename,.editor.is-focused .editor-save-hint{display:none}
+.editor.is-focused .editor-top{padding:6px 12px}
+#demo-editor:fullscreen{background:var(--bg);width:100vw;height:100dvh}
+#demo-editor.is-focused #demo-status,#demo-editor.is-focused .demo-toolbar>span{display:none}
+#demo-editor.is-focused{grid-template-rows:auto minmax(0,1fr)}
+.demo-toolbar{flex-wrap:wrap}
+.demo-badge{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:#bfeaf0}
+@media(max-width:600px){
+ .topbar .language-selector span,.demo-banner .language-selector span{display:none}
+ .language-selector select{max-width:150px}
+ .demo-banner{gap:5px 10px;padding:6px 12px}
+ .demo-banner>strong{order:0}.demo-banner>a{order:1;margin-left:auto;position:static}
+ .demo-banner>.language-selector{order:2;margin-left:0}
+ .demo-banner>span{order:3;min-width:0;flex:1;font-size:10px}
+ .demo-toolbar{gap:6px;padding:6px 10px}
+ .demo-toolbar>span{display:none}
+ .demo-toolbar .view-controls{gap:4px}
+ .view-controls button{padding:6px 8px}
+}
 @media(max-width:850px){
  .editor .editor-actions{order:2;width:100%;border-top:1px solid var(--line);padding-top:8px}
  .editor .editor-top button{min-height:40px}

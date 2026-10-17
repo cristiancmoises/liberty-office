@@ -11,6 +11,8 @@ skip = {
     ".data",
     ".runtime",
     ".pytest_cache",
+    ".ruff_cache",
+    ".mypy_cache",
     ".superpowers",
     "__pycache__",
     ".venv",

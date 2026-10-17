@@ -1,0 +1,369 @@
+{
+  "schema": 1,
+  "scope": "Restricted graphical marks and specifically reviewed official-suite runtime identity labels are replaced with independent Liberty graphics and neutral upstream-based attribution. Original copyright, source links, translations and separately licensed application icons remain. Every modified byte is inside a pinned WASM data payload; executable instructions and pointers are unchanged.",
+  "apps": [
+    {
+      "id": "filmcraft",
+      "version": "v0.8.0",
+      "source_commit": "f03e21556d8e3a7155b91892d958debd5255d7af",
+      "wasm_file": "filmcraft_web_bg.wasm",
+      "original_sha256": "eb7882f9e8c17a5d28be4d287265a8f2029d4f1fe860eb3bcb3cf1664281399e",
+      "modified_sha256": "5952c89694e3c258576131e51a9ef2497a9713fffcce891ce7fbdb2a51a465b0",
+      "html_sha256": "bd87b647b9a99a5dc19c843d809f088b161238a122854af2698a24ba03515799",
+      "sri_count": 0,
+      "patches": [
+        {
+          "source_path": "docs/brand/artcraft-logo-white.png",
+          "source_url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/docs/brand/artcraft-logo-white.png",
+          "offset": 28528285,
+          "length": 32161,
+          "original_sha256": "8b86aeb06a12a90ba77a60e0d90329272310e244ee5c1f9b161b391280ca79d8",
+          "replacement_sha256": "8025ce516df060bfe8b81f600dd0da6dae424c09eb2ee9fc4a327ab3b3e1f81d",
+          "count": 1,
+          "kind": "png-wordmark-white"
+        },
+        {
+          "source_path": "docs/brand/artcraft-logo.png",
+          "source_url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/docs/brand/artcraft-logo.png",
+          "offset": 28496983,
+          "length": 31302,
+          "original_sha256": "08fc6d9d3717e8f13417bac6f9025b50e11d1e0b32e9e000883d2fe0c4a0c67b",
+          "replacement_sha256": "4e69dcbe5049b79a6965fc13c1d2736340aec441e1204c353d11b7046efb2956",
+          "count": 1,
+          "kind": "png-wordmark-dark"
+        },
+        {
+          "source_path": "crates/ui-egui/src/panels/dialogs.rs:463",
+          "kind": "text-label",
+          "original_text": "A clean-room, pure-Rust non-linear video editor. Part of the ArtCraft family.",
+          "replacement_text": "Liberty integration based on FilmCraft by the ArtCraft team.",
+          "offset": 28614341,
+          "length": 77,
+          "original_sha256": "6aa5ddd97f1c416cf1a9bbbf8406cb5d41c5165e8e503d94c339cf5467dcd727",
+          "replacement_sha256": "76736eb63946c16f18742ecbcabeeb4641f9c1e74d557062a388fea236ae6a7e",
+          "count": 9,
+          "source_url": "https://raw.githubusercontent.com/storytold/filmcraft/f03e21556d8e3a7155b91892d958debd5255d7af/crates/ui-egui/src/panels/dialogs.rs",
+          "review": "Only the runtime label occurrence is changed. Original localization tables, legal copyright and source credits remain."
+        }
+      ]
+    },
+    {
+      "id": "pdfcraft",
+      "version": "v0.8.0",
+      "source_commit": "9931329b9fae0b05373b4dc3ac7c58541f0891a4",
+      "wasm_file": "pdfcraft-web-2e8fa69ba6b1231a_bg.wasm",
+      "original_sha256": "aadd6d4803c2d13f331f7c3788bbfea2c2ed86fd5adf5f8c4cce349c278d8639",
+      "modified_sha256": "2ce5cc384443280d990c89e13be67333c78f2b21299fe55f8614ab9c61d3f98f",
+      "html_sha256": "720c9ea2edbaf797c1252747aa40f5a20a0365f0fb679e767fb48c90738dc12e",
+      "sri_count": 1,
+      "patches": [
+        {
+          "source_path": "docs/brand/artcraft-logo-white.svg",
+          "source_url": "https://raw.githubusercontent.com/storytold/pdfcraft/9931329b9fae0b05373b4dc3ac7c58541f0891a4/docs/brand/artcraft-logo-white.svg",
+          "offset": 36989850,
+          "length": 5394,
+          "original_sha256": "a3e03dc49f9ad4225b8517d5424309c8d1c864d3996d862190d9cc797d5af427",
+          "replacement_sha256": "a7fc65449b27ed16fa405651c0437ff0f34c3585ccbf2fd8f6be152dcb92530e",
+          "count": 1,
+          "kind": "svg-wordmark-white"
+        },
+        {
+          "source_path": "docs/brand/artcraft-logo.svg",
+          "source_url": "https://raw.githubusercontent.com/storytold/pdfcraft/9931329b9fae0b05373b4dc3ac7c58541f0891a4/docs/brand/artcraft-logo.svg",
+          "offset": 36984431,
+          "length": 5394,
+          "original_sha256": "3188971e1affdf4f6be4fa65f715376a7a305e6aa741ec78b0296c8f934eff08",
+          "replacement_sha256": "160c51c2c1a833f88449423f73ac14dfda5bdedc5c7390ea862d76a0bfe02901",
+          "count": 1,
+          "kind": "svg-wordmark-dark"
+        },
+        {
+          "source_path": "docs/brand/artcraft-mark.svg",
+          "source_url": "https://raw.githubusercontent.com/storytold/pdfcraft/9931329b9fae0b05373b4dc3ac7c58541f0891a4/docs/brand/artcraft-mark.svg",
+          "offset": 36995300,
+          "length": 341,
+          "original_sha256": "f87af81b6fa411da8820eed2bfdcc54c0ee9cd453b4e868c64f56c69db142d0e",
+          "replacement_sha256": "59e68a6fae22dcdf29a789099471f1d5baae7c125581e81ec6a2620631cc4c92",
+          "count": 1,
+          "kind": "svg-mark"
+        },
+        {
+          "source_path": "crates/ui-egui/src/home.rs:42",
+          "source_url": "https://raw.githubusercontent.com/storytold/pdfcraft/9931329b9fae0b05373b4dc3ac7c58541f0891a4/crates/ui-egui/src/home.rs",
+          "kind": "text-label",
+          "offset": 32688951,
+          "length": 27,
+          "original_sha256": "fe3df0b38cd4bb8cba9fbf7b381ce29d3e48af0ae7db06c827448066311753de",
+          "replacement_sha256": "eedf9906df9b9008d2229adbb08c9747aef2c9aa2a2d88b8b3892e2c25c691f2",
+          "count": 22,
+          "original_text": "Join the ArtCraft community",
+          "replacement_text": "Upstream project community",
+          "review": "Only the reviewed runtime home-panel heading is replaced; locale tables, external destinations and legal attribution remain unchanged."
+        }
+      ]
+    },
+    {
+      "id": "effectcraft",
+      "version": "v0.10.0",
+      "source_commit": "05955c08b4fd025f1a09882df72e6dbff1a8148a",
+      "wasm_file": "effectcraft_web_bg.wasm",
+      "original_sha256": "6412e4c59dabcc04d3022fd69c8a28a74f91b70e95b2c6f6ffa1d7fba89a5899",
+      "modified_sha256": "886714cb66789b1c6c1ac7b6088b38400e578eba7ff4fd207eac21bb9275e413",
+      "html_sha256": "3ee2424e3018b78ead3d09fd660744dae2b6942fd0f7ef7fac7445d84b154ac1",
+      "sri_count": 0,
+      "patches": [
+        {
+          "source_path": "docs/brand/artcraft-mark.png",
+          "source_url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/docs/brand/artcraft-mark.png",
+          "offset": 44675772,
+          "length": 24715,
+          "original_sha256": "9d372157a949c147318561e629b11561c28b7cbc14c84b516a3fe6e84d8fbbad",
+          "replacement_sha256": "d1c845100cf92492c4200cd25fa0099ff33a9f881e4440f8e7ac5dd528dab4fb",
+          "count": 1,
+          "kind": "png-mark"
+        },
+        {
+          "source_path": "crates/ui-egui/src/panels/dialogs.rs:339",
+          "kind": "text-label",
+          "original_text": "A clean-room, open-source compositor for motion graphics and visual effects: native on macOS, Windows and Linux, and in the browser. Part of the ArtCraft family of creative apps.",
+          "replacement_text": "Independent Liberty integration based on EffectCraft by the ArtCraft team. Original source and third-party licenses apply.",
+          "offset": 44706370,
+          "length": 178,
+          "original_sha256": "b5dc9f4f43f0fdddaab9d833ef03d1ac1ba27324f13fa10bf3eb746ff9040554",
+          "replacement_sha256": "366791f957752842715ac66bc18b61780250e8fd10ba9bd2fe424102b89158bd",
+          "count": 1,
+          "source_url": "https://raw.githubusercontent.com/storytold/effectcraft/05955c08b4fd025f1a09882df72e6dbff1a8148a/crates/ui-egui/src/panels/dialogs.rs",
+          "review": "Only the runtime label occurrence is changed. Original localization tables, legal copyright and source credits remain."
+        }
+      ]
+    },
+    {
+      "id": "designcraft",
+      "version": "v0.8.0",
+      "source_commit": "11a51d5b665aec8d6e675bd107a8a01514f10d00",
+      "wasm_file": "designcraft-web-e2c8d44eb5555996_bg.wasm",
+      "original_sha256": "d66d7f8e4ef1acc35c9c5d0c074f1583a8a9ac6d73d8333d42585389bb3d8e97",
+      "modified_sha256": "d8cf3bcf993647b3222e49bab065b0ac51123799a581f6e5c74068afaebf70cf",
+      "html_sha256": "8e82ec6c6092287f7717bf1459ca77f322a7066dc86715c0ede3cf2ec0e2c3bb",
+      "sri_count": 1,
+      "patches": [
+        {
+          "source_path": "crates/ui-egui/src/about.rs#MARK_PATH",
+          "source_url": "https://raw.githubusercontent.com/storytold/designcraft/11a51d5b665aec8d6e675bd107a8a01514f10d00/crates/ui-egui/src/about.rs",
+          "offset": 35387384,
+          "length": 169,
+          "original_sha256": "f18ef9dd0f9d884157c9571d41d3008dd398d1d06973587fd8eb05e255e11bec",
+          "replacement_sha256": "7fa2469a85fdf26a73330c7119763a94e3b1a0c731025218fa0d56ad747d466d",
+          "count": 1,
+          "kind": "path-mark"
+        },
+        {
+          "source_path": "crates/ui-egui/src/chrome.rs:759",
+          "source_url": "https://raw.githubusercontent.com/storytold/designcraft/11a51d5b665aec8d6e675bd107a8a01514f10d00/crates/ui-egui/src/chrome.rs",
+          "kind": "text-label",
+          "offset": 33750927,
+          "length": 27,
+          "original_sha256": "fe3df0b38cd4bb8cba9fbf7b381ce29d3e48af0ae7db06c827448066311753de",
+          "replacement_sha256": "eedf9906df9b9008d2229adbb08c9747aef2c9aa2a2d88b8b3892e2c25c691f2",
+          "count": 2,
+          "original_text": "Join the ArtCraft community",
+          "replacement_text": "Upstream project community",
+          "review": "Only the reviewed runtime home-panel heading is replaced; locale tables, external destinations and legal attribution remain unchanged."
+        },
+        {
+          "source_path": "crates/ui-egui/src/about.rs:162",
+          "kind": "text-label",
+          "original_text": "Part of the ArtCraft suite of open creative tools.",
+          "replacement_text": "Based on DesignCraft by the ArtCraft team.",
+          "offset": 33753367,
+          "length": 50,
+          "original_sha256": "213464a081b98b35ab3b847266887288a6b0284ee6705a4acdab018b1b876dfc",
+          "replacement_sha256": "5d9cdf6409e984ef505499660b8a9226ba50eb3e573f64b0452ed6e1e059e1d4",
+          "count": 2,
+          "source_url": "https://raw.githubusercontent.com/storytold/designcraft/11a51d5b665aec8d6e675bd107a8a01514f10d00/crates/ui-egui/src/about.rs",
+          "review": "Only the runtime label occurrence is changed. Original localization tables, legal copyright and source credits remain."
+        }
+      ]
+    },
+    {
+      "id": "wordcraft",
+      "version": "v0.7.0",
+      "source_commit": "fc41918814f62645b6746ed68e71e8c2c2e85d6f",
+      "wasm_file": "wordcraft-web-8f83828293ff7c4d_bg.wasm",
+      "original_sha256": "c81a3550693db2726903f90d3572c0d8aa91de072b4d34229f1331d315496c51",
+      "modified_sha256": "e9da4c505ab3af7fb7a0a4f46121205e7dab40ae475fb6c27790c09c88b5e8d2",
+      "html_sha256": "a7db61bbc0d60a6d38f84126a05df5acd1a28cdf1d20bbe1e249e4125dea7c9b",
+      "sri_count": 1,
+      "patches": [
+        {
+          "source_path": "crates/ui-egui/src/dialogs.rs:2331",
+          "kind": "text-label",
+          "original_text": "A free, open-source word processor written from scratch in Rust.\nPart of the Crafting Apps from the ArtCraft team.",
+          "replacement_text": "Independent Liberty integration based on WordCraft by the ArtCraft team.",
+          "offset": 35926279,
+          "length": 114,
+          "original_sha256": "557584b04e6f06027a9a41de1ae70fb388d6d8d2ce9a0207c51ef8d74fa35bd6",
+          "replacement_sha256": "ad98486992cd2d6745271d20e8422ec1daa1707bdfcfb4fe18d1998b8ca5628d",
+          "count": 1,
+          "source_url": "https://raw.githubusercontent.com/storytold/wordcraft/fc41918814f62645b6746ed68e71e8c2c2e85d6f/crates/ui-egui/src/dialogs.rs",
+          "review": "Only the runtime label occurrence is changed. Original localization tables, legal copyright and source credits remain."
+        }
+      ]
+    },
+    {
+      "id": "gridcraft",
+      "version": "v0.7.0",
+      "source_commit": "d9d09f0baa912e88c5111107903fc8c640214b57",
+      "wasm_file": "gridcraft-web-fbb8d639c2e003a5_bg.wasm",
+      "original_sha256": "d1f2cfa583aea14443f0f68ee55403c18296cae237d1cfa7a2fdc3d886d4eb74",
+      "modified_sha256": "b829c9dfc6d648fde73f8b063b47757a3a0fb33c8c965523bcb0a291a59c76af",
+      "html_sha256": "9c8b2483b73fbe39696820e43b28421e91a50ab74d0206be3705389b4c5afa72",
+      "sri_count": 1,
+      "patches": [
+        {
+          "source_path": "crates/ui-egui/src/dialogs.rs:1489",
+          "kind": "text-label",
+          "original_text": "A clean-room, open-source, Rust-native spreadsheet. Part of ArtCraft.",
+          "replacement_text": "Independent integration based on GridCraft by the ArtCraft team.",
+          "offset": 17672592,
+          "length": 69,
+          "original_sha256": "c723722b7770362bfa42eb2b621a927d7c513bcc5ffd05306fcf016cfa2cefa8",
+          "replacement_sha256": "8b13f8048352992f131ad2de032c514fe586a158b6133d9df453b47548aca43f",
+          "count": 1,
+          "source_url": "https://raw.githubusercontent.com/storytold/gridcraft/d9d09f0baa912e88c5111107903fc8c640214b57/crates/ui-egui/src/dialogs.rs",
+          "review": "Only the runtime label occurrence is changed. Original localization tables, legal copyright and source credits remain."
+        }
+      ]
+    },
+    {
+      "id": "vectorcraft",
+      "version": "v0.12.0",
+      "source_commit": "8bc65329286dc1b84aa392997bb205613c3e96cb",
+      "wasm_file": "vectorcraft-web-6aa5d49f81589b85_bg.wasm",
+      "original_sha256": "8b517f64ccef9e5869a1042e806888accaa400534613fa6d61a8c5a7b9c69113",
+      "modified_sha256": "4ed69a00b08377b6c3885998d06a2a510a0b4ac72fdc3dc0c2ac3cba2f4186f0",
+      "html_sha256": "9c16b383718d6a400ad7db17199547b0d35d072458199d4306ce377831d3d10a",
+      "sri_count": 1,
+      "patches": [
+        {
+          "source_path": "crates/ui-egui/src/dialogs/about.rs:67",
+          "kind": "text-label",
+          "original_text": "Part of ArtCraft. MIT OR Apache-2.0. Fonts: Source Sans 3, Inter, JetBrains Mono (OFL). Icons: Lucide (ISC) + VectorCraft.",
+          "replacement_text": "Upstream code. MIT OR Apache-2.0. Fonts: Source Sans 3, Inter, JetBrains Mono (OFL). Icons: Lucide (ISC) + VectorCraft.",
+          "offset": 64398208,
+          "length": 122,
+          "original_sha256": "3808d452bc6c837293127cc076083ae61623ac38d2aef356ed0a686e581b0afe",
+          "replacement_sha256": "e6bf98a642c98a4795a8ac3ed24620a5d10fc636078aac008dc0a0e1a09f7e76",
+          "count": 20,
+          "source_url": "https://raw.githubusercontent.com/storytold/vectorcraft/8bc65329286dc1b84aa392997bb205613c3e96cb/crates/ui-egui/src/dialogs/about.rs",
+          "review": "Only the runtime label occurrence is changed. Original localization tables, legal copyright and source credits remain."
+        }
+      ]
+    },
+    {
+      "id": "figcraft",
+      "version": "v0.6.0",
+      "source_commit": "833f0d2c27f0acbae5394848930ae531fc89c724",
+      "wasm_file": "figcraft-web-6991dbdda78e2672_bg.wasm",
+      "original_sha256": "f7f04f3c6156e3bc80e7dbafcd4c25adcc330982d6cd047024fec712dbe7f1ae",
+      "modified_sha256": "4e5ded360b041d98af15c25790ea5c0f8e84efaccf128968823b1d028e9953f9",
+      "html_sha256": "1ab4ed67bcb8215239ce552fa5389eca1610c750e70cb116bdeee329e4e26818",
+      "sri_count": 1,
+      "patches": [
+        {
+          "source_path": "crates/ui-egui/src/dialogs.rs:91",
+          "kind": "text-label",
+          "original_text": "Interface design and prototyping. A free, open-source, clean-room design tool written from scratch in Rust, part of the ArtCraft Crafting Apps.",
+          "replacement_text": "Independent Liberty integration based on FigCraft, an open-source interface design and prototyping tool.",
+          "offset": 20713649,
+          "length": 143,
+          "original_sha256": "e95a602a2055cdb9cc346cf366e92445d3eea109e1752f3d48c099019c3861ac",
+          "replacement_sha256": "a7cf38e483a399ac1c6555eb884d1061ecc5fbc53c56439148daa0f65d7519e0",
+          "count": 1,
+          "source_url": "https://raw.githubusercontent.com/storytold/figcraft/833f0d2c27f0acbae5394848930ae531fc89c724/crates/ui-egui/src/dialogs.rs",
+          "review": "Only the runtime label occurrence is changed. Original localization tables, legal copyright and source credits remain."
+        },
+        {
+          "source_path": "crates/ui-egui/src/dialogs.rs:98",
+          "kind": "text-label",
+          "original_text": "Dual-licensed MIT OR Apache-2.0. Made by the ArtCraft team and community.",
+          "replacement_text": "Dual-licensed MIT OR Apache-2.0. Based on the ArtCraft team's work.",
+          "offset": 20712587,
+          "length": 73,
+          "original_sha256": "515d3e2121c97430a8ee47de32e46cdd34f592e3f1749f331ca89afc7981d040",
+          "replacement_sha256": "262bb24456b156f0320822e2b47306d3b98000ad016b74df8ca08f108940b749",
+          "count": 1,
+          "source_url": "https://raw.githubusercontent.com/storytold/figcraft/833f0d2c27f0acbae5394848930ae531fc89c724/crates/ui-egui/src/dialogs.rs",
+          "review": "Only the runtime label occurrence is changed. Original localization tables, legal copyright and source credits remain."
+        }
+      ]
+    },
+    {
+      "id": "soundcraft",
+      "version": "v0.7.0",
+      "source_commit": "3a28a657692c1b98b28c276d8f61df9471074f0f",
+      "wasm_file": "soundcraft-web-46ed92e1ef8a9c01_bg.wasm",
+      "original_sha256": "d0d89fbc04d32219f037a01811228f5f58775c23d43d480dec8dfe17fa04855e",
+      "modified_sha256": "4fafa583cd949ae5b9d8e127a2ab342f4bde31e238c2d3569c131d0c9b20700a",
+      "html_sha256": "a64e11849f526347259adebf64ad08780120b5f498f5938defee6f807f8a04ba",
+      "sri_count": 1,
+      "patches": [
+        {
+          "source_path": "crates/ui-egui/src/panels.rs:614",
+          "kind": "text-label",
+          "original_text": "An open-source digital audio workstation from the ArtCraft team.",
+          "replacement_text": "Based on SoundCraft, the ArtCraft team's audio workstation.",
+          "offset": 14985234,
+          "length": 64,
+          "original_sha256": "7616110cb7a069479760648a82cd979fea9588197156d35ba08f56343db41e1b",
+          "replacement_sha256": "bfa41117f0f3fd8b38a6c7c163f5b9483d63f82dff5700ad91c9196cec6d79ba",
+          "count": 1,
+          "source_url": "https://raw.githubusercontent.com/storytold/soundcraft/3a28a657692c1b98b28c276d8f61df9471074f0f/crates/ui-egui/src/panels.rs",
+          "review": "Only the runtime label occurrence is changed. Original localization tables, legal copyright and source credits remain."
+        }
+      ]
+    },
+    {
+      "id": "cadcraft",
+      "version": "v0.7.0",
+      "source_commit": "fc4e98315a8d771b5ab832f0ade0b5e7b106df7f",
+      "wasm_file": "cadcraft-web-e558b119220c5f67_bg.wasm",
+      "original_sha256": "445111ea34cd4e326b71854dd8c5592be16e77653bff61a949583cbd2c29451d",
+      "modified_sha256": "15debff44d3629a4dce20cf1fbd58e1fbb05ee0f0764a474b05b71747f0782d8",
+      "html_sha256": "0bc701786de2aba9f5777e4306df0752eed0eab89c813dbdb6128a43a9af04c7",
+      "sri_count": 1,
+      "patches": [
+        {
+          "source_path": "crates/ui-egui/src/dialogs.rs:327",
+          "kind": "text-label",
+          "original_text": "One of the Crafting Apps by the ArtCraft team and community.",
+          "replacement_text": "Based on CADCraft by the ArtCraft team and community.",
+          "offset": 20212702,
+          "length": 60,
+          "original_sha256": "2cf282e48db6073ad913176d00a1befc69d225109343025c755b705cc26e498e",
+          "replacement_sha256": "4123783dc33f7526685927af0e28e4858dbc3c65f4a38026c25ac08f608d9e44",
+          "count": 13,
+          "source_url": "https://raw.githubusercontent.com/storytold/cadcraft/fc4e98315a8d771b5ab832f0ade0b5e7b106df7f/crates/ui-egui/src/dialogs.rs",
+          "review": "Only the runtime label occurrence is changed. Original localization tables, legal copyright and source credits remain."
+        }
+      ]
+    }
+  ],
+  "unmodified_apps": [
+    {
+      "id": "deckcraft",
+      "version": "v0.7.0",
+      "review": "No restricted graphic asset or SVG path found in pinned web WASM by exact source-asset, path-geometry and source-reference review. Copyright/source attribution and separately licensed application icons are retained."
+    },
+    {
+      "id": "photocraft",
+      "version": "v0.9.0",
+      "review": "No restricted graphic asset or SVG path found in pinned web WASM by exact source-asset, path-geometry and source-reference review. Copyright/source attribution and separately licensed application icons are retained."
+    },
+    {
+      "id": "lightcraft",
+      "version": "v0.8.0",
+      "review": "No restricted graphic asset or SVG path found in pinned web WASM by exact source-asset, path-geometry and source-reference review. Copyright/source attribution and separately licensed application icons are retained."
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 import asyncio,re,secrets
 from urllib.parse import urlsplit
 from fastapi.responses import JSONResponse
+from .i18n import translate,language
 
 EXEMPT={'/api/auth/login','/api/auth/bootstrap','/api/auth/activate','/api/auth/password-reset'}
 UPLOAD=re.compile(r'^/api/files(?:/[^/]+/content)?$')
@@ -29,7 +30,7 @@ async def handle(request,call_next,service):
     cfg=service.settings;host=request.headers.get('host','').lower()
     portal=host==urlsplit(cfg.origin).netloc.lower();editor=host==urlsplit(cfg.editor_origin).netloc.lower()
     demo=host==urlsplit(cfg.demo_editor_origin).netloc.lower()
-    def reject(status,message):return decorate(JSONResponse({'detail':message},status_code=status),editor or demo,cfg,demo)
+    def reject(status,message):return decorate(JSONResponse({'detail':translate(message,request)},status_code=status),editor or demo,cfg,demo)
     path=request.url.path
     if not portal and not editor and not demo:return reject(400,'Host não autorizado.')
     if demo and not (path.startswith('/demo/runtime/') or path=='/healthz'):return reject(404,'Recurso não encontrado.')
@@ -60,4 +61,8 @@ async def handle(request,call_next,service):
             except TimeoutError:return reject(408,'Tempo de envio excedido.')
             # Starlette's cached Request replays this bounded body to FastAPI.
             request._body=b''.join(chunks)
-    return decorate(await call_next(request),editor or demo,cfg,demo)
+    response=decorate(await call_next(request),editor or demo,cfg,demo)
+    if path.startswith('/api/'):
+        response.headers['Content-Language']=language(request)
+        response.headers['Vary']='Accept-Language'
+    return response

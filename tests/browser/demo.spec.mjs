@@ -6,7 +6,7 @@ function zipMember(path,member){
  return execFileSync('python3',['-c','import sys,zipfile; sys.stdout.buffer.write(zipfile.ZipFile(sys.argv[1]).read(sys.argv[2]))',path,member],{encoding:'utf8'});
 }
 async function open(page,name){
- await page.goto(origin+'/demo');await page.locator('.app-card').filter({hasText:name}).click();
+ await page.goto(origin+'/demo?lang=pt-BR');await page.locator('.app-card').filter({hasText:name}).click();
  const editor=page.frameLocator('#demo-frame iframe');await expect(editor.locator('html')).toHaveAttribute('data-liberty-state','ready',{timeout:120000});return editor;
 }
 
@@ -42,6 +42,11 @@ test('demo remains isolated and usable at mobile widths without upload APIs',asy
  await frame.goto(word.url+'?light');await expect(frame.locator('.light-document')).toBeVisible();
  await frame.locator('.light-document').press('End');await frame.locator('.light-document').pressSequentially(' Native mobile typing.');
  await expect(frame.locator('.light-document')).toContainText('Native mobile typing.');
+ const pending=page.waitForEvent('download');await frame.getByRole('button',{name:'Download copy',exact:true}).click();
+ const download=await pending,stream=await download.createReadStream(),chunks=[];
+ for await(const chunk of stream)chunks.push(chunk);
+ expect(download.suggestedFilename()).toBe('document.html');expect(Buffer.concat(chunks).toString()).toContain('Native mobile typing.');
+ await expect(frame.locator('.light-status')).toContainText('Download started.');
  await expect(frame.getByRole('button',{name:'Abrir TXT/HTML'})).toHaveCount(0);
  expect(await frame.evaluate(()=>{try{parent.document.body;return false}catch(error){return error.name==='SecurityError'}})).toBe(true);
  const denied=await frame.evaluate(async()=>{try{await showOpenFilePicker();return false}catch(error){return error.name==='NotAllowedError'}});expect(denied).toBe(true);

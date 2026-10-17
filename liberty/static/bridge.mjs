@@ -1,3 +1,4 @@
+import {msg,text} from './i18n.mjs';;
 /* Liberty's adapter operates outside the original upstream bundles. */
 export function saveTarget(opened,name){
  const same=opened?.owned && opened.name===name;
@@ -13,7 +14,7 @@ export function createWritable(onClose,maxBytes=104857600){
  const check=()=>{if(closed)throw Error('stream closed')};
  const isBlob=value=>value&&typeof value.arrayBuffer==='function'&&typeof value.size==='number';
  const resize=size=>{
-  if(!Number.isSafeInteger(size)||size<0||size>maxBytes)throw Error('Exportação excede o limite de envio.');
+  if(!Number.isSafeInteger(size)||size<0||size>maxBytes)throw Error(text(msg('Exportação excede o limite de envio.')));
   if(size!==data.length){const next=new Uint8Array(size);next.set(data.subarray(0,size));data=next}
  };
  return {
@@ -22,7 +23,7 @@ export function createWritable(onClose,maxBytes=104857600){
    if(input&&typeof input==='object'&&!isBlob(input)&&!ArrayBuffer.isView(input)&&!(input instanceof ArrayBuffer)&&'type' in input){
     if(input.type==='seek')return this.seek(input.position);
     if(input.type==='truncate')return this.truncate(input.size);
-    if(input.type!=='write')throw Error('Operação de escrita desconhecida.');
+    if(input.type!=='write')throw Error(text(msg('Operação de escrita desconhecida.')));
     if(input.position!==undefined)await this.seek(input.position);
     input=input.data;
    }
@@ -35,7 +36,7 @@ export function createWritable(onClose,maxBytes=104857600){
    if(end>data.length)resize(end);
    data.set(bytes,position);position=end;
   },
-  async seek(value){check();if(!Number.isSafeInteger(value)||value<0||value>maxBytes)throw Error('Posição inválida.');position=value},
+  async seek(value){check();if(!Number.isSafeInteger(value)||value<0||value>maxBytes)throw Error(text(msg('Posição inválida.')));position=value},
   async truncate(size){check();resize(size);position=Math.min(position,size)},
   async close(){check();await onClose(new Blob([data]));closed=true;data=new Uint8Array()},
   async abort(){closed=true;data=new Uint8Array()}
@@ -47,7 +48,7 @@ export function attachBridge(win,{onExport,onState=()=>{},onBackup=null,maxBytes
  const exportFile=serialSaver(async(blob,name)=>{
   onState('Salvando no Drive…');
   try{const result=await onExport(blob,name);onState('Salvo no Drive');return result}
-  catch(error){onState('Falha ao salvar no Drive. Preserve a cópia local.');throw error}
+  catch(error){onState(text(msg('Falha ao salvar no Drive. Preserve a cópia local.')));throw error}
  });
  const originalCreate=win.URL.createObjectURL.bind(win.URL),originalRevoke=win.URL.revokeObjectURL.bind(win.URL);
  const anchorClick=win.HTMLAnchorElement.prototype.click;
@@ -78,8 +79,8 @@ export function attachBridge(win,{onExport,onState=()=>{},onBackup=null,maxBytes
    const file=offered;offered=null;const input=this;
    queueMicrotask(()=>{
     try{const dt=new win.DataTransfer();dt.items.add(file);input.files=dt.files;
-     input.dispatchEvent(new win.Event('input',{bubbles:true}));input.dispatchEvent(new win.Event('change',{bubbles:true}));onState('Arquivo entregue ao editor')}
-    catch(error){onState('Use o download do Drive e o botão Abrir do editor. '+error.message)}
+     input.dispatchEvent(new win.Event('input',{bubbles:true}));input.dispatchEvent(new win.Event('change',{bubbles:true}));onState(text(msg('Arquivo entregue ao editor')))}
+    catch(error){onState(text(msg('Use o download do Drive e o botão Abrir do editor. {0}',error.message)))}
    });
    return;
   }
@@ -94,7 +95,7 @@ export function attachBridge(win,{onExport,onState=()=>{},onBackup=null,maxBytes
    input.accept=(options?.types||[]).flatMap(type=>Object.entries(type.accept||{}).flatMap(([mime,extensions])=>[mime,...extensions])).join(',');
    let done=false;
    const finish=files=>{if(done)return;done=true;input.remove();
-    if(!files.length){reject(new DOMException('Seleção cancelada.','AbortError'));return}
+    if(!files.length){reject(new DOMException(text(msg('Seleção cancelada.')),'AbortError'));return}
     resolve(files.map(file=>({kind:'file',name:file.name,getFile:async()=>file})));
    };
    input.addEventListener('change',()=>finish(Array.from(input.files||[]).slice(0,input.multiple?undefined:1)),{once:true});
@@ -103,7 +104,7 @@ export function attachBridge(win,{onExport,onState=()=>{},onBackup=null,maxBytes
   });
  };
  return {
-  offer(blob,name){offered=new win.File([blob],name,{type:blob.type||'application/octet-stream'});onState('No editor, escolha Arquivo → Abrir para carregar '+name)},
+  offer(blob,name){offered=new win.File([blob],name,{type:blob.type||'application/octet-stream'});onState(text(msg('No editor, escolha Arquivo → Abrir para carregar {0}',name)))},
   dispose(){
    win.URL.createObjectURL=originalCreate;win.URL.revokeObjectURL=originalRevoke;
    win.HTMLAnchorElement.prototype.click=anchorClick;win.HTMLInputElement.prototype.click=inputClick;

@@ -8,7 +8,7 @@ function totp(secret){let bits='';for(const c of secret.toUpperCase())bits+='ABC
 
 test('MFA recovery, 13 graphical editors and isolated file bridge',async({page})=>{
  await page.setViewportSize({width:1440,height:1000});
- await page.goto(seed.origin);await page.getByLabel('Usuário',{exact:true}).fill(seed.username);await page.getByLabel('Senha',{exact:true}).fill(seed.password);await page.getByRole('button',{name:'Continuar',exact:true}).click();
+ await page.goto(seed.origin+'/?lang=pt-BR');await page.getByLabel('Usuário',{exact:true}).fill(seed.username);await page.getByLabel('Senha',{exact:true}).fill(seed.password);await page.getByRole('button',{name:'Continuar',exact:true}).click();
  await page.getByLabel('Código MFA ou recuperação').fill(seed.recovery);await page.getByRole('button',{name:'Entrar com segurança'}).click();
  await expect(page.locator('.secret')).toBeVisible();const secret=await page.locator('.secret').textContent();
  await page.getByLabel('Código de 6 dígitos').fill(totp(secret));await page.getByRole('button',{name:'Ativar e entrar'}).click();

@@ -55,5 +55,7 @@ def test_existing_upstream_gzip_is_preserved(tmp_path):
     data=archive({'web/index.html':'hi','web/main.js':'export const a=1','web/main.js.gz':original,'web/main.wasm':b'\x00asm'})
     cache=tmp_path/'cache';cache.mkdir();(cache/'bundle.zip').write_bytes(data)
     app={'id':'test','name':'Test','version':'v1','url':'https://github.com/test/bundle.zip','sha256':hashlib.sha256(data).hexdigest(),'size':len(data)}
-    install(app,tmp_path/'out',cache)
+    branding_lock=tmp_path/'branding.lock.json'
+    branding_lock.write_text(json.dumps({'apps':[],'unmodified_apps':[{'id':'test','version':'v1'}]}))
+    install(app,tmp_path/'out',cache,branding_lock=branding_lock)
     assert (tmp_path/'out/test/main.js.gz').read_bytes()==original

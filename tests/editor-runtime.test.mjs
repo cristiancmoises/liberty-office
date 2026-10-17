@@ -34,5 +34,5 @@ test('module errors and a stalled startup produce visible status',()=>{
  const b=browser();b.listeners.get('error')({message:'WASM blocked'});
  assert.equal(b.states.at(-1).phase,'error');
  const stalled=browser();[...stalled.timers.values()][0]();
- assert.equal(stalled.states.at(-1).phase,'error');assert.match(stalled.states.at(-1).text,/demorou/);
+ assert.equal(stalled.states.at(-1).phase,'error');assert.match(stalled.states.at(-1).text,/taking longer/);
 });

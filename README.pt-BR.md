@@ -1,6 +1,6 @@
 # Liberty Office
 
-Portal web self-hosted com os 13 editores reais do Artcraft, Drive privado, administração de contas e MFA obrigatório. Interface em português, com identidade visual própria. **Versão 0.2.0-rc.1.**
+Portal web self-hosted com 13 editores integrados, Drive privado, administração de contas e MFA obrigatório. Inglês é o idioma padrão; selecione português brasileiro na interface. **Versão 0.2.0-rc.1.**
 
 **Acessar:** [office.securityops.co](https://office.securityops.co) · [office.securityops.com.br](https://office.securityops.com.br) · [Experimentar a demonstração](https://office.securityops.co/demo). [English documentation](README.md).
 
@@ -8,7 +8,9 @@ Portal web self-hosted com os 13 editores reais do Artcraft, Drive privado, admi
 
 A demonstração é identificada na tela, não aceita uploads e usa uma origem separada dos editores privados. Os arquivos de demonstração não são gravados no Drive. O modo leve de texto permite escrever sem WebGL; ele não oferece a fidelidade DOCX do editor completo.
 
-<details><summary>Edição de texto e tela pequena</summary>
+<details><summary>Edição nativa e tela pequena</summary>
+
+![Editor WordCraft nativo](docs/screenshots/liberty-word-native.png)
 
 ![Editor de texto leve do Liberty](docs/screenshots/liberty-word-lite.png)
 
@@ -18,7 +20,9 @@ A demonstração é identificada na tela, não aceita uploads e usa uma origem s
 
 ## Deploy com Docker
 
-Use Docker Engine com Compose v2 em Linux. O primeiro build baixa releases oficiais verificadas por tamanho e SHA-256. Não compila Rust, não requer GPU no servidor e não baixa código no startup. O navegador desktop atualizado precisa de WebAssembly/WebGL; funções avançadas de áudio/vídeo dependem das capacidades do navegador.
+O build de fonte atual requer Linux x86-64.
+
+Use Docker Engine com Compose v2 em Linux. O primeiro build baixa releases verificadas por tamanho e SHA-256 e recompila o FigCraft do fonte Rust fixado, com correções de abrir/salvar no navegador. Os demais editores usam bundles upstream verificados com a preparação de marca documentada. Reserve tempo e disco adicionais para as dependências Rust; não é necessária GPU no servidor nem download de código no startup. Encoders e licenças originais são preservados; veja [os detalhes do build](docs/LICENSING.md#figcraft-browser-file-io). O navegador desktop atualizado precisa de WebAssembly/WebGL; funções avançadas de áudio/vídeo dependem das capacidades do navegador.
 
 Extraia o pacote, entre na pasta e execute:
 
@@ -27,16 +31,18 @@ Extraia o pacote, entre na pasta e execute:
 ./libertyctl token
 ```
 
-Abra **http://localhost:8097**. O editor usa **http://localhost:8098**, uma origem separada. O token inicial é aleatório e fica no volume; não existe senha padrão. Crie o administrador, cadastre seu autenticador TOTP e guarde os dez códigos de recuperação. Arquivos e aplicativos ficam bloqueados até confirmar MFA.
+Abra **http://localhost:8097**. O editor privado usa **http://localhost:8098** e os editores da demonstração usam **http://localhost:8099**, em origens separadas. O token inicial é aleatório e fica no volume; não existe senha padrão. Crie o administrador, cadastre seu autenticador TOTP e guarde os dez códigos de recuperação. Arquivos e aplicativos ficam bloqueados até confirmar MFA.
 
-As duas portas são publicadas em loopback por padrão. `./libertyctl up http://localhost:19097` ajusta automaticamente as portas locais para 19097 e 19098. O comando equivalente sem launcher é `docker compose up -d --build`.
+As três portas são publicadas em loopback por padrão. Configure as origens e portas no `.env` ao usar portas diferentes. O comando equivalente sem launcher é `docker compose up -d --build`.
 
 ## Domínio e HTTPS
 
-Defina **duas origens distintas** antes de criar convites:
+Defina **três origens distintas** no `.env` antes de criar convites:
 
 ```sh
-./libertyctl up https://office.seu-dominio.com https://edit.office.seu-dominio.com
+PUBLIC_ORIGIN=https://office.seu-dominio.com
+EDITOR_ORIGIN=https://edit.office.seu-dominio.com
+DEMO_EDITOR_ORIGIN=https://demo-edit.office.seu-dominio.com
 ```
 
 Com Nginx Proxy Manager em Docker na rede existente `npm-bridge`:
@@ -45,16 +51,17 @@ Com Nginx Proxy Manager em Docker na rede existente `npm-bridge`:
 docker compose -f compose.yaml -f deploy/compose.npm.yaml up -d --build
 ```
 
-Crie dois Proxy Hosts no NPM:
+Crie três Proxy Hosts no NPM:
 
 | Origem pública | Encaminhamento |
 | --- | --- |
 | `office.seu-dominio.com` | `http://liberty-office:8097` |
 | `edit.office.seu-dominio.com` | `http://liberty-office:8097` |
+| `demo-edit.office.seu-dominio.com` | `http://liberty-office:8097`, apenas GET/HEAD |
 
-Ambos devem ter TLS, Force SSL e preservar o cabeçalho `Host` original. O backend decide por esse cabeçalho quais recursos permitir. A origem dos editores não disponibiliza API de usuários, arquivos ou sessão. O portal não serve os bundles de edição. HTTPS é obrigatório fora de localhost, e subpastas como `/office` não são suportadas.
+Todos devem ter TLS, Force SSL e preservar o cabeçalho `Host` original. O backend decide por esse cabeçalho quais recursos permitir. As origens dos editores não disponibilizam API de usuários, arquivos ou sessão. O portal não serve os bundles de edição. HTTPS é obrigatório fora de localhost, e subpastas como `/office` não são suportadas.
 
-Para outra rede, configure `NPM_NETWORK`. Ao operar com overrides, preserve `COMPOSE_FILE=compose.yaml:deploy/compose.npm.yaml` em todos os comandos do launcher. Veja [operação](docs/OPERATIONS.md) para limites de proxy e armazenamento.
+Para outra rede, configure `NPM_NETWORK`. Ao operar com overrides, preserve `COMPOSE_FILE=compose.yaml:deploy/compose.npm.yaml` em todos os comandos do launcher. Veja [operação](docs/OPERATIONS.pt-BR.md) para limites de proxy e armazenamento.
 
 ## Aplicativos incluídos
 
@@ -100,7 +107,8 @@ O Drive oferece pastas, upload/download, renomeação, movimentação, pesquisa,
 | --- | --- | --- |
 | `PUBLIC_ORIGIN` | `http://localhost:8097` | Origem exata do portal |
 | `EDITOR_ORIGIN` | `http://localhost:8098` | Origem isolada dos editores |
-| `LIBERTY_PORT` / `EDITOR_PORT` | 8097 / 8098 | Portas publicadas no host |
+| `DEMO_EDITOR_ORIGIN` | `http://localhost:8099` | Origem isolada da demonstração |
+| `LIBERTY_PORT` / `EDITOR_PORT` / `DEMO_EDITOR_PORT` | 8097 / 8098 / 8099 | Portas publicadas no host |
 | `LIBERTY_BIND` | `127.0.0.1` | Interface de publicação |
 | `GLOBAL_QUOTA_BYTES` | 50 GiB | Blobs, revisões, lixeira e reservas de envio |
 | `DEFAULT_QUOTA_BYTES` | 5 GiB | Cota de novas contas |
@@ -123,7 +131,7 @@ Para escolher disco ou diretório, use `deploy/compose.storage.yaml`. Uma instâ
 
 Backup e recuperação operacional param o serviço e o reiniciam ao final. O backup contém banco, blobs, revisões e chave MFA. `recover` emite um código único para quem ainda conhece a senha e perdeu o autenticador; a pessoa deverá cadastrar novo MFA. `password-reset` emite um link de 30 minutos para redefinir a senha, inclusive do único administrador, conservando a exigência de MFA. Os dois mecanismos revogam sessões existentes. Guarde seus resultados em canal privado.
 
-A chave `mfa.key` deve acompanhar o banco no backup. O startup recusa banco com chave ausente/incompatível. Restauração exige destino vazio, valida integridade SQLite, chaves, referências e hashes dos blobs, e revoga sessões antigas. Procedimento completo em [OPERATIONS.md](docs/OPERATIONS.md).
+A chave `mfa.key` deve acompanhar o banco no backup. O startup recusa banco com chave ausente/incompatível. Restauração exige destino vazio, valida integridade SQLite, chaves, referências e hashes dos blobs, e revoga sessões antigas. Procedimento completo em [operações](docs/OPERATIONS.pt-BR.md).
 
 ## Verificação da entrega
 
@@ -145,12 +153,12 @@ scripts/docker_acceptance.sh
 
 Esse gate constrói uma imagem própria de teste e um volume novo, verifica API/MFA, os 13 editores, reinício, integridade dos bundles, canal de exportação no Chromium e backup/restauração em outro volume. O seed sintético de teste é removido ao final. Não usa nem apaga o volume de produção. Há também um workflow de CI, sem publicação automática.
 
-**Os testes de API, DOM, hashes, HTTP com os bundles reais e backup/restauração foram executados.** A imagem Docker foi construída no CT de implantação, os testes Python e Node passaram, e o serviço responde por HTTPS. O gate completo com Chromium ainda não foi executado; esta candidata à release não está homologada para produção. Consulte [aceitação](docs/ACCEPTANCE.md) e [operação](docs/OPERATIONS.md).
+**Os testes de API, DOM, hashes, HTTP com os bundles reais e backup/restauração foram executados.** A imagem Docker foi construída no CT de implantação, os testes Python e Node passaram, e os fluxos de navegador descritos em [aceitação](docs/ACCEPTANCE.pt-BR.md) foram exercitados com dados fictícios. Esta candidata ainda requer homologação com seus documentos. Consulte também [operação](docs/OPERATIONS.pt-BR.md).
 
 ## Privacidade e licença
 
 Os documentos ficam no armazenamento do seu servidor, legíveis pelo operador do host. **Não há E2EE equivalente ao CryptPad.** O isolamento por origem protege o portal dos scripts de edição; o navegador ainda mantém dados locais específicos dos aplicativos. Ao trocar a conta, o adaptador limpa Web Storage, IndexedDB, CacheStorage e OPFS antes de executar os motores e interrompe editores anteriores em outras abas. Salve no Drive antes de trocar de conta. Perfis separados de navegador continuam adequados para computadores compartilhados.
 
-A imagem executa sem root, sem Docker socket, com raiz somente leitura, capabilities removidas, healthcheck e logs limitados. Senhas usam Argon2id; TOTP tem proteção contra replay e segredos criptografados por chave persistente. Leia [segurança](docs/SECURITY.md) para as fronteiras do modelo.
+A imagem executa sem root, sem Docker socket, com raiz somente leitura, capabilities removidas, healthcheck e logs limitados. Senhas usam Argon2id; TOTP tem proteção contra replay e segredos criptografados por chave persistente. Leia [segurança](docs/SECURITY.pt-BR.md) para as fronteiras do modelo.
 
-Código Liberty: **AGPL-3.0-or-later**, com fonte oferecido em `/source.zip`. O código principal dos editores declara **MIT OR Apache-2.0**, mas dependências, assets e marcas têm termos próprios. Consulte o [inventário e as condições de integração](docs/LICENSING.md), incluindo a pendência de autorização de marca, e a [verificação CodeMark](docs/INTEGRITY.md). As atribuições originais permanecem em `licenses/upstream/`. Não há afiliação com Microsoft, Adobe ou Artcraft.
+Código Liberty: **AGPL-3.0-or-later**, com fonte oferecido em `/source.zip`. O código principal dos editores declara **MIT OR Apache-2.0**, mas dependências, assets e marcas têm termos próprios. Consulte o [inventário e as condições de integração](docs/LICENSING.md), incluindo as substituições das marcas gráficas restritas, e a [verificação CodeMark](docs/INTEGRITY.md). As atribuições originais permanecem em `licenses/upstream/`. Não há afiliação com Microsoft, Adobe ou Artcraft.

@@ -1,0 +1,2134 @@
+{
+  "schema": 1,
+  "method": [
+    "Read exact pinned release source archives identified in licenses/upstream/SOURCES.json.",
+    "Search every Rust, HTML, CSS, JS, TOML and YAML source file up to4MB for ArtCraft, getartcraft and docs/brand references; inspect runtime drawing and include-byte call sites.",
+    "Search all thirteen original WASM binaries for complete original docs/brand PNG/SVG bytes AND every SVG path-d geometry. The latter identifies DesignCraft's separately compiled path constant.",
+    "Parse WASM data segment boundaries for every detected graphic; distinguish separately licensed application icons using original per-asset license/attribution files.",
+    "Review official-suite runtime labels separately from copyright and source links. Localization table occurrences are not substituted for runtime occurrences."
+  ],
+  "limits": "This is a bounded source/byte review of the pinned web releases, not a formal proof that arbitrary encoded or procedurally transformed artwork can never occur, nor a full dependency license audit.",
+  "apps": [
+    {
+      "id": "wordcraft",
+      "wasm_file": "wordcraft-web-8f83828293ff7c4d_bg.wasm",
+      "html_artcraft_matches": [],
+      "favicon": "<link rel=\"icon\" href=\"./wordcraft-fa59e09a3f921e03.ico\" integrity=\"sha384-99DzWb82rFgkdw7hjKziyDQaHbMTklb9MWeLKF7LcVUnq80H4nDrc/pjHJtAj/AA\"/>",
+      "original_brand_assets": [
+        {
+          "path": "docs/brand/artcraft-logo-white.png",
+          "size": 32161,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-logo-white.svg",
+          "size": 5394,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-logo.png",
+          "size": 31302,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-logo.svg",
+          "size": 5394,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark-black.png",
+          "size": 26793,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark-black.svg",
+          "size": 341,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark.png",
+          "size": 24715,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark.svg",
+          "size": 341,
+          "in_wasm_offset": -1
+        }
+      ],
+      "graphic_geometry_matches": [],
+      "app_icon_license_evidence": [],
+      "source_reference_review": [
+        {
+          "path": "crates/engine/src/sample.rs",
+          "hits": [
+            {
+              "line": 115,
+              "text": "        CharProps { style: Some(\"Hyperlink\".into()), link: Some(\"https://getartcraft.com/\".into()), ..Default::default() },"
+            }
+          ]
+        },
+        {
+          "path": "crates/formats/src/latex.rs",
+          "hits": [
+            {
+              "line": 55,
+              "text": "    o.push_str(\"% Written by WordCraft (https://getartcraft.com/apps/wordcraft).\\n\");"
+            }
+          ]
+        },
+        {
+          "path": "crates/mcp/src/server.rs",
+          "hits": [
+            {
+              "line": 136,
+              "text": "                    \"serverInfo\": {\"name\": \"wordcraft\", \"title\": \"WordCraft\", \"version\": env!(\"CARGO_PKG_VERSION\"), \"websiteUrl\": \"https://getartcraft.com/apps/wordcraft\"},"
+            },
+            {
+              "line": 138,
+              "text": "                        \"{INSTRUCTIONS} Backend: {}. Community: https://discord.gg/artcraft · https://getartcraft.com/apps/wordcraft · https://github.com/storytold/wordcraft\","
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/chrome.rs",
+          "hits": [
+            {
+              "line": 277,
+              "text": "                        if resp.on_hover_text(tl!(\"Join the ArtCraft community on Discord\")).clicked() {"
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/dialogs.rs",
+          "hits": [
+            {
+              "line": 2331,
+              "text": "                        \"A free, open-source word processor written from scratch in Rust.\\nPart of the Crafting Apps from the ArtCraft team.\""
+            },
+            {
+              "line": 2334,
+              "text": "                    ui.hyperlink_to(tl!(\"getartcraft.com/apps/wordcraft\"), \"https://getartcraft.com/apps/wordcraft\");"
+            },
+            {
+              "line": 2335,
+              "text": "                    ui.hyperlink_to(tl!(\"Join us on Discord: discord.gg/artcraft\"), \"https://discord.gg/artcraft\");"
+            },
+            {
+              "line": 2339,
+              "text": "                        egui::RichText::new(tl!(\"MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordCraft contributors.\"))"
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/lib.rs",
+          "hits": [
+            {
+              "line": 1175,
+              "text": "                self.canvas.open_url = Some(\"https://discord.gg/artcraft\".into());"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gridcraft",
+      "wasm_file": "gridcraft-web-fbb8d639c2e003a5_bg.wasm",
+      "html_artcraft_matches": [],
+      "favicon": "<link rel=\"icon\" href=\"./gridcraft-45f84b7721cb79a9.ico\" integrity=\"sha384-FzBCWcgv5VqBLEPSBvyC78gOs2HMh3hKu2LSLSXU01NgL5yKLk/nHdINuu0Ztky1\"/>",
+      "original_brand_assets": [
+        {
+          "path": "docs/brand/artcraft-logo-white.png",
+          "size": 32161,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-logo-white.svg",
+          "size": 5394,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-logo.png",
+          "size": 31302,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-logo.svg",
+          "size": 5394,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark-black.png",
+          "size": 26793,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark-black.svg",
+          "size": 341,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark.png",
+          "size": 24715,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark.svg",
+          "size": 341,
+          "in_wasm_offset": -1
+        }
+      ],
+      "graphic_geometry_matches": [],
+      "app_icon_license_evidence": [
+        {
+          "path": "assets/app-icon/LICENSE.txt",
+          "first_lines": [
+            "GridCraft app icon (gridcraft.svg and every file derived from it in this directory:",
+            "gridcraft-1024.png, gridcraft-macos-512.png, gridcraft.icns, gridcraft.ico, hicolor/).",
+            "",
+            "PLACEHOLDER artwork: original work written for this project by GridCraft contributors (simple",
+            "hand-written SVG geometry). No third-party material. Licensed like the rest of GridCraft, under",
+            "either of",
+            "",
+            "  * Apache License, Version 2.0 (https://www.apache.org/licenses/LICENSE-2.0)"
+          ]
+        }
+      ],
+      "source_reference_review": [
+        {
+          "path": "apps/gridcraft/src/native_menu.rs",
+          "hits": [
+            {
+              "line": 177,
+              "text": "                (\"GridCraft on getartcraft.com\", \"url:https://getartcraft.com/apps/gridcraft\", None),"
+            },
+            {
+              "line": 178,
+              "text": "                (\"Join the ArtCraft Discord…\", \"url:https://discord.gg/artcraft\", None),"
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/dialogs.rs",
+          "hits": [
+            {
+              "line": 1489,
+              "text": "            ui.label(\"A clean-room, open-source, Rust-native spreadsheet. Part of ArtCraft.\");"
+            },
+            {
+              "line": 1490,
+              "text": "            ui.hyperlink_to(\"getartcraft.com/apps/gridcraft\", \"https://getartcraft.com/apps/gridcraft\");"
+            },
+            {
+              "line": 1491,
+              "text": "            ui.hyperlink_to(\"Join the ArtCraft Discord\", \"https://discord.gg/artcraft\");"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deckcraft",
+      "wasm_file": "deckcraft-web-3d451cd28e31e9b6_bg.wasm",
+      "html_artcraft_matches": [],
+      "favicon": "<link rel=\"icon\" href=\"./ai.storyteller.deckcraft-74e97653dd8dd002.png\" integrity=\"sha384-THDce39ERZRgdnEtM/35FnmU4IExPfz9k2XrApCGWP0NUMC98NUWG1VYUMNXNCiD\"/>",
+      "original_brand_assets": [
+        {
+          "path": "docs/brand/artcraft-logo-white.png",
+          "size": 32161,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-logo-white.svg",
+          "size": 5394,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-logo.png",
+          "size": 31302,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-logo.svg",
+          "size": 5394,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark-black.png",
+          "size": 26793,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark-black.svg",
+          "size": 341,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark.png",
+          "size": 24715,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark.svg",
+          "size": 341,
+          "in_wasm_offset": -1
+        }
+      ],
+      "graphic_geometry_matches": [],
+      "app_icon_license_evidence": [],
+      "source_reference_review": [
+        {
+          "path": "crates/engine/src/links.rs",
+          "hits": [
+            {
+              "line": 3,
+              "text": "pub const DISCORD: &str = \"https://discord.gg/artcraft\";"
+            },
+            {
+              "line": 4,
+              "text": "pub const WEBSITE: &str = \"https://getartcraft.com/\";"
+            },
+            {
+              "line": 5,
+              "text": "pub const APPS: &str = \"https://getartcraft.com/apps\";"
+            },
+            {
+              "line": 6,
+              "text": "pub const APP_PAGE: &str = \"https://getartcraft.com/apps/deckcraft\";"
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/backstage.rs",
+          "hits": [
+            {
+              "line": 668,
+              "text": "    ui.hyperlink_to(\"Join the ArtCraft community on Discord\", deckcraft_engine::links::DISCORD);"
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/dialogs.rs",
+          "hits": [
+            {
+              "line": 795,
+              "text": "        ui.hyperlink_to(\"getartcraft.com/apps/deckcraft\", deckcraft_engine::links::APP_PAGE);"
+            },
+            {
+              "line": 798,
+              "text": "        ui.label(egui::RichText::new(\"MIT OR Apache-2.0 · © 2026 ArtCraft Team and the DeckCraft contributors\").size(11.0).color(t.text_faint));"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "photocraft",
+      "wasm_file": "photocraft-web-4cc0a6fe355463b6_bg.wasm",
+      "html_artcraft_matches": [],
+      "favicon": null,
+      "original_brand_assets": [
+        {
+          "path": "docs/brand/artcraft-logo-white.png",
+          "size": 32161,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-logo-white.svg",
+          "size": 5394,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-logo.png",
+          "size": 31302,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-logo.svg",
+          "size": 5394,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark-black.png",
+          "size": 26793,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark-black.svg",
+          "size": 341,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark.png",
+          "size": 24715,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark.svg",
+          "size": 341,
+          "in_wasm_offset": -1
+        }
+      ],
+      "graphic_geometry_matches": [],
+      "app_icon_license_evidence": [
+        {
+          "path": "assets/app-icon/LICENSE.txt",
+          "first_lines": [
+            "PhotoCraft app icon (photocraft.svg, photocraft-small.svg and every file derived from them in",
+            "this directory: photocraft-1024.png, photocraft.icns, photocraft.ico, hicolor/).",
+            "",
+            "Original artwork made for this project by the project owner: an engraving-style drawing created",
+            "in ArtCraft, then vectorised. No third-party material. Licensed like the rest of PhotoCraft,",
+            "under either of",
+            "",
+            "  * Apache License, Version 2.0 (https://www.apache.org/licenses/LICENSE-2.0)"
+          ]
+        },
+        {
+          "path": "assets/icons/LICENSE-lucide.txt",
+          "first_lines": [
+            "ISC License",
+            "",
+            "Copyright (c) 2026 Lucide Icons and Contributors",
+            "",
+            "Permission to use, copy, modify, and/or distribute this software for any",
+            "purpose with or without fee is hereby granted, provided that the above",
+            "copyright notice and this permission notice appear in all copies.",
+            ""
+          ]
+        },
+        {
+          "path": "assets/icons/LICENSE-noun-magnetic-lasso.txt",
+          "first_lines": [
+            "assets/icons/lasso-magnetic.svg",
+            "",
+            "Adapted from \"Magnetic Lasso Tool\" by Lil' Seal (failureiscool) from Noun Project,",
+            "https://thenounproject.com/icon/magnetic-lasso-tool-177513/",
+            "licensed under Creative Commons Attribution 3.0 Unported (CC BY 3.0),",
+            "https://creativecommons.org/licenses/by/3.0/",
+            "",
+            "Changes by PhotoCraft contributors: redrawn as a 24 x 24 SVG on PhotoCraft's toolbar grid, with"
+          ]
+        },
+        {
+          "path": "assets/icons/LICENSE-symmetry-axes.txt",
+          "first_lines": [
+            "Original painting symmetry axis icons by @shorbank (2026).",
+            "Files: symmetry-vertical.svg, symmetry-horizontal.svg, symmetry-dual.svg, symmetry-diagonal.svg.",
+            "SPDX-License-Identifier: MIT OR Apache-2.0",
+            "",
+            "These original icons are available under either licence below, at your option.",
+            "",
+            "MIT License",
+            ""
+          ]
+        }
+      ],
+      "source_reference_review": [
+        {
+          "path": "crates/ui-egui/src/links.rs",
+          "hits": [
+            {
+              "line": 2,
+              "text": "//! bar all open these. URLs follow the crafting-app pattern (`getartcraft.com/apps/<app>`,"
+            },
+            {
+              "line": 9,
+              "text": "pub const DISCORD: &str = \"https://discord.gg/artcraft\";"
+            },
+            {
+              "line": 10,
+              "text": "pub const ARTCRAFT_WEBSITE: &str = \"https://getartcraft.com\";"
+            },
+            {
+              "line": 11,
+              "text": "pub const APP_PAGE: &str = \"https://getartcraft.com/apps/photocraft\";"
+            },
+            {
+              "line": 17,
+              "text": "    &[(\"help.discord\", DISCORD), (\"help.website\", APP_PAGE), (\"help.artcraftWebsite\", ARTCRAFT_WEBSITE), (\"help.github\", GITHUB), (\"help.reportIssue\", ISSUES)];"
+            },
+            {
+              "line": 44,
+              "text": "/// \"PhotoCraft website · GitHub · ArtCraft\" as links, centred. Clicks route through [`open`] (the"
+            },
+            {
+              "line": 48,
+              "text": "    let links = [(tl!(\"PhotoCraft website\"), APP_PAGE), (tl!(\"GitHub\"), GITHUB), (tl!(\"ArtCraft\"), ARTCRAFT_WEBSITE)];"
+            },
+            {
+              "line": 105,
+              "text": "        assert_eq!(help, [\"help.discord\", \"help.website\", \"help.artcraftWebsite\", \"help.github\", \"help.reportIssue\", \"---\", \"help.systemInfo\", \"help.about\"]);"
+            },
+            {
+              "line": 116,
+              "text": "            (\"help.discord\", \"https://discord.gg/artcraft\"),"
+            },
+            {
+              "line": 117,
+              "text": "            (\"help.website\", \"https://getartcraft.com/apps/photocraft\"),"
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/menus.rs",
+          "hits": [
+            {
+              "line": 96,
+              "text": "    (\"help.discord\", \"Join the ArtCraft Discord…\", &[\"Help\"], None),"
+            },
+            {
+              "line": 98,
+              "text": "    (\"help.artcraftWebsite\", \"ArtCraft Website\", &[\"Help\"], None),"
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/panels.rs",
+          "hits": [
+            {
+              "line": 694,
+              "text": "                                let template = \"Join the ArtCraft Discord ({url})\";"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vectorcraft",
+      "wasm_file": "vectorcraft-web-6aa5d49f81589b85_bg.wasm",
+      "html_artcraft_matches": [],
+      "favicon": null,
+      "original_brand_assets": [
+        {
+          "path": "docs/brand/artcraft-logo-white.png",
+          "size": 32161,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-logo-white.svg",
+          "size": 5394,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-logo.png",
+          "size": 31302,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-logo.svg",
+          "size": 5394,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark-black.png",
+          "size": 26793,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark-black.svg",
+          "size": 341,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark.png",
+          "size": 24715,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark.svg",
+          "size": 341,
+          "in_wasm_offset": -1
+        }
+      ],
+      "graphic_geometry_matches": [],
+      "app_icon_license_evidence": [
+        {
+          "path": "assets/app-icon/LICENSE.txt",
+          "first_lines": [
+            "VectorCraft app icon (vectorcraft.svg, vectorcraft-small.svg and every file derived from them in this",
+            "directory: vectorcraft-1024.png, vectorcraft-macos-512.png, vectorcraft.icns, vectorcraft.ico, hicolor/).",
+            "",
+            "Original artwork made for this project by the project owner, drawn in ArtCraft and vectorised for",
+            "VectorCraft (no third-party material). Licensed like the rest of VectorCraft, under either of",
+            "",
+            "  * Apache License, Version 2.0 (https://www.apache.org/licenses/LICENSE-2.0)",
+            "  * MIT license (https://opensource.org/licenses/MIT)"
+          ]
+        },
+        {
+          "path": "assets/icons/LICENSE-lucide.txt",
+          "first_lines": [
+            "ISC License",
+            "",
+            "Copyright (c) 2026 Lucide Icons and Contributors",
+            "",
+            "Permission to use, copy, modify, and/or distribute this software for any",
+            "purpose with or without fee is hereby granted, provided that the above",
+            "copyright notice and this permission notice appear in all copies.",
+            ""
+          ]
+        }
+      ],
+      "source_reference_review": [
+        {
+          "path": "crates/engine/src/cmd/help.rs",
+          "hits": [
+            {
+              "line": 1,
+              "text": "//! Help → community and project links (the ArtCraft Discord, website, this app's page and its"
+            },
+            {
+              "line": 8,
+              "text": "/// The app's id on getartcraft.com and GitHub."
+            },
+            {
+              "line": 10,
+              "text": "pub const DISCORD_URL: &str = \"https://discord.gg/artcraft\";"
+            },
+            {
+              "line": 11,
+              "text": "pub const WEBSITE_URL: &str = \"https://getartcraft.com\";"
+            },
+            {
+              "line": 25,
+              "text": "        cmd!(query \"help.discord\", \"Join Our Discord\", [\"Help\"], None, \"{} → {url} the ArtCraft community Discord\", always, |_, _| url(DISCORD_URL.into())),"
+            },
+            {
+              "line": 26,
+              "text": "        cmd!(query \"help.website\", \"ArtCraft Website\", [\"Help\"], None, \"{} → {url}\", always, |_, _| url(WEBSITE_URL.into())),"
+            },
+            {
+              "line": 27,
+              "text": "        cmd!(query \"help.appPage\", \"VectorCraft on getartcraft.com\", [\"Help\"], None, \"{} → {url} this app's page\", always, |_, _| url(app_page_url())),"
+            },
+            {
+              "line": 46,
+              "text": "        assert_eq!(s.execute(\"help.discord\", &json!({})).unwrap()[\"url\"], \"https://discord.gg/artcraft\");"
+            },
+            {
+              "line": 47,
+              "text": "        assert_eq!(s.execute(\"help.appPage\", &json!({})).unwrap()[\"url\"], \"https://getartcraft.com/apps/vectorcraft\");"
+            },
+            {
+              "line": 49,
+              "text": "        assert_eq!(s.execute(\"help.links\", &json!({})).unwrap()[\"website\"], \"https://getartcraft.com\");"
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/community.rs",
+          "hits": [
+            {
+              "line": 46,
+              "text": "    let resp = resp.on_hover_text(tl!(\"Join the ArtCraft community on Discord (discord.gg/artcraft)\"));"
+            },
+            {
+              "line": 71,
+              "text": "    link(app, ui, \"globe\", tl!(\"ArtCraft website\"), \"help.website\", &s(\"website\"));"
+            },
+            {
+              "line": 72,
+              "text": "    link(app, ui, \"external-link\", tl!(\"VectorCraft on getartcraft.com\"), \"help.appPage\", &s(\"appPage\"));"
+            },
+            {
+              "line": 93,
+              "text": "                \"https://discord.gg/artcraft\","
+            },
+            {
+              "line": 94,
+              "text": "                \"https://getartcraft.com\","
+            },
+            {
+              "line": 95,
+              "text": "                \"https://getartcraft.com/apps/vectorcraft\","
+            },
+            {
+              "line": 101,
+              "text": "        assert_eq!(v[\"url\"], \"https://discord.gg/artcraft\");"
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/dialogs/about.rs",
+          "hits": [
+            {
+              "line": 67,
+              "text": "            \"Part of ArtCraft. MIT OR Apache-2.0. Fonts: Source Sans 3, Inter, JetBrains Mono (OFL). Icons: Lucide (ISC) + VectorCraft.\""
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/menus.rs",
+          "hits": [
+            {
+              "line": 2896,
+              "text": "                c(\"ArtCraft Website\", \"help.website\"),"
+            },
+            {
+              "line": 2897,
+              "text": "                c(\"VectorCraft on getartcraft.com\", \"help.appPage\"),"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "filmcraft",
+      "wasm_file": "filmcraft_web_bg.wasm",
+      "html_artcraft_matches": [],
+      "favicon": "<link rel=\"icon\" href=\"favicon.png\" type=\"image/png\">",
+      "original_brand_assets": [
+        {
+          "path": "docs/brand/artcraft-logo-white.png",
+          "size": 32161,
+          "in_wasm_offset": 28528285
+        },
+        {
+          "path": "docs/brand/artcraft-logo-white.svg",
+          "size": 5394,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-logo.png",
+          "size": 31302,
+          "in_wasm_offset": 28496983
+        },
+        {
+          "path": "docs/brand/artcraft-logo.svg",
+          "size": 5394,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark-black.png",
+          "size": 26793,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark-black.svg",
+          "size": 341,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark.png",
+          "size": 24715,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark.svg",
+          "size": 341,
+          "in_wasm_offset": -1
+        }
+      ],
+      "graphic_geometry_matches": [
+        {
+          "path": "docs/brand/artcraft-logo-white.png",
+          "offset": 28528285,
+          "length": 32161,
+          "count": 1,
+          "in_data": true
+        },
+        {
+          "path": "docs/brand/artcraft-logo.png",
+          "offset": 28496983,
+          "length": 31302,
+          "count": 1,
+          "in_data": true
+        }
+      ],
+      "app_icon_license_evidence": [
+        {
+          "path": "assets/app-icon/LICENSE.txt",
+          "first_lines": [
+            "FilmCraft app icon (filmcraft.svg and every file derived from it in this directory:",
+            "filmcraft-small.svg, filmcraft-1024.png, filmcraft-macos-512.png, filmcraft.icns, filmcraft.ico,",
+            "hicolor/, and apps/filmcraft-web/web/favicon.png).",
+            "",
+            "Original artwork made for this project by the FilmCraft owner (Brandon Thomas) in ArtCraft, then",
+            "vectorised. No third-party material. Licensed like the rest of FilmCraft, under either of",
+            "",
+            "  * Apache License, Version 2.0 (https://www.apache.org/licenses/LICENSE-2.0)"
+          ]
+        }
+      ],
+      "source_reference_review": [
+        {
+          "path": "apps/filmcraft/src/native_menu.rs",
+          "hits": [
+            {
+              "line": 45,
+              "text": "    let discord = MenuItem::with_id(\"help.discord\", label(\"help.discord\", \"Join the ArtCraft Discord…\"), true, None);"
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/brand.rs",
+          "hits": [
+            {
+              "line": 1,
+              "text": "//! The ArtCraft wordmark (first-party trademark, used with permission; see `docs/brand/` and"
+            },
+            {
+              "line": 4,
+              "text": "const LOGO_LIGHT_INK: &[u8] = include_bytes!(\"../../../docs/brand/artcraft-logo-white.png\");"
+            },
+            {
+              "line": 5,
+              "text": "const LOGO_DARK_INK: &[u8] = include_bytes!(\"../../../docs/brand/artcraft-logo.png\");"
+            },
+            {
+              "line": 10,
+              "text": "    let id = egui::Id::new((\"artcraft-wordmark\", dark));"
+            },
+            {
+              "line": 19,
+              "text": "    let tex = ctx.load_texture(\"artcraft-wordmark\", color, egui::TextureOptions::LINEAR);"
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/cjk.rs",
+          "hits": [
+            {
+              "line": 27,
+              "text": "// IME-composed Korean drew as missing-glyph boxes (artcraft#2093)."
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/header.rs",
+          "hits": [
+            {
+              "line": 129,
+              "text": "        let resp = ui.interact(r, egui::Id::new(\"hdr-discord\"), Sense::click()).on_hover_text(tl!(\"Join the ArtCraft Discord (discord.gg/artcraft)\"));"
+            },
+            {
+              "line": 130,
+              "text": "        app.auto.add(\"header.discord\", r, \"Join the ArtCraft Discord\");"
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/icons.rs",
+          "hits": [
+            {
+              "line": 86,
+              "text": "    /// Community chat (the ArtCraft Discord): a speech bubble with three dots. Our own drawing,"
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/links.rs",
+          "hits": [
+            {
+              "line": 3,
+              "text": "//! FilmCraft is part of the ArtCraft family: the community lives on the ArtCraft Discord, every"
+            },
+            {
+              "line": 4,
+              "text": "//! app has a page on the ArtCraft website and a public GitHub repository."
+            },
+            {
+              "line": 9,
+              "text": "/// The ArtCraft community Discord."
+            },
+            {
+              "line": 10,
+              "text": "pub const DISCORD: &str = \"https://discord.gg/artcraft\";"
+            },
+            {
+              "line": 11,
+              "text": "/// The ArtCraft website."
+            },
+            {
+              "line": 12,
+              "text": "pub const WEBSITE: &str = \"https://getartcraft.com\";"
+            },
+            {
+              "line": 13,
+              "text": "/// FilmCraft's page on the ArtCraft website."
+            },
+            {
+              "line": 14,
+              "text": "pub const APP_PAGE: &str = \"https://getartcraft.com/apps/filmcraft\";"
+            },
+            {
+              "line": 22,
+              "text": "    (\"help.discord\", \"Join the ArtCraft Discord…\", DISCORD),"
+            },
+            {
+              "line": 23,
+              "text": "    (\"help.website\", \"ArtCraft Website\", WEBSITE),"
+            },
+            {
+              "line": 24,
+              "text": "    (\"help.appPage\", \"FilmCraft on getartcraft.com\", APP_PAGE),"
+            },
+            {
+              "line": 128,
+              "text": "    fn urls_follow_the_artcraft_scheme() {"
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/menus.rs",
+          "hits": [
+            {
+              "line": 139,
+              "text": "    uic!(\"help.discord\", \"Join the ArtCraft Discord…\", [\"Help\"], None),"
+            },
+            {
+              "line": 140,
+              "text": "    uic!(\"help.website\", \"ArtCraft Website\", [\"Help\"], None),"
+            },
+            {
+              "line": 141,
+              "text": "    uic!(\"help.appPage\", \"FilmCraft on getartcraft.com\", [\"Help\"], None),"
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/panels/dialogs.rs",
+          "hits": [
+            {
+              "line": 412,
+              "text": "/// Help ▸ About FilmCraft, in three tabs: About (version and the ArtCraft community links),"
+            },
+            {
+              "line": 447,
+              "text": "/// About ▸ About: version, licence and the ArtCraft community links. Joining the Discord is the"
+            },
+            {
+              "line": 457,
+              "text": "    // ArtCraft wordmark (first-party trademark, docs/brand/)."
+            },
+            {
+              "line": 463,
+              "text": "    ui.label(tl!(\"A clean-room, pure-Rust non-linear video editor. Part of the ArtCraft family.\"));"
+            },
+            {
+              "line": 492,
+              "text": "    link(ui, \"discord\", Icon::Chat, tl!(\"Join the ArtCraft Discord\"), links::DISCORD, true);"
+            },
+            {
+              "line": 494,
+              "text": "    link(ui, \"website\", Icon::Globe, \"getartcraft.com\", links::WEBSITE, false);"
+            },
+            {
+              "line": 495,
+              "text": "    link(ui, \"appPage\", Icon::Globe, tl!(\"FilmCraft on getartcraft.com\"), links::APP_PAGE, false);"
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/panels/import_mode.rs",
+          "hits": [
+            {
+              "line": 49,
+              "text": "    // ArtCraft wordmark (first-party trademark, docs/brand/), then the section title."
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/theme.rs",
+          "hits": [
+            {
+              "line": 636,
+              "text": "    /// Typed, pasted or IME-composed Hangul draws real glyphs, not the missing-glyph box (artcraft#2093)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lightcraft",
+      "wasm_file": "lightcraft_web_bg.wasm",
+      "html_artcraft_matches": [],
+      "favicon": "<link rel=\"icon\" href=\"data:,\">",
+      "original_brand_assets": [
+        {
+          "path": "docs/brand/artcraft-logo-white.png",
+          "size": 32161,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-logo-white.svg",
+          "size": 5394,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-logo.png",
+          "size": 31302,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-logo.svg",
+          "size": 5394,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark-black.png",
+          "size": 26793,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark-black.svg",
+          "size": 341,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark.png",
+          "size": 24715,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark.svg",
+          "size": 341,
+          "in_wasm_offset": -1
+        }
+      ],
+      "graphic_geometry_matches": [],
+      "app_icon_license_evidence": [
+        {
+          "path": "assets/app-icon/LICENSE.txt",
+          "first_lines": [
+            "LightCraft app icon (lightcraft.svg and every file derived from it in this directory:",
+            "lightcraft-small.svg, lightcraft-1024.png, lightcraft-macos-512.png, lightcraft.icns,",
+            "lightcraft.ico, hicolor/).",
+            "",
+            "Original artwork made for this project by the LightCraft project owner in ArtCraft (no",
+            "third-party material). Licensed like the rest of LightCraft, under either of",
+            "",
+            "  * Apache License, Version 2.0 (https://www.apache.org/licenses/LICENSE-2.0)"
+          ]
+        }
+      ],
+      "source_reference_review": [
+        {
+          "path": "apps/lightcraft/src/editors.rs",
+          "hits": [
+            {
+              "line": 115,
+              "text": "        \"PhotoCraft isn't installed. Get it from getartcraft.com/apps/photocraft, or give where it is in Settings ▸ External Editing.\".to_string()"
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/icons.rs",
+          "hits": [
+            {
+              "line": 81,
+              "text": "    /// Community chat (opens the ArtCraft Discord): a speech bubble with three dots. Our own"
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/links.rs",
+          "hits": [
+            {
+              "line": 3,
+              "text": "/// The app's id in ArtCraft URLs."
+            },
+            {
+              "line": 5,
+              "text": "/// The ArtCraft community Discord."
+            },
+            {
+              "line": 6,
+              "text": "pub const DISCORD: &str = \"https://discord.gg/artcraft\";"
+            },
+            {
+              "line": 7,
+              "text": "/// The ArtCraft website."
+            },
+            {
+              "line": 8,
+              "text": "pub const WEBSITE: &str = \"https://getartcraft.com\";"
+            },
+            {
+              "line": 9,
+              "text": "/// This app's page on the ArtCraft website."
+            },
+            {
+              "line": 10,
+              "text": "pub const APP_PAGE: &str = \"https://getartcraft.com/apps/lightcraft\";"
+            },
+            {
+              "line": 20,
+              "text": "    (\"app.discord\", \"Join the ArtCraft Discord…\", DISCORD),"
+            },
+            {
+              "line": 23,
+              "text": "    (\"app.artcraft\", \"ArtCraft Website\", WEBSITE),"
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/menubar.rs",
+          "hits": [
+            {
+              "line": 242,
+              "text": "            \"app.artcraft\","
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/menus.rs",
+          "hits": [
+            {
+              "line": 211,
+              "text": "    (\"app.discord\", \"Join the ArtCraft Discord…\", None, \"Help\"),"
+            },
+            {
+              "line": 215,
+              "text": "    (\"app.artcraft\", \"ArtCraft Website\", None, \"Help\"),"
+            },
+            {
+              "line": 1881,
+              "text": "        \"app.discord\" | \"app.website\" | \"app.github\" | \"app.artcraft\" | \"app.help\" | \"app.feedback\" => {"
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/panels/dialogs.rs",
+          "hits": [
+            {
+              "line": 1172,
+              "text": "                            let discord = egui::Button::new(egui::RichText::new(crate::i18n::tr(\"Join the ArtCraft Discord\")).font(t.semibold(15.0)).color(egui::Color32::WHITE))"
+            },
+            {
+              "line": 1184,
+              "text": "                                (\"ArtCraft — more creative apps\", crate::links::WEBSITE),"
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/panels/topbar.rs",
+          "hits": [
+            {
+              "line": 165,
+              "text": "                (\"discord\", Icon::Chat, \"Join the ArtCraft community on Discord\", \"app.discord\"),"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pdfcraft",
+      "wasm_file": "pdfcraft-web-2e8fa69ba6b1231a_bg.wasm",
+      "html_artcraft_matches": [],
+      "favicon": null,
+      "original_brand_assets": [
+        {
+          "path": "docs/brand/artcraft-logo-white.png",
+          "size": 32161,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-logo-white.svg",
+          "size": 5394,
+          "in_wasm_offset": 36989850
+        },
+        {
+          "path": "docs/brand/artcraft-logo.png",
+          "size": 31302,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-logo.svg",
+          "size": 5394,
+          "in_wasm_offset": 36984431
+        },
+        {
+          "path": "docs/brand/artcraft-mark-black.png",
+          "size": 26793,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark-black.svg",
+          "size": 341,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark.png",
+          "size": 24715,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark.svg",
+          "size": 341,
+          "in_wasm_offset": 36995300
+        }
+      ],
+      "graphic_geometry_matches": [
+        {
+          "path": "docs/brand/artcraft-logo-white.svg",
+          "offset": 36989850,
+          "length": 5394,
+          "count": 1,
+          "in_data": true
+        },
+        {
+          "path": "docs/brand/artcraft-logo-white.svg#path-d",
+          "offset": 36984620,
+          "length": 169,
+          "count": 3,
+          "in_data": true
+        },
+        {
+          "path": "docs/brand/artcraft-logo-white.svg#path-d",
+          "offset": 36984806,
+          "length": 5001,
+          "count": 2,
+          "in_data": true
+        },
+        {
+          "path": "docs/brand/artcraft-logo.svg",
+          "offset": 36984431,
+          "length": 5394,
+          "count": 1,
+          "in_data": true
+        },
+        {
+          "path": "docs/brand/artcraft-logo.svg#path-d",
+          "offset": 36984620,
+          "length": 169,
+          "count": 3,
+          "in_data": true
+        },
+        {
+          "path": "docs/brand/artcraft-logo.svg#path-d",
+          "offset": 36984806,
+          "length": 5001,
+          "count": 2,
+          "in_data": true
+        },
+        {
+          "path": "docs/brand/artcraft-mark-black.svg#path-d",
+          "offset": 36984620,
+          "length": 169,
+          "count": 3,
+          "in_data": true
+        },
+        {
+          "path": "docs/brand/artcraft-mark.svg",
+          "offset": 36995300,
+          "length": 341,
+          "count": 1,
+          "in_data": true
+        },
+        {
+          "path": "docs/brand/artcraft-mark.svg#path-d",
+          "offset": 36984620,
+          "length": 169,
+          "count": 3,
+          "in_data": true
+        }
+      ],
+      "app_icon_license_evidence": [
+        {
+          "path": "assets/app-icon/LICENSE-document.txt",
+          "first_lines": [
+            "PdfCraft PDF document icon (pdfcraft-document.svg and pdfcraft-document.ico).",
+            "SPDX-License-Identifier: ISC AND (MIT OR Apache-2.0)",
+            "",
+            "The document outline and fold are adapted from Lucide file-text (lucide-static 1.49.0):",
+            "https://github.com/lucide-icons/lucide",
+            "The original is kept in assets/icons/file-text.svg.",
+            "",
+            "ISC License"
+          ]
+        },
+        {
+          "path": "assets/app-icon/LICENSE.txt",
+          "first_lines": [
+            "PdfCraft app icon (pdfcraft.svg, pdfcraft-small.svg and every file derived from them in this",
+            "directory: pdfcraft-1024.png, pdfcraft.icns, pdfcraft.ico, hicolor/).",
+            "",
+            "Original artwork made for this project by the project owner, drawn in ArtCraft and vectorised for",
+            "PdfCraft (no third-party material). Licensed like the rest of PdfCraft, under either of",
+            "",
+            "  * Apache License, Version 2.0 (https://www.apache.org/licenses/LICENSE-2.0)",
+            "  * MIT license (https://opensource.org/licenses/MIT)"
+          ]
+        },
+        {
+          "path": "assets/icons/LICENSE-lucide.txt",
+          "first_lines": [
+            "ISC License",
+            "",
+            "Copyright (c) 2026 Lucide Icons and Contributors",
+            "",
+            "Permission to use, copy, modify, and/or distribute this software for any",
+            "purpose with or without fee is hereby granted, provided that the above",
+            "copyright notice and this permission notice appear in all copies.",
+            ""
+          ]
+        }
+      ],
+      "source_reference_review": [
+        {
+          "path": "apps/pdfcraft-cli/src/main.rs",
+          "hits": [
+            {
+              "line": 73,
+              "text": "help and feedback: https://discord.gg/artcraft\""
+            }
+          ]
+        },
+        {
+          "path": "crates/engine/src/commands.rs",
+          "hits": [
+            {
+              "line": 365,
+              "text": "    c(\"help.discord\", \"Join the ArtCraft Discord\", HELP, None, Nothing, \"messages-square\"),"
+            },
+            {
+              "line": 368,
+              "text": "    c(\"help.website\", \"ArtCraft website\", HELP, None, Nothing, \"external-link\"),"
+            }
+          ]
+        },
+        {
+          "path": "crates/engine/src/links.rs",
+          "hits": [
+            {
+              "line": 1,
+              "text": "//! Where PdfCraft and the ArtCraft community live on the web. One table, so the Help menu, the"
+            },
+            {
+              "line": 7,
+              "text": "/// The app's name in ArtCraft URLs (`getartcraft.com/apps/{APP}`, `github.com/storytold/{APP}`)."
+            },
+            {
+              "line": 10,
+              "text": "pub const DISCORD: &str = \"https://discord.gg/artcraft\";"
+            },
+            {
+              "line": 11,
+              "text": "pub const WEBSITE: &str = \"https://getartcraft.com\";"
+            },
+            {
+              "line": 12,
+              "text": "pub const APP_PAGE: &str = \"https://getartcraft.com/apps/pdfcraft\";"
+            },
+            {
+              "line": 27,
+              "text": "    Link { command: \"help.discord\", label: \"Join the ArtCraft Discord\", url: DISCORD, icon: \"messages-square\" },"
+            },
+            {
+              "line": 30,
+              "text": "    Link { command: \"help.website\", label: \"ArtCraft website\", url: WEBSITE, icon: \"external-link\" },"
+            },
+            {
+              "line": 524,
+              "text": "    fn urls_follow_the_artcraft_scheme() {"
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/dialogs.rs",
+          "hits": [
+            {
+              "line": 1099,
+              "text": "                            widgets::artcraft_mark(ui, 40.0);"
+            },
+            {
+              "line": 1117,
+              "text": "                            widgets::artcraft_logo(ui, 16.0);"
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/home.rs",
+          "hits": [
+            {
+              "line": 40,
+              "text": "                        widgets::artcraft_mark(ui, 28.0);"
+            },
+            {
+              "line": 42,
+              "text": "                            ui.label(egui::RichText::new(tl!(\"Join the ArtCraft community\")).font(theme::semibold(15.0)));"
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/widgets.rs",
+          "hits": [
+            {
+              "line": 502,
+              "text": "/// The ArtCraft wordmark (Storyteller's brand, docs/brand/; not open source), sized to `height`."
+            },
+            {
+              "line": 503,
+              "text": "pub fn artcraft_logo(ui: &mut egui::Ui, height: f32) -> Response {"
+            },
+            {
+              "line": 506,
+              "text": "        (\"bytes://artcraft-logo-white.svg\", include_bytes!(\"../../../docs/brand/artcraft-logo-white.svg\"))"
+            },
+            {
+              "line": 508,
+              "text": "        (\"bytes://artcraft-logo.svg\", include_bytes!(\"../../../docs/brand/artcraft-logo.svg\"))"
+            },
+            {
+              "line": 510,
+              "text": "    ui.add(egui::Image::from_bytes(uri, bytes).max_height(height).alt_text(\"ArtCraft\"))"
+            },
+            {
+              "line": 513,
+              "text": "/// The ArtCraft mark (brand blue, works on light and dark), `size` points square."
+            },
+            {
+              "line": 514,
+              "text": "pub fn artcraft_mark(ui: &mut egui::Ui, size: f32) -> Response {"
+            },
+            {
+              "line": 516,
+              "text": "        egui::Image::from_bytes(\"bytes://artcraft-mark.svg\", include_bytes!(\"../../../docs/brand/artcraft-mark.svg\"))"
+            },
+            {
+              "line": 518,
+              "text": "            .alt_text(\"ArtCraft\"),"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "effectcraft",
+      "wasm_file": "effectcraft_web_bg.wasm",
+      "html_artcraft_matches": [],
+      "favicon": "<link rel=\"icon\" href=\"favicon.svg\" type=\"image/svg+xml\">",
+      "original_brand_assets": [
+        {
+          "path": "docs/brand/artcraft-logo-white.png",
+          "size": 32161,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-logo-white.svg",
+          "size": 5394,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-logo.png",
+          "size": 31302,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-logo.svg",
+          "size": 5394,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark-black.png",
+          "size": 26793,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark-black.svg",
+          "size": 341,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark.png",
+          "size": 24715,
+          "in_wasm_offset": 44675772
+        },
+        {
+          "path": "docs/brand/artcraft-mark.svg",
+          "size": 341,
+          "in_wasm_offset": -1
+        }
+      ],
+      "graphic_geometry_matches": [
+        {
+          "path": "docs/brand/artcraft-mark.png",
+          "offset": 44675772,
+          "length": 24715,
+          "count": 1,
+          "in_data": true
+        }
+      ],
+      "app_icon_license_evidence": [
+        {
+          "path": "assets/app-icon/LICENSE.txt",
+          "first_lines": [
+            "EffectCraft app icon (effectcraft.svg, effectcraft-small.svg and every file derived from them in",
+            "this directory: effectcraft-1024.png, effectcraft-macos-512.png, effectcraft.icns, effectcraft.ico,",
+            "hicolor/), and the web favicon apps/effectcraft-web/web/favicon.svg.",
+            "",
+            "Original artwork made for this project by the project owner in ArtCraft, then vectorised (no",
+            "third-party material). Licensed like the rest of EffectCraft, under either of",
+            "",
+            "  * Apache License, Version 2.0 (https://www.apache.org/licenses/LICENSE-2.0)"
+          ]
+        }
+      ],
+      "source_reference_review": [
+        {
+          "path": "crates/engine/src/commands/help.rs",
+          "hits": [
+            {
+              "line": 34,
+              "text": "        cmd!(\"help.discord\", \"Join the ArtCraft Discord...\", [\"Help\"], None, \"{}\", always, |s, _| open(s, links::DISCORD.into())),"
+            },
+            {
+              "line": 35,
+              "text": "        cmd!(\"help.website\", \"ArtCraft Website\", [\"Help\"], None, \"{}\", always, |s, _| open(s, links::WEBSITE.into())),"
+            },
+            {
+              "line": 47,
+              "text": "            \"Other ArtCraft Apps\","
+            }
+          ]
+        },
+        {
+          "path": "crates/engine/src/links.rs",
+          "hits": [
+            {
+              "line": 6,
+              "text": "pub const DISCORD: &str = \"https://discord.gg/artcraft\";"
+            },
+            {
+              "line": 7,
+              "text": "pub const WEBSITE: &str = \"https://getartcraft.com\";"
+            },
+            {
+              "line": 8,
+              "text": "pub const APP_PAGE: &str = \"https://getartcraft.com/apps/effectcraft\";"
+            },
+            {
+              "line": 12,
+              "text": "/// Sibling apps of the ArtCraft family: (name, what it is, GitHub repo, app page)."
+            },
+            {
+              "line": 26,
+              "text": "    format!(\"https://getartcraft.com/apps/{slug}\")"
+            }
+          ]
+        },
+        {
+          "path": "crates/engine/src/menus.rs",
+          "hits": [
+            {
+              "line": 1247,
+              "text": "  Join the ArtCraft Discord... | help.discord"
+            },
+            {
+              "line": 1250,
+              "text": "  ArtCraft Website | help.website"
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/header.rs",
+          "hits": [
+            {
+              "line": 196,
+              "text": "    app.auto.add(\"header.discord\", discord, \"Join the ArtCraft Discord\");"
+            },
+            {
+              "line": 197,
+              "text": "    if dresp.on_hover_text(tr(\"Join the ArtCraft community on Discord\")).clicked() {"
+            },
+            {
+              "line": 202,
+              "text": "        [(\"hdr-github\", Icon::Code, \"EffectCraft on GitHub\", \"help.github\"), (\"hdr-web\", Icon::Globe, \"EffectCraft on getartcraft.com\", \"help.appPage\")]"
+            },
+            {
+              "line": 657,
+              "text": "/// The ArtCraft mark as supplied in `docs/brand` (the README's and getartcraft.com's logo; used"
+            },
+            {
+              "line": 658,
+              "text": "/// unmodified, see `docs/brand/LICENSE-brand.txt`)."
+            },
+            {
+              "line": 659,
+              "text": "static ARTCRAFT_MARK: &[u8] = include_bytes!(\"../../../docs/brand/artcraft-mark.png\");"
+            },
+            {
+              "line": 661,
+              "text": "/// The ArtCraft mark in `r` (decoded once into a mipmapped texture, so it stays crisp from the"
+            },
+            {
+              "line": 665,
+              "text": "    let id = egui::Id::new(\"artcraft-mark\");"
+            },
+            {
+              "line": 667,
+              "text": "        let tex = image::load_from_memory_with_format(ARTCRAFT_MARK, image::ImageFormat::Png).ok().map(|img| {"
+            },
+            {
+              "line": 670,
+              "text": "            ctx.load_texture(\"artcraft-mark\", ci, egui::TextureOptions::LINEAR.with_mipmap_mode(Some(egui::TextureFilter::Linear)))"
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/panels/dialogs.rs",
+          "hits": [
+            {
+              "line": 339,
+              "text": "    ui.label(tr(\"A clean-room, open-source compositor for motion graphics and visual effects: native on macOS, Windows and Linux, and in the browser. Part of the ArtCraft family of creative apps.\"));"
+            },
+            {
+              "line": 342,
+              "text": "        (Icon::Chat, \"Join the ArtCraft Discord\", effectcraft_engine::links::DISCORD, \"help.discord\"),"
+            },
+            {
+              "line": 343,
+              "text": "        (Icon::Globe, \"ArtCraft website\", effectcraft_engine::links::WEBSITE, \"help.website\"),"
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/panels/home.rs",
+          "hits": [
+            {
+              "line": 3,
+              "text": "//! Project, the Home / Templates / Learn pages and, at its foot, the ArtCraft community links."
+            },
+            {
+              "line": 275,
+              "text": "        (Icon::Chat, \"Join the ArtCraft Discord\", \"help.discord\"),"
+            },
+            {
+              "line": 276,
+              "text": "        (Icon::Globe, \"getartcraft.com\", \"help.website\"),"
+            },
+            {
+              "line": 305,
+              "text": "    p.text(pos2(x0, cy + 8.0), Align2::LEFT_CENTER, tr(\"More ArtCraft apps\"), Tokens::ui(11.0), t.text_faint);"
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/panels/markers_ui.rs",
+          "hits": [
+            {
+              "line": 491,
+              "text": "        d.url = \"https://getartcraft.com\".into();"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "designcraft",
+      "wasm_file": "designcraft-web-e2c8d44eb5555996_bg.wasm",
+      "html_artcraft_matches": [],
+      "favicon": null,
+      "original_brand_assets": [
+        {
+          "path": "docs/brand/artcraft-logo-white.png",
+          "size": 32161,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-logo-white.svg",
+          "size": 5394,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-logo.png",
+          "size": 31302,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-logo.svg",
+          "size": 5394,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark-black.png",
+          "size": 26793,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark-black.svg",
+          "size": 341,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark.png",
+          "size": 24715,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark.svg",
+          "size": 341,
+          "in_wasm_offset": -1
+        }
+      ],
+      "graphic_geometry_matches": [
+        {
+          "path": "docs/brand/artcraft-logo-white.svg#path-d",
+          "offset": 35387384,
+          "length": 169,
+          "count": 1,
+          "in_data": true
+        },
+        {
+          "path": "docs/brand/artcraft-logo.svg#path-d",
+          "offset": 35387384,
+          "length": 169,
+          "count": 1,
+          "in_data": true
+        },
+        {
+          "path": "docs/brand/artcraft-mark-black.svg#path-d",
+          "offset": 35387384,
+          "length": 169,
+          "count": 1,
+          "in_data": true
+        },
+        {
+          "path": "docs/brand/artcraft-mark.svg#path-d",
+          "offset": 35387384,
+          "length": 169,
+          "count": 1,
+          "in_data": true
+        }
+      ],
+      "app_icon_license_evidence": [
+        {
+          "path": "assets/app-icon/LICENSE.txt",
+          "first_lines": [
+            "DesignCraft app icon (designcraft.svg, designcraft-small.svg and every file derived from them in",
+            "this directory: designcraft-1024.png, designcraft-macos-512.png, designcraft.icns, designcraft.ico,",
+            "hicolor/).",
+            "",
+            "Original artwork made for this project by the project owner in ArtCraft, then vectorised. No",
+            "third-party material. Licensed like the rest of DesignCraft, under either of",
+            "",
+            "  * Apache License, Version 2.0 (https://www.apache.org/licenses/LICENSE-2.0)"
+          ]
+        }
+      ],
+      "source_reference_review": [
+        {
+          "path": "apps/designcraft/src/native_menu.rs",
+          "hits": [
+            {
+              "line": 42,
+              "text": "        let discord = MenuItem::with_id(\"dc-discord\", \"Join the ArtCraft Discord…\", true, None);"
+            }
+          ]
+        },
+        {
+          "path": "crates/engine/src/cmd/inspect.rs",
+          "hits": [
+            {
+              "line": 13,
+              "text": "            \"{} → {discord, website, appPage, github, issues} (ArtCraft Discord, website, DesignCraft page and repository)\", always, |_, _| Ok(crate::links::all())),"
+            }
+          ]
+        },
+        {
+          "path": "crates/engine/src/links.rs",
+          "hits": [
+            {
+              "line": 1,
+              "text": "//! ArtCraft community and project links (Help menu, About, start screen, CLI, MCP)."
+            },
+            {
+              "line": 5,
+              "text": "/// The app's slug on getartcraft.com and GitHub."
+            },
+            {
+              "line": 7,
+              "text": "/// The ArtCraft community Discord."
+            },
+            {
+              "line": 8,
+              "text": "pub const DISCORD: &str = \"https://discord.gg/artcraft\";"
+            },
+            {
+              "line": 9,
+              "text": "/// The ArtCraft website."
+            },
+            {
+              "line": 10,
+              "text": "pub const WEBSITE: &str = \"https://getartcraft.com\";"
+            },
+            {
+              "line": 11,
+              "text": "/// DesignCraft's page on the ArtCraft website."
+            },
+            {
+              "line": 12,
+              "text": "pub const APP_PAGE: &str = \"https://getartcraft.com/apps/designcraft\";"
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/about.rs",
+          "hits": [
+            {
+              "line": 2,
+              "text": "//! ArtCraft mark, version, and community links (Discord first and largest), plus the other ArtCraft"
+            },
+            {
+              "line": 12,
+              "text": "/// ArtCraft brand blue (from `docs/brand/artcraft-mark.svg`)."
+            },
+            {
+              "line": 17,
+              "text": "/// The ArtCraft mark outline (viewBox -10 -19.42 136.34 136.34), from `docs/brand/artcraft-mark.svg`."
+            },
+            {
+              "line": 20,
+              "text": "/// The other ArtCraft apps (app-page slug, name, what it is) — same list as the README."
+            },
+            {
+              "line": 33,
+              "text": "/// Paint the ArtCraft mark into `rect` (square), rasterised once per size and cached."
+            },
+            {
+              "line": 39,
+              "text": "    let key = egui::Id::new((\"artcraft_mark\", px, color.to_array()));"
+            },
+            {
+              "line": 55,
+              "text": "        let t = ctx.load_texture(\"artcraft_mark\", ci, egui::TextureOptions::LINEAR);"
+            },
+            {
+              "line": 162,
+              "text": "                egui::RichText::new(crate::i18n::tr(&app.ui.language, \"Part of the ArtCraft suite of open creative tools.\"))"
+            },
+            {
+              "line": 167,
+              "text": "            if discord_button(ui, \"Join the ArtCraft Discord\", vec2(300.0, 40.0)) {"
+            },
+            {
+              "line": 173,
+              "text": "                egui::RichText::new(crate::i18n::tr(&app.ui.language, \"discord.gg/artcraft — help, feedback and show-and-tell\"))"
+            },
+            {
+              "line": 183,
+              "text": "                    [(\"DesignCraft page\", \"appPage\"), (\"GitHub\", \"github\"), (\"getartcraft.com\", \"website\"), (\"Report an issue\", \"issues\")]"
+            },
+            {
+              "line": 196,
+              "text": "                egui::RichText::new(crate::i18n::tr(&app.ui.language, \"More ArtCraft apps\")).font(semibold(12.0)).color(t.text_strong),"
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/chrome.rs",
+          "hits": [
+            {
+              "line": 127,
+              "text": "                        // Always one click away: the ArtCraft community Discord."
+            },
+            {
+              "line": 747,
+              "text": "/// Start screen: the ArtCraft community (Discord first) and project links."
+            },
+            {
+              "line": 759,
+              "text": "                    egui::RichText::new(crate::i18n::tr(&app.ui.language, \"Join the ArtCraft community\")).font(semibold(14.0)).color(t.text_strong),"
+            },
+            {
+              "line": 769,
+              "text": "                    for (text, id) in [(\"DesignCraft page\", \"help.appPage\"), (\"GitHub\", \"help.github\"), (\"getartcraft.com\", \"help.website\")] {"
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/menus.rs",
+          "hits": [
+            {
+              "line": 182,
+              "text": "    (\"help.discord\", \"Join the ArtCraft Discord…\", None, \"{} — opens https://discord.gg/artcraft in the browser\"),"
+            },
+            {
+              "line": 183,
+              "text": "    (\"help.appPage\", \"DesignCraft Website…\", None, \"{} — opens https://getartcraft.com/apps/designcraft\"),"
+            },
+            {
+              "line": 186,
+              "text": "    (\"help.website\", \"ArtCraft Website…\", None, \"{} — opens https://getartcraft.com\"),"
+            },
+            {
+              "line": 187,
+              "text": "    (\"help.app\", \"ArtCraft App Page…\", None, \"{app} — opens https://getartcraft.com/apps/{app} (e.g. photocraft)\"),"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "figcraft",
+      "wasm_file": "figcraft-web-6991dbdda78e2672_bg.wasm",
+      "html_artcraft_matches": [],
+      "favicon": null,
+      "original_brand_assets": [
+        {
+          "path": "docs/brand/artcraft-logo-white.png",
+          "size": 32161,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-logo-white.svg",
+          "size": 5394,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-logo.png",
+          "size": 31302,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-logo.svg",
+          "size": 5394,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark-black.png",
+          "size": 26793,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark-black.svg",
+          "size": 341,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark.png",
+          "size": 24715,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark.svg",
+          "size": 341,
+          "in_wasm_offset": -1
+        }
+      ],
+      "graphic_geometry_matches": [],
+      "app_icon_license_evidence": [
+        {
+          "path": "assets/app-icon/LICENSE.txt",
+          "first_lines": [
+            "FigCraft app icon (figcraft.svg, figcraft-small.svg and every file derived from them in this",
+            "directory: figcraft-<size>.png, figcraft.ico, hicolor/).",
+            "",
+            "Original artwork made for this project by the project owner: an engraving-style drawing, then",
+            "vectorised. No third-party material. Licensed like the rest of FigCraft, under either of",
+            "",
+            "  * Apache License, Version 2.0 (https://www.apache.org/licenses/LICENSE-2.0)",
+            "  * MIT license (https://opensource.org/licenses/MIT)"
+          ]
+        }
+      ],
+      "source_reference_review": [
+        {
+          "path": "apps/figcraft/build.rs",
+          "hits": [
+            {
+              "line": 14,
+              "text": "        res.set(\"CompanyName\", \"ArtCraft\");"
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/dialogs.rs",
+          "hits": [
+            {
+              "line": 91,
+              "text": "        \"Interface design and prototyping. A free, open-source, clean-room design tool written from scratch in Rust, part of the ArtCraft Crafting Apps.\","
+            },
+            {
+              "line": 94,
+              "text": "    ui.hyperlink_to(\"getartcraft.com/apps/figcraft\", \"https://getartcraft.com/apps/figcraft\");"
+            },
+            {
+              "line": 95,
+              "text": "    ui.hyperlink_to(tr(\"Join us on Discord\"), \"https://discord.gg/artcraft\");"
+            },
+            {
+              "line": 98,
+              "text": "        RichText::new(tr(\"Dual-licensed MIT OR Apache-2.0. Made by the ArtCraft team and community.\")).color(t.text_secondary).font(regular(11.0)),"
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/lib.rs",
+          "hits": [
+            {
+              "line": 720,
+              "text": "                \"open.help\" => self.services.open_url(\"https://getartcraft.com/apps/figcraft\"),"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "soundcraft",
+      "wasm_file": "soundcraft-web-46ed92e1ef8a9c01_bg.wasm",
+      "html_artcraft_matches": [],
+      "favicon": "<link rel=\"icon\" href=\"./ai.storyteller.soundcraft-4f86cc0f1d19c49f.png\" integrity=\"sha384-gGGdqNRRqqtc1O6hUsGr2t6crDCmPT5aQ88HrS63AGKTx8mtjcAwCaMFzW6yzgT0\"/>",
+      "original_brand_assets": [
+        {
+          "path": "docs/brand/artcraft-logo-white.png",
+          "size": 32161,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-logo-white.svg",
+          "size": 5394,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-logo.png",
+          "size": 31302,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-logo.svg",
+          "size": 5394,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark-black.png",
+          "size": 26793,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark-black.svg",
+          "size": 341,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark.png",
+          "size": 24715,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark.svg",
+          "size": 341,
+          "in_wasm_offset": -1
+        }
+      ],
+      "graphic_geometry_matches": [],
+      "app_icon_license_evidence": [],
+      "source_reference_review": [
+        {
+          "path": "crates/ui-egui/src/panels.rs",
+          "hits": [
+            {
+              "line": 614,
+              "text": "                ui.label(\"An open-source digital audio workstation from the ArtCraft team.\");"
+            },
+            {
+              "line": 616,
+              "text": "                ui.hyperlink_to(\"getartcraft.com/apps/soundcraft\", \"https://getartcraft.com/apps/soundcraft\");"
+            },
+            {
+              "line": 617,
+              "text": "                ui.hyperlink_to(\"Join us on Discord\", \"https://discord.gg/artcraft\");"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cadcraft",
+      "wasm_file": "cadcraft-web-e558b119220c5f67_bg.wasm",
+      "html_artcraft_matches": [],
+      "favicon": null,
+      "original_brand_assets": [
+        {
+          "path": "docs/brand/artcraft-logo-white.png",
+          "size": 32161,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-logo-white.svg",
+          "size": 5394,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-logo.png",
+          "size": 31302,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-logo.svg",
+          "size": 5394,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark-black.png",
+          "size": 26793,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark-black.svg",
+          "size": 341,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark.png",
+          "size": 24715,
+          "in_wasm_offset": -1
+        },
+        {
+          "path": "docs/brand/artcraft-mark.svg",
+          "size": 341,
+          "in_wasm_offset": -1
+        }
+      ],
+      "graphic_geometry_matches": [],
+      "app_icon_license_evidence": [],
+      "source_reference_review": [
+        {
+          "path": "apps/cadcraft/build.rs",
+          "hits": [
+            {
+              "line": 18,
+              "text": "        .set(\"LegalCopyright\", \"Copyright (c) 2026 ArtCraft Team and the CADCraft contributors. MIT OR Apache-2.0.\")"
+            }
+          ]
+        },
+        {
+          "path": "apps/cadcraft/src/native_menu.rs",
+          "hits": [
+            {
+              "line": 41,
+              "text": "        let discord = MenuItem::with_id(\"cc-discord\", i18n::tr(language, \"Join the ArtCraft Discord…\"), true, None);"
+            },
+            {
+              "line": 59,
+              "text": "        items.insert(\"cc-discord\".into(), (\"ui.discord\".into(), \"Join the ArtCraft Discord…\".into(), discord));"
+            },
+            {
+              "line": 94,
+              "text": "                    ctx.open_url(egui::OpenUrl::new_tab(\"https://discord.gg/artcraft\"));"
+            }
+          ]
+        },
+        {
+          "path": "crates/ui-egui/src/dialogs.rs",
+          "hits": [
+            {
+              "line": 327,
+              "text": "                    ui.label(RichText::new(crate::tl!(\"One of the Crafting Apps by the ArtCraft team and community.\")).color(t.text_dim));"
+            },
+            {
+              "line": 328,
+              "text": "                    ui.hyperlink_to(\"getartcraft.com/apps/cadcraft\", \"https://getartcraft.com/apps/cadcraft\");"
+            },
+            {
+              "line": 329,
+              "text": "                    ui.hyperlink_to(crate::tl!(\"Join us on Discord\"), \"https://discord.gg/artcraft\");"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -5,7 +5,9 @@ async function waitFor(fn){for(let i=0;i<100;i++){if(fn())return;await tick()}th
 
 test('portal renders admin account controls without injecting filenames',async()=>{
  const html=await readFile(new URL('../liberty/static/index.html',import.meta.url),'utf8');const {window}=parseHTML(html);
- Object.assign(globalThis,{window,document:window.document,Node:window.Node,location:{hash:'',pathname:'/',reload(){}},history:{replaceState(){}}});
+ const location={href:'http://localhost/',origin:'http://localhost',hash:'',search:'',pathname:'/',reload(){}},history={replaceState(){}};
+ Object.assign(globalThis,{window,document:window.document,Node:window.Node,location,history});
+ window.location=location;window.history=history;
  Object.defineProperty(window.HTMLSelectElement.prototype,'value',{configurable:true,get(){return this.querySelector('option[selected]')?.value||this.querySelector('option')?.value},set(value){for(const o of this.querySelectorAll('option'))o.selected=o.value===value}});
  window.HTMLElement.prototype.showModal=function(){this.setAttribute('open','')};window.HTMLElement.prototype.close=function(){this.dispatchEvent(new window.Event('close'))};
  const me={id:'me',username:'admin',name:'Admin',role:'admin',enabled:true,totp_confirmed:1,quota:1e9};
@@ -24,10 +26,13 @@ test('portal renders admin account controls without injecting filenames',async()
  assert.equal(document.querySelector('#workspace table img'),null);
  assert.match(document.querySelector('#workspace').textContent,/<img src=x onerror=alert\(1\)>/);
  const button=text=>[...document.querySelectorAll('button')].find(b=>b.textContent===text);
- button('Administração').click();await waitFor(()=>document.querySelector('.user-controls'));
- assert.ok(document.querySelector('button[aria-label="Recuperação de alice"]'));
- button('Minha conta').click();await waitFor(()=>button('Gerenciar sessões'));
- button('Gerenciar sessões').click();await waitFor(()=>document.querySelector('dialog'));
+ button('Administration').click();await waitFor(()=>document.querySelector('.user-controls'));
+ assert.ok(document.querySelector('button[aria-label="Recovery for alice"]'));
+ button('My account').click();await waitFor(()=>button('Manage sessions'));
+ button('Manage sessions').click();await waitFor(()=>document.querySelector('dialog'));
+ assert.match(document.querySelector('dialog').textContent,/Current session/);
+ const select=document.querySelector('.language-selector select');select.value='pt-BR';select.dispatchEvent(new window.Event('change'));
  assert.match(document.querySelector('dialog').textContent,/Sessão atual/);
+ assert.equal(document.documentElement.lang,'pt-BR');
  document.querySelector('dialog button[aria-label="Fechar"]').click();
 });

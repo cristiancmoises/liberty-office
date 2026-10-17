@@ -1,9 +1,24 @@
 # syntax=docker/dockerfile:1
+ARG FIGCRAFT_BUNDLE_IMAGE=rust:1.95.0-bookworm@sha256:6258907abe69656e41cd992e0b705cdcfabcbbe3db374f92ed2d47121282d4a1
+FROM ${FIGCRAFT_BUNDLE_IMAGE} AS figcraft
+WORKDIR /integration
+COPY scripts/build_figcraft_web.sh scripts/patch_figcraft_web.py scripts/package_figcraft_web.py ./scripts/
+COPY patches/figcraft-web ./patches/figcraft-web
+# A trusted prebuilt bundle image needs a shell and /out. Both paths pass the
+# exact compiled-file and patch/recipe hash checks in the installation stage.
+RUN if [ ! -f /out/index.html ]; then bash scripts/build_figcraft_web.sh /build /out; fi
+
 FROM python:3.12-slim-bookworm@sha256:34386ef0cb081344d7ec1c103ba398e6e9f64e9ab3a1509accc92a4e24a07258 AS apps
 WORKDIR /build
 COPY upstream.lock.json ./
-COPY scripts/fetch_apps.py ./scripts/fetch_apps.py
-RUN python scripts/fetch_apps.py --output /opt/artcraft
+COPY branding.lock.json ./
+COPY assets/branding ./assets/branding
+COPY figcraft-build.lock.json ./
+COPY patches/figcraft-web ./patches/figcraft-web
+COPY scripts/fetch_apps.py scripts/brand_apps.py scripts/install_figcraft_web.py scripts/build_figcraft_web.sh scripts/patch_figcraft_web.py scripts/package_figcraft_web.py ./scripts/
+COPY --from=figcraft /out ./figcraft-prepared
+RUN python scripts/fetch_apps.py --output /opt/artcraft \
+    && python scripts/install_figcraft_web.py --bundle /build/figcraft-prepared --output /opt/artcraft --lock /build/figcraft-build.lock.json
 
 FROM python:3.12-slim-bookworm@sha256:34386ef0cb081344d7ec1c103ba398e6e9f64e9ab3a1509accc92a4e24a07258 AS runtime
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 LIBERTY_DATA=/data LIBERTY_APPS=/opt/artcraft

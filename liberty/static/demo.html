@@ -1,26 +1,27 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
- <title>Demonstração · Liberty Office</title>
- <meta name="description" content="Experimente os editores Liberty Office sem criar uma conta. Demonstração sem envio de arquivos ao servidor.">
+ <title>Demo · Liberty Office</title>
+ <meta name="description" content="Try Liberty Office editors without an account. Demo without server uploads.">
  <link rel="icon" href="/static/liberty.svg" type="image/svg+xml">
- <link rel="stylesheet" href="/static/style.css"><link rel="stylesheet" href="/static/demo.css">
+ <link rel="stylesheet" href="/static/style.css"><link rel="stylesheet" href="/static/demo.css"><link rel="stylesheet" href="/static/editor-layout.css">
  <script type="module" src="/static/demo.mjs"></script>
 </head>
 <body class="demo-page">
- <header class="demo-banner"><strong>Demonstração pública</strong><span>Sem conta, sem uploads e sem arquivos salvos no servidor. Use apenas conteúdo de teste.</span><a href="/">Entrar no meu espaço</a></header>
+ <header class="demo-banner"><strong data-i18n="Demonstração pública">Public demo</strong><span data-i18n="Sem conta, sem uploads e sem arquivos salvos no servidor. Use apenas conteúdo de teste.">No account, uploads, or server-saved files. Use test content only.</span><a href="/" data-i18n="Entrar no meu espaço">Sign in to my workspace</a></header>
  <main id="demo-launcher" class="main">
-  <div class="page-title"><p class="eyebrow">Liberty Office</p><h1>Experimente seu próximo espaço de trabalho.</h1><p>Escolha um aplicativo, crie um exemplo e teste as ferramentas. A demonstração é temporária e separada das contas privadas.</p></div>
-  <p class="warning">A edição completa usa WebGL2 ou WebGPU. A disponibilidade depende do navegador e da GPU. As alterações de demonstração podem permanecer no armazenamento deste navegador até a próxima abertura do editor; nada é enviado ao Drive.</p>
-  <div id="demo-apps" class="apps-grid" aria-label="Aplicativos de demonstração"></div>
-  <p id="demo-message" role="status">Carregando aplicativos…</p>
-  <p><a href="/source.zip">Código fonte e avisos</a> · <a href="https://codeberg.org/berkeley/liberty-office/src/branch/main/docs/LICENSING.md">Licenças dos editores</a></p>
+  <div class="page-title"><p class="eyebrow">Liberty Office</p><h1 data-i18n="Experimente seu próximo espaço de trabalho.">Try your next workspace.</h1><p data-i18n="Escolha um aplicativo, crie um exemplo e teste as ferramentas. A demonstração é temporária e separada das contas privadas.">Choose an app, create an example, and try the tools. The demo is temporary and separate from private accounts.</p></div>
+  <p class="warning" data-i18n="A edição completa usa WebGL2 ou WebGPU. A disponibilidade depende do navegador e da GPU. As alterações de demonstração podem permanecer no armazenamento deste navegador até a próxima abertura do editor; nada é enviado ao Drive.">Full editing uses WebGL2 or WebGPU. Availability depends on your browser and GPU. Demo changes may remain in this browser’s storage until the editor is opened again; nothing is sent to Drive.</p>
+  <div id="demo-apps" class="apps-grid" aria-label="Demo apps"></div>
+  <p data-i18n="Os menus dos editores completos pertencem a cada aplicativo; os idiomas disponíveis variam. Esta opção traduz o Liberty e o modo leve sem recarregar seu documento.">Full editor menus belong to each app; available languages vary. This switch translates Liberty and light mode without reloading your document.</p>
+  <p id="demo-message" role="status" data-i18n="Carregando aplicativos…">Loading apps…</p>
+  <p><a href="/source.zip" data-i18n="Código fonte e avisos">Source code and notices</a> · <a href="https://codeberg.org/berkeley/liberty-office/src/branch/main/docs/LICENSING.md" data-i18n="Licenças dos editores">Editor licenses</a></p>
  </main>
- <section id="demo-editor" hidden aria-label="Editor de demonstração">
-  <div class="demo-toolbar"><strong id="demo-name"></strong><span>Importações desativadas · Salvamento local apenas</span><button id="demo-close">Sair da demonstração</button></div>
+ <section id="demo-editor" hidden aria-label="Demo editor">
+  <div class="demo-toolbar"><b class="demo-badge" data-i18n="Demonstração pública">Public demo</b><strong id="demo-name"></strong><span data-i18n="Importações desativadas · Salvamento local apenas">Imports disabled · Local saving only</span><button id="demo-close" data-i18n="Sair da demonstração">Leave demo</button></div>
   <div id="demo-frame"></div>
-  <p id="demo-status" role="status" aria-live="polite">Carregando…</p>
+  <p id="demo-status" role="status" aria-live="polite" data-i18n="Carregando…">Loading…</p>
  </section>
- <noscript>Ative JavaScript para experimentar os editores.</noscript>
+ <noscript>Enable JavaScript to try the editors.</noscript>
 </body></html>

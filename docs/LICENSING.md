@@ -64,12 +64,63 @@ for every bundled asset or dependency.
   attribution is retained. Review embedded branding before distributing any
   rebuilt or modified editor.
 
-The pinned upstream JS/WASM files remain unchanged, but the served upstream HTML
-is instrumented to load the integration adapter. **Brand permission for this
-modified-hosting context has not been confirmed.** Unchanged binary hashes do
-not resolve that question. Publishing a modified branded editor requires either
-permission from the rights holder or a build with those marks removed. Do not
-treat this inventory as approval of the current branded integration.
+## Prepared editor assets
+
+The installer verifies original archives against `upstream.lock.json` before
+preparing the Liberty integration. [`branding.lock.json`](../branding.lock.json)
+records the reviewed embedded graphics and their exact source commits, byte
+ranges and before/after hashes. Independent Liberty artwork replaces seven
+restricted graphic payloads across FilmCraft, PdfCraft, EffectCraft and
+DesignCraft. The inventory covers twelve complete product-identity/community
+labels, retaining plain-text source attribution. Nine installed upstream
+binaries receive data-only preparation; FigCraft's two labels are changed in
+its source build described below. DeckCraft, PhotoCraft and LightCraft have a
+separate reviewed, unmodified-binary inventory.
+
+The data-only preparation is a deterministic transformation of pinned binary
+data, not a Rust rebuild. Every replacement must fit entirely inside
+a WebAssembly data segment and retain its byte length. Executable sections,
+data addresses, legal notices, plain-text upstream attribution and separately
+licensed application icons are preserved. SVG/path padding is whitespace; PNG
+padding is a valid private ancillary chunk before IEND. Unexpected bytes,
+hashes, counts, versions or segment boundaries stop installation.
+
+Prepared bundles record their changes in `LIBERTY-MODIFICATIONS.json`. HTML
+integrity references and compressed copies are updated with the modified data.
+The served HTML also loads the independent integration adapter. These are
+modified integrations, not official upstream builds. Preserve both original
+notices and the modification records when redistributing them. Recheck embedded
+graphics and source render paths before any upstream update; a matching filename
+or unchanged executable section alone does not establish license compliance.
+
+### FigCraft browser file I/O
+
+The pinned FigCraft web release does not implement its native save/open picker
+services. Liberty builds this editor from the exact upstream commit with
+[`patches/figcraft-web/`](../patches/figcraft-web/) and the fail-closed
+[`patch_figcraft_web.py`](../scripts/patch_figcraft_web.py) source changes.
+Those editor changes are **MIT OR Apache-2.0**, like the upstream editor, and
+preserve original copyright and license notices. Unlike the data-only changes
+above, this build intentionally changes executable code.
+
+[`figcraft-build.lock.json`](../figcraft-build.lock.json) records the original
+source archive, pinned Rust image/toolchain, wasm-bindgen, font source, patch
+inputs and compiled assets. [`build_figcraft_web.sh`](../scripts/build_figcraft_web.sh)
+checks downloaded archives, applies exact source anchors, runs the Rust hook
+tests and builds with Cargo `--locked`. The original engine still encodes the
+project and exported images; the added browser service handles their bytes.
+Imports use the existing host picker and remain disabled in the public demo.
+The 100 MiB encoded-file limit is not a bound on all decoding/rendering memory.
+This patch enables native project opening/saving and engine exports, not every
+desktop service. Auxiliary pickers for imports, libraries and plugins remain
+unavailable in this web build and report that limitation explicitly.
+
+Installation verifies the reviewed compiled files and current patch inputs,
+preserves the original bundle's notices, and records the source-build changes
+in `LIBERTY-MODIFICATIONS.json`. Deep runtime diagnostics check the build lock
+and installed file hashes. The optional local bundle-image build argument may
+reuse already-built assets, but does not bypass these checks. The portal source
+offer contains the patch and build recipe as well as the upstream source URL.
 
 Liberty's portal, isolated
 hosting, startup handling, export bridge and lightweight text mode are separate
@@ -100,12 +151,40 @@ pesos e dados opcionais precisam de análise separada.
 
 As marcas ArtCraft **não são código aberto**. Versões modificadas ou derivadas
 precisam removê-las ou obter autorização. O Liberty não deve ser apresentado
-como produto oficial ou endossado pelo upstream. Os bundles JS/WASM fixados
-permanecem inalterados; integração, interface do portal e modo leve são código
-separado. O HTML servido recebe o adaptador de integração: **não há autorização
-de marca confirmada para esse contexto modificado**. Hashes inalterados dos
-binários não resolvem essa questão. Antes de publicar uma integração modificada
-com marcas, obtenha autorização ou prepare um build sem essas marcas.
+como produto oficial ou endossado pelo upstream. O instalador confere primeiro
+os arquivos originais. O inventário `branding.lock.json` fixa sete substituições
+gráficas em FilmCraft, PdfCraft, EffectCraft e DesignCraft, com arte própria,
+commits, posições e hashes de entrada/saída. O inventário cobre doze rótulos
+completos de identidade do produto/comunidade, preservando atribuição textual.
+Nove binários instalados recebem preparação apenas de dados; os dois rótulos
+do FigCraft são alterados no seu build de fonte. DeckCraft, PhotoCraft e
+LightCraft constam em inventário revisado de binários não modificados.
+
+A preparação de dados altera somente segmentos WASM, preservando tamanho e
+endereços; essa etapa não recompila Rust nem modifica instruções executáveis.
+Licenças, copyrights, atribuições textuais e ícones dos aplicativos com licenças
+próprias permanecem. Uma divergência de hash, versão, contagem ou limites impede
+a instalação. Referências de integridade HTML e cópias comprimidas são
+atualizadas; `LIBERTY-MODIFICATIONS.json` registra as alterações. O HTML também
+carrega o adaptador de integração. São integrações modificadas, não builds
+oficiais. Preserve os avisos originais e esses registros, e repita a revisão de
+assets e caminhos de desenho ao atualizar cada editor.
+
+O FigCraft é uma exceção explícita: seu build web original não implementa os
+serviços de abrir/salvar. O Liberty recompila o commit fixado com as alterações
+em `patches/figcraft-web/`, licenciadas MIT OU Apache-2.0, preservando os avisos
+originais. Esse build modifica código executável. O lock `figcraft-build.lock.json`
+registra fonte, toolchain/imagem Rust, wasm-bindgen, fontes, patches e arquivos
+compilados. O script confere arquivos baixados, aplica âncoras exatas, executa
+testes Rust e usa Cargo `--locked`. Os encoders continuam sendo os do programa
+original. A abertura usa o seletor existente e permanece bloqueada na demo;
+100 MiB limita bytes codificados, não toda a memória de decodificação/renderização.
+O patch habilita abrir/salvar projetos e exportações nativas, não todos os
+serviços de desktop. Seletores auxiliares de importação, bibliotecas e plugins
+continuam indisponíveis neste build web, com aviso explícito.
+Instalação e diagnóstico profundo conferem o lock e os hashes. Reusar uma imagem
+local com os arquivos compilados não dispensa essas verificações. O `/source.zip`
+inclui os patches, a receita de build e a URL do fonte original.
 
 A tabela acima identifica versão, fonte e avisos de cada editor. A revisão cobre
 essas declarações e os materiais listados, não uma auditoria exaustiva de todas

@@ -3,6 +3,7 @@ from pathlib import Path
 from fastapi import APIRouter,Depends,HTTPException,Request
 from fastapi.responses import FileResponse,HTMLResponse
 from .security import full,svc,authorize,digest,uid,now
+from .i18n import translate
 
 router=APIRouter()
 LOCK=Path(__file__).resolve().parents[1]/'upstream.lock.json'
@@ -12,7 +13,7 @@ STATIC=Path(__file__).parent/'static'
 @router.get('/api/apps')
 def catalog(request: Request,session=Depends(full)):
     root=svc(request).settings.apps_dir
-    return {'apps':[{k:v for k,v in a.items() if k not in ('url','sha256','size')} |
+    return {'apps':[{k:translate(v,request) if k in ('description','category') else v for k,v in a.items() if k not in ('url','sha256','size')} |
       {'installed':(root/a['id']/'index.html').is_file(),'launch_url':'/api/editors/'+a['id']} for a in APPS]}
 
 @router.post('/api/editors/{app_id}')
@@ -56,7 +57,7 @@ def runtime(token: str,asset: str,request: Request):
     service=svc(request);ticket=valid_ticket(service,token)
     if asset.startswith('__liberty/'):
         name=asset.removeprefix('__liberty/')
-        if name not in ('bridge.mjs','editor-host.mjs','editor-storage.mjs','editor-runtime.mjs','light-editor.mjs','light-editor.css'):raise HTTPException(404,'Adaptador não encontrado.')
+        if name not in ('bridge.mjs','editor-host.mjs','editor-storage.mjs','editor-runtime.mjs','light-editor.mjs','light-editor.css','i18n.mjs','translations.mjs','canvas-density.mjs'):raise HTTPException(404,'Adaptador não encontrado.')
         return FileResponse(STATIC/name,media_type='text/css' if name.endswith('.css') else 'text/javascript')
     config={'portalOrigin':service.settings.origin,'nonce':ticket['nonce'],'maxBytes':service.settings.max_upload,'appId':ticket['app_id'],
             'identity':hashlib.sha256(('editor:'+ticket['user_id']).encode()).hexdigest()}
@@ -71,7 +72,7 @@ def serve_bundle(service,app_id,asset,request,injection):
     if not path.is_relative_to(root) or not path.is_file() or any(p.startswith('.') for p in Path(asset).parts):
         raise HTTPException(404,'Arquivo do aplicativo não encontrado.')
     if asset=='index.html':
-        # Original WASM/assets remain untouched. The served HTML adds only the Liberty adapter.
+        # Installation verifies and prepares editor assets; serving adds the adapter.
         html=path.read_text()
         html=re.sub(r'(<script\b[^>]*?\btype\s*=\s*)([\"\'])module\2',lambda m:m.group(1)+m.group(2)+'application/x-liberty-module'+m.group(2),html,flags=re.I)
         html=html.replace('<head>','<head>'+injection,1) if '<head>' in html else injection+html

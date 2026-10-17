@@ -3,6 +3,11 @@
 import argparse, concurrent.futures, gzip, hashlib, json, os, shutil, stat, tempfile, time, urllib.request, zipfile
 from pathlib import Path, PurePosixPath
 
+if __package__:
+    from .brand_apps import ROOT, apply_branding
+else:
+    from brand_apps import ROOT, apply_branding
+
 
 def verify_archive(path, expected):
     with Path(path).open('rb') as f: actual=hashlib.file_digest(f,'sha256').hexdigest()
@@ -40,7 +45,7 @@ def extract_bundle(archive, destination):
     return destination
 
 
-def install(app, output, cache=None, precompress=True):
+def install(app, output, cache=None, precompress=True, branding_lock=ROOT/'branding.lock.json'):
     output=Path(output);output.mkdir(parents=True,exist_ok=True)
     with tempfile.TemporaryDirectory(prefix='fetch-'+app['id']+'-',dir=output) as tmp:
         tmp=Path(tmp);archive=tmp/'bundle.zip'
@@ -65,6 +70,7 @@ def install(app, output, cache=None, precompress=True):
         stage=extract_bundle(archive,tmp/'extracted')
         if not list(stage.glob('*.wasm')) or not list(stage.glob('*.js')):
             raise ValueError('Pacote web sem WASM/JavaScript: '+app['id'])
+        branding=apply_branding(app,stage,branding_lock)
         files={}
         for path in stage.rglob('*'):
             if not path.is_file(): continue
@@ -72,7 +78,7 @@ def install(app, output, cache=None, precompress=True):
             if precompress and path.suffix in ('.wasm','.js') and not path.with_name(path.name+'.gz').exists():
                 with path.open('rb') as r,path.with_name(path.name+'.gz').open('wb') as w:
                     with gzip.GzipFile(fileobj=w,mode='wb',compresslevel=6,mtime=0) as g: shutil.copyfileobj(r,g,1024*1024)
-        (stage/'installed.json').write_text(json.dumps({'id':app['id'],'version':app['version'],'sha256':app['sha256'],'files':files},indent=2))
+        (stage/'installed.json').write_text(json.dumps({'id':app['id'],'version':app['version'],'sha256':app['sha256'],'files':files,'branding':branding},indent=2))
         target=output/app['id']
         if target.exists(): shutil.rmtree(target)
         stage.rename(target)

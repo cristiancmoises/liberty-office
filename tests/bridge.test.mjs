@@ -15,7 +15,7 @@ test('writable handles typed writes, seek, truncate and bounded output',async()=
  assert.equal(saved,'aZ');
  await assert.rejects(()=>writer.write('x'),/closed/);
  const limited=createWritable(async()=>{},3);
- await assert.rejects(()=>limited.write('1234'),/limite/);
+ await assert.rejects(()=>limited.write('1234'),/limit/);
 });
 test('failed cloud writes reject without claiming success',async()=>{
  const writer=createWritable(async()=>{throw Error('quota')},100);

@@ -3,6 +3,7 @@ import hashlib,json,sqlite3,shutil
 from contextlib import closing
 from pathlib import Path
 from cryptography.fernet import Fernet
+from scripts.install_figcraft_web import source_build_matches
 
 def inspect(settings,deep=False):
     checks=[]
@@ -26,7 +27,10 @@ def inspect(settings,deep=False):
         directory=settings.apps_dir/app['id'];ok=False
         try:
             meta=json.loads((directory/'installed.json').read_text())
-            ok=meta['sha256']==app['sha256'] and meta['version']==app['version'] and (directory/'index.html').is_file()
+            if app['id']=='figcraft':
+                ok=source_build_matches(meta,Path(__file__).resolve().parents[1]/'figcraft-build.lock.json')
+            else:ok=meta['sha256']==app['sha256'] and meta['version']==app['version']
+            ok=ok and (directory/'index.html').is_file()
             if deep:
                 for name,expected in meta['files'].items():
                     file=(directory/name).resolve()
@@ -34,6 +38,6 @@ def inspect(settings,deep=False):
                     with file.open('rb') as stream:
                         if hashlib.file_digest(stream,'sha256').hexdigest()!=expected:ok=False;break
         except (OSError,ValueError,KeyError):ok=False
-        add('app:'+app['id'],ok,'Pinned release '+app['version']+(' and file digests' if deep else ''))
+        add('app:'+app['id'],ok,('Pinned source build ' if app['id']=='figcraft' else 'Pinned release ')+app['version']+(' and file digests' if deep else ''))
     return {'ok':all(x['ok'] for x in checks),'checks':checks,'production_approval':False,
             'remaining_acceptance':['Docker build/run/persistence on host','Graphical editor and import/export tests','HTTPS and backup drill on target deployment']}

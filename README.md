@@ -1,6 +1,6 @@
 # Liberty Office
 
-Liberty Office is a self-hosted web portal for 13 Artcraft editors, a private file drive, account administration, and mandatory TOTP multi-factor authentication. The interface is in Portuguese. [Documentação em português](README.pt-BR.md).
+Liberty Office is a self-hosted web portal with 13 integrated editors, a private file drive, account administration, and mandatory TOTP multi-factor authentication. English is the default interface and documentation language; Brazilian Portuguese is available in the language selector. [Documentação em português](README.pt-BR.md).
 
 Visit [office.securityops.co](https://office.securityops.co) or [try the demo](https://office.securityops.co/demo). The [Brazilian domain](https://office.securityops.com.br) redirects to the primary origin.
 
@@ -12,7 +12,9 @@ The public demo has a permanent demo notice, disables uploads and runs editors o
 
 The lightweight text mode works without WebGL and supports basic writing and formatting. It does not provide full DOCX fidelity. Full graphical editors require working WebGL2 or WebGPU support in the browser. Startup errors are displayed explicitly, with a compatible option when one exists.
 
-<details><summary>Text editing and small-screen layout</summary>
+<details><summary>Native editing and small-screen layout</summary>
+
+![Native WordCraft editor](docs/screenshots/liberty-word-native.png)
 
 ![Liberty lightweight text editor](docs/screenshots/liberty-word-lite.png)
 
@@ -22,7 +24,9 @@ The lightweight text mode works without WebGL and supports basic writing and for
 
 ## Run it yourself
 
-Linux with Docker Engine and Compose v2 is required. Copy `.env.example` to `.env`, set distinct HTTPS `PUBLIC_ORIGIN` and `EDITOR_ORIGIN` values when publishing, then run `docker compose up -d --build`. The first build downloads pinned upstream editor archives and checks their sizes and SHA-256 hashes. The portal listens on port 8097 and the editor origin on port 8098; both bind to loopback by default. Place an HTTPS reverse proxy in front of them. See [operations in English](docs/OPERATIONS.en.md) or [Portuguese](docs/OPERATIONS.md) for proxy settings, backup, restore, and upgrades.
+Linux with Docker Engine and Compose v2 is required. Copy `.env.example` to `.env`, set three distinct HTTPS origins (`PUBLIC_ORIGIN`, `EDITOR_ORIGIN`, `DEMO_EDITOR_ORIGIN`), then run `docker compose up -d --build`. The first build downloads pinned upstream editor archives and checks their sizes and SHA-256 hashes. The portal, private editors and demo editors use host ports 8097, 8098 and 8099, all bound to loopback by default. Place an HTTPS reverse proxy in front of them. See [operations in English](docs/OPERATIONS.md) or [Portuguese](docs/OPERATIONS.pt-BR.md) for proxy settings, backup, restore, and upgrades.
+
+FigCraft is rebuilt from its pinned Rust source with browser file-I/O fixes; the other editors use verified upstream bundles with the documented branding preparation. Source builds currently require Linux x86-64 and additional time and disk space for Rust dependencies, but no server GPU. Its original project/image encoders and licenses are preserved; see [the source-build details](docs/LICENSING.md#figcraft-browser-file-io).
 
 The first administrator is created with a one-time bootstrap token stored in the persistent volume. Run `./libertyctl token` on the host to retrieve it privately. There is no default password or public registration. Complete TOTP enrollment and save the recovery codes before using files or editors.
 
