@@ -137,6 +137,9 @@ def restore_backup(archive_path,destination,*,preserve_sessions=False):
                 if not preserve_sessions:
                     c.execute('DELETE FROM sessions');c.execute('DELETE FROM reservations')
                 c.commit()
+            # Empty volumes have no blob members, but offline validation still
+            # requires the private directory before an application starts.
+            (stage/'blobs').mkdir(mode=0o700,exist_ok=True)
             for item in stage.iterdir():item.rename(destination/item.name)
     return manifest
 
