@@ -27,6 +27,17 @@ their parsers have qualified resource limits. See the [acceptance matrix](docs/A
 
 The lightweight text mode works without WebGL and supports basic writing and formatting. It does not provide full DOCX fidelity. Full graphical editors require working WebGL2 or WebGPU support in the browser. Startup errors are displayed explicitly, with a compatible option when one exists.
 
+WordCraft opens its original full editor when graphics are available. If they
+are unavailable, Liberty shows troubleshooting and **Try full editor** instead
+of silently replacing WordCraft. **Open basic text editor** is a separate,
+explicit choice for TXT/Markdown/HTML, not a DOCX editor. Other apps are never
+replaced with this text editor. In Chrome/Chromium, check graphics acceleration
+in Settings → System and inspect `chrome://gpu`. Two browsers can share the
+same broken system driver; changing browsers alone may not solve that issue.
+Liberty cannot enable browser-blocked graphics or repair the system driver.
+Do not disable the browser sandbox or security protections. Loading/network
+errors are reported separately from recognized graphics failures.
+
 In lightweight mode, TXT and Markdown are plain text: visual formatting is not
 exported. Use HTML to export basic formatting. Imported HTML is converted to
 inert text while preserving line and block boundaries; it is never executed.

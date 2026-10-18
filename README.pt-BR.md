@@ -23,6 +23,17 @@ importações locais continuam bloqueadas até qualificar limites dos parsers.
 Veja a [matriz de aceitação](docs/ACCEPTANCE.pt-BR.md#candidata-da-demo-temporária).
 O modo leve permite escrever sem WebGL; não oferece a fidelidade DOCX completa.
 
+Com suporte gráfico disponível, o WordCraft abre seu editor completo original.
+Se faltar suporte, o Liberty mostra orientações e **Tentar editor completo**,
+sem substituir o aplicativo silenciosamente. **Abrir editor básico de texto**
+é uma escolha explícita para TXT/Markdown/HTML, não um editor DOCX. Os outros
+aplicativos nunca são substituídos por esse editor de texto. No Chrome/Chromium,
+confira a aceleração gráfica em Configurações → Sistema e o diagnóstico em
+`chrome://gpu`. Dois navegadores podem compartilhar o mesmo driver com defeito;
+trocar de navegador pode não resolver. O site não pode habilitar suporte gráfico
+bloqueado nem reparar o driver. Não desative o sandbox ou a segurança do navegador.
+Erros de carregamento/rede são separados de falhas gráficas reconhecidas.
+
 No modo leve, TXT e Markdown são texto puro e não preservam a formatação visual.
 Use HTML para exportar formatação básica. HTML importado vira texto inerte,
 preservando quebras e limites de blocos; seu conteúdo nunca é executado.

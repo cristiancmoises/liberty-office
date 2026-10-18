@@ -39,6 +39,34 @@ test('module errors and a stalled startup produce visible status',()=>{
  assert.equal(stalled.states.at(-1).phase,'error');assert.match(stalled.states.at(-1).text,/taking longer/);
 });
 
+test('a missing native module is not mislabeled as a graphics failure',()=>{
+ const b=browser();b.loading.textContent='Failed to fetch dynamically imported module';b.mutate();
+ assert.equal(b.states.at(-1).phase,'error');
+ assert.match(b.states.at(-1).text,/connection/i);
+ assert.doesNotMatch(b.states.at(-1).text,/WebGL|GPU/);
+});
+
+test('a module rejection is not mislabeled as a graphics failure',()=>{
+ const b=browser();b.listeners.get('unhandledrejection')({reason:TypeError('Failed to fetch dynamically imported module')});
+ assert.equal(b.states.at(-1).phase,'error');
+ assert.doesNotMatch(b.states.at(-1).text,/WebGL|GPU/);
+});
+
+test('a failed runner cannot later be announced ready by a DOM mutation',()=>{
+ const b=browser();b.listeners.get('error')({message:'WASM blocked'});
+ b.loading.isConnected=false;b.mutate();
+ assert.equal(b.states.at(-1).phase,'error');
+});
+
+test('graphics context loss after initialization reports an error instead of staying ready',()=>{
+ const b=browser();b.loading.isConnected=false;b.mutate();
+ assert.equal(b.states.at(-1).phase,'ready');
+ assert.equal(typeof b.listeners.get('webglcontextlost'),'function');
+ b.listeners.get('webglcontextlost')();
+ assert.equal(b.states.at(-1).phase,'error');
+ assert.match(b.states.at(-1).text,/graphics context was lost/);
+});
+
 test('light mode leaves deferred native preloads inert',()=>{
  const {document}=parseHTML('<html><head><link data-liberty-rel="preload" data-liberty-href="./word.wasm" as="fetch" integrity="sha384-wasm"><link data-liberty-rel="modulepreload" data-liberty-href="./word.js" integrity="sha384-module"></head><body></body></html>');
  const restore=runtime.deferNativePreloads(document);

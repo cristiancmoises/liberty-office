@@ -155,5 +155,16 @@ export const english={
  'Armazenamento utilizado e reservado':'Used and reserved storage','Reservado: {0} · disponível: {1}':'Reserved: {0} · available: {1}',
  'Versões e lixeira também ocupam sua cota.':'Versions and trash also count toward your quota.',
  'Cota cheia. Você ainda pode baixar ou excluir arquivos.':'Storage is full. You can still download or delete files.',
- 'Cota em GiB':'Quota in GiB','Cota em GiB de {0}':'Quota for {0} in GiB'
+ 'Cota em GiB':'Quota in GiB','Cota em GiB de {0}':'Quota for {0} in GiB',
+ 'Falha ao carregar os arquivos do editor. Confira a conexão e tente abrir o aplicativo novamente. Seus arquivos continuam no Drive.':'Editor files could not load. Check the connection and reopen the app to retry. Your files remain in Drive.',
+ 'O editor demorou mais que o esperado para iniciar. Confira a conexão e tente abrir o aplicativo novamente.':'The editor is taking longer than expected to start. Check the connection and reopen the app to retry.',
+ 'O editor completo precisa de acesso gráfico':'The full editor needs graphics access',
+ 'WebGL2 e um adaptador WebGPU não estão disponíveis neste navegador. O aplicativo completo não foi substituído por outro editor.':'WebGL2 and a WebGPU adapter are unavailable in this browser. The full app has not been replaced by a different editor.',
+ 'No Chrome ou Chromium, confira a aceleração gráfica em Configurações → Sistema e o diagnóstico em chrome://gpu.':'In Chrome or Chromium, check graphics acceleration in Settings → System and diagnostics at chrome://gpu.',
+ 'Se a aceleração estiver ativada, verifique o driver de vídeo e reinicie o navegador após corrigir o problema. Outros navegadores no mesmo computador podem usar o mesmo driver.':'If acceleration is enabled, check the graphics driver and restart the browser after fixing it. Other browsers on the same computer may use the same driver.',
+ 'Um site não pode habilitar WebGL bloqueado pelo navegador ou reparar um driver. Não é necessário desativar o sandbox nem a segurança do navegador.':'A website cannot enable browser-blocked WebGL or repair a driver. You do not need to disable the browser sandbox or security protections.',
+ 'Seus arquivos originais não foram alterados. Feche este editor para voltar ao Drive ou concluir e limpar a demonstração.':'Your original files have not been changed. Close this editor to return to Drive or finish and clear the demo.',
+ 'Alternativa opcional: o editor básico de texto funciona sem GPU, mas abre e salva apenas TXT, Markdown e HTML. Ele não é o WordCraft completo e não abre DOCX.':'Optional alternative: the basic text editor works without a GPU but only opens and saves TXT, Markdown, and HTML. It is not full WordCraft and does not open DOCX.',
+ 'Tentar editor completo':'Try full editor','Abrir editor básico de texto':'Open basic text editor',
+ 'O contexto gráfico do editor foi perdido. Os arquivos já exportados não foram alterados. Reabra o aplicativo após recuperar o suporte gráfico.':'The editor graphics context was lost. Files already exported have not been changed. Reopen the app after restoring graphics support.'
 };

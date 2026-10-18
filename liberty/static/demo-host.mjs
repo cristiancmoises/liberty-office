@@ -2,7 +2,7 @@ import {msg,text,installLanguage,setLanguage} from './i18n.mjs';
 import {watchEditorRuntime,deferNativePreloads} from './editor-runtime.mjs';
 import {disableDemoImports,installDemoImports} from './demo-guard.mjs';
 import {createDemoBudget,demoPolicy} from './demo-policy.mjs';
-import {graphicsAvailable,mountLightEditor} from './light-editor.mjs';
+import {selectEditorMode,mountLightEditor} from './light-editor.mjs';
 import {installCanvasDensity} from './canvas-density.mjs';
 import {installDemoExports} from './demo-download.mjs';
 import {acquireDemoEngine} from './demo-session.mjs';
@@ -25,7 +25,8 @@ async function start(){
  if(unloaded)return;
  // Only the portal may initiate local downloads. No account or Drive API exists here.
  downloads=installDemoExports(window,{portalOrigin:config.portalOrigin,onState:state});
- const useLight=config.appId==='wordcraft'&&(new URLSearchParams(location.search).has('light')||!await graphicsAvailable(window));
+ await selectEditorMode(window,{appId:config.appId,light:new URLSearchParams(location.search).has('light'),onState:state,onSelect:mode=>{
+ const useLight=mode==='light';
  if(phase==='stopped'||unloaded)return;
  window.parent.postMessage({type:'liberty.demo.policy',nonce,light:useLight},config.portalOrigin);
  const budget=createDemoBudget({onChange:usage=>window.parent.postMessage({type:'liberty.demo.budget',nonce,...usage},config.portalOrigin)});
@@ -46,6 +47,7 @@ async function start(){
   const script=document.createElement('script');for(const attr of inert.attributes)if(attr.name!=='type')script.setAttribute(attr.name,attr.value);
   script.type='module';script.textContent=inert.textContent;inert.replaceWith(script);
  }
+ }});
 }
 async function receive(event){
  if(event.source!==window.parent||event.origin!==config.portalOrigin)return;

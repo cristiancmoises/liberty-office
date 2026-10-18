@@ -4,6 +4,38 @@ export async function graphicsAvailable(win){
  // WebGPU can be exposed even when every hardware adapter is unavailable.
  try{return !!(await win.navigator.gpu?.requestAdapter())}catch{return false}
 }
+// A basic text editor is not WordCraft. Keep that choice explicit when the
+// browser cannot provide graphics, and leave the original full runner available.
+export async function selectEditorMode(win,{appId,light=false,onState,onSelect}){
+ if(appId==='wordcraft'&&light){onSelect('light');return}
+ if(await graphicsAvailable(win)){onSelect('full');return}
+ const doc=win.document,previous=[...doc.body.childNodes],previousClass=doc.body.className;
+ const stylesheet=doc.createElement('link');stylesheet.rel='stylesheet';stylesheet.href='./__liberty/light-editor.css';doc.head.append(stylesheet);
+ const make=(tag,message)=>{const node=doc.createElement(tag);if(message)bindText(node,message);return node};
+ const panel=make('main');panel.className='editor-compatibility';
+ const title=msg('O editor completo precisa de acesso gráfico');
+ panel.append(make('h1',title),make('p',msg('WebGL2 e um adaptador WebGPU não estão disponíveis neste navegador. O aplicativo completo não foi substituído por outro editor.')));
+ const steps=make('ol');
+ for(const message of [
+  msg('No Chrome ou Chromium, confira a aceleração gráfica em Configurações → Sistema e o diagnóstico em chrome://gpu.'),
+  msg('Se a aceleração estiver ativada, verifique o driver de vídeo e reinicie o navegador após corrigir o problema. Outros navegadores no mesmo computador podem usar o mesmo driver.'),
+  msg('Um site não pode habilitar WebGL bloqueado pelo navegador ou reparar um driver. Não é necessário desativar o sandbox nem a segurança do navegador.'),
+ ])steps.append(make('li',message));
+ panel.append(steps,make('p',msg('Seus arquivos originais não foram alterados. Feche este editor para voltar ao Drive ou concluir e limpar a demonstração.')));
+ const actions=make('div');actions.className='compatibility-actions';let selected=false;
+ const action=(message,mode)=>{
+  const button=make('button',message);button.type='button';button.addEventListener('click',()=>{
+   if(selected)return;selected=true;doc.body.replaceChildren(...previous);doc.body.className=previousClass;stylesheet.remove();onSelect(mode);
+  });actions.append(button);
+ };
+ action(msg('Tentar editor completo'),'full');
+ if(appId==='wordcraft'){
+  panel.append(make('p',msg('Alternativa opcional: o editor básico de texto funciona sem GPU, mas abre e salva apenas TXT, Markdown e HTML. Ele não é o WordCraft completo e não abre DOCX.')));
+  action(msg('Abrir editor básico de texto'),'light');
+ }
+ panel.append(actions);doc.body.replaceChildren(panel);doc.body.className='editor-compatibility-page';
+ doc.documentElement.dataset.libertyState='blocked';onState(text(title));
+}
 export function lightFormat(name){
  if(/\.(txt|md)$/i.test(name))return 'text';
  if(/\.html?$/i.test(name))return 'html';

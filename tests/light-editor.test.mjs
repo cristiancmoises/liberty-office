@@ -1,17 +1,33 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {parseHTML} from 'linkedom';
-import {graphicsAvailable,lightFormat,lightHTMLText,mountLightEditor} from '../liberty/static/light-editor.mjs';
-test('unsupported graphics choose the lightweight editor without changing browser settings',async()=>{
+import {graphicsAvailable,selectEditorMode,lightFormat,lightHTMLText,mountLightEditor} from '../liberty/static/light-editor.mjs';
+test('graphics detection releases its probe without changing browser settings',async()=>{
  assert.equal(await graphicsAvailable({navigator:{},document:{createElement:()=>({getContext:()=>null})}}),false);
  let released=false;
  assert.equal(await graphicsAvailable({navigator:{},document:{createElement:()=>({getContext:()=>({getExtension:()=>({loseContext(){released=true}})})})}}),true);
  assert.equal(released,true);
 });
-test('an exposed WebGPU API with no usable adapter still falls back',async()=>{
+test('an exposed WebGPU API with no usable adapter is unavailable',async()=>{
  const win={navigator:{gpu:{requestAdapter:async()=>null}},document:{createElement:()=>({getContext:()=>null})}};
  assert.equal(await graphicsAvailable(win),false);
  win.navigator.gpu.requestAdapter=async()=>({});assert.equal(await graphicsAvailable(win),true);
+});
+test('unavailable graphics waits for an explicit basic-editor selection',async()=>{
+ const {window}=parseHTML('<html><head></head><body><canvas></canvas></body></html>'),selected=[];
+ await selectEditorMode(window,{appId:'wordcraft',onState(){},onSelect:mode=>selected.push(mode)});
+ assert.deepEqual(selected,[]);assert.equal(window.document.querySelector('.light-document'),null);
+ const button=[...window.document.querySelectorAll('button')].find(button=>button.textContent==='Open basic text editor');
+ button.click();button.click();assert.deepEqual(selected,['light']);
+});
+test('retry restores the original native canvas and does not create a substitute for other apps',async()=>{
+ const {window}=parseHTML('<html><head></head><body class="native"><canvas id="native"></canvas></body></html>'),selected=[];
+ const original=window.document.querySelector('canvas');
+ await selectEditorMode(window,{appId:'gridcraft',onState(){},onSelect:mode=>selected.push(mode)});
+ assert.equal(window.document.querySelectorAll('button').length,1);
+ window.document.querySelector('button').click();
+ assert.deepEqual(selected,['full']);assert.equal(window.document.querySelector('canvas'),original);
+ assert.equal(window.document.body.className,'native');assert.equal(window.document.querySelector('link'),null);
 });
 test('light mode supports text and HTML, never silently rewrites Office documents',()=>{
  for(const name of ['notes.txt','NOTES.MD'])assert.equal(lightFormat(name),'text');

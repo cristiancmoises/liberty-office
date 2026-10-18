@@ -2,7 +2,7 @@ import {msg,text,installLanguage,setLanguage} from './i18n.mjs';;
 import {attachBridge} from './bridge.mjs';
 import {clearEditorIdentity} from './editor-storage.mjs';
 import {watchEditorRuntime,deferNativePreloads} from './editor-runtime.mjs';
-import {graphicsAvailable,mountLightEditor} from './light-editor.mjs';
+import {selectEditorMode,mountLightEditor} from './light-editor.mjs';
 import {installCanvasDensity} from './canvas-density.mjs';
 const config=JSON.parse(document.getElementById('__liberty-config').textContent);
 const restoreNativePreloads=deferNativePreloads(document);
@@ -45,7 +45,8 @@ async function start(){
   }
   window.addEventListener('message',connect);window.parent.postMessage({type:'liberty.ready',nonce:config.nonce,documentId},config.portalOrigin);
  });
- if(config.appId==='wordcraft'&&(new URLSearchParams(location.search).has('light')||!await graphicsAvailable(window))){
+ await selectEditorMode(window,{appId:config.appId,light:new URLSearchParams(location.search).has('light'),onState:state,onSelect:mode=>{
+ if(mode==='light'){
   mountLightEditor(window,{onSave:exportBlob,onState:state});return;
  }
  document.documentElement.dataset.libertyState='loading';
@@ -56,5 +57,6 @@ async function start(){
   const script=document.createElement('script');for(const attr of inert.attributes)if(attr.name!=='type')script.setAttribute(attr.name,attr.value);
   script.type='module';script.textContent=inert.textContent;inert.replaceWith(script);
  }
+ }});
 }
 start().catch(error=>{const node=document.createElement('div');node.textContent=error.message;node.style.cssText='position:fixed;inset:0;background:#101820;color:#d9f3f5;padding:32px;font:16px system-ui;z-index:99999';document.body.append(node);state(error.message)});
