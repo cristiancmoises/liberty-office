@@ -39,10 +39,15 @@ def test_totp_replay_recovery_enrollment_and_invite_single_use(env):
     item=invite(c)
     with closing(TestClient(app,base_url=ORIGIN,headers={'Origin':ORIGIN})) as other:
         secret,codes=activate(other,item['token'])
+        with app.state.svc.db.connect() as db:
+            enrolled_step=db.execute('SELECT totp_step FROM users WHERE id=?',(item['user']['id'],)).fetchone()[0]
+        # Replay the enrolled factor, not .now(), which may already be a new
+        # valid factor if password verification crosses a 30-second boundary.
+        enrolled_code=pyotp.TOTP(secret).at(enrolled_step*30)
         assert other.post('/api/auth/activate',json={'token':item['token'],'password':PASSWORD}).status_code==401
         other.post('/api/auth/logout',headers=csrf(other))
         assert other.post('/api/auth/login',json={'username':'alice','password':PASSWORD}).json()['state']=='mfa'
-        assert other.post('/api/auth/mfa/verify',json={'code':pyotp.TOTP(secret).now()},headers=csrf(other)).status_code==401
+        assert other.post('/api/auth/mfa/verify',json={'code':enrolled_code},headers=csrf(other)).status_code==401
         assert other.post('/api/auth/mfa/verify',json={'code':codes[0]},headers=csrf(other)).json()['state']=='enroll'
         assert other.get('/api/files').status_code==403
         setup=other.get('/api/auth/mfa/setup').json()
