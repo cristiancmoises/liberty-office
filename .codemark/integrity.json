@@ -3,14 +3,14 @@
     "sha256",
     "sha512"
   ],
-  "created_at": "2026-10-18T19:21:00Z",
+  "created_at": "2026-10-18T23:48:48Z",
   "excluded": [
     {
       "path": ".codemark",
       "reason": "Metadados do CodeMark"
     }
   ],
-  "file_count": 565,
+  "file_count": 566,
   "files": {
     ".dockerignore": {
       "mode": 420,
@@ -50,9 +50,9 @@
     },
     "MANIFEST.sha256": {
       "mode": 420,
-      "sha256": "733603f40c03e2dfebe982557567e3a4cae9aec6194266f2641b7268fab07b38",
-      "sha512": "4ec0b21ca1e7a713c8fd64e4e4bd72cce3a227cf3138a42c48dd47285e2a0c07eaa94080fd0e913697c9491cf2650248ad0e495640b4a8b58ae60920744baa3b",
-      "size": 68650
+      "sha256": "b1670915fb510d294affa7b2b7d088d4e13d3ff13845fd5c343a4e9ef4ecebd8",
+      "sha512": "31fd9fda8181d4ae05263d7240687c9cec2dfcf55a0326baf4e9f7281ba73686303cd9ffb980d662b35077d6e61ada8467b40a351b681d7dc0fcf7eaf3d05be2",
+      "size": 68762
     },
     "NOTICE": {
       "mode": 420,
@@ -62,15 +62,15 @@
     },
     "README.md": {
       "mode": 420,
-      "sha256": "6e90fb88d709c560467c2a94c4de99cd61816c01f55bf6d5f3df66b984108212",
-      "sha512": "9ea838efe01e0d49aafe424d3dc2784328d932fdcceaa6da3d2868da7e68af2ec87ccb4d81f7cb3992b47f36542c7830a6112f30a09ac7d37f9a01bac5570d1f",
-      "size": 7401
+      "sha256": "c5704427a861d288938f2217613c0f74166fc3735b570917810e78d031155779",
+      "sha512": "9891cf1e00b099a2e3ddc159e400c350c223c0e7f13d061ad1b2aad820d6df13b8ceee2bbe0c31a7945ada9a5d2d27e5c7671a839331be6c55222c07d8b905ff",
+      "size": 8166
     },
     "README.pt-BR.md": {
       "mode": 420,
-      "sha256": "afc43313a3be39484db57d48b478d703d706cfe4b0dd093c077482a6c5342169",
-      "sha512": "c6b0a949a2ac683ef56e522100e36b08d96490801aaa76974fb360c117119d079b08faa9bc9b10446edb914f6610d8d5596b958fd221b457c32bd67c22afbc85",
-      "size": 16073
+      "sha256": "97ccfb10a38279f0078ba2094f777f63a412174ca9b133f6f4ae232e34a6cfc1",
+      "sha512": "dfb41d0915dbfc0cff30b8d705214431bca7d93fbac9012c6c45051425f32538a680c1e5bb64c5d21e6af534283d176612b14defff32249cab7bc90345991fa3",
+      "size": 16887
     },
     "assets/branding/geometry.json": {
       "mode": 420,
@@ -380,9 +380,9 @@
     },
     "liberty/static/demo-host.mjs": {
       "mode": 420,
-      "sha256": "7c686059767dc5b6b060207abae9e762863489c1bc147d60fd61c06d10045f36",
-      "sha512": "9951428da17a2e8f4349281738a45ac3b0d0625f00de9c386c2b004153a1f797658b7dbe565256656444ca9e1d994a9dc2836d128d96b5e32efa5042f5df8a98",
-      "size": 4923
+      "sha256": "841dfdf15252f6f8e066644ed6af491c42c685bbfda50d0a470907efc0319422",
+      "sha512": "b07497c321c27ab47ae6799c42384ecc22ed473aaa2a3f7ca797e3a23b351d0eea3e318b9152846fceedcbe5fe27ee10be7abfea45d1d6f9b4d897c2667af436",
+      "size": 4967
     },
     "liberty/static/demo-policy.mjs": {
       "mode": 420,
@@ -422,9 +422,9 @@
     },
     "liberty/static/editor-host.mjs": {
       "mode": 420,
-      "sha256": "b8868dfb0f09e4df47c53b4b99879504e9be0e15a2c916c4e7e896c29656767b",
-      "sha512": "38ade2b9973d51b0390263cc8ec53abb5789a7bcf894ea7e8d80b337a4b2828244f296c56b198faf9c43aa70f7a431632eefb7a52eb4194ccac13f7d4a360e19",
-      "size": 4430
+      "sha256": "db8ab1f5db532f2587ec0ad9e97772e424c1526844969b37a0e4d705a61e2936",
+      "sha512": "2dc6ef3ccfd4433d6cff2382dd1cdc344d3f20159cae1e38dea1343382fe3c3118c65a55b19d1d76731d46e9d5e642911a3206b534a6d39b569636a7eff2b025",
+      "size": 4474
     },
     "liberty/static/editor-layout.css": {
       "mode": 420,
@@ -434,9 +434,9 @@
     },
     "liberty/static/editor-runtime.mjs": {
       "mode": 420,
-      "sha256": "d14faa50589b6bac018355fe0c3c4ec7ebd3f2bf123df86156c97135904e5adb",
-      "sha512": "f50efac4b2204a5e9bc0e3f6b6ad3704063a388d1dfc25f929ab8086ab24d1bc0b59504ffed7b0cf1eb50d0372f45d4d2ab017bcbfdd08b4eee78e1a9231d480",
-      "size": 3107
+      "sha256": "cccdfd25308476a666ad1175914e07eb52315ea59cf4f7fc09c21895259aa8d1",
+      "sha512": "dbdb86aa01218bf6b3e7bf6fb341e1ca126ef16738a80eac581dcc67b111bb4f673d855ef65c1c5dc5a5c3330a599cf823728665e07a559d0ca3a708e450b141",
+      "size": 3933
     },
     "liberty/static/editor-storage.mjs": {
       "mode": 420,
@@ -470,15 +470,15 @@
     },
     "liberty/static/light-editor.css": {
       "mode": 420,
-      "sha256": "25825399a30e5570c5fab37be3f4d3c562a84f5f520f790f1153b06a39414646",
-      "sha512": "8b599b10ca0c85d3b377f44cfadb3bdeb8ec06488afe7d5109232c5969c29204b178e1c62a942c87dffae6a55392b8b5a5809bd745bcd6009f45c325ecb8e0e3",
-      "size": 2260
+      "sha256": "e79e848c777da6af5d200c727e6af46782efbb5a3490708f8d0c340edea0f2df",
+      "sha512": "0c313edfb0c5bea373762e5917a59dc0974d51577658dca5d0bd163bf2af0a05c159302a7bf573d5cccd0569475077ecdee78ee0cb9dc37c0c446ad702c55463",
+      "size": 3030
     },
     "liberty/static/light-editor.mjs": {
       "mode": 420,
-      "sha256": "740c972409725002629464601e20565f831af71e05a8ef5ffcb26850f233c7b6",
-      "sha512": "9ce24a9bff497c242daa62139e09b7b600de87158a1a4cfbb41e8fd1dbc827b748304f54f36666902131ce9d8a440f91159a4422b7911731d6ecd95637f8204d",
-      "size": 7597
+      "sha256": "02f8b4ad33474f113e70e92a04797d8d2f8aff790b715d7f59b8791145c8910c",
+      "sha512": "1720c5bab31d1bf93d806c855b1e6c54e9e3d8a00ed79a6714276e950f5a0d391715cd0297c11c685402e32606a20b3331601ee52f4084707bfa57cea2044f2a",
+      "size": 10252
     },
     "liberty/static/maintenance.css": {
       "mode": 420,
@@ -506,9 +506,9 @@
     },
     "liberty/static/translations.mjs": {
       "mode": 420,
-      "sha256": "d07ebc2a38868caa682520c1d621ec2233e04e714c4b0a14721334604446de1c",
-      "sha512": "373c4f5bc3f308ed414852887a97949bc4d066f9609d5ef766ceb56d7ab638868751891af51918b61c62e7508fc537b25169a19eb3f881e5397963b123954ff9",
-      "size": 40170
+      "sha256": "228060025dc2116329e046dbbc73764040c6d81f802ccc9b9a2509ea4ff63520",
+      "sha512": "d40c56d7781657632fe9959a2f5aa0296a4bd70990212419d4988b34fdf2a7c54e0fa232774cd91ea394a3a522d8d2b71a4efcd06559e6ca2aa8773a45ab7537",
+      "size": 42810
     },
     "liberty/static/view-controls.mjs": {
       "mode": 420,
@@ -3036,6 +3036,12 @@
       "sha512": "8c1ad0b7f564bacbf67227be357a420773f95f4c2f960ed332661ef47129468d9892a173adae6b1fbfd7f8265ab496aafd3ac8986d345959c323ad6a17578168",
       "size": 7966
     },
+    "tests/browser/graphics-compatibility.spec.mjs": {
+      "mode": 420,
+      "sha256": "fc2b70f4fce926e0e50e34fa62aedfa399352fef46dbdf591a7de3149e5fdbca",
+      "sha512": "60a9e7f3e4b4994cc8e7a298ea003d479183a48d8a2fe69c2434fe1a4e96ca4d6143cbe7f81b6b9ef625d948ccf0db9575ed1b6d7d8c17d89cd568b4648a9a42",
+      "size": 3707
+    },
     "tests/browser/i18n.spec.mjs": {
       "mode": 420,
       "sha256": "5b2000608a3fcb1d755d7c1c5d7dcaa7de4601515aa710150fac49043c94f2d7",
@@ -3128,9 +3134,9 @@
     },
     "tests/editor-runtime.test.mjs": {
       "mode": 420,
-      "sha256": "6133c2deccefe86ddb1ec440a2d5810e64ad63da3bbca013c8a16cf8cb600307",
-      "sha512": "53f837989fcbe366abfa317586e2b7537db450447802e9b50459f87e0e2d84e94728c3a42059ec3d3a6f74b8bfaa9a99eafc1db28bd1693b85b334053cebd44e",
-      "size": 3977
+      "sha256": "c551b7b4687a2700a3f298a5ab8a4d04a136d6bc830bb2e8a8ac3a45b28563e7",
+      "sha512": "f2e27d0955b524ca822723010c4de9331101f2af57772f901269f65ce5b74b1d3b11a321f13352d0435e099cc614faac1e273bc7828cdf0fdd82d6a59e971398",
+      "size": 5286
     },
     "tests/editor-storage.test.mjs": {
       "mode": 420,
@@ -3200,9 +3206,9 @@
     },
     "tests/light-editor.test.mjs": {
       "mode": 420,
-      "sha256": "fa967ede81cf07df308273178302a9058b2faafb10e6f916f669ebb7b8e263ff",
-      "sha512": "3a5c1ff70d37bf994e45e2bca8c2c3543464d03c22176e8ed50f9fb65868a922f4c2504016f3e83470f3bde4a212127db2f31b595983e4a281b3e50643f11354",
-      "size": 4149
+      "sha256": "7f2fa1624ffad50760ccea181c027430b5f8a7f9209c78714e50286a6607fd54",
+      "sha512": "dfc028e30024d117d71cf165796996ce7d1a9581f8dd116968b52ffc49d0b020d44661d5dd9206d428965da5016e7752077fcde8f2ce73e023e217f99141fc51",
+      "size": 5457
     },
     "tests/signup-ui.test.mjs": {
       "mode": 420,
@@ -3406,5 +3412,5 @@
   "format": "secops-codemark-integrity-v1",
   "project_id": "77ee92c4-5b90-4839-bc43-05fdf32394b7",
   "tool_version": "0.4.1",
-  "total_bytes": 3790532
+  "total_bytes": 3805526
 }
