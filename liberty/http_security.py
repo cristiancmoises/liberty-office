@@ -6,10 +6,10 @@ from .i18n import translate,language
 EXEMPT={'/api/auth/login','/api/auth/bootstrap','/api/auth/activate','/api/auth/password-reset'}
 UPLOAD=re.compile(r'^/api/files(?:/[^/]+/content)?$')
 
-def decorate(response,editor,settings,demo=False):
+def decorate(response,editor,settings,demo=False,public_asset=False):
     response.headers['X-Content-Type-Options']='nosniff'
     response.headers['Referrer-Policy']='no-referrer'
-    response.headers['Cache-Control']='no-store'
+    response.headers['Cache-Control']='public, max-age=31536000, immutable' if public_asset and response.status_code in (200,206,304) else 'no-store'
     response.headers['Permissions-Policy']='camera=(), geolocation=(), payment=()'
     if demo:response.headers['Permissions-Policy']+=', clipboard-read=(), microphone=()'
     if editor:
@@ -33,9 +33,9 @@ async def handle(request,call_next,service):
     def reject(status,message):return decorate(JSONResponse({'detail':translate(message,request)},status_code=status),editor or demo,cfg,demo)
     path=request.url.path
     if not portal and not editor and not demo:return reject(400,'Host não autorizado.')
-    if demo and not (path.startswith('/demo/runtime/') or path=='/healthz'):return reject(404,'Recurso não encontrado.')
+    if demo and not (path.startswith(('/demo/runtime/','/public-assets/')) or path=='/healthz'):return reject(404,'Recurso não encontrado.')
     if not demo and path.startswith('/demo/runtime/'):return reject(404,'Abra a demonstração na origem isolada.')
-    if editor and not (path.startswith('/runtime/') or path=='/healthz'):return reject(404,'Recurso não encontrado.')
+    if editor and not (path.startswith(('/runtime/','/public-assets/')) or path=='/healthz'):return reject(404,'Recurso não encontrado.')
     if portal and path.startswith('/runtime/'):return reject(404,'Abra os editores na origem isolada.')
     if request.method not in ('GET','HEAD','OPTIONS'):
         if not portal:return reject(404,'Recurso não encontrado.')
@@ -61,7 +61,8 @@ async def handle(request,call_next,service):
             except TimeoutError:return reject(408,'Tempo de envio excedido.')
             # Starlette's cached Request replays this bounded body to FastAPI.
             request._body=b''.join(chunks)
-    response=decorate(await call_next(request),editor or demo,cfg,demo)
+    response=await call_next(request)
+    response=decorate(response,editor or demo,cfg,demo,getattr(request.state,'validated_public_asset',False))
     if path.startswith('/api/'):
         response.headers['Content-Language']=language(request)
         response.headers['Vary']='Accept-Language'

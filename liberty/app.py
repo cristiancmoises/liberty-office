@@ -21,6 +21,8 @@ from .i18n import translate
 
 def create_app(settings=None):
     settings=settings or Settings.from_env()
+    from .public_assets import load_public_generations
+    public_assets=load_public_generations(settings.public_assets_dir) if settings.public_assets_dir else None
     settings.data_dir.mkdir(mode=0o700,parents=True,exist_ok=True)
     volume=VolumeLock(settings.data_dir).acquire()
     try:
@@ -42,6 +44,7 @@ def create_app(settings=None):
             volume.release()
     app=FastAPI(title='Liberty Office',version=__version__,docs_url=None,redoc_url=None,openapi_url=None,lifespan=lifespan)
     app.state.svc=service
+    app.state.public_assets=public_assets
     @app.exception_handler(RequestValidationError)
     async def validation_error(request,exc):
         return JSONResponse({'detail':[{**{key:error[key] for key in ('loc','msg','type')},'msg':translate(error['msg'],request)} for error in exc.errors()]},status_code=422)
@@ -58,10 +61,11 @@ def create_app(settings=None):
     app.include_router(auth.router)
     app.include_router(admin.router)
     # Components are imported here to keep CLI/database operations independent of web routing.
-    from . import drive, catalog, demo
+    from . import drive, catalog, demo, assets
     app.include_router(drive.router)
     app.include_router(catalog.router)
     app.include_router(demo.router)
+    app.include_router(assets.router)
     static=Path(__file__).parent/'static'
     app.mount('/static',StaticFiles(directory=static),name='static')
 

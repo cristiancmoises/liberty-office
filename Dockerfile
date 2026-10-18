@@ -24,17 +24,20 @@ COPY branding.lock.json ./
 COPY assets/branding ./assets/branding
 COPY figcraft-build.lock.json ./
 COPY gridcraft-build.lock.json ./
+COPY public-assets.lock.json ./
+COPY liberty/__init__.py liberty/public_assets.py ./liberty/
 COPY patches/figcraft-web ./patches/figcraft-web
 COPY patches/gridcraft-web ./patches/gridcraft-web
-COPY scripts/fetch_apps.py scripts/brand_apps.py scripts/install_source_web.py scripts/build_figcraft_web.sh scripts/patch_figcraft_web.py scripts/package_figcraft_web.py scripts/build_gridcraft_web.sh scripts/patch_gridcraft_web.py scripts/package_gridcraft_web.py ./scripts/
+COPY scripts/fetch_apps.py scripts/brand_apps.py scripts/install_source_web.py scripts/build_figcraft_web.sh scripts/patch_figcraft_web.py scripts/package_figcraft_web.py scripts/build_gridcraft_web.sh scripts/patch_gridcraft_web.py scripts/package_gridcraft_web.py scripts/package_public_assets.py ./scripts/
 COPY --from=figcraft /out ./figcraft-prepared
 COPY --from=gridcraft /out ./gridcraft-prepared
 RUN python scripts/fetch_apps.py --output /opt/artcraft \
     && python scripts/install_source_web.py --bundle /build/figcraft-prepared --output /opt/artcraft --lock /build/figcraft-build.lock.json \
-    && python scripts/install_source_web.py --bundle /build/gridcraft-prepared --output /opt/artcraft --lock /build/gridcraft-build.lock.json
+    && python scripts/install_source_web.py --bundle /build/gridcraft-prepared --output /opt/artcraft --lock /build/gridcraft-build.lock.json \
+    && python scripts/package_public_assets.py /opt/artcraft /opt/liberty-public-assets
 
 FROM python:3.12-slim-bookworm@sha256:34386ef0cb081344d7ec1c103ba398e6e9f64e9ab3a1509accc92a4e24a07258 AS runtime
-ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 LIBERTY_DATA=/data LIBERTY_APPS=/opt/artcraft
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 LIBERTY_DATA=/data LIBERTY_APPS=/opt/artcraft LIBERTY_PUBLIC_ASSETS=/opt/liberty-public-assets
 WORKDIR /app
 COPY requirements.lock ./
 RUN pip install --require-hashes --no-cache-dir --disable-pip-version-check -r requirements.lock \
@@ -42,6 +45,7 @@ RUN pip install --require-hashes --no-cache-dir --disable-pip-version-check -r r
     && useradd --uid 10001 --gid liberty --no-create-home --shell /usr/sbin/nologin liberty \
     && mkdir -p /data && chown liberty:liberty /data && chmod 700 /data
 COPY --from=apps /opt/artcraft /opt/artcraft
+COPY --from=apps /opt/liberty-public-assets /opt/liberty-public-assets
 COPY . /app
 RUN python scripts/package_source.py /opt/liberty-source.zip
 USER 10001:10001

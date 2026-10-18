@@ -4,10 +4,10 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlsplit
 from fastapi import APIRouter,Depends,HTTPException,Request
-from fastapi.responses import FileResponse,HTMLResponse
+from fastapi.responses import FileResponse,HTMLResponse,RedirectResponse
 from .security import full,svc,authorize,digest,uid,now
 from .i18n import translate
-from .assets import asset_response
+from .assets import asset_response,prepare_public_html,public_location
 
 router=APIRouter()
 LOCK=Path(__file__).resolve().parents[1]/'upstream.lock.json'
@@ -106,12 +106,14 @@ def defer_native_preloads(html: str) -> str:
 def serve_bundle(service,app_id,asset,request,injection):
     """Serve pinned assets after the calling route has authorized its runtime."""
     root=(service.settings.apps_dir/app_id).resolve();path=(root/asset).resolve()
-    if not path.is_relative_to(root) or not path.is_file() or any(p.startswith('.') for p in Path(asset).parts):
+    if not path.is_relative_to(root) or not path.is_file() or any(p.startswith('.') for p in Path(asset).parts) or path.name in ('sw.js','sw.js.gz'):
         raise HTTPException(404,'Arquivo do aplicativo não encontrado.')
     if asset=='index.html':
         # Installation verifies and prepares editor assets; serving adds the adapter.
-        html=defer_native_preloads(path.read_text())
+        html=defer_native_preloads(prepare_public_html(path.read_text(),app_id,request))
         html=re.sub(r'(<script\b[^>]*?\btype\s*=\s*)([\"\'])module\2',lambda m:m.group(1)+m.group(2)+'application/x-liberty-module'+m.group(2),html,flags=re.I)
         html=html.replace('<head>','<head>'+injection,1) if '<head>' in html else injection+html
         return HTMLResponse(html)
+    if location:=public_location(request,app_id,asset):
+        return RedirectResponse(location,status_code=307)
     return asset_response(path,request)

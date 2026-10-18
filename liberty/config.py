@@ -34,6 +34,7 @@ class Settings:
     default_quota: int = 5*1024**3
     max_upload: int = 100*1024**2
     session_seconds: int = 43200
+    public_assets_dir: Path | None = None
 
     def __post_init__(self):
         origin=canonical_origin(self.origin);object.__setattr__(self,'origin',origin)
@@ -67,6 +68,7 @@ class Settings:
     def from_env(cls):
         return cls(data_dir=Path(os.getenv('LIBERTY_DATA','/data')),apps_dir=Path(os.getenv('LIBERTY_APPS','/opt/artcraft')),
                    source_archive=Path(os.getenv('LIBERTY_SOURCE_ARCHIVE','/opt/liberty-source.zip')),
+                   public_assets_dir=Path(os.environ['LIBERTY_PUBLIC_ASSETS']) if os.getenv('LIBERTY_PUBLIC_ASSETS') else None,
                    origin=os.getenv('PUBLIC_ORIGIN','http://localhost:8097'),editor_origin=os.getenv('EDITOR_ORIGIN') or None,
                    demo_editor_origin=os.getenv('DEMO_EDITOR_ORIGIN') or None,
                    global_quota=int(os.getenv('GLOBAL_QUOTA_BYTES',str(50*1024**3))),

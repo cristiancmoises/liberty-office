@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "apps": {
+    "wordcraft": ["wordcraft-web-8f83828293ff7c4d.js", "wordcraft-web-8f83828293ff7c4d_bg.wasm"],
+    "gridcraft": ["gridcraft-web.js", "gridcraft-web_bg.wasm"],
+    "deckcraft": ["deckcraft-web-3d451cd28e31e9b6.js", "deckcraft-web-3d451cd28e31e9b6_bg.wasm"],
+    "photocraft": ["photocraft-web-4cc0a6fe355463b6.js", "photocraft-web-4cc0a6fe355463b6_bg.wasm"],
+    "vectorcraft": ["vectorcraft-web-6aa5d49f81589b85.js", "vectorcraft-web-6aa5d49f81589b85_bg.wasm"],
+    "filmcraft": ["filmcraft_web.js", "filmcraft_web_bg.wasm", "audio-worklet.js"],
+    "lightcraft": ["lightcraft_web.js", "lightcraft_web_bg.wasm", "lightcraft_zh_hans.otf", "worker.js"],
+    "pdfcraft": ["pdfcraft-web-2e8fa69ba6b1231a.js", "pdfcraft-web-2e8fa69ba6b1231a_bg.wasm"],
+    "effectcraft": ["effectcraft_web.js", "effectcraft_web_bg.wasm", "audio-worklet.js", "worker.js", "snippets/effectcraft-web-f637d3000a3821fa/js/host.js"],
+    "designcraft": ["designcraft-web-e2c8d44eb5555996.js", "designcraft-web-e2c8d44eb5555996_bg.wasm"],
+    "figcraft": ["figcraft-web.js", "figcraft-web_bg.wasm"],
+    "soundcraft": ["soundcraft-web-46ed92e1ef8a9c01.js", "soundcraft-web-46ed92e1ef8a9c01_bg.wasm"],
+    "cadcraft": ["cadcraft-web-e558b119220c5f67.js", "cadcraft-web-e558b119220c5f67_bg.wasm"]
+  }
+}

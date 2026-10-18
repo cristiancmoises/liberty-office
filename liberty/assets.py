@@ -6,8 +6,19 @@ import re
 from email.utils import parsedate_to_datetime
 from pathlib import Path
 
-from fastapi import HTTPException, Request
+from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import FileResponse, Response
+
+from .public_assets import _file, build_public_manifest, load_public_manifest
+
+__all__ = [
+    "build_public_manifest",
+    "load_public_manifest",
+    "public_asset",
+    "select_representation",
+]
+
+router = APIRouter()
 
 QUALITY = re.compile(r"(?:0(?:\.[0-9]{0,3})?|1(?:\.0{0,3})?)")
 
@@ -70,7 +81,9 @@ def select_representation(
     return selected, encoding
 
 
-def asset_response(path: Path, request: Request) -> Response:
+def asset_response(
+    path: Path, request: Request, *, expected_hashes: dict[str, str] | None = None
+) -> Response:
     """Keep MIME, validators and ranges tied to the selected encoded bytes."""
     selected, encoding = select_representation(
         path, ",".join(request.headers.getlist("accept-encoding"))
@@ -81,7 +94,12 @@ def asset_response(path: Path, request: Request) -> Response:
         else mimetypes.guess_type(path.name)[0] or "application/octet-stream"
     )
     with selected.open("rb") as stream:
-        etag = '"' + hashlib.file_digest(stream, "sha256").hexdigest() + '"'
+        digest = hashlib.file_digest(stream, "sha256").hexdigest()
+    if expected_hashes is not None and digest != expected_hashes.get(
+        encoding or "identity"
+    ):
+        raise HTTPException(404, "Public asset integrity check failed.")
+    etag = '"' + digest + '"'
     headers = {"Vary": "Accept-Encoding", "ETag": etag}
     if encoding:
         headers["Content-Encoding"] = encoding
@@ -113,4 +131,70 @@ def asset_response(path: Path, request: Request) -> Response:
                 if key in response.headers
             },
         )
+    return response
+
+
+def public_location(request: Request, app_id: str, asset: str) -> str | None:
+    registry = getattr(request.app.state, "public_assets", None)
+    if registry and asset in registry["generations"][registry["current"]]["apps"].get(
+        app_id, {}
+    ):
+        return "/public-assets/" + registry["current"] + "/" + app_id + "/" + asset
+    return None
+
+
+def prepare_public_html(html: str, app_id: str, request: Request) -> str:
+    # This exact trusted upstream block caches injected HTML despite no-store.
+    registration = re.compile(
+        r'if\s*\("serviceWorker" in navigator && !new URLSearchParams\(location.search\).has\("nosw"\)\)\s*\{\s*'
+        r'navigator.serviceWorker.register\("sw.js"\).catch\(\(e\) => console.warn\("service worker:", e\)\);\s*\}'
+    )
+    html = registration.sub("", html)
+    if "serviceWorker.register" in html:
+        raise HTTPException(503, "Unreviewed editor service worker registration.")
+    registry = getattr(request.app.state, "public_assets", None)
+    if not registry:
+        return html
+    files = registry["generations"][registry["current"]]["apps"].get(app_id, {})
+    for name in files:
+        url = public_location(request, app_id, name)
+        assert url is not None
+        pattern = re.compile(r'(["\'])(?:\./)?' + re.escape(name) + r'(\?[^"\'<>]*)?\1')
+        html = pattern.sub(
+            lambda match, url=url: match[1] + url + (match[2] or "") + match[1], html
+        )
+    return html
+
+
+@router.api_route(
+    "/public-assets/{generation}/{app_id}/{asset:path}", methods=["GET", "HEAD"]
+)
+def public_asset(
+    generation: str, app_id: str, asset: str, request: Request
+) -> Response:
+    registry = getattr(request.app.state, "public_assets", None)
+    if not registry:
+        raise HTTPException(404, "Public asset not found.")
+    entry = (
+        registry["generations"]
+        .get(generation, {})
+        .get("apps", {})
+        .get(app_id, {})
+        .get(asset)
+    )
+    if not entry:
+        raise HTTPException(404, "Public asset not found.")
+    try:
+        path = _file(registry["root"], generation + "/" + app_id + "/" + asset)
+    except ValueError:
+        raise HTTPException(404, "Public asset not found.") from None
+    response = asset_response(
+        path,
+        request,
+        expected_hashes={
+            encoding: metadata["sha256"]
+            for encoding, metadata in entry["representations"].items()
+        },
+    )
+    request.state.validated_public_asset = True
     return response

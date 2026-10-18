@@ -65,3 +65,32 @@ test('full WordCraft restores native preloads and reaches its real runner',async
   await metrics(info,'full-startup-'+phase,evidence,started,readyMs);
  }
 });
+
+test('warm WordCraft demo reuses public code without reusing runtime configuration',async({playwright},info)=>{
+ const context=await playwright.chromium.launchPersistentContext(info.outputPath('browser-profile'),{
+  ...info.project.use.launchOptions,headless:true,viewport:{width:1440,height:1000}
+ });
+ try{
+ const page=context.pages()[0];
+ const evidence=await observe(page),runs=[];
+ for(const phase of ['cold','warm']){
+  evidence.native.length=0;evidence.transfers.length=0;evidence.errors.length=0;
+  const started=Date.now();
+  await page.goto(origin+'/demo');await page.locator('.app-card[title="WordCraft"]').click();
+  const editor=page.frameLocator('#demo-frame iframe');
+  await expect(editor.locator('html')).toHaveAttribute('data-liberty-state','ready',{timeout:120000});
+  const readyMs=Date.now()-started;
+  await page.waitForLoadState('networkidle');
+  await metrics(info,'cached-startup-'+phase,evidence,started,readyMs);
+  const runtime=page.frames().find(frame=>frame.url().includes('/demo/runtime/wordcraft/'));
+  const response=await page.request.get(runtime.url());
+  expect(response.headers()['cache-control']).toBe('no-store');
+  runs.push({native:[...evidence.native],bytes:evidence.transfers
+   .filter(item=>item.url.includes('/public-assets/')&&/\.(?:wasm|js)(?:\?|$)/.test(item.url))
+   .reduce((total,item)=>total+item.bytes,0)});
+ }
+ for(const run of runs)expect(run.native.every(url=>url.includes('/public-assets/'))).toBe(true);
+ expect(runs[0].bytes).toBeGreaterThan(0);expect(runs[1].bytes).toBe(0);
+ expect(evidence.errors).toEqual([]);
+ }finally{await context.close()}
+});
