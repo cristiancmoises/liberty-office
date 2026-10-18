@@ -177,6 +177,77 @@ processo/bloqueio e respostas contínuas do site/demo. Portas são locais e dado
 sintéticos. A suíte comum pula esse teste de infraestrutura; skip não é
 homologação. Ensaio não promete duração de manutenção em produção.
 
+O ensaio de armazenamento também inicia o código atual, preserva MFA, sessão,
+histórico, lixeira e cota reais de contas sintéticas, aceita um novo salvamento,
+executa o código antigo exato no **mesmo filesystem autoritativo atual** e promove
+novamente. Protege os marcadores públicos antes de o código antigo confirmar ou
+recuperar MFA. Ambientes opt-in separados cobrem falhas ao iniciar, validar e após
+abrir a candidata: a recuperação mantém as contas fechadas e preserva gravações
+aceitas. Use somente ambientes novos, próprios, locais e com dados sintéticos.
+
+### Armazenamento dedicado do CT154
+
+`scripts/liberty_storage.py` é um adaptador local do host Proxmox, não um formatador
+genérico. O padrão apenas mede prontidão, sem criar armazenamento:
+
+```sh
+python3 -I -S scripts/liberty_storage.py --config /privado/storage.json
+```
+
+A configuração privada do operador contém esquema 1, `run_id` único e `identity`
+exata: PVE/CT/FQDN, PID/instante de início do init do CT, container/digest da imagem
+antiga e UUIDs do VG/LV raiz. Obtenha e confira esses metadados no host correto;
+não substitua identidades por aliases. Exige RAM disponível de 4 GiB, raiz PVE
+livre de 8 GiB, raiz CT livre de 5 GiB, VG livre de 60 GiB, dados/metadados do
+thin-pool abaixo de 80% cada e espaço protegido para backup de pelo menos duas
+vezes os dados atuais mais 1 GiB. Recusa LV, mount/unidade de host ou `mp1` já
+existentes, configuração pendente, tarefas ativas, lock e mapeamento UID inesperado.
+
+Somente depois da homologação de imagem/recuperação, provisione explicitamente o
+novo volume **vazio**, com diário novo modo 0600 em diretório privado:
+
+```sh
+python3 -I -S scripts/liberty_storage.py --config /privado/storage.json \
+  --journal /privado/storage-provision.jsonl --apply-provision
+```
+
+Cria somente `pve/liberty-ct154-data` linear de 50 GiB com tag própria; confere
+UUID novo, tamanho, dispositivo do kernel e ausência de assinaturas antes do
+ext4. Persiste mount systemd por UUID em `/srv/liberty-data-ct154`. A espera pelo
+job de mount/dispositivo é limitada; sem mount, o diretório subjacente pertence a
+root, modo 0700, inacessível ao CT/app. Não reinicia o CT, não apaga filesystem
+existente, não repete fases incertas nem remove objetos após falha. O diário
+registra somente metadados. Confira o estado real antes de recuperar.
+
+O hotplug suportado usa `mp1` livre em `/srv/liberty-data-next`, `backup=0`, sem
+mudar PID/instante de início do CT, e exige prova de escrita por UID/GID 10001.
+Preserve `lost+found` do ext4. O aplicativo usa o filho `data`, modo 0700:
+`LIBERTY_NEXT_DATA_PATH=/srv/liberty-data-next/data`, cota lógica global de 45 GiB
+e reserva física de 1 GiB. No CT não privilegiado, UID/GID 10001 do app corresponde
+a 110001 no host. Nunca use o volume separado de build para dados de usuários.
+O zeroing/limpeza de assinaturas do LVM fica explicitamente desativado até a
+inspeção. Um CT não privilegiado pode ocultar UUIDs: a prova combina UUID no host,
+mesmo major:minor do kernel no host/CT, caminhos/opções e escrita pelo UID do app.
+
+Esse bind mount não gerenciado fica **fora do backup automático do CT**.
+Provisionar não migra contas. Planeje backups independentes, protegidos e testados;
+não despeje um volume potencialmente cheio de 50 GiB na raiz menor do PVE/CT.
+O ensaio da aplicação não reinicia o Proxmox: confira separadamente a ordem de
+boot da unidade, timeout do job de dispositivo e permissões que falham fechadas.
+Não reinicie um host compartilhado apenas para homologar uma atualização do app.
+
+Depois da saída normal do processo antigo e liberação do bloqueio,
+`offline_snapshot` guarda backup privado exclusivo, valida referências antes de
+arquivar, reconfere o inventário atual sob o lock offline normal, restaura somente
+em destino vazio e sincroniza arquivos/diretórios antes de atestar sucesso.
+Essa migração preserva sessões ativas; a restauração comum continua revogando
+sessões/reservas. Escrita intermediária, referência inválida, hash divergente ou
+falha de sincronização impede a abertura. Preserve a cópia original, mas nunca a
+restaure sobre gravações já aceitas no novo filesystem. Antes de qualquer escritor
+antigo sem instrumentação, execute `protect_public_accounts` offline para proteger
+transacionalmente **todos** os marcadores públicos contra limpeza de cadastros
+incompletos. Reabrir contas exige nova verificação; a recuperação não as reabre.
+
 ### Limites operacionais
 
 `MIN_FREE_BYTES` reserva espaço físico após todos os envios pendentes e o novo
@@ -210,7 +281,12 @@ Os launchers reiniciam o serviço ao final, inclusive se o CLI falhar. Esses com
 4. O banco migra da versão 1 para 2 por criação idempotente de tabelas. Usuários, TOTP, blobs, versões e compartilhamentos são preservados. Reabra o portal e os editores para obter a nova interface e as novas capacidades de sessão.
 5. Execute `./libertyctl verify`, valide MFA, download de documento antigo, exportação nova, cotas e o segundo host. Homologue com dados de teste antes de aplicar a uma implantação com documentos reais.
 
-Não faça downgrade apontando a imagem antiga para um banco migrado. Para rollback, pare a candidata e restaure o backup anterior em outro volume, usando a versão anterior. A versão atual recusa bancos com versão de esquema mais recente do que ela suporta.
+Não aponte uma versão que só conhece esquema 1 para o banco migrado de esquema 2.
+A aplicação recusa esquemas mais recentes do que suporta. Esse caso não equivale
+ao rollback compatível entre versões de esquema 2 homologadas acima. Depois de
+aceitar novas gravações, não restaure um backup anterior por cima dos dados
+atuais: mantenha as contas em manutenção e concilie a autoridade atual. Preserve
+backups e imagens para recuperação, sem tratar uma cópia obsoleta como atual.
 
 ## Diagnóstico e aceitação
 

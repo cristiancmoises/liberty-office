@@ -144,6 +144,77 @@ and continuous public/demo responses. Ports are loopback-only; all data is
 synthetic. The common unit suite skips this infrastructure test; a skip is not
 qualification. Rehearsal does not promise a production maintenance duration.
 
+The storage rehearsal also boots current source, preserves real synthetic
+MFA/session/file-history/trash/quota state, accepts a new save, runs the exact old
+code on the **same current filesystem**, and re-promotes. Public-account markers
+are protected before old code confirms or recovers MFA. Separate opt-in failure
+fixtures cover candidate start, candidate verification and post-admission failure;
+recovery keeps account routes closed and retains accepted writes. Each fixture
+must be new, explicitly owned and loopback-only; never substitute live data.
+
+### Dedicated CT154 storage
+
+`scripts/liberty_storage.py` is a host-local Proxmox adapter, not a general disk
+formatter. Its default invocation measures readiness without creating storage:
+
+```sh
+python3 -I -S scripts/liberty_storage.py --config /private/storage.json
+```
+
+The operator-owned, private configuration contains schema 1, a unique `run_id`
+and exact `identity`: PVE/CT/FQDN, CT init PID/start ticks, old container/image
+digest, VG UUID and root-LV UUID. Obtain and compare these metadata on the intended
+host; never substitute aliases. Before any allocation it requires 4 GiB available
+RAM, 8 GiB PVE-root free, 5 GiB CT-root free, 60 GiB VG free, thin-pool data and
+metadata each below 80%, and protected backup space of at least twice current
+data plus 1 GiB. Existing target LV, host mount/unit, occupied `mp1`, pending
+configuration, active tasks, lock or unexpected UID mapping rejects admission.
+
+Only after image/recovery qualification, explicitly provision the **empty** new
+volume with a new mode-0600 journal in a private directory:
+
+```sh
+python3 -I -S scripts/liberty_storage.py --config /private/storage.json \
+  --journal /private/storage-provision.jsonl --apply-provision
+```
+
+The adapter creates only the tagged 50 GiB linear `pve/liberty-ct154-data`, proves
+its new UUID/size/kernel device and absence of signatures before formatting ext4,
+and persists a UUID-bound systemd mount at `/srv/liberty-data-ct154`. Mount/device
+job waiting is bounded; a missing mount leaves an underlying root-owned mode-0700
+directory inaccessible to the CT/app. It never restarts the CT, wipes an existing
+filesystem, automatically retries uncertain phases or removes failed objects.
+The phase journal records metadata only. Inspect real state before recovery.
+
+Supported hotplug attaches unused `mp1` at `/srv/liberty-data-next` with `backup=0`;
+the CT PID/start time must remain unchanged and UID/GID 10001 must prove live write
+access. Preserve ext4 `lost+found`. The app uses the separate mode-0700 `data`
+child: set `LIBERTY_NEXT_DATA_PATH=/srv/liberty-data-next/data`, logical global
+quota 45 GiB and physical reserve 1 GiB. In the unprivileged CT, app UID/GID 10001
+maps to host 110001. Never use the separate build volume for user data.
+LVM zeroing/signature wiping is explicitly disabled until inspection. Because an
+unprivileged CT may not expose UUIDs, live mount proof combines the host UUID,
+identical host/CT kernel major:minor device, mount paths/options and app-UID probe.
+
+This unmanaged bind mount is **excluded from automatic CT backups**. Provisioning
+does not migrate accounts. Plan independent protected, tested backups; do not
+dump a potentially full 50 GiB volume onto a smaller PVE/CT root.
+The application rehearsal does not reboot Proxmox: verify the installed unit's
+boot ordering, device-job timeout and fail-closed permissions separately. Never
+reboot a shared host merely to qualify an application upgrade.
+
+After normal old-process exit and released ownership, `offline_snapshot` retains
+an exclusive private backup, validates references before archiving, rechecks the
+current source inventory under the normal offline lock, restores into an empty
+destination and fsyncs files/directories before attesting success. This guarded
+migration preserves active sessions; ordinary disaster recovery still revokes
+sessions/reservations. Any intervening write, invalid reference, hash mismatch or
+durability failure aborts admission. Keep the original copy, but never restore it
+over writes already accepted on the new filesystem. Before any uninstrumented old
+writer, run offline `protect_public_accounts` to transactionally protect **every**
+public marker from unfinished-enrollment cleanup. Reopening accounts requires
+fresh verification, never automatic recovery admission.
+
 ## Administrator setup
 
 Operator commands use English by default, independently of the host's `LANG`.
@@ -157,7 +228,7 @@ Only application-owned messages are translated. Tokens, URLs, paths, JSON status
 and binary backup stdout are unchanged; diagnostics from Docker, argparse and
 other dependencies may use their own language.
 
-Run `./libertyctl token` on the host and use the one-time token in the portal. Store it privately; do not paste it into logs or tickets. There is no default password. Complete TOTP enrollment and save the recovery codes. Accounts created later receive one-time invitations from an administrator.
+Run `./libertyctl token` on the host and use the one-time token in the portal. Store it privately; do not paste it into logs or tickets. There is no default password. Complete TOTP enrollment and save the recovery codes. Administrator invitations remain available. When public registration is explicitly enabled on a qualified deployment, anyone may register for free with a 100,000,000-byte quota and mandatory MFA, subject to the documented abuse/capacity limits.
 
 ## Persistent data and backups
 

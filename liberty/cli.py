@@ -80,7 +80,8 @@ def make_backup(data,stream):
 def valid_member(name):
     return name in ('liberty.db','mfa.key','bootstrap-token','BACKUP.json') or bool(re.fullmatch(r'blobs/[0-9a-f]{32}',name))
 
-def restore_backup(archive_path,destination):
+def restore_backup(archive_path,destination,*,preserve_sessions=False):
+    if type(preserve_sessions) is not bool:raise ValueError('Invalid session preservation policy.')
     destination=Path(destination)
     with offline(destination):
         if any(p.name!='server.lock' for p in destination.iterdir()):raise ValueError('O volume de destino deve estar vazio.')
@@ -116,7 +117,7 @@ def restore_backup(archive_path,destination):
                     target.chmod(0o600)
                     if h.hexdigest()!=expected['sha256']:raise ValueError('SHA-256 inválido no backup: '+member.name)
             if incoming:incoming.unlink()
-            # A restored snapshot must not resurrect browser sessions or quota reservations.
+            # Recovery revokes sessions; only guarded current-owner migration preserves them.
             with closing(sqlite3.connect(stage/'liberty.db')) as c:
                 c.execute('PRAGMA foreign_keys=ON')
                 if c.execute('PRAGMA integrity_check').fetchone()[0]!='ok' or c.execute('PRAGMA foreign_key_check').fetchone():
@@ -133,7 +134,9 @@ def restore_backup(archive_path,destination):
                     crypto=Fernet((stage/'mfa.key').read_bytes())
                     for row in c.execute('SELECT totp FROM users WHERE totp IS NOT NULL'):crypto.decrypt(row[0].encode())
                 except Exception:raise ValueError('A chave MFA não corresponde às contas do backup.')
-                c.execute('DELETE FROM sessions');c.execute('DELETE FROM reservations');c.commit()
+                if not preserve_sessions:
+                    c.execute('DELETE FROM sessions');c.execute('DELETE FROM reservations')
+                c.commit()
             for item in stage.iterdir():item.rename(destination/item.name)
     return manifest
 

@@ -15,9 +15,10 @@ import subprocess
 import sys
 import threading
 import time
+from http.cookies import SimpleCookie
 from pathlib import Path
 
-from scripts.handoff import maintenance_handoff
+from scripts.handoff import HandoffError, maintenance_handoff
 from scripts.liberty_proxy import (
     ProcessIdentity,
     capture_workers,
@@ -35,6 +36,66 @@ ORIGINS = (
     "https://editoffice.example.test",
     "https://demo-editoffice.example.test",
 )
+PASSWORD = "Liberty-test-password-42!"
+
+
+class AccountClient:
+    """Synthetic loopback client; never loads a real browser or account cookie."""
+
+    def __init__(self, port, cookie=""):
+        self.port, self.cookie = port, cookie
+
+    def _request(
+        self, path, method="GET", *, body=None, raw=None, headers=None
+    ) -> tuple[str, bytes]:
+        extra = {"Host": "office.example.test", "Origin": ORIGINS[0]}
+        if self.cookie:
+            extra["Cookie"] = self.cookie
+            if method != "GET":
+                extra["X-CSRF-Token"] = self.call("/api/auth/status")["csrf"]
+        if body is not None:
+            raw = json.dumps(body).encode()
+            extra["Content-Type"] = "application/json"
+        extra.update(headers or {})
+        connection = http.client.HTTPConnection("127.0.0.1", self.port, timeout=15)
+        try:
+            connection.request(method, path, body=raw, headers=extra)
+            response = connection.getresponse()
+            content = response.read()
+            assert response.status in (200, 201), (method, path, response.status)
+            for name, value in response.getheaders():
+                if name.lower() == "set-cookie":
+                    cookie = SimpleCookie(value)
+                    if "liberty_session" in cookie:
+                        value = cookie["liberty_session"].value
+                        self.cookie = "liberty_session=" + value if value else ""
+            return response.getheader("Content-Type", ""), content
+        finally:
+            connection.close()
+
+    def call(self, path, method="GET", *, body=None, raw=None, headers=None) -> dict:
+        content_type, content = self._request(
+            path, method, body=body, raw=raw, headers=headers
+        )
+        assert "application/json" in content_type
+        value = json.loads(content)
+        assert isinstance(value, dict)
+        return value
+
+    def download(self, path) -> bytes:
+        return self._request(path)[1]
+
+    def enroll(self):
+        import pyotp
+
+        setup = self.call("/api/auth/mfa/setup")
+        return self.call(
+            "/api/auth/mfa/verify",
+            "POST",
+            body={
+                "code": pyotp.TOTP(setup["secret"]).now(),
+            },
+        )
 
 
 def docker(*args: str, **kwargs) -> str:
@@ -75,8 +136,17 @@ def unlocked(data: Path) -> bool:
 
 
 class Rehearsal:
-    def __init__(self, root: Path):
+    def __init__(self, root: Path, failure: str | None = None):
+        if failure not in (
+            None,
+            "candidate-start",
+            "candidate-verify",
+            "post-admission",
+        ):
+            raise ValueError("Unknown synthetic failure boundary")
         self.root = root
+        self.failure = failure
+        self.failure_injected = False
         self.signals = root / "signals"
         self.containers: list[str] = []
         self.events: list[dict[str, object]] = []
@@ -85,6 +155,7 @@ class Rehearsal:
         self.public_checks = 0
         self.monitor_end = threading.Event()
         self.authority = root / "blue-data"
+        self.initial_drained = False
         self.receipt: dict[str, object] = {"nginx": "1.26.3", "old_image": IMAGE}
 
     def record(self, event):
@@ -142,10 +213,12 @@ class Rehearsal:
         assert inspect(container)["Image"] == IMAGE
         return container
 
-    def backend(self, name, data, port):
+    def backend(self, name, data, port, *, current=False):
+        mounts = [(SOURCE, "/app", True)] if current else []
         return self.run_container(
             name,
-            [
+            mounts
+            + [
                 (SOURCE / "tests/integration", "/fixture", True),
                 (data, "/data", False),
                 (self.signals, "/signals", False),
@@ -172,15 +245,18 @@ class Rehearsal:
                 "PUBLIC_ORIGIN=" + ORIGINS[0],
                 "EDITOR_ORIGIN=" + ORIGINS[1],
                 "DEMO_EDITOR_ORIGIN=" + ORIGINS[2],
+                "DEFAULT_QUOTA_BYTES=100000000",
+                "PUBLIC_SIGNUP_ENABLED=true",
+                "MIN_FREE_BYTES=1073741824",
             ],
         )
 
-    def config(self, maintenance):
+    def config(self, maintenance, port=18897):
         # Independent private prefix: never includes /etc/nginx or live files.
         private = (
             "return 503;"
             if maintenance
-            else "proxy_pass http://127.0.0.1:18897; proxy_request_buffering off;"
+            else f"proxy_pass http://127.0.0.1:{port}; proxy_request_buffering off;"
         )
         rendered = maintenance_config(
             portal="office.example.test",
@@ -223,6 +299,7 @@ http {
   server_name office.example.test;
   client_max_body_size 1m;
   location /fixture/ { PRIVATE }
+  location /api/ { PRIVATE }
   location / { proxy_pass http://127.0.0.1:18898; }
  }
 }
@@ -296,7 +373,9 @@ http {
             0o644
         )  # Disposable fixture key; never an ingress credential.
         self.blue = self.backend("blue", self.root / "blue-data", 18897)
+        self.writer = self.blue
         wait_for(lambda: self.healthy(18897))
+        self.seed_account()
         self.public = self.run_container(
             "public",
             [
@@ -459,7 +538,14 @@ http {
         self.receipt["rendered_routes_verified"] = True
 
     def enter_maintenance(self):
+        self.workers = capture_workers(self.master)
         self.config(True)
+        self.reload_proxy()
+        wait_for(lambda: request("/fixture/admission") == 503)
+        # This attests the new configuration, not retirement of old clients.
+        assert request("/") == 200 and request("/demo") == 200
+
+    def reload_proxy(self, *, wait_retired=False):
         # Test config using the same copied runtime; signal only our exact master.
         command = [
             "/qual/lib64/ld-linux-x86-64.so.2",
@@ -474,12 +560,16 @@ http {
         ]
         docker("exec", self.nginx, *command, stderr=subprocess.DEVNULL)
         assert process_exists(self.master)
+        previous = capture_workers(self.master)
         os.kill(self.master.pid, signal.SIGHUP)
-        wait_for(lambda: request("/fixture/admission") == 503)
-        # This attests the new configuration, not retirement of old clients.
-        assert request("/") == 200 and request("/demo") == 200
+        if wait_retired:
+            wait_workers(previous)
 
     def wait_old_proxy_workers(self):
+        if self.initial_drained:
+            wait_workers(self.workers)
+            assert request("/fixture/write/must-not-write", method="POST") == 503
+            return
         # Old idle HTTP1 and HTTP2 streams must retire, while an admitted upload
         # is allowed to finish on its original worker. Disconnected work outlives it.
         assert self.keepalive.recv(1) == b""
@@ -509,6 +599,7 @@ http {
         assert request("/fixture/write/must-not-write", method="POST") == 503
         self.receipt["old_workers_exited"] = True
         assert not (self.signals / "disconnected.committed").exists()
+        self.initial_drained = True
 
     def graceful_stop_blue(self):
         self.receipt["lock_held_while_pending"] = not unlocked(self.authority)
@@ -537,17 +628,20 @@ http {
 
     def reconcile(self):
         assert self.receipt["old_process_exited"] and unlocked(self.authority)
-        # M2 synthetic copy only. Production reconciliation is the separately
-        # qualified storage adapter, never this fixture or restore_backup.
         target = self.root / "candidate-data"
-        shutil.copytree(self.authority, target, dirs_exist_ok=True)
-        for file in target.rglob("*"):
-            os.chown(file, 10001, 10001)
+        snapshot = self.storage_action("snapshot")
+        assert snapshot["verified"] is True
+        # The synthetic request gates use a separate, now-offline database.
+        shutil.copyfile(self.authority / "fixture.db", target / "fixture.db")
+        os.chown(target / "fixture.db", 10001, 10001)
         self.authority = target
+        self.receipt["authoritative_snapshot_verified"] = True
 
     def start_candidate(self):
         assert unlocked(self.authority)
-        self.candidate = self.backend("candidate", self.authority, 18899)
+        self.fail_at("candidate-start")
+        self.candidate = self.backend("candidate", self.authority, 18899, current=True)
+        self.writer = self.candidate
         wait_for(lambda: self.healthy(18899))
         assert not unlocked(self.authority)
 
@@ -562,12 +656,54 @@ http {
             ("long-upload", 262144),
         ]
         assert not (self.signals / "must-not-write.started").exists()
+        self.verify_account(18899)
+        assert AccountClient(18899).call("/api/auth/status")["public_signup"] is True
+        self.receipt["current_code_verified"] = True
+        self.fail_at("candidate-verify")
 
     def admit(self):
-        # Qualification of production admission/rollback belongs to M4/M5.
         assert self.healthy(18899)
+        self.config(False, port=18899)
+        self.reload_proxy(wait_retired=True)
+        wait_for(lambda: request("/fixture/admission") == 200)
+        self.verify_account(18880)
+        (self.signals / "accepted-new.release").touch()
+        connection = http.client.HTTPConnection("127.0.0.1", 18880, timeout=10)
+        try:
+            connection.request(
+                "POST",
+                "/fixture/write/accepted-new",
+                body=b"accepted-on-new",
+                headers={"Host": "office.example.test"},
+            )
+            response = connection.getresponse()
+            assert response.status == 200
+            assert json.loads(response.read())["size"] == 15
+        finally:
+            connection.close()
+        client = AccountClient(18880, self.account.cookie)
+        self.accepted = client.call(
+            "/api/files?name=accepted-new.txt", "POST", raw=b"accepted-on-new"
+        )
+        self.accepted_content = b"accepted-on-new"
+        # This account is completed and recovered by the uninstrumented old code.
+        self.public_account = AccountClient(18880)
+        self.public_account.call(
+            "/api/auth/signup",
+            "POST",
+            body={
+                "username": "rollbackuser",
+                "name": "Rollback User",
+                "password": PASSWORD,
+            },
+        )
+        self.fail_at("post-admission")
 
     def observe(self):
+        self.qualify_rollback_and_repromotion()
+        self.finish_public_monitor()
+
+    def finish_public_monitor(self):
         assert request("/demo") == 200
         self.monitor_end.set()
         self.monitor.join(6)
@@ -575,10 +711,255 @@ http {
         assert self.public_checks >= 4
         self.receipt["public_checks"] = self.public_checks
 
+    def fail_at(self, boundary):
+        if self.failure == boundary:
+            self.failure_injected = True
+            raise RuntimeError("Synthetic failure at " + boundary)
+
+    def seed_account(self):
+        self.account = AccountClient(18897)
+        self.account.call(
+            "/api/auth/bootstrap",
+            "POST",
+            body={
+                "token": (self.authority / "bootstrap-token").read_text().strip(),
+                "username": "admin",
+                "name": "Synthetic operator",
+                "password": PASSWORD,
+            },
+        )
+        self.account.enroll()
+        self.first = self.account.call(
+            "/api/files?name=history.txt", "POST", raw=b"old"
+        )
+        self.account.call(
+            "/api/files/" + self.first["id"] + "/content",
+            "PUT",
+            raw=b"new",
+            headers={"If-Match": self.first["etag"]},
+        )
+        self.account.call("/api/files/" + self.first["id"], "DELETE")
+        self.key_hash = hashlib.sha256(
+            (self.authority / "mfa.key").read_bytes()
+        ).hexdigest()
+
+    def verify_account(self, port):
+        assert (
+            hashlib.sha256((self.authority / "mfa.key").read_bytes()).hexdigest()
+            == self.key_hash
+        )
+        client = AccountClient(port, self.account.cookie)
+        status = client.call("/api/auth/status")
+        assert status["state"] == "full" and status["user"]["quota"] == 100000000
+        assert self.first["id"] in [
+            row["id"] for row in client.call("/api/files?view=trash")["files"]
+        ]
+        client.call("/api/files/" + self.first["id"] + "/restore", "POST")
+        assert client.download("/api/files/" + self.first["id"] + "/content") == b"new"
+        assert (
+            client.download(
+                "/api/files/"
+                + self.first["id"]
+                + "/content?version="
+                + self.first["version"]
+            )
+            == b"old"
+        )
+        client.call("/api/files/" + self.first["id"], "DELETE")
+
+    def storage_action(self, action):
+        commands = {
+            "snapshot": "offline_snapshot(Path('/blue'),Path('/next'),Path('/backup/authoritative.tar.gz'))",
+            "protect": "{'protected':protect_public_accounts(Path('/next'))}",
+        }
+        assert action in commands
+        backup = self.root / "backup"
+        if not backup.exists():
+            backup.mkdir(mode=0o700)
+            os.chown(backup, 10001, 10001)
+        code = (
+            "from pathlib import Path;import json;from scripts.liberty_storage import offline_snapshot,protect_public_accounts;print(json.dumps("
+            + commands[action]
+            + "))"
+        )
+        command = [
+            "run",
+            "--rm",
+            "--read-only",
+            "--network",
+            "none",
+            "--user",
+            "10001:10001",
+            "--cap-drop",
+            "ALL",
+            "--security-opt",
+            "no-new-privileges",
+            "--memory",
+            "256m",
+            "--cpus",
+            "0.5",
+            "--pids-limit",
+            "32",
+            "--tmpfs",
+            "/tmp:rw,noexec,nosuid,size=32m,mode=1777",
+        ]
+        for source, target in (
+            (SOURCE, "/app"),
+            (self.root / "blue-data", "/blue"),
+            (
+                self.root / "candidate-data"
+                if action == "snapshot"
+                else self.authority,
+                "/next",
+            ),
+            (backup, "/backup"),
+        ):
+            command += [
+                "--mount",
+                f"type=bind,src={source},dst={target}"
+                + (",readonly" if target == "/app" else ""),
+            ]
+        command += ["-w", "/app", "--entrypoint", "python", IMAGE, "-c", code]
+        return json.loads(docker(*command))
+
+    def stop_owner(self, container):
+        docker("container", "stop", "--time", "-1", container)
+        state = inspect(container)["State"]
+        assert (
+            not state["Running"]
+            and state["Pid"] == 0
+            and state["ExitCode"] == 0
+            and not state["OOMKilled"]
+        )
+        assert unlocked(self.authority)
+
+    def qualify_rollback_and_repromotion(self):
+        self.enter_maintenance()
+        self.wait_old_proxy_workers()
+        self.stop_owner(self.candidate)
+        assert self.storage_action("protect")["protected"] == 1
+        self.rollback = self.backend("rollback", self.authority, 18899)
+        self.writer = self.rollback
+        wait_for(lambda: self.healthy(18899))
+        assert not unlocked(self.authority)
+        self.verify_account(18899)
+        client = AccountClient(18899, self.account.cookie)
+        assert (
+            client.download("/api/files/" + self.accepted["id"] + "/content")
+            == b"accepted-on-new"
+        )
+        # Complete MFA using old code, then use a recovery code to return to enroll.
+        self.public_account.port = 18899
+        recovery = self.public_account.enroll()["recovery_codes"][0]
+        self.public_account.call("/api/auth/logout", "POST")
+        self.public_account.call(
+            "/api/auth/login",
+            "POST",
+            body={"username": "rollbackuser", "password": PASSWORD},
+        )
+        assert (
+            self.public_account.call(
+                "/api/auth/mfa/verify", "POST", body={"code": recovery}
+            )["state"]
+            == "enroll"
+        )
+        client.call(
+            "/api/files/" + self.accepted["id"] + "/content",
+            "PUT",
+            raw=b"accepted-on-old",
+            headers={"If-Match": self.accepted["etag"]},
+        )
+        self.accepted_content = b"accepted-on-old"
+        self.receipt["rollback_preserved_accepted_writes"] = True
+        self.stop_owner(self.rollback)
+        # Synthetic expired account demonstrates cleanup protection on re-promotion.
+        with sqlite3.connect(self.authority / "liberty.db") as db:
+            db.execute(
+                "UPDATE public_accounts SET created_at=1 WHERE user_id IN (SELECT id FROM users WHERE username='rollbackuser')"
+            )
+            db.execute("UPDATE users SET created=1 WHERE username='rollbackuser'")
+        self.repromoted = self.backend(
+            "repromoted", self.authority, 18899, current=True
+        )
+        self.writer = self.repromoted
+        wait_for(lambda: self.healthy(18899))
+        assert not unlocked(self.authority)
+        self.verify_account(18899)
+        assert (
+            client.download("/api/files/" + self.accepted["id"] + "/content")
+            == b"accepted-on-old"
+        )
+        assert self.public_account.call("/api/auth/status")["state"] == "enroll"
+        AccountClient(18899).call(
+            "/api/auth/signup",
+            "POST",
+            body={
+                "username": "cleanupcheck",
+                "name": "Cleanup check",
+                "password": PASSWORD,
+            },
+        )
+        self.public_account.enroll()
+        with sqlite3.connect(self.authority / "liberty.db") as db:
+            row = db.execute(
+                "SELECT u.quota,p.cleanup_protected FROM users u JOIN public_accounts p ON p.user_id=u.id WHERE u.username='rollbackuser'"
+            ).fetchone()
+            assert row == (100000000, 1)
+        with sqlite3.connect(self.authority / "fixture.db") as db:
+            assert db.execute(
+                "SELECT id,size FROM mutations WHERE id='accepted-new'"
+            ).fetchall() == [("accepted-new", 15)]
+        self.config(False, port=18899)
+        self.reload_proxy(wait_retired=True)
+        wait_for(lambda: request("/fixture/admission") == 200)
+        assert (
+            AccountClient(18880, self.account.cookie).download(
+                "/api/files/" + self.accepted["id"] + "/content"
+            )
+            == b"accepted-on-old"
+        )
+        self.receipt["repromotion_preserved_accounts"] = True
+
     def restore_authoritative(self):
-        # Never copy the stale blue fixture over a candidate. Leave an uncertain
-        # run in maintenance, preserving both directories for investigation.
-        raise RuntimeError("Preserve synthetic authorities for inspection")
+        # The source is the current authoritative filesystem, never blue's stale
+        # copy. Prove every fixture owner exited before starting old code on it.
+        owners = [
+            container
+            for container in self.containers
+            if inspect(container)["State"]["Running"]
+            and any(
+                mount["Destination"] == "/data"
+                and mount["RW"]
+                and Path(mount["Source"]).resolve() == self.authority.resolve()
+                for mount in inspect(container)["Mounts"]
+            )
+        ]
+        assert len(owners) <= 1
+        if owners:
+            assert owners == [self.writer]
+            self.stop_owner(self.writer)
+        assert unlocked(self.authority)
+        self.storage_action("protect")
+        self.recovery = self.backend("recovery", self.authority, 18899)
+        self.writer = self.recovery
+        wait_for(lambda: self.healthy(18899))
+        assert not unlocked(self.authority)
+        self.verify_account(18899)
+        if hasattr(self, "accepted"):
+            assert (
+                AccountClient(18899, self.account.cookie).download(
+                    "/api/files/" + self.accepted["id"] + "/content"
+                )
+                == self.accepted_content
+            )
+            with sqlite3.connect(self.authority / "fixture.db") as db:
+                assert db.execute(
+                    "SELECT id,size FROM mutations WHERE id='accepted-new'"
+                ).fetchall() == [("accepted-new", 15)]
+            self.receipt["accepted_write_preserved"] = True
+        self.receipt["recovery_authority"] = self.authority.name
+        self.receipt["recovery_verified"] = True
+        assert request("/api/files") == 503
 
     def close(self):
         self.monitor_end.set()
@@ -606,9 +987,24 @@ http {
 
 
 def main():
-    rehearsal = Rehearsal(Path(sys.argv[1]))
+    rehearsal = Rehearsal(Path(sys.argv[1]), sys.argv[2] if len(sys.argv) > 2 else None)
     try:
-        result = maintenance_handoff(rehearsal)
+        try:
+            result = maintenance_handoff(rehearsal)
+        except HandoffError:
+            if (
+                not rehearsal.failure_injected
+                or rehearsal.receipt.get("recovery_verified") is not True
+            ):
+                raise
+            assert request("/api/files") == 503
+            assert request("/fixture/admission") == 503
+            rehearsal.finish_public_monitor()
+            result = {
+                "phase": "recovered",
+                "accounts": "maintenance",
+                "failure_mode": rehearsal.failure,
+            }
         rehearsal.receipt.update(result)
         rehearsal.receipt["public_failures"] = rehearsal.public_failures
         rehearsal.receipt["events"] = rehearsal.events
