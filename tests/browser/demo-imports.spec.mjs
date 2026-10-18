@@ -97,10 +97,22 @@ test('light filename controls keep native plain-paste behavior after bounded val
  expect(prevented).toBe(false);await finish(page);
 });
 
+for(const extension of ['txt','md'])test('light demo imports, edits and downloads local '+extension,async({page})=>{
+ const frame=await open(page,'WordCraft',{light:true});
+ await choose(page,frame,{name:'local-text.'+extension,mimeType:'text/plain',buffer:Buffer.from('Local plain-text fixture')});
+ await expect(frame.locator('.light-document')).toHaveText('Local plain-text fixture');
+ await frame.locator('.light-document').press('End');await frame.locator('.light-document').pressSequentially(' edited');
+ const pending=page.waitForEvent('download');await frame.getByRole('button',{name:'Download copy',exact:true}).click();
+ const download=await pending,stream=await download.createReadStream(),chunks=[];for await(const chunk of stream)chunks.push(chunk);
+ expect(download.suggestedFilename()).toBe('local-text.'+extension);expect(Buffer.concat(chunks).toString()).toBe('Local plain-text fixture edited');await finish(page);
+});
+
 for(const app of [{name:'WordCraft',file:'native-demo.txt',content:'Native local text import fixture.',expected:'Native local text import fixture.'},
  {name:'GridCraft',file:'native-demo.csv',content:'Name,Value\nLocal spreadsheet fixture,42',expected:'Local spreadsheet fixture'},
- {name:'DeckCraft',file:'native-demo.md',content:'Local presentation fixture\n  - Browser-only outline',expected:'Local presentation fixture'}]){
- test(app.name+' imports bounded native text, exports actual content and clears',async({page},info)=>{
+ {name:'GridCraft',file:'native-demo.tsv',content:'Name\tValue\nLocal spreadsheet fixture\t42',expected:'Local spreadsheet fixture'},
+ {name:'DeckCraft',file:'native-demo.md',content:'Local presentation fixture\n  - Browser-only outline',expected:'Browser-only outline'},
+ {name:'DeckCraft',file:'native-demo.txt',content:'Local presentation fixture\n  - Browser-only outline',expected:'Browser-only outline'}]){
+ test(app.name+' imports '+app.file+', edits and exports actual content, then clears',async({page},info)=>{
   const requests=[];page.on('request',request=>{if(request.url().startsWith('http'))requests.push({url:request.url(),method:request.method(),body:request.postData()})});
   await page.setViewportSize({width:1440,height:1000});const frame=await open(page,app.name);
   await frame.locator('canvas').first().click({position:{x:310,y:200}});
@@ -113,12 +125,35 @@ for(const app of [{name:'WordCraft',file:'native-demo.txt',content:'Native local
   }else if(app.name==='GridCraft'){
    edit='Edited header';await frame.locator('canvas').click({position:{x:52,y:223}});
    await page.keyboard.type(edit,{delay:80});await page.keyboard.press('Enter');
+  }else if(app.name==='DeckCraft'){
+   edit='Edited presentation title';await frame.locator('canvas').click({position:{x:500,y:350}});
+   await frame.evaluate(()=>{window.__keys=[];addEventListener('keydown',event=>window.__keys.push({key:event.key,target:event.target.tagName,trusted:event.isTrusted}),true)});
+   await page.screenshot({path:info.outputPath('outline-import.png')});
+   // Each shortcut needs a native render turn. This is ordinary text-editing
+   // qualification, not the separate rapid same-frame GridCraft regression.
+   for(const key of ['Escape','Escape','Home','PageDown']){
+    await page.keyboard.press(key);
+    await frame.locator('canvas').evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+   }
+   // The imported slide is inserted after the current slide. Double-click its
+   // visible title at the pinned viewport, then select the whole text.
+   await frame.locator('canvas').dblclick({position:{x:838,y:248}});
+   await frame.locator('canvas').evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+   await page.keyboard.press('Control+a');
+   await page.screenshot({path:info.outputPath('outline-text-edit.png')});
+   await page.keyboard.type(edit,{delay:60});await page.keyboard.press('Escape');
+   await info.attach('outline-native-key-targets',{body:JSON.stringify(await frame.evaluate(()=>({keys:window.__keys,active:document.activeElement.tagName}))),contentType:'application/json'});
   }
   const pending=page.waitForEvent('download',{timeout:15000});await page.keyboard.press('Control+s');
   const download=await pending,path=info.outputPath(download.suggestedFilename());await download.saveAs(path);
   const stream=await download.createReadStream(),chunks=[];for await(const chunk of stream)chunks.push(chunk);
   const bytes=Buffer.concat(chunks),content=bytes.subarray(0,2).toString()==='PK'?zipText(path):bytes.toString();
-  expect(content).toContain(app.expected);if(edit)expect(content).toContain(edit.trim());await finish(page);
+  if(app.name==='DeckCraft'){
+   const presentation=JSON.parse(execFileSync('python3',['-c','import sys,zipfile; sys.stdout.buffer.write(zipfile.ZipFile(sys.argv[1]).read("presentation.json"))',path],{encoding:'utf8'}));
+   const texts=presentation.presentation.slides[1].shapes.map(shape=>(shape.text?.paragraphs||[]).flatMap(paragraph=>paragraph.runs||[]).map(run=>run.text||'').join(''));
+   expect(texts).toContain(app.expected);expect(texts).toContain(edit);
+  }else{expect(content).toContain(app.expected);if(edit)expect(content).toContain(edit.trim())}
+  await finish(page);
   expect(requests.every(request=>['GET','HEAD'].includes(request.method))).toBe(true);
   expect(JSON.stringify(requests)).not.toContain(app.file);expect(JSON.stringify(requests)).not.toContain(app.content);
  });

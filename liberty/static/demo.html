@@ -9,17 +9,20 @@
  <script type="module" src="/static/demo.mjs"></script>
 </head>
 <body class="demo-page">
- <header class="demo-banner"><strong data-i18n="Demonstração pública">Public demo</strong><span data-i18n="Sem conta, sem uploads e sem arquivos salvos no servidor. Use apenas conteúdo de teste.">No account, uploads, or server-saved files. Use test content only.</span><a href="/" data-i18n="Entrar no meu espaço">Sign in to my workspace</a></header>
+ <header class="demo-banner"><strong>Liberty Office</strong><span data-i18n="Demonstração pública">Public demo</span><a href="/" data-i18n="Entrar no meu espaço">Sign in to my workspace</a></header>
  <main id="demo-launcher" class="main">
-  <div class="page-title"><p class="eyebrow">Liberty Office</p><h1 data-i18n="Experimente seu próximo espaço de trabalho.">Try your next workspace.</h1><p data-i18n="Escolha um aplicativo, crie um exemplo e teste as ferramentas. A demonstração é temporária e separada das contas privadas.">Choose an app, create an example, and try the tools. The demo is temporary and separate from private accounts.</p></div>
-  <p class="warning" data-i18n="A edição completa usa WebGL2 ou WebGPU. A disponibilidade depende do navegador e da GPU. As alterações de demonstração podem permanecer no armazenamento deste navegador até a próxima abertura do editor; nada é enviado ao Drive.">Full editing uses WebGL2 or WebGPU. Availability depends on your browser and GPU. Demo changes may remain in this browser’s storage until the editor is opened again; nothing is sent to Drive.</p>
+  <div class="page-title"><p class="eyebrow" data-i18n="Demonstração pública">Public demo</p><h1 data-i18n="Experimente seu próximo espaço de trabalho.">Try your next workspace.</h1><p data-i18n="Abra um arquivo local compatível ou comece com um exemplo. Edite, baixe uma cópia e conclua para limpar. Sem cadastro.">Open a supported local file or start with an example. Edit, download a copy, and finish to clear. No account needed.</p></div>
+  <div id="demo-launcher-notice"><p id="demo-privacy" role="note" data-i18n="Os arquivos são processados no navegador e não são enviados ao nosso servidor. O trabalho da demo é temporário. Baixe uma cópia e use Concluir e limpar para apagar os dados locais da demo. Se o navegador fechar inesperadamente, dados locais podem permanecer até a próxima visita ou a remoção dos dados deste site.">Files are processed in your browser and are not uploaded to our server. Demo work is temporary. Download a copy, then use Finish and clear to remove local demo data. If the browser closes unexpectedly, local data may remain until your next visit or manual removal of this site's data.</p></div>
+  <p class="demo-compatibility" data-i18n="Os editores completos precisam de WebGL2 ou WebGPU e funcionam melhor em telas grandes. O modo leve do WordCraft funciona sem GPU. Formatos de importação variam por aplicativo.">Full editors need WebGL2 or WebGPU and work best on larger screens. WordCraft light mode works without a GPU. Import formats vary by app.</p>
   <div id="demo-apps" class="apps-grid" aria-label="Demo apps"></div>
   <p data-i18n="Os menus dos editores completos pertencem a cada aplicativo; os idiomas disponíveis variam. Esta opção traduz o Liberty e o modo leve sem recarregar seu documento.">Full editor menus belong to each app; available languages vary. This switch translates Liberty and light mode without reloading your document.</p>
   <p id="demo-message" role="status" data-i18n="Carregando aplicativos…">Loading apps…</p>
   <p><a href="/source.zip" data-i18n="Código fonte e avisos">Source code and notices</a> · <a href="https://codeberg.org/berkeley/liberty-office/src/branch/main/docs/LICENSING.md" data-i18n="Licenças dos editores">Editor licenses</a></p>
  </main>
  <section id="demo-editor" hidden aria-label="Demo editor">
-  <div class="demo-toolbar"><b class="demo-badge" data-i18n="Demonstração pública">Public demo</b><strong id="demo-name"></strong><span data-i18n="Importações desativadas · Salvamento local apenas">Imports disabled · Local saving only</span><button id="demo-close" data-i18n="Sair da demonstração">Leave demo</button></div>
+  <div class="demo-toolbar"><b class="demo-badge" data-i18n="Demonstração pública">Public demo</b><strong id="demo-name"></strong><button id="demo-close" data-i18n="Concluir e limpar">Finish and clear</button></div>
+  <div id="demo-editor-notice"></div>
+  <div class="demo-workflow"><p id="demo-guide"></p><p id="demo-format"></p><p id="demo-budget" data-files="0" data-bytes="0" role="status" aria-live="polite"></p></div>
   <div id="demo-frame"></div>
   <p id="demo-status" role="status" aria-live="polite" data-i18n="Carregando…">Loading…</p>
  </section>

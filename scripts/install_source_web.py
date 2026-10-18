@@ -1,4 +1,4 @@
-"""Install the two reviewed source-built editors; preserve original notices."""
+"""Install reviewed source-built editors; preserve original notices."""
 
 import argparse
 import gzip
@@ -9,7 +9,11 @@ import shutil
 import tempfile
 from pathlib import Path, PurePosixPath
 
-SOURCE_BUILD_VERSIONS = {"figcraft": "v0.6.0", "gridcraft": "v0.7.0"}
+SOURCE_BUILD_VERSIONS = {
+    "figcraft": "v0.6.0",
+    "gridcraft": "v0.7.0",
+    "wordcraft": "v0.7.0",
+}
 
 
 def supported_identity(spec):

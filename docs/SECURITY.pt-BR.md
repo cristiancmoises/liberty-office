@@ -40,7 +40,7 @@ Dez códigos de recuperação aleatórios ficam como hashes e são consumidos at
 
 `PUBLIC_ORIGIN`, `EDITOR_ORIGIN` e `DEMO_EDITOR_ORIGIN` devem ser distintas. O servidor verifica Host completo, incluindo porta. Só a origem do portal permite API, interface e arquivos. A origem privada de edição permite `/runtime/TICKET/...`; a origem de demo serve assets anônimos, sem acesso às APIs de contas ou Drive. O middleware não concede CORS entre elas.
 
-Cada ticket fica vinculado a uma sessão completa, um aplicativo e sua expiração. Revogação de sessão invalida o ticket. O HTML servido adia os módulos até limpar o estado local e estabelecer o adaptador. A preparação dos assets e os builds de fonte de FigCraft e GridCraft estão descritos em [licenciamento](LICENSING.md). A origem dos editores não recebe senha ou CSRF no HTML.
+Cada ticket fica vinculado a uma sessão completa, um aplicativo e sua expiração. Revogação de sessão invalida o ticket. O HTML servido adia os módulos até limpar o estado local e estabelecer o adaptador. A preparação dos assets e os builds de fonte de WordCraft, FigCraft e GridCraft estão descritos em [licenciamento](LICENSING.md). A origem dos editores não recebe senha ou CSRF no HTML.
 
 Exportações da demo usam um protocolo separado e limitado para download local.
 O portal aceita bytes somente do frame ativo e da origem exata da demo, valida
@@ -48,6 +48,27 @@ formato e tamanho da mensagem e cria a URL de download. Não aceita URL de API
 nem acessa o Drive. Isso evita incompatibilidades de download Blob em iframe
 sem afrouxar sandbox ou preferências de privacidade. A confirmação indica
 início do download, não que o usuário já salvou o arquivo em disco.
+
+Selecionar arquivo na demo não é upload ao servidor. A política compartilhada
+verifica metadados antes de ler bytes, reserva o consumo cumulativo do projeto
+e valida texto e estrutura decodificados antes de entregar o File ao editor.
+Falha na validação de conteúdo consome o limite de leitura; metadados rejeitados
+não consomem. Formatos ricos da área de transferência e atalhos nativos de
+texto SVG/HTML/RTF/data-URI são bloqueados. Texto puro colado tem limites
+estruturais próprios. Não é um sanitizador genérico de qualquer documento.
+
+O controlador limpa dados antigos antes de admitir outro motor. Uma segunda
+trava impede que um controlador novo limpe um editor atual ainda vivo. Concluir
+suspende exportações, descarrega o motor, aguarda limpeza de WebStorage,
+IndexedDB, CacheStorage e OPFS, revoga URLs de download e só então libera a
+sessão. Limpeza bloqueada ou com falha não é anunciada como concluída. A demo do
+LightCraft usa seu backend nativo em memória para evitar miniaturas persistidas;
+bibliotecas privadas mantêm o backend normal. O Service Worker antigo do Effect
+precisa encerrar antes da remoção de caches. Abas antigas, anteriores a essas
+travas, devem ser fechadas antes de atualizar. Fechamento inesperado do navegador
+não garante exclusão imediata; a próxima admissão tenta limpar novamente. É
+processamento local temporário, não armazenamento anônimo no servidor nem
+garantia de apagamento seguro.
 
 O MessageChannel exige janela de origem, origem exata e nonce aleatório. As mensagens permitem oferecer conteúdo escolhido e exportar bytes de tamanho limitado; não permitem escolher uma URL de API ou o proprietário de um arquivo. Cookies, CSRF, ETag e decisão de revisão/cópia pertencem ao portal. Reconexão do salvamento exige a mesma identidade do editor aberto.
 

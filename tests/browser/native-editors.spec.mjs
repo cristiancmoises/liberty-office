@@ -12,6 +12,18 @@ test.beforeEach(async({page})=>{
  page.on('request',request=>{const path=new URL(request.url()).pathname;if(path.startsWith('/api/'))observed.apiRequests.push({method:request.method(),path})});
 });
 test.afterEach(async({page},info)=>{
+ if(info.status==='passed'){
+  await expect(page.locator('#demo-format')).toContainText(/Local import blocked|Local formats/);
+  const frame=page.frames().find(frame=>frame.url().includes('/demo/runtime/')),demoOrigin=new URL(frame.url()).origin;
+  page.once('dialog',dialog=>dialog.accept());await page.locator('#demo-close').click();await expect(page.locator('#demo-launcher')).toBeVisible();
+  expect(page.frames().some(frame=>frame.url().includes('/demo/controller#'))).toBe(false);
+  await page.evaluate(demoOrigin=>{const probe=document.createElement('iframe');probe.name='cleared-demo-probe';probe.hidden=true;probe.src=demoOrigin+'/healthz';document.body.append(probe)},demoOrigin);
+  await expect.poll(()=>page.frame({name:'cleared-demo-probe'})?.url()).toContain('/healthz');
+  const probe=page.frame({name:'cleared-demo-probe'});await probe.waitForLoadState('load');
+  expect(await probe.evaluate(async()=>({local:localStorage.length,databases:(await indexedDB.databases()).length,caches:await caches.keys(),
+   files:await Array.fromAsync((await navigator.storage.getDirectory()).keys()),locks:(await navigator.locks.query()).held.length})))
+   .toEqual({local:0,databases:0,caches:[],files:[],locks:0});
+ }
  await page.waitForTimeout(300);
  const observed=observations.get(page);
  await info.attach('download-boundary',{body:JSON.stringify(observed),contentType:'application/json'});
@@ -27,6 +39,7 @@ async function editor(page,name){
  await page.locator(`.app-card[title="${name}"]`).click();
  const frame=page.frameLocator('#demo-frame iframe');
  await expect(frame.locator('html')).toHaveAttribute('data-liberty-state','ready',{timeout:150000});
+ if(name==='LightCraft')expect(new URL(page.frames().find(frame=>frame.url().includes('/demo/runtime/lightcraft/')).url()).searchParams.get('store')).toBe('memory');
  const canvas=frame.locator('canvas').first();await expect(canvas).toBeVisible();
  await canvas.click({position:{x:500,y:350}});await page.waitForTimeout(500);
  return canvas;
@@ -134,9 +147,10 @@ test('LightCraft adjusts its sample exposure and exports a full-size PNG',async(
  await canvas.click({position:{x:140,y:20}});await page.waitForTimeout(250);
  await canvas.click({position:{x:190,y:525}});await page.waitForTimeout(500);
  await canvas.click({position:{x:586,y:141}});await page.waitForTimeout(500);
- await canvas.click({position:{x:700,y:642}});await page.waitForTimeout(500);
+ await canvas.click({position:{x:700,y:626}});await page.waitForTimeout(500);
+ await page.screenshot({path:info.outputPath('native-export-dialog.png')});
  await page.keyboard.type('exports',{delay:80});
- const path=await downloaded(page,info,()=>canvas.click({position:{x:510,y:777}}),'png');
+ const path=await downloaded(page,info,()=>canvas.click({position:{x:510,y:692}}),'png');
  const bytes=await header(path);expect(bytes.subarray(0,8).toString('hex')).toBe('89504e470d0a1a0a');
  expect(bytes.subarray(12,16).toString()).toBe('IHDR');expect(bytes.readUInt32BE(16)).toBe(1365);expect(bytes.readUInt32BE(20)).toBe(2048);
 });

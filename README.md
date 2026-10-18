@@ -4,11 +4,24 @@ Liberty Office is a self-hosted web portal with 13 integrated editors, a private
 
 Visit [office.securityops.co](https://office.securityops.co) or [try the demo](https://office.securityops.co/demo). The [Brazilian domain](https://office.securityops.com.br) redirects to the primary origin.
 
-![Liberty Office application catalog](docs/screenshots/liberty-desktop.png)
+![Liberty Office public demo catalog](docs/screenshots/liberty-demo-desktop.png)
 
 ## Try it without an account
 
-The public demo has a permanent demo notice, disables uploads and runs editors on a separate origin from private workspaces. It cannot write to your Drive. Editing is temporary; export a local copy if you need to keep an experiment.
+The public demo processes supported files in your browser without uploading
+documents to the server. It runs on an origin separate from private editors
+and cannot write to your Drive. Download a copy, then choose **Finish and clear**.
+If the browser closes unexpectedly, local demo data may remain until the next
+visit or manual removal of the demo site's data. Close older demo tabs before
+starting an upgraded session.
+
+Local imports currently support WordCraft TXT, GridCraft CSV/TSV, DeckCraft
+TXT/Markdown outlines, and lightweight TXT/Markdown/HTML. These formats have a
+**2 MiB input limit** plus decoded-content limits. The global ceilings are
+50 MB per file and 10 files/100 MB cumulatively per project; stricter format
+limits prevail. Replacing a file does not reset the budget. Other editors
+offer their examples or creation tools, but local imports remain blocked until
+their parsers have qualified resource limits. See the [acceptance matrix](docs/ACCEPTANCE.md#temporary-demo-candidate).
 
 The lightweight text mode works without WebGL and supports basic writing and formatting. It does not provide full DOCX fidelity. Full graphical editors require working WebGL2 or WebGPU support in the browser. Startup errors are displayed explicitly, with a compatible option when one exists.
 
@@ -22,7 +35,7 @@ inert text while preserving line and block boundaries; it is never executed.
 
 ![Liberty lightweight text editor](docs/screenshots/liberty-word-lite.png)
 
-![Liberty Office on a small screen](docs/screenshots/liberty-mobile.png)
+![Public demo with lightweight text editing on a small screen](docs/screenshots/liberty-demo-mobile.png)
 
 </details>
 
@@ -30,7 +43,12 @@ inert text while preserving line and block boundaries; it is never executed.
 
 Linux with Docker Engine and Compose v2 is required. Copy `.env.example` to `.env`, set three distinct HTTPS origins (`PUBLIC_ORIGIN`, `EDITOR_ORIGIN`, `DEMO_EDITOR_ORIGIN`), then run `docker compose up -d --build`. The first build downloads pinned upstream editor archives and checks their sizes and SHA-256 hashes. The portal, private editors and demo editors use host ports 8097, 8098 and 8099, all bound to loopback by default. Place an HTTPS reverse proxy in front of them. See [operations in English](docs/OPERATIONS.md) or [Portuguese](docs/OPERATIONS.pt-BR.md) for proxy settings, backup, restore, and upgrades.
 
-FigCraft and GridCraft are rebuilt from pinned Rust sources with browser file-I/O and initial cell-input fixes, respectively. The other editors use verified upstream bundles with the documented branding preparation. Source builds currently require Linux x86-64 and additional time and disk space for Rust dependencies, but no server GPU. Original file encoders and licenses are preserved; see [the source-build details](docs/LICENSING.md#source-built-editors).
+WordCraft, FigCraft and GridCraft are rebuilt from pinned Rust sources. Their fixes preserve text before immediate saving and after returning from ribbon controls, provide browser file I/O, and retain initial cell input, respectively. The other editors use verified upstream bundles with the documented branding preparation. Source builds require Linux x86-64, additional time and disk space for Rust dependencies, and CPU Vulkan dependencies for WordCraft's headless native UI tests; no server GPU is required. Original file encoders and licenses are preserved; see [the source-build details](docs/LICENSING.md#source-built-editors).
+
+WordCraft light mode avoids native JS/WASM downloads. Full mode downloads a
+roughly 17 MiB gzip module, including the upstream font coverage, on its first
+use; unchanged public code is cached separately from no-store session HTML.
+This does not make every cold native launch faster or certify complex documents.
 
 The first administrator is created with a one-time bootstrap token stored in the persistent volume. Run `./libertyctl token` on the host to retrieve it privately. There is no default password. Complete TOTP enrollment and save the recovery codes before using files or editors.
 

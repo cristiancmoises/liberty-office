@@ -19,7 +19,7 @@ test('anonymous WordCraft edits and exports a real DOCX with native keyboard inp
  const pending=page.waitForEvent('download');await page.keyboard.press('Control+s');
  const download=await pending,path=info.outputPath('native.docx');await download.saveAs(path);
  expect(zipMember(path,'word/document.xml')).toContain('Liberty native document regression.');
- await expect(page.locator('.demo-banner')).toContainText('Sem conta, sem uploads');
+ await expect(page.locator('#demo-privacy')).toContainText('não são enviados ao nosso servidor');
 });
 
 test('anonymous GridCraft edits cells and exports the entered formula and calculated value',async({page},info)=>{

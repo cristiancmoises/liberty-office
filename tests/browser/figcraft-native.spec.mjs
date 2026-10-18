@@ -34,9 +34,11 @@ test('FigCraft saves its actual native rectangle and exports a PNG; demo import 
  const bytes=await readFile(png);expect(bytes.subarray(0,8).toString('hex')).toBe('89504e470d0a1a0a');
  expect(bytes.readUInt32BE(16)).toBeGreaterThan(0);expect(bytes.readUInt32BE(20)).toBeGreaterThan(0);
  await page.keyboard.press('Control+o');
- await expect(page.locator('#demo-status')).toContainText(/import.*disabled/i);
+ await expect(page.locator('#demo-status')).toContainText(/import.*blocked/i);
  expect(fileChoosers).toBe(0);expect(privateRequests).toEqual([]);
  await page.screenshot({path:info.outputPath('figcraft-native.png')});
+ page.once('dialog',dialog=>dialog.accept());await page.locator('#demo-close').click();await expect(page.locator('#demo-launcher')).toBeVisible();
+ expect(page.frames().some(frame=>frame.url().includes('/demo/runtime/')||frame.url().includes('/demo/controller#'))).toBe(false);
 });
 
 function totp(secret){let bits='';for(const c of secret.toUpperCase())bits+='ABCDEFGHIJKLMNOPQRSTUVWXYZ234567'.indexOf(c).toString(2).padStart(5,'0');const key=Buffer.from(bits.match(/.{8}/g).map(b=>parseInt(b,2))),counter=Buffer.alloc(8);counter.writeBigUInt64BE(BigInt(Math.floor(Date.now()/30000)));const hash=createHmac('sha1',key).update(counter).digest(),offset=hash[19]&15;return String((hash.readUInt32BE(offset)&0x7fffffff)%1e6).padStart(6,'0')}

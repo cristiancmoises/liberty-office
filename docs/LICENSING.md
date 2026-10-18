@@ -72,9 +72,11 @@ records the reviewed embedded graphics and their exact source commits, byte
 ranges and before/after hashes. Independent Liberty artwork replaces seven
 restricted graphic payloads across FilmCraft, PdfCraft, EffectCraft and
 DesignCraft. The inventory covers twelve complete product-identity/community
-labels, retaining plain-text source attribution. Eight installed upstream
-binaries receive data-only preparation; FigCraft and GridCraft identity labels
-are changed in their source builds described below. DeckCraft, PhotoCraft and LightCraft have a
+labels, retaining plain-text source attribution. Seven final installed upstream
+binaries receive data-only preparation; WordCraft, FigCraft and GridCraft identity labels
+are changed in their source builds described below. The original WordCraft
+bundle is verified and prepared before replacement by its source build.
+DeckCraft, PhotoCraft and LightCraft have a
 separate reviewed, unmodified-binary inventory.
 
 The data-only preparation is a deterministic transformation of pinned binary
@@ -94,6 +96,38 @@ graphics and source render paths before any upstream update; a matching filename
 or unchanged executable section alone does not establish license compliance.
 
 ## Source-built editors
+
+### WordCraft ordered text and immediate saving
+
+The pinned WordCraft canvas can discard an already queued text event when a
+later save shortcut changes the frame's modifier state. Liberty rebuilds the
+exact source with [`patch_wordcraft_web.py`](../scripts/patch_wordcraft_web.py)
+and real egui/engine regression tests in
+[`patches/wordcraft-web/`](../patches/wordcraft-web/). It preserves FIFO text
+processing before shortcuts, including equation text, without delaying browser
+keystrokes. Empty/control-character filtering and Alt shortcut handling remain.
+
+The patch also retains the first text event when the document explicitly
+requests focus back after ribbon/status controls. It does not steal focus from
+an active widget, popup, modal or native file dialog; existing read-only and
+save-confirmation guards remain. Native UI tests exercise both the save-order
+and first-character regressions against the real engine and encoders.
+
+These changes are **MIT OR Apache-2.0**. The build preserves original legal
+notices, font licenses, pattern notices and the separately licensed application
+icon; it identifies the independent integration and does not bundle restricted
+ArtCraft brand artwork. [`build_wordcraft_web.sh`](../scripts/build_wordcraft_web.sh)
+verifies source/tool/font archives, runs native tests and uses Cargo `--locked`
+with the original release profile. `wordcraft-build.lock.json` binds the exact
+recipe inputs and generated files. Liberty applies separate 48 MiB decoded and
+20 MiB gzip-transfer budgets, not upstream CI limits. The installed baseline
+is 39,785,016 bytes; this source build includes the upstream
+BIZ UDPGothic Regular font, absent from the previous bundle. Font notices and
+glyph coverage are preserved rather than dropping that font to meet an
+unmeasured size assumption. Cold/warm browser checks remain required;
+these byte budgets do not prove loading speed. Historical artifact basenames are kept
+for compatibility with retained immutable public generations; actual byte
+identity is verified by build-lock and generation SHA-256 digests.
 
 ### FigCraft browser file I/O
 
@@ -177,8 +211,10 @@ os arquivos originais. O inventário `branding.lock.json` fixa sete substituiç�
 gráficas em FilmCraft, PdfCraft, EffectCraft e DesignCraft, com arte própria,
 commits, posições e hashes de entrada/saída. O inventário cobre doze rótulos
 completos de identidade do produto/comunidade, preservando atribuição textual.
-Oito binários instalados recebem preparação apenas de dados; os rótulos de
-FigCraft e GridCraft são alterados nos builds de fonte. DeckCraft, PhotoCraft e
+Sete binários finais instalados recebem preparação apenas de dados; os rótulos de
+WordCraft, FigCraft e GridCraft são alterados nos builds de fonte. O pacote
+original do WordCraft é verificado e preparado antes da substituição pelo
+build de fonte. DeckCraft, PhotoCraft e
 LightCraft constam em inventário revisado de binários não modificados.
 
 A preparação de dados altera somente segmentos WASM, preservando tamanho e
@@ -190,6 +226,31 @@ atualizadas; `LIBERTY-MODIFICATIONS.json` registra as alterações. O HTML tamb�
 carrega o adaptador de integração. São integrações modificadas, não builds
 oficiais. Preserve os avisos originais e esses registros, e repita a revisão de
 assets e caminhos de desenho ao atualizar cada editor.
+
+O WordCraft também é recompilado: a combinação de texto já enfileirado e um
+atalho de salvar no mesmo quadro podia descartar caracteres pela leitura do
+estado final dos modificadores. `scripts/patch_wordcraft_web.py` preserva a
+ordem dos eventos, inclusive texto de equações, sem atrasar teclas no navegador.
+Também preserva o primeiro caractere quando o documento pede explicitamente o
+foco de volta após controles da faixa de opções ou barra de status, sem roubar
+foco de widgets, popups, modais ou seletores nativos. As proteções de somente
+leitura e confirmação de salvamento permanecem.
+Os testes em `patches/wordcraft-web/` usam egui e os encoders reais. Filtros de
+texto vazio/controle e atalhos Alt são mantidos. As alterações têm licença
+MIT OU Apache-2.0; avisos originais, fontes, padrões e ícone licenciado são
+preservados, sem incluir imagens de marca restritas. A identidade informa a
+integração independente. `scripts/build_wordcraft_web.sh` confere arquivos,
+executa testes nativos e usa Cargo `--locked` com o perfil de release original.
+`wordcraft-build.lock.json` fixa receitas e arquivos compilados. Os limites do
+Liberty são 48 MiB decodificados e 20 MiB na transferência gzip, não gates do
+upstream. A base instalada tem 39.785.016 bytes. O novo build
+inclui a fonte upstream BIZ UDPGothic Regular, ausente no bundle anterior,
+preservando avisos e cobertura de caracteres. Não removemos a fonte para atender
+uma suposição de tamanho sem medição; os limites em bytes não comprovam rapidez,
+que exige testes reais de carregamento frio e quente.
+Os nomes históricos dos artefatos são mantidos para aceitar
+gerações públicas anteriores; os hashes SHA-256 do lock e da geração conferem
+a identidade real dos bytes.
 
 O FigCraft tem build de fonte explícito: seu build web original não implementa os
 serviços de abrir/salvar. O Liberty recompila o commit fixado com as alterações

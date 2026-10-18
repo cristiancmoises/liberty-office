@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {disableDemoImports,installDemoImports} from '../liberty/static/demo-guard.mjs';
 import {createDemoBudget,demoPolicy} from '../liberty/static/demo-policy.mjs';
+import {setLanguage} from '../liberty/static/i18n.mjs';
 test('demo rejects file and directory pickers, file inputs and file drops',async()=>{
  const notices=[],events=new Map();let native=0;
  class Input{click(){native++}showPicker(){native++}}
@@ -53,6 +54,19 @@ function platform(){
 }
 const tick=()=>new Promise(setImmediate);
 const selected=(name='notes.txt',value='safe')=>new File([value],name,{type:'text/plain'});
+
+test('blocked import reasons and admission errors follow the selected interface language',async()=>{
+ setLanguage('pt-BR');
+ try{
+  const p=platform(),stop=installDemoImports(p.win,{budget:createDemoBudget(),policy:demoPolicy('pdfcraft'),notify:value=>p.notices.push(value)});
+  await assert.rejects(p.win.showOpenFilePicker(),error=>/Fluxos PDF/.test(error.message)&&!error.message.includes('Import is'));
+  assert(p.notices.some(value=>value.includes('Fluxos PDF')));
+  stop();
+  const q=platform(),dispose=installDemoImports(q.win,{budget:createDemoBudget(),policy:demoPolicy('wordcraft'),notify:value=>q.notices.push(value)});
+  const pending=q.win.showOpenFilePicker(),input=q.created[0];input.files=[selected('unsupported.docx')];input.dispatchEvent(new Event('change'));
+  await assert.rejects(pending);assert(q.notices.some(value=>value.includes('formato de arquivo não é compatível')));dispose();
+ }finally{setLanguage('en')}
+});
 
 test('picker and input selections reserve once before exposing files to native handlers',async()=>{
  const p=platform(),budget=createDemoBudget(),stop=installDemoImports(p.win,{budget,policy:demoPolicy('wordcraft'),notify:value=>p.notices.push(value)});

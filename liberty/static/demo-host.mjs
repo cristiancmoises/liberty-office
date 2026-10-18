@@ -27,11 +27,18 @@ async function start(){
  downloads=installDemoExports(window,{portalOrigin:config.portalOrigin,onState:state});
  const useLight=config.appId==='wordcraft'&&(new URLSearchParams(location.search).has('light')||!await graphicsAvailable(window));
  if(phase==='stopped'||unloaded)return;
- const budget=createDemoBudget(),policy=demoPolicy(config.appId,{light:useLight});let lightEditor=null;
+ window.parent.postMessage({type:'liberty.demo.policy',nonce,light:useLight},config.portalOrigin);
+ const budget=createDemoBudget({onChange:usage=>window.parent.postMessage({type:'liberty.demo.budget',nonce,...usage},config.portalOrigin)});
+ const policy=demoPolicy(config.appId,{light:useLight});let lightEditor=null;
  stopImports();stopImports=installDemoImports(window,{budget,policy,notify:state,onFiles:useLight?files=>lightEditor.openFile(files[0]):null});
  if(useLight){
   lightEditor=mountLightEditor(window,{demo:true,onState:state,onSave:downloads.exportBlob,
    admit:async options=>Promise.all((await window.showOpenFilePicker(options)).map(handle=>handle.getFile()))});return;
+ }
+ if(config.appId==='lightcraft'){
+  // The native memory backend avoids asynchronous thumbnail writes surviving
+  // document teardown. Private libraries retain their normal storage backend.
+  const url=new URL(window.location.href);url.searchParams.set('store','memory');window.history.replaceState(null,'',url);
  }
  stopRuntime=watchEditorRuntime(window,(value,message)=>{document.documentElement.dataset.libertyState=value;state(message)});
  restoreNativePreloads();

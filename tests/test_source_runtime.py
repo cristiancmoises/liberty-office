@@ -15,6 +15,7 @@ def test_runtime_uses_each_editor_build_lock_and_checks_assets(
     apps = [
         {"id": "figcraft", "version": "v0.6.0"},
         {"id": "gridcraft", "version": "v0.7.0"},
+        {"id": "wordcraft", "version": "v0.7.0"},
     ]
     (repository / "upstream.lock.json").write_text(json.dumps({"apps": apps}))
     for app in apps:

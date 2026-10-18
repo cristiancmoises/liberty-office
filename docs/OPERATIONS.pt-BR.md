@@ -30,13 +30,14 @@ Se quiser usar o launcher com overrides, defina `COMPOSE_FILE` com os mesmos arq
 
 ## Build de fonte e integridade dos editores
 
-O build de fonte atual requer Linux x86-64. O Docker padrão recompila FigCraft
-e GridCraft dos commits Rust fixados, com correções de abrir/salvar no navegador
-e da entrada inicial de células, respectivamente. Confere as saídas com
+O build de fonte atual requer Linux x86-64. O Docker padrão recompila WordCraft,
+FigCraft e GridCraft dos commits Rust fixados, com correções de ordem de texto
+ao salvar/foco, abrir/salvar no navegador e entrada inicial de células,
+respectivamente. Confere as saídas com `wordcraft-build.lock.json`,
 `figcraft-build.lock.json` e `gridcraft-build.lock.json`. Os outros editores usam
 bundles upstream verificados e a preparação de dados de marca documentada.
 Rust, wasm-bindgen, fontes e arquivos de origem são fixados em
-`scripts/build_figcraft_web.sh` e `scripts/build_gridcraft_web.sh`; Cargo usa `--locked` e um job.
+`scripts/build_wordcraft_web.sh`, `scripts/build_figcraft_web.sh` e `scripts/build_gridcraft_web.sh`; Cargo usa `--locked` e um job.
 Reserve tempo, memória e disco adicionais para dependências e caches. O script
 recusa iniciar ou terminar com menos de 5 GiB livres; esse piso não significa
 que 5 GiB sejam suficientes para o build inteiro.
@@ -45,10 +46,11 @@ As receitas não impõem sozinhas limites de memória/CPU ao container; configur
 esses limites no host de build. A implantação foi compilada em um builder
 separado e limitado, não no container da aplicação em execução.
 
-Não é necessária GPU no servidor. A imagem de execução contém assets prontos,
+Não é necessária GPU no servidor; a homologação nativa do WordCraft usa pacotes
+Vulkan por CPU fixados. A imagem de execução contém assets prontos,
 não a toolchain Rust, e não baixa código de editores no startup. Uma imagem
 local confiável com `/out` pode ser indicada no argumento de build
-`FIGCRAFT_BUNDLE_IMAGE` ou `GRIDCRAFT_BUNDLE_IMAGE` para reusar o build testado
+`WORDCRAFT_BUNDLE_IMAGE`, `FIGCRAFT_BUNDLE_IMAGE` ou `GRIDCRAFT_BUNDLE_IMAGE` para reusar o build testado
 do editor correspondente. Cada imagem precisa de um shell para a etapa
 condicional de build. Hashes dos arquivos
 compilados e dos patches/receitas atuais continuam obrigatórios; um bundle

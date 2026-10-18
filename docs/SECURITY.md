@@ -73,6 +73,26 @@ download incompatibilities without relaxing the iframe sandbox or browser
 privacy settings. An acknowledgement confirms download initiation, not that a
 user has saved the file to disk.
 
+Demo file selection is not a server upload. A shared admission policy checks
+metadata before reading bytes, reserves cumulative per-project usage, and
+validates decoded text/structure before handing a File to the native editor.
+Failed content validation consumes the read budget; rejected metadata does not.
+Rich clipboard flavors and native SVG/HTML/RTF/data-URI text shortcuts are
+blocked. Plain clipboard text has its own structural bounds. These controls
+are not a general-purpose sanitizer for arbitrary document formats.
+
+The demo controller clears stale storage before admitting a new engine. A
+second engine lease prevents a new controller from clearing a surviving current
+editor. Finish suspends exports, unloads the engine, waits for WebStorage,
+IndexedDB, CacheStorage and OPFS cleanup, revokes download URLs and only then
+releases the session. Failed or blocked cleanup is not reported as complete.
+LightCraft demos use the native memory backend to avoid thumbnail persistence;
+private libraries keep their normal backend. Effect's legacy service worker
+must retire before caches are removed. Older tabs that predate these leases
+must be closed before upgrading. Unexpected browser termination cannot promise
+immediate deletion; the next admission retries cleanup. This is temporary local
+processing, not anonymous server storage or a secure-erasure guarantee.
+
 Each private ticket belongs to a full session, one editor and its expiry time.
 Revoking the session invalidates the ticket. Served HTML delays upstream modules
 until browser-state cleanup and adapter initialization finish. Editor HTML does

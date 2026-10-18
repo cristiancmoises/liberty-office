@@ -34,12 +34,14 @@ status, backup and recovery.
 ## Source build and editor integrity
 
 Source builds currently require Linux x86-64. The default Docker build compiles
-FigCraft with browser file-I/O fixes and GridCraft with initial cell-input fixes
-from their pinned Rust sources, then verifies the output against
-`figcraft-build.lock.json` and `gridcraft-build.lock.json`. The other editors use
+WordCraft with FIFO-save/focus fixes, FigCraft with browser file-I/O fixes and
+GridCraft with initial cell-input fixes from their pinned Rust sources, then
+verifies the output against `wordcraft-build.lock.json`, `figcraft-build.lock.json`
+and `gridcraft-build.lock.json`. The other editors use
 verified upstream bundles and the documented data-only branding preparation.
 Rust, wasm-bindgen, source archives and craft-fonts are pinned in
-`scripts/build_figcraft_web.sh` and `scripts/build_gridcraft_web.sh`; Cargo uses `--locked` and one build
+`scripts/build_wordcraft_web.sh`, `scripts/build_figcraft_web.sh` and
+`scripts/build_gridcraft_web.sh`; Cargo uses `--locked` and one build
 job. Reserve additional build time, memory and disk for dependencies and build
 caches. The recipe refuses to start or finish below 5 GiB free; this is a
 storage floor, not a claim that 5 GiB is sufficient for the whole build.
@@ -48,9 +50,10 @@ The recipes do not impose a container memory/CPU limit themselves; configure
 those limits on your build host. The deployment was compiled in a separate
 bounded builder, not in the running application container.
 
-No server GPU is required. Runtime images contain prepared assets, not the Rust
-toolchain, and do not fetch editor code on startup. A trusted local bundle image
-with `/out` may be supplied through the `FIGCRAFT_BUNDLE_IMAGE` or
+No server GPU is required. WordCraft's native UI qualification uses pinned CPU
+Vulkan packages. Runtime images contain prepared assets, not the Rust toolchain,
+and do not fetch editor code on startup. A trusted local bundle image with `/out`
+may be supplied through the `WORDCRAFT_BUNDLE_IMAGE`, `FIGCRAFT_BUNDLE_IMAGE` or
 `GRIDCRAFT_BUNDLE_IMAGE` build argument to reuse the corresponding already-tested
 build. Each image must include a shell for the conditional build stage.
 Exact compiled-file and current patch/recipe
@@ -63,7 +66,8 @@ original licenses and source-build records when distributing prepared assets.
 distinct HTTPS origin (the hosted instance uses `https://demo-editoffice.securityops.co`).
 Proxy port 8099 to that host, preserve Host, and allow only GET/HEAD with a small
 request-body limit. Never point the demo origin at the private editor origin.
-Demo editors cannot import files or invoke the private Drive bridge. Their
+Demo editors cannot upload documents or invoke the private Drive bridge. Only
+the qualified browser-local formats listed in the README can be imported. Their
 storage is isolated from the authenticated editor origin. The lightweight text
 editor is a compatibility mode, not a DOCX replacement.
 

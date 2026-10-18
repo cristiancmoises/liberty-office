@@ -1,6 +1,7 @@
 # syntax=docker/dockerfile:1
 ARG FIGCRAFT_BUNDLE_IMAGE=rust:1.95.0-bookworm@sha256:6258907abe69656e41cd992e0b705cdcfabcbbe3db374f92ed2d47121282d4a1
 ARG GRIDCRAFT_BUNDLE_IMAGE=rust:1.95.0-bookworm@sha256:6258907abe69656e41cd992e0b705cdcfabcbbe3db374f92ed2d47121282d4a1
+ARG WORDCRAFT_BUNDLE_IMAGE=rust:1.95.0-bookworm@sha256:6258907abe69656e41cd992e0b705cdcfabcbbe3db374f92ed2d47121282d4a1
 FROM ${FIGCRAFT_BUNDLE_IMAGE} AS figcraft
 WORKDIR /integration
 COPY scripts/build_figcraft_web.sh scripts/patch_figcraft_web.py scripts/package_figcraft_web.py ./scripts/
@@ -11,11 +12,22 @@ RUN if [ ! -f /out/index.html ]; then bash scripts/build_figcraft_web.sh /build 
 
 FROM ${GRIDCRAFT_BUNDLE_IMAGE} AS gridcraft
 WORKDIR /integration
-# Keep the two memory-intensive source builds sequential under BuildKit too.
+# Keep memory-intensive source builds sequential under BuildKit too.
 COPY --from=figcraft /out/index.html /integration/figcraft-build-complete.html
 COPY scripts/build_gridcraft_web.sh scripts/patch_gridcraft_web.py scripts/package_gridcraft_web.py ./scripts/
 COPY patches/gridcraft-web ./patches/gridcraft-web
 RUN if [ ! -f /out/index.html ]; then bash scripts/build_gridcraft_web.sh /build /out; fi
+
+FROM ${WORDCRAFT_BUNDLE_IMAGE} AS wordcraft
+WORKDIR /integration
+COPY --from=gridcraft /out/index.html /integration/gridcraft-build-complete.html
+COPY scripts/build_wordcraft_web.sh scripts/patch_wordcraft_web.py scripts/package_wordcraft_web.py ./scripts/
+COPY patches/wordcraft-web ./patches/wordcraft-web
+# Native UI tests use headless CPU Vulkan, never a host GPU or display server.
+RUN if [ ! -f /out/index.html ]; then \
+      apt-get update && apt-get install -y --no-install-recommends --no-upgrade \
+        libvulkan1=1.3.239.0-1 mesa-vulkan-drivers=22.3.6-1+deb12u2 \
+      && bash scripts/build_wordcraft_web.sh /build /out; fi
 
 FROM python:3.12-slim-bookworm@sha256:34386ef0cb081344d7ec1c103ba398e6e9f64e9ab3a1509accc92a4e24a07258 AS apps
 WORKDIR /build
@@ -24,16 +36,24 @@ COPY branding.lock.json ./
 COPY assets/branding ./assets/branding
 COPY figcraft-build.lock.json ./
 COPY gridcraft-build.lock.json ./
+COPY wordcraft-build.lock.json ./
 COPY public-assets.lock.json ./
 COPY liberty/__init__.py liberty/public_assets.py ./liberty/
 COPY patches/figcraft-web ./patches/figcraft-web
 COPY patches/gridcraft-web ./patches/gridcraft-web
-COPY scripts/fetch_apps.py scripts/brand_apps.py scripts/install_source_web.py scripts/build_figcraft_web.sh scripts/patch_figcraft_web.py scripts/package_figcraft_web.py scripts/build_gridcraft_web.sh scripts/patch_gridcraft_web.py scripts/package_gridcraft_web.py scripts/package_public_assets.py ./scripts/
+COPY patches/wordcraft-web ./patches/wordcraft-web
+COPY scripts/fetch_apps.py scripts/brand_apps.py scripts/install_source_web.py \
+    scripts/build_figcraft_web.sh scripts/patch_figcraft_web.py scripts/package_figcraft_web.py \
+    scripts/build_gridcraft_web.sh scripts/patch_gridcraft_web.py scripts/package_gridcraft_web.py \
+    scripts/build_wordcraft_web.sh scripts/patch_wordcraft_web.py scripts/package_wordcraft_web.py \
+    scripts/package_public_assets.py ./scripts/
 COPY --from=figcraft /out ./figcraft-prepared
 COPY --from=gridcraft /out ./gridcraft-prepared
+COPY --from=wordcraft /out ./wordcraft-prepared
 RUN python scripts/fetch_apps.py --output /opt/artcraft \
     && python scripts/install_source_web.py --bundle /build/figcraft-prepared --output /opt/artcraft --lock /build/figcraft-build.lock.json \
     && python scripts/install_source_web.py --bundle /build/gridcraft-prepared --output /opt/artcraft --lock /build/gridcraft-build.lock.json \
+    && python scripts/install_source_web.py --bundle /build/wordcraft-prepared --output /opt/artcraft --lock /build/wordcraft-build.lock.json \
     && python scripts/package_public_assets.py /opt/artcraft /opt/liberty-public-assets
 
 FROM python:3.12-slim-bookworm@sha256:34386ef0cb081344d7ec1c103ba398e6e9f64e9ab3a1509accc92a4e24a07258 AS runtime

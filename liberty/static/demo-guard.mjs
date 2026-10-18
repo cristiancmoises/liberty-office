@@ -1,4 +1,4 @@
-import {msg,text} from './i18n.mjs';;
+import {msg,text,ownedMessage} from './i18n.mjs';
 import {validateDemoPaste} from './demo-policy.mjs';
 export function disableDemoImports(win,notify){
  const denied=()=>{notify(text(msg('Na demonstração, use os exemplos ou digite no editor. A importação de arquivos está desativada.')));throw new DOMException(text(msg('Importação desativada na demonstração.')),'NotAllowedError')};
@@ -25,8 +25,8 @@ export function installDemoImports(win,{budget,policy,notify,onFiles=null}){
  const open=win.showOpenFilePicker,directory=win.showDirectoryPicker;
  const approved=new WeakSet(),busy=new WeakSet(),pickers=new Map();let disposed=false;
  const fail=message=>new DOMException(message,'NotAllowedError');
- const deny=()=>fail('Import is not yet qualified for this demo. '+(policy.reason??''));
- const report=error=>notify(error.message);
+ const deny=()=>fail(text(msg('Importação local bloqueada: {0}',ownedMessage(policy.reason??'This format is not yet qualified for demo import.'))));
+ const report=error=>notify(text(ownedMessage(error.message)));
  const stop=event=>{event.preventDefault();event.stopImmediatePropagation()};
  function extensions(accept=''){
   const tokens=accept.toLowerCase().split(',').map(value=>value.trim()).filter(Boolean);
@@ -89,14 +89,14 @@ export function installDemoImports(win,{budget,policy,notify,onFiles=null}){
   }
  }
  prototype.click=function(){if(this.type==='file'){try{prepare(this)}catch(error){report(error);return}}return click.call(this)};
- if(picker)prototype.showPicker=function(){if(this.type==='file')prepare(this);return picker.call(this)};
- win.showDirectoryPicker=async()=>{throw fail('Directory imports are disabled in the demo.')};
+ if(picker)prototype.showPicker=function(){try{if(this.type==='file')prepare(this)}catch(error){report(error);throw error}return picker.call(this)};
+ win.showDirectoryPicker=async()=>{const error=fail('Directory imports are disabled in the demo.');report(error);throw error};
  win.showOpenFilePicker=async(options={})=>{
   if(disposed)throw fail('The demo editor is closed.');
-  if(!policy.qualified)throw deny();
+  if(!policy.qualified){const error=deny();report(error);throw error}
   const input=win.document.createElement('input');input.type='file';input.hidden=true;input.multiple=!!options.multiple&&!!policy.multiple;
   input.accept=(options.types||[]).flatMap(type=>Object.entries(type.accept||{}).flatMap(([mime,extensions])=>extensions.length?extensions:[mime])).join(',');
-  prepare(input);
+  try{prepare(input)}catch(error){report(error);throw error}
   return new Promise((resolve,reject)=>{
    let done=false;
    const finish=(files,error)=>{

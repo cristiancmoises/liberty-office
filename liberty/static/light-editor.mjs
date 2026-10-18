@@ -1,4 +1,4 @@
-import {msg,text,bindText,bindAttribute,getLanguage} from './i18n.mjs';;
+import {msg,text,bindText,bindAttribute,getLanguage,ownedMessage} from './i18n.mjs';
 export async function graphicsAvailable(win){
  try{const gl=win.document.createElement('canvas').getContext('webgl2');if(gl){gl.getExtension('WEBGL_lose_context')?.loseContext();return true}}catch{}
  // WebGPU can be exposed even when every hardware adapter is unavailable.
@@ -40,7 +40,7 @@ export function mountLightEditor(win,{onSave,onState,demo=false,admit=null}){
  const name=make('input',null,{value:getLanguage()==='pt-BR'?'documento.html':'document.html','aria-label':msg('Nome do documento'),maxlength:'160'});
  const area=make('div',null,{class:'light-document',contenteditable:'true',role:'textbox','aria-label':msg('Conteúdo do documento'),'aria-multiline':'true',spellcheck:'true'});
  const info=make('p',msg('Digite no documento para começar.'),{class:'light-status',role:'status','aria-live':'polite'});
- const status=value=>{bindText(info,value);onState(text(value))};
+ const status=value=>{value=ownedMessage(value);bindText(info,value);onState(text(value))};
  const formatNote=make('p',msg('TXT e Markdown são salvos como texto puro, sem formatação. Negrito, itálico, sublinhado e listas não são preservados. Use HTML para exportar a formatação.'),{class:'light-format-note',role:'note'});
  const updateFormatNote=()=>{formatNote.hidden=!/\.(txt|md)$/i.test(name.value.trim())};updateFormatNote();
  let revision=0;

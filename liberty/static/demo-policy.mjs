@@ -94,8 +94,9 @@ export function validateDemoPaste(value,policy){
  return value;
 }
 
-export function createDemoBudget(){
+export function createDemoBudget({onChange=()=>{}}={}){
  let files=0,bytes=0,pending=0;
+ const changed=()=>onChange(Object.freeze({files,bytes}));
  return {
   get usage(){return Object.freeze({files,bytes})},
   async admit(selection,policy){
@@ -115,10 +116,10 @@ export function createDemoBudget(){
    // Reserve synchronously, before the first read. Failed content validation
    // still consumes the read budget; replacement never silently refunds it.
    files+=selection.length;bytes+=size;pending++;
-   try{for(const file of selection)await validateFile(file,policy);return selection.slice()}
+   try{changed();for(const file of selection)await validateFile(file,policy);return selection.slice()}
    finally{pending--}
   },
   // The owner calls this only after confirmed project cleanup, never on replace.
-  resetAfterClear(){if(pending)throw Error('File admission is still pending.');files=0;bytes=0}
+  resetAfterClear(){if(pending)throw Error('File admission is still pending.');files=0;bytes=0;changed()}
  };
 }

@@ -4,9 +4,24 @@ Portal web self-hosted com 13 editores integrados, Drive privado, administraçã
 
 **Acessar:** [office.securityops.co](https://office.securityops.co) · [office.securityops.com.br](https://office.securityops.com.br) · [Experimentar a demonstração](https://office.securityops.co/demo). [English documentation](README.md).
 
-![Liberty Office: catálogo de aplicativos](docs/screenshots/liberty-desktop.png)
+![Liberty Office: catálogo da demo pública](docs/screenshots/liberty-demo-desktop.png)
 
-A demonstração é identificada na tela, não aceita uploads e usa uma origem separada dos editores privados. Os arquivos de demonstração não são gravados no Drive. O modo leve de texto permite escrever sem WebGL; ele não oferece a fidelidade DOCX do editor completo.
+A demonstração processa arquivos compatíveis no navegador, sem enviar documentos
+ao servidor. Usa uma origem separada dos editores privados e não grava no Drive.
+Baixe uma cópia e escolha **Concluir e limpar**. Se o navegador fechar
+inesperadamente, dados locais podem permanecer até a próxima visita ou a remoção
+dos dados do site da demo. Feche abas de demos antigas antes de iniciar uma
+sessão atualizada.
+
+Importações locais aceitam TXT no WordCraft, CSV/TSV no GridCraft, roteiros
+TXT/Markdown no DeckCraft e TXT/Markdown/HTML no modo leve. Esses formatos têm
+**limite de entrada de 2 MiB**, além dos limites de conteúdo decodificado. Os
+tetos gerais são 50 MB por arquivo e 10 arquivos/100 MB cumulativos por projeto;
+prevalecem os limites menores do formato. Substituir um arquivo não reinicia o
+consumo. Outros editores oferecem exemplos ou ferramentas de criação, mas suas
+importações locais continuam bloqueadas até qualificar limites dos parsers.
+Veja a [matriz de aceitação](docs/ACCEPTANCE.pt-BR.md#candidata-da-demo-temporária).
+O modo leve permite escrever sem WebGL; não oferece a fidelidade DOCX completa.
 
 No modo leve, TXT e Markdown são texto puro e não preservam a formatação visual.
 Use HTML para exportar formatação básica. HTML importado vira texto inerte,
@@ -18,7 +33,7 @@ preservando quebras e limites de blocos; seu conteúdo nunca é executado.
 
 ![Editor de texto leve do Liberty](docs/screenshots/liberty-word-lite.png)
 
-![Liberty Office em celular](docs/screenshots/liberty-mobile.png)
+![Demo pública com editor de texto leve em celular](docs/screenshots/liberty-demo-mobile.png)
 
 </details>
 
@@ -26,7 +41,13 @@ preservando quebras e limites de blocos; seu conteúdo nunca é executado.
 
 O build de fonte atual requer Linux x86-64.
 
-Use Docker Engine com Compose v2 em Linux. O primeiro build baixa releases verificadas por tamanho e SHA-256 e recompila FigCraft e GridCraft dos fontes Rust fixados, com correções de abrir/salvar no navegador e da entrada inicial de células, respectivamente. Os demais editores usam bundles upstream verificados com a preparação de marca documentada. Reserve tempo e disco adicionais para as dependências Rust; não é necessária GPU no servidor nem download de código no startup. Encoders e licenças originais são preservados; veja [os detalhes do build](docs/LICENSING.md#source-built-editors). O navegador desktop atualizado precisa de WebAssembly/WebGL; funções avançadas de áudio/vídeo dependem das capacidades do navegador.
+Use Docker Engine com Compose v2 em Linux. O primeiro build baixa releases verificadas por tamanho e SHA-256 e recompila WordCraft, FigCraft e GridCraft dos fontes Rust fixados. As correções preservam texto antes de salvar imediatamente e ao voltar dos controles da faixa de opções, oferecem abrir/salvar no navegador e mantêm a entrada inicial de células, respectivamente. Os demais editores usam bundles upstream verificados com a preparação de marca documentada. Reserve tempo e disco adicionais para Rust; testes nativos do WordCraft usam Vulkan por CPU, sem GPU no servidor. Não há download de código no startup. Encoders e licenças originais são preservados; veja [os detalhes do build](docs/LICENSING.md#source-built-editors). O navegador desktop atualizado precisa de WebAssembly/WebGL; funções avançadas de áudio/vídeo dependem das capacidades do navegador.
+
+O modo leve do WordCraft não baixa JS/WASM nativo. O modo completo baixa um
+módulo de aproximadamente 17 MiB gzip na primeira utilização, com as fontes
+upstream preservadas. O código público é cacheado separadamente do HTML de
+sessão com no-store. Isso não torna toda abertura nativa fria mais rápida nem
+comprova fidelidade de documentos complexos.
 
 Extraia o pacote, entre na pasta e execute:
 

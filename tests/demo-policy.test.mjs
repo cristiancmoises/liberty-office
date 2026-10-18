@@ -130,3 +130,12 @@ test('unknown app ids cannot inherit a policy from Object.prototype',()=>{
   const policy=demoPolicy(appId);assert.equal(policy.qualified,false);assert.deepEqual(policy.extensions,[]);assert(Object.isFrozen(policy));
  }
 });
+
+test('budget observers receive immutable reservations before reads, not document contents',async()=>{
+ const changes=[],budget=createDemoBudget({onChange:value=>changes.push(value)});
+ const selected=file('never-transmitted-name.txt','safe');const read=selected.arrayBuffer;
+ selected.arrayBuffer=()=>{assert.deepEqual(changes,[{files:1,bytes:4}]);return read()};
+ await budget.admit([selected],textPolicy());assert(Object.isFrozen(changes[0]));
+ const refused=large(50_000_001);await assert.rejects(budget.admit([refused],widePolicy()));assert.equal(changes.length,1);
+ budget.resetAfterClear();assert.deepEqual(changes,[{files:1,bytes:4},{files:0,bytes:0}]);
+});
