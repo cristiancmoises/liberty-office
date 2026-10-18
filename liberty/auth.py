@@ -20,7 +20,9 @@ def status(request: Request):
     session = service.session(request)
     with service.db.connect() as c:
         setup = c.execute('SELECT COUNT(*) FROM users').fetchone()[0] == 0
-    result = {'state':session['stage'] if session else 'anonymous','setup_required':setup}
+        registration = service.settings.public_signup and bool(c.execute("SELECT 1 FROM users WHERE role='admin' AND enabled=1 AND totp_confirmed=1 LIMIT 1").fetchone())
+    result = {'state':session['stage'] if session else 'anonymous','setup_required':setup,
+              'public_signup':registration,'signup_quota_bytes':service.settings.signup_quota}
     if session:
         result['csrf'] = session['csrf']
         if session['stage'] == 'full':

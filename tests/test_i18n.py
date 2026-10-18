@@ -1,3 +1,16 @@
+def test_public_signup_messages_have_english_default_and_portuguese_secondary(env):
+    from test_signup import body
+
+    _, client, _ = env
+    english = client.post("/api/auth/signup", json=body())
+    portuguese = client.post(
+        "/api/auth/signup", json=body(), headers={"Accept-Language": "pt-BR"}
+    )
+    assert english.status_code == portuguese.status_code == 503
+    assert english.json()["detail"] == "Public registration is not available."
+    assert portuguese.json()["detail"] == "Cadastro público indisponível."
+
+
 def test_errors_default_to_english_and_portuguese_is_explicit(env):
     _, client, _ = env
     assert client.get("/api/files").json()["detail"] == "Sign in to your account."

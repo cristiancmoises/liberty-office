@@ -31,6 +31,22 @@ def test_signup_disabled_and_empty_bootstrap_cannot_be_taken_over(env):
         assert c.execute("SELECT COUNT(*) FROM users").fetchone()[0] == 0
 
 
+def test_status_advertises_registration_only_after_operator_finishes_setup(env):
+    from conftest import bootstrap
+
+    app, client, settings = env
+    assert client.get("/api/auth/status").json()["public_signup"] is False
+    app.state.svc.settings = replace(settings, public_signup=True)
+    assert client.get("/api/auth/status").json()["public_signup"] is False
+    bootstrap(client, settings)
+    with closing(anonymous(app)) as visitor:
+        status = visitor.get("/api/auth/status").json()
+        assert (
+            status["public_signup"] is True
+            and status["signup_quota_bytes"] == 100_000_000
+        )
+
+
 def test_signup_fixed_quota_role_and_mandatory_mfa(public_env):
     app, _, _ = public_env
     with closing(anonymous(app)) as client:
@@ -299,3 +315,25 @@ def test_signup_settings_have_explicit_env_wiring_and_reject_invalid_limits(
     monkeypatch.setenv("PUBLIC_SIGNUP_ENABLED", "maybe")
     with pytest.raises(ValueError):
         Settings.from_env()
+
+
+def test_compose_and_example_expose_all_public_registration_settings():
+    from pathlib import Path
+
+    root = Path(__file__).resolve().parents[1]
+    compose, example = (
+        (root / "compose.yaml").read_text(),
+        (root / ".env.example").read_text(),
+    )
+    for key in (
+        "PUBLIC_SIGNUP_ENABLED",
+        "PUBLIC_SIGNUP_QUOTA_BYTES",
+        "SIGNUP_ATTEMPTS",
+        "SIGNUP_SUCCESSES",
+        "SIGNUP_WINDOW_SECONDS",
+        "SIGNUP_SLOTS",
+        "SIGNUP_PENDING_TTL_SECONDS",
+        "TRUSTED_PROXY_CIDRS",
+    ):
+        assert f"{key}: ${{{key}:-" in compose or f'{key}: "${{{key}:-' in compose
+        assert f"{key}=" in example

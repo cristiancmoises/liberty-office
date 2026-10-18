@@ -32,7 +32,34 @@ Linux with Docker Engine and Compose v2 is required. Copy `.env.example` to `.en
 
 FigCraft and GridCraft are rebuilt from pinned Rust sources with browser file-I/O and initial cell-input fixes, respectively. The other editors use verified upstream bundles with the documented branding preparation. Source builds currently require Linux x86-64 and additional time and disk space for Rust dependencies, but no server GPU. Original file encoders and licenses are preserved; see [the source-build details](docs/LICENSING.md#source-built-editors).
 
-The first administrator is created with a one-time bootstrap token stored in the persistent volume. Run `./libertyctl token` on the host to retrieve it privately. There is no default password or public registration. Complete TOTP enrollment and save the recovery codes before using files or editors.
+The first administrator is created with a one-time bootstrap token stored in the persistent volume. Run `./libertyctl token` on the host to retrieve it privately. There is no default password. Complete TOTP enrollment and save the recovery codes before using files or editors.
+
+## Free accounts
+
+Public registration lets anyone create a free account without an invitation.
+Choose **Create a free account**, enter your name, username and a password of
+14–256 characters, then enroll a TOTP authenticator and save your recovery codes.
+MFA is mandatory; an unfinished account cannot open private files or editors.
+
+Each public account starts with **100 MB = 100,000,000 bytes**. Saved files,
+revisions, trash and reserved uploads all count toward that quota. Downloads
+remain available when it is full; delete unneeded revisions or empty the trash
+to make room. Account files persist until deleted and are **not** subject to
+demo cleanup. Only unfinished, never-activated public registrations without
+files or other protected references may expire after 24 hours; cleanup runs
+during later registrations, not at an exact deletion deadline.
+
+For self-hosting, `PUBLIC_SIGNUP_ENABLED` defaults to `false` for upgrade
+compatibility. After operator MFA setup and storage/proxy qualification, set it
+to `true` to open registration. `PUBLIC_SIGNUP_QUOTA_BYTES=100000000` is separate
+from `DEFAULT_QUOTA_BYTES`, which applies to administrator-created accounts.
+The default abuse bounds are 5 signup attempts per source and 20 successful
+registrations globally per hour, with 400 public-account slots. These are
+capacity safeguards, not an invitation or payment requirement. Change the
+documented `SIGNUP_*` settings only to fit verified host capacity. Leave
+`TRUSTED_PROXY_CIDRS` empty unless exact trusted proxy peers have been verified;
+never trust arbitrary forwarding headers. See [.env.example](.env.example) and
+the [security model](docs/SECURITY.md).
 
 ## Data and limits
 

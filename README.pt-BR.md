@@ -41,7 +41,7 @@ As três portas são publicadas em loopback por padrão. Configure as origens e 
 
 ## Domínio e HTTPS
 
-Defina **três origens distintas** no `.env` antes de criar convites:
+Defina **três origens distintas** no `.env` antes de abrir o cadastro ou criar convites:
 
 ```sh
 PUBLIC_ORIGIN=https://office.seu-dominio.com
@@ -101,7 +101,37 @@ Se a sessão expirar, preserve a exportação, entre na **mesma conta** em outra
 
 ## Contas e armazenamento
 
-Em **Administração**, crie contas e entregue o link de convite de uso único, válido por 48 horas. A pessoa escolhe senha e cadastra MFA. O painel permite reemitir convites, gerar recuperação de senha, alterar papel/cota e desativar/reativar contas. A recuperação de senha conserva o MFA existente; se o cadastro estava incompleto, reinicia o enrollment obrigatório. Não existe cadastro público nem opção de desligar MFA.
+O cadastro público permite que qualquer pessoa crie uma conta gratuitamente,
+sem convite. Escolha **Criar conta gratuita**, informe nome, usuário e uma senha
+de 14–256 caracteres, ative um autenticador TOTP e guarde os códigos de
+recuperação. MFA é obrigatório; uma conta incompleta não abre arquivos nem
+editores privados.
+
+Cada conta pública começa com **100 MB = 100.000.000 bytes**. Arquivos salvos,
+versões, lixeira e envios reservados ocupam essa cota. Downloads continuam
+disponíveis quando ela está cheia; exclua versões desnecessárias ou esvazie a
+lixeira para liberar espaço. Arquivos da conta permanecem até sua exclusão e
+**não** entram na limpeza da demo. Somente cadastros públicos nunca ativados,
+sem arquivos nem outras referências protegidas, podem expirar após 24 horas.
+A limpeza ocorre durante cadastros posteriores, não em um prazo exato de
+exclusão.
+
+Em instalações próprias, `PUBLIC_SIGNUP_ENABLED` começa em `false` por
+compatibilidade com atualizações. Após o operador concluir MFA e qualificar
+armazenamento e proxy, defina `true` para abrir o cadastro. A cota pública
+`PUBLIC_SIGNUP_QUOTA_BYTES=100000000` é separada de `DEFAULT_QUOTA_BYTES`, usada
+nas contas criadas pela administração. Os limites padrão contra abuso são
+5 tentativas por origem e 20 cadastros bem-sucedidos globais por hora, com
+400 vagas de contas públicas. São proteções de capacidade, não exigências de
+convite ou pagamento. Ajuste `SIGNUP_*` apenas conforme a capacidade validada.
+Deixe `TRUSTED_PROXY_CIDRS` vazio salvo se os proxies exatos tiverem sido
+verificados; não confie em cabeçalhos de encaminhamento arbitrários.
+
+Em **Administração**, também é possível criar contas por convite de uso único,
+válido por 48 horas. O painel permite reemitir convites, gerar recuperação de
+senha, alterar papel/cota e desativar/reativar contas. A recuperação de senha
+conserva o MFA existente; se o cadastro estava incompleto, reinicia a ativação
+obrigatória. Não existe opção de desligar MFA.
 
 Em **Minha conta**, altere a senha e revogue sessões de outros dispositivos. Ações sensíveis exigem autenticação recente por senha e um novo TOTP. Desativação e mudança de papel revogam sessões, preservando os documentos.
 
@@ -115,7 +145,14 @@ O Drive oferece pastas, upload/download, renomeação, movimentação, pesquisa,
 | `LIBERTY_PORT` / `EDITOR_PORT` / `DEMO_EDITOR_PORT` | 8097 / 8098 / 8099 | Portas publicadas no host |
 | `LIBERTY_BIND` | `127.0.0.1` | Interface de publicação |
 | `GLOBAL_QUOTA_BYTES` | 50 GiB | Blobs, revisões, lixeira e reservas de envio |
-| `DEFAULT_QUOTA_BYTES` | 5 GiB | Cota de novas contas |
+| `DEFAULT_QUOTA_BYTES` | 5 GiB | Cota inicial de contas criadas pela administração |
+| `PUBLIC_SIGNUP_ENABLED` | `false` | Abrir cadastro público após concluir o setup |
+| `PUBLIC_SIGNUP_QUOTA_BYTES` | 100.000.000 bytes | Cota inicial das contas públicas gratuitas |
+| `SIGNUP_ATTEMPTS` / `SIGNUP_SUCCESSES` | 5 / 20 | Tentativas por origem / sucessos globais por janela |
+| `SIGNUP_WINDOW_SECONDS` | 3600 | Janela dos limites de cadastro |
+| `SIGNUP_SLOTS` | 400 | Máximo de contas públicas pendentes e estabelecidas |
+| `SIGNUP_PENDING_TTL_SECONDS` | 86400 | Idade mínima para limpar cadastro nunca ativado |
+| `TRUSTED_PROXY_CIDRS` | vazio | Somente proxies exatos e verificados |
 | `MAX_UPLOAD_BYTES` | 100 MiB | Máximo por upload/exportação |
 | `LIBERTY_VOLUME_NAME` | `liberty_office_data` | Volume persistente |
 

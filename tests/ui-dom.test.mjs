@@ -27,6 +27,8 @@ test('portal renders admin account controls without injecting filenames',async()
  assert.match(document.querySelector('#workspace').textContent,/<img src=x onerror=alert\(1\)>/);
  const button=text=>[...document.querySelectorAll('button')].find(b=>b.textContent===text);
  button('Administration').click();await waitFor(()=>document.querySelector('.user-controls'));
+ assert.ok(document.querySelector('input[aria-label*="GiB"]'),'binary quota controls must identify their actual unit');
+ assert.equal(document.querySelector('.user-controls small').textContent,'GiB');
  assert.ok(document.querySelector('button[aria-label="Recovery for alice"]'));
  button('My account').click();await waitFor(()=>button('Manage sessions'));
  button('Manage sessions').click();await waitFor(()=>document.querySelector('dialog'));

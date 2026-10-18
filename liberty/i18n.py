@@ -13,12 +13,23 @@ def language(request):
 
 
 def translate(message, request):
-    if not isinstance(message, str) or language(request) == "pt-BR":
+    if not isinstance(message, str):
         return message
+    if language(request) == "pt-BR":
+        return PT.get(message, message)
     prefix = "Value error, "
     if message.startswith(prefix):
         return prefix + EN.get(message[len(prefix) :], message[len(prefix) :])
     return EN.get(message, message)
+
+
+PT = {
+    "Public registration is not available.": "Cadastro público indisponível.",
+    "The operator must finish initial setup before registration opens.": "O operador precisa concluir a configuração inicial antes de abrir os cadastros.",
+    "That username is already registered.": "Esse nome de usuário já está cadastrado.",
+    "Public account capacity is temporarily full.": "A capacidade de contas públicas está temporariamente esgotada.",
+    "Registration is busy. Please try again later.": "O cadastro está ocupado. Tente novamente mais tarde.",
+}
 
 
 EN = {

@@ -4,7 +4,31 @@
 
 ## Identidade
 
-Toda conta precisa de senha Argon2id e TOTP confirmado. Não existe senha padrão, bypass web, cadastro público ou opção de desativar MFA. O token aleatório de bootstrap só funciona em banco vazio. Convites de 48 horas e links de redefinição de 30 minutos são aleatórios, de uso único e guardados como hashes.
+Toda conta precisa de senha Argon2id e TOTP confirmado. Não existe senha padrão, bypass web ou opção de desativar MFA. O token aleatório de bootstrap só funciona em banco vazio. Convites de 48 horas e links de redefinição de 30 minutos são aleatórios, de uso único e guardados como hashes.
+
+Cadastro público gratuito, sem convite, fica disponível quando o operador
+habilita `PUBLIC_SIGNUP_ENABLED` após confirmar MFA da administração. Cria
+usuário comum com cota separada de 100.000.000 bytes; campos como papel, cota ou
+outros desconhecidos são rejeitados. Não permite assumir o bootstrap
+administrativo. O padrão é desabilitado para instalações próprias existentes.
+
+O cadastro tem limites persistentes de tentativas por origem (5 por hora),
+sucessos globais (20 por hora) e capacidade de contas públicas (400). Tentativas
+contam mesmo quando a criação falha; contador de sucesso, usuário e sessão são
+gravados atomicamente. Somente `TRUSTED_PROXY_CIDRS` explicitamente configurados
+podem fornecer uma cadeia de encaminhamento: usa-se o par não confiável mais à
+direita; cabeçalhos inválidos voltam ao par direto. Configuração incorreta pode
+agrupar usuários no mesmo limite; não resolva isso confiando em todos os proxies.
+
+Cada transação de cadastro pode limpar no máximo 100 cadastros públicos
+incompletos após as 24 horas configuradas. A limpeza exclui contas estabelecidas,
+desativadas ou protegidas, convites, arquivos, versões, reservas e
+compartilhamentos recebidos. A primeira confirmação MFA marca a conta como
+estabelecida permanentemente; recuperação ou reset de MFA posteriores não a
+tornam descartável. Contas antigas ficam fora dessa limpeza. Não é uma política
+de retenção dos arquivos das contas. Antes de permitir um escritor antigo, sem
+essa instrumentação, no banco, marque todos os registros públicos como
+`cleanup_protected=1`; nunca execute escritores antigos e novos simultaneamente.
 
 Senha tem mínimo de 14 caracteres e limite de 256. No máximo duas operações Argon simultâneas limitam memória por processo. O throttle persistente verifica o IP antes de criar chaves por nome de conta. A API limita JSON a 16 KiB antes do parser e uploads ao limite configurado, com tempo máximo de recebimento. Respostas de validação não repetem os valores recebidos.
 
@@ -36,6 +60,12 @@ Na troca de conta, o adaptador limpa Web Storage, IndexedDB, CacheStorage e OPFS
 Cada acesso ao Drive verifica proprietário/compartilhamento. Compartilhamentos são internos e de leitura; destinatários acessam a versão atual, não o histórico privado do proprietário. Exportações viram cópias próprias. Downloads são attachment/octet-stream/nosniff. Nomes de arquivo não determinam caminhos de blobs, que usam UUID.
 
 Revisões imutáveis e ETag/If-Match protegem atualizações e restauração contra concorrência. Quotas incluem revisões, lixeira e reservas de upload sob transação. Excluir uma revisão atual isolada é proibido. O log de auditoria tem tamanho limitado e não registra conteúdo de documentos, senhas ou tokens.
+
+O armazenamento de contas públicas é persistente e separado da demo local do
+navegador. A cota pública padrão é exatamente 100 MB (100.000.000 bytes), não
+100 MiB. A interface mostra uso, reservas e espaço disponível; downloads seguem
+disponíveis quando novos envios estão bloqueados. Controles administrativos
+de cota usam GiB explicitamente. Alterar padrões não redimensiona contas existentes.
 
 Há um bloqueio exclusivo por volume antes de abrir/migrar o banco. Backup, restauração e recuperação operacional cooperam com esse bloqueio. Status e diagnóstico não migram o banco. Restauração valida hashes, referências, integridade SQLite, chaves MFA e destino vazio; apaga sessões e reservas restauradas. A imagem roda sem root/capabilities, sem socket Docker, com raiz read-only e logs limitados.
 
