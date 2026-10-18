@@ -3,7 +3,7 @@
     "sha256",
     "sha512"
   ],
-  "created_at": "2026-10-18T18:30:46Z",
+  "created_at": "2026-10-18T18:41:40Z",
   "excluded": [
     {
       "path": ".codemark",
@@ -50,8 +50,8 @@
     },
     "MANIFEST.sha256": {
       "mode": 420,
-      "sha256": "0baa36961d1ea245a341a4996c1e134df5dfb4c37d9d571a85f0934048468469",
-      "sha512": "6269e987ea9a649e22ca6a40f0cc9fa8632bafeba17682f92771626391b353e653cefdb803da7677c6b113e9e54e5335673675326ed8a1e3f9cc82db86b20e61",
+      "sha256": "575e6da479b462b29bed3e73c3ef22929e84e2ec0dc1bc40399bfb87e838e520",
+      "sha512": "6a717b6aa4fdb7a6ceed5f29b7644ae1d32f5e90dec5d25b4aa979801b8354cead5da05afb7f90c4462e44d86b9fa21e5bceaa3348b4d94d8527a1586647c74f",
       "size": 68557
     },
     "NOTICE": {
@@ -146,9 +146,9 @@
     },
     "docs/INTEGRITY.md": {
       "mode": 420,
-      "sha256": "5886dbfce01808316ee241c0d751253931abc9d3d5849165970d68df1beeaf51",
-      "sha512": "799150cb6155a296dce34cf953a7ef4c974a41ccab66cd61fd7b93e49cb903631bdcfeb0f8197d44f65d4f238afafe8998fd1dc86b9cda0b59f20d5d0f7f71e4",
-      "size": 3347
+      "sha256": "aea9bfa87d13fb1228204f7752f5e6d8f3324aea3423f7e43d343c0df35fd2d2",
+      "sha512": "b7c444ab4a8be7941e311b64a8a77efc3ae7d1b16e8983c7bca0815f23edd1751e1e986876a41549528b34f5a5903ebb0303fab665888231ec9e0f8ed042bebf",
+      "size": 3925
     },
     "docs/LICENSING.md": {
       "mode": 420,
@@ -3400,5 +3400,5 @@
   "format": "secops-codemark-integrity-v1",
   "project_id": "77ee92c4-5b90-4839-bc43-05fdf32394b7",
   "tool_version": "0.4.1",
-  "total_bytes": 3786574
+  "total_bytes": 3787152
 }
