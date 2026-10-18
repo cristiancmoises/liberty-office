@@ -98,6 +98,52 @@ old proxy-worker retirement, normal backend exit and authoritative data
 reconciliation before changing a live writer. Never use the ordinary stop-first
 backup/recovery wrapper as a blue/green maintenance controller.
 
+### Identity-pinned handoff controller
+
+`scripts/deploy_liberty.py` is dry-run by default:
+
+```sh
+python3 scripts/deploy_liberty.py --config /private/handoff.json --journal /private/handoff.jsonl
+```
+
+The operator-owned mode 0600 configuration uses schema 1, `run_id`, exact
+CT154/old-container/image `identity`, and `commands`. Each `MaintenanceOps`
+boundary requires an explicit local executable `argv` array and `timeout`.
+Worker retirement, normal writer exit and recovery wait indefinitely (`null`);
+other commands have bounded timeouts. Adapters are trusted operator programs,
+not user-supplied commands or a network administration API. Their small JSON
+receipts must attest actual identities, completion and authoritative storage.
+Never put credentials or document contents in arguments or receipts. Dry-run
+checks configuration; it does not execute preflight or qualify deployment.
+
+After image/storage/recovery acceptance, `--apply` creates a private, fsynced
+phase journal. Existing journals are never replayed. A reload or one 503 probe
+does not prove old clients have retired: capture PID/start-time identities and
+wait for the actual old worker generation, then the old backend and released
+volume lock. Use `docker container stop --time -1 EXACT_ID` on the qualified
+Docker 26 CLI; never impose a forced-kill deadline. Interrupting this client does
+not cancel a daemon-side stop. Inspect real state before any recovery. Recovery
+keeps accounts in maintenance and uses the current authoritative copy, not a
+stale initial backup. It never automatically reopens accounts or retries saves.
+
+`deploy/compose.bluegreen.yaml` separates the no-private-volume public service
+from the explicitly enabled `accounts` candidate profile. It requires a
+qualified image and existing verified data path; candidate automatic restart
+is disabled. It does not migrate data or authorize two writers. Never stop the
+private writer through Compose during this handoff. Render
+`deploy/nginx.liberty-maintenance.conf` with `scripts.liberty_proxy`, back up
+the exact Liberty blocks, run `nginx -t` and gracefully reload. Preserve shared
+TLS, aliases, other sites and proxy trust. The template disables upstream retries
+and body buffering, while retaining public-code delivery during account 503s.
+
+The opt-in `tests/integration/test_maintenance_handoff.py` needs an explicitly
+prepared disposable remote fixture. It exercises the exact previous application
+image and matching nginx 1.26.3 libraries, HTTP/1.1 keepalive/HTTP/2 retirement, an
+admitted long upload, disconnected-but-running mutation, real process/lock exit
+and continuous public/demo responses. Ports are loopback-only; all data is
+synthetic. The common unit suite skips this infrastructure test; a skip is not
+qualification. Rehearsal does not promise a production maintenance duration.
+
 ## Administrator setup
 
 Operator commands use English by default, independently of the host's `LANG`.

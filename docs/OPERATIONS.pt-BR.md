@@ -130,6 +130,53 @@ conciliação dos dados autoritativos antes de trocar o escritor em produção. 
 use o wrapper comum de backup/recuperação, que para primeiro o serviço, como
 controlador de manutenção blue/green.
 
+### Controlador de troca com identidades fixadas
+
+`scripts/deploy_liberty.py` não executa mudanças por padrão:
+
+```sh
+python3 scripts/deploy_liberty.py --config /privado/handoff.json --journal /privado/handoff.jsonl
+```
+
+A configuração regular do operador usa modo 0600, esquema 1, `run_id`, `identity`
+com CT154/container/imagem antigos exatos e `commands`. Cada operação de
+`MaintenanceOps` exige `argv` local explícito e `timeout`. Workers, saída normal
+do escritor e recuperação esperam indefinidamente (`null`); as demais operações
+têm prazo limitado. Adaptadores são programas confiáveis do operador, não
+comandos de usuários ou uma API administrativa de rede. Recibos JSON pequenos
+devem comprovar identidades reais, conclusão e dados autoritativos. Não coloque
+credenciais ou documentos nos argumentos ou recibos. Dry-run valida a
+configuração, mas não executa o preflight nem homologa a implantação.
+
+Depois de homologar imagem/armazenamento/recuperação, `--apply` cria um diário
+privado sincronizado em disco. Diários existentes nunca são repetidos. Reload ou
+uma resposta 503 não comprovam o encerramento dos clientes antigos: capture
+PID/instante de início e espere a saída da geração antiga de workers, depois a
+saída normal do backend e a liberação do bloqueio do volume. No Docker 26
+homologado, use `docker container stop --time -1 ID_EXATO`, sem prazo para parada
+forçada. Interromper esse cliente não cancela a parada no daemon. Confira o
+estado real antes de recuperar. A recuperação mantém contas em manutenção e usa
+a cópia autoritativa atual, nunca um backup inicial obsoleto. Não reabre contas
+automaticamente nem repete salvamentos.
+
+`deploy/compose.bluegreen.yaml` separa o serviço público, sem volume privado, da
+candidata habilitada explicitamente pelo perfil `accounts`. Exige imagem
+homologada e caminho de dados existente/verificado; reinício automático da
+candidata está desativado. Não migra dados nem autoriza dois escritores. Não
+pare o escritor pelo Compose nessa troca. Renderize
+`deploy/nginx.liberty-maintenance.conf` com `scripts.liberty_proxy`, preserve os
+blocos Liberty exatos, execute `nginx -t` e faça reload gracioso. Preserve TLS,
+aliases, outros sites e confiança de proxies. O template desativa retries e
+buffering de corpos, mantendo código público disponível durante o 503 das contas.
+
+O teste opt-in `tests/integration/test_maintenance_handoff.py` exige ambiente
+remoto descartável explicitamente preparado. Exercita imagem anterior exata,
+nginx 1.26.3 com bibliotecas correspondentes, retirada HTTP/1.1 keepalive/HTTP/2,
+upload já admitido, gravação que continua após desconexão, saída real do
+processo/bloqueio e respostas contínuas do site/demo. Portas são locais e dados,
+sintéticos. A suíte comum pula esse teste de infraestrutura; skip não é
+homologação. Ensaio não promete duração de manutenção em produção.
+
 ### Limites operacionais
 
 - Para atualizar: backup, revisar `upstream.lock.json`, obter o hash oficial da release desejada, reconstruir e validar documentos de exemplo. Não use `latest` silenciosamente para editores.
