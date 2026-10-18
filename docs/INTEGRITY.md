@@ -17,7 +17,7 @@ not that clean export. Do not refresh the snapshot to make a changed tree pass.
 2. Independently confirm the maintainer's OpenPGP fingerprint:
    `0CFA43B9AA9642EAAF2BE983C4C661C9ECFB46E8`.
 3. Check `git verify-commit COMMIT`, export that exact revision using
-   `git archive COMMIT | tar -x -C /new/empty/directory`, and authenticate
+   `git -c tar.umask=0022 archive COMMIT | tar -x -C /new/empty/directory`, and authenticate
    `.codemark/trust.json` with its detached `trust.json.asc` signature:
    `gpg --verify .codemark/trust.json.asc .codemark/trust.json`.
    Require the expected fingerprint, not merely any valid signature.
@@ -35,6 +35,11 @@ Use Python 3.10+ and OpenSSL 3.5+ with ML-DSA-87 and Ed25519 support. Check the 
 status, current-tree integrity and authentication results. Keeping the latest
 checkpoint independently detects replacement by an older signed history.
 Git-forge signature badges are separate from local cryptographic verification.
+
+The explicit archive umask preserves canonical 0644/0755 source modes. Git's
+default tar export may otherwise add group-write permission, which the mode
+integrity check correctly rejects. Use the same explicit umask when exporting
+the build context; do not relax mode verification to accept that difference.
 
 CodeMark detects differences against an authenticated reference. It is not a
 malware scan, a vulnerability guarantee, proof of legal ownership, a trusted
@@ -54,6 +59,10 @@ assinatura de `trust.json` e use seus dois fingerprints públicos e checkpoint n
 comando de auditoria. Guarde esses valores fora da árvore. A cobertura inclui
 bytes e modos POSIX dos arquivos publicados; exclui os metadados `.git` e
 `.codemark`. Não gere outro snapshot para esconder diferenças.
+
+Ao exportar fonte ou contexto de build, use `git -c tar.umask=0022 archive`.
+Esse parâmetro preserva os modos 0644/0755; a exportação tar padrão do Git pode
+adicionar escrita para grupo. Não afrouxe a verificação para aceitar essa diferença.
 
 O resultado comprova correspondência com a referência autenticada, não ausência
 de vulnerabilidades, autoria legal ou data confiável. A retenção independente
