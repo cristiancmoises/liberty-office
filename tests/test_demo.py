@@ -100,3 +100,24 @@ def test_native_preload_optional_boolean_attributes_do_not_break_launch(env, opt
     response = client.get(settings.demo_editor_origin + '/demo/runtime/wordcraft/index.html')
     assert response.status_code == 200
     assert 'data-liberty-href="./word.wasm"' in response.text
+
+
+def test_demo_controller_is_isolated_no_store_and_has_no_private_adapters(env):
+    _, client, settings = env
+    path = '/demo/controller'
+    response = client.get(settings.demo_editor_origin + path)
+    assert response.status_code == 200
+    assert response.headers['cache-control'] == 'no-store'
+    assert 'frame-ancestors ' + settings.origin in response.headers['content-security-policy']
+    assert '/demo/controller-assets/demo-controller.mjs' in response.text
+    assert settings.origin in response.text
+    for origin in [settings.origin, settings.editor_origin]:
+        assert client.get(origin + path).status_code == 404
+        assert client.get(origin + '/demo/controller-assets/demo-session.mjs').status_code == 404
+    for name in ['demo-controller.mjs', 'demo-session.mjs']:
+        code = client.get(settings.demo_editor_origin + '/demo/controller-assets/' + name)
+        assert code.status_code == 200 and 'javascript' in code.headers['content-type']
+        assert code.headers['cache-control'] == 'no-store'
+    for name in ['editor-host.mjs', 'bridge.mjs', 'editor-storage.mjs', '../mfa.key', 'config.json']:
+        assert client.get(settings.demo_editor_origin + '/demo/controller-assets/' + name).status_code == 404
+    assert client.post(settings.demo_editor_origin + path).status_code == 404

@@ -2,13 +2,29 @@
 import json
 
 from fastapi import APIRouter, HTTPException, Request
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, HTMLResponse
 
 from .catalog import APPS, IDS, STATIC, serve_bundle
 from .security import svc
 from .i18n import translate
 
 router = APIRouter()
+
+
+@router.get('/demo/controller')
+def demo_controller(request: Request):
+    data = json.dumps({'portalOrigin': svc(request).settings.origin}, ensure_ascii=True).replace('<', '\\u003c')
+    return HTMLResponse('<!doctype html><html lang="en"><head><meta charset="utf-8">'
+                        '<title>Demo session controller</title></head><body>'
+                        '<script id="__liberty-controller" type="application/json">' + data + '</script>'
+                        '<script type="module" src="/demo/controller-assets/demo-controller.mjs"></script></body></html>')
+
+
+@router.get('/demo/controller-assets/{name}')
+def controller_asset(name: str):
+    if name not in ('demo-controller.mjs', 'demo-session.mjs'):
+        raise HTTPException(404, 'Controller resource not found.')
+    return FileResponse(STATIC / name, media_type='text/javascript')
 
 
 @router.get('/demo')

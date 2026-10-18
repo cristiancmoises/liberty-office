@@ -33,7 +33,8 @@ async def handle(request,call_next,service):
     def reject(status,message):return decorate(JSONResponse({'detail':translate(message,request)},status_code=status),editor or demo,cfg,demo)
     path=request.url.path
     if not portal and not editor and not demo:return reject(400,'Host não autorizado.')
-    if demo and not (path.startswith(('/demo/runtime/','/public-assets/')) or path=='/healthz'):return reject(404,'Recurso não encontrado.')
+    if demo and not (path.startswith(('/demo/runtime/','/public-assets/','/demo/controller-assets/')) or path in ('/healthz','/demo/controller')):return reject(404,'Recurso não encontrado.')
+    if not demo and path.startswith('/demo/controller'):return reject(404,'Recurso não encontrado.')
     if not demo and path.startswith('/demo/runtime/'):return reject(404,'Abra a demonstração na origem isolada.')
     if editor and not (path.startswith(('/runtime/','/public-assets/')) or path=='/healthz'):return reject(404,'Recurso não encontrado.')
     if portal and path.startswith('/runtime/'):return reject(404,'Abra os editores na origem isolada.')
