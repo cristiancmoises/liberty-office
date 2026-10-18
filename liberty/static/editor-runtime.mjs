@@ -1,4 +1,18 @@
 import {msg,text} from './i18n.mjs';;
+
+export function deferNativePreloads(doc){
+ const links=[...doc.querySelectorAll('link[data-liberty-rel][data-liberty-href]')];
+ let restored=false;
+ return ()=>{
+  if(restored)return;restored=true;
+  for(const link of links){
+   link.setAttribute('href',link.getAttribute('data-liberty-href'));
+   link.setAttribute('rel',link.getAttribute('data-liberty-rel'));
+   link.removeAttribute('data-liberty-href');link.removeAttribute('data-liberty-rel');
+  }
+ };
+}
+
 // A canvas exists in the original HTML before WASM starts. Only the upstream
 // loading indicator disappearing means its graphical runner initialized.
 export function watchEditorRuntime(win,onState){

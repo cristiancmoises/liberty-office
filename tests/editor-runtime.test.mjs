@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {watchEditorRuntime} from '../liberty/static/editor-runtime.mjs';
+import * as runtime from '../liberty/static/editor-runtime.mjs';
+import {parseHTML} from 'linkedom';
 
 function browser(initialText='Loading WordCraft…'){
  const listeners=new Map(),timers=new Map(),states=[];
@@ -35,4 +37,26 @@ test('module errors and a stalled startup produce visible status',()=>{
  assert.equal(b.states.at(-1).phase,'error');
  const stalled=browser();[...stalled.timers.values()][0]();
  assert.equal(stalled.states.at(-1).phase,'error');assert.match(stalled.states.at(-1).text,/taking longer/);
+});
+
+test('light mode leaves deferred native preloads inert',()=>{
+ const {document}=parseHTML('<html><head><link data-liberty-rel="preload" data-liberty-href="./word.wasm" as="fetch" integrity="sha384-wasm"><link data-liberty-rel="modulepreload" data-liberty-href="./word.js" integrity="sha384-module"></head><body></body></html>');
+ const restore=runtime.deferNativePreloads(document);
+ assert.equal(typeof restore,'function');
+ assert.equal(document.querySelector('link[href]'),null);
+ assert.equal(document.querySelector('link[rel]'),null);
+});
+
+test('full mode restores native preload integrity once without changing styles',()=>{
+ const {document}=parseHTML('<html><head><link data-liberty-rel="preload" data-liberty-href="./word.wasm" as="fetch" type="application/wasm" integrity="sha384-wasm" crossorigin="anonymous"><link data-liberty-rel="modulepreload" data-liberty-href="./word.js" integrity="sha384-module"><link rel="stylesheet" href="./editor.css"></head><body></body></html>');
+ const restore=runtime.deferNativePreloads(document);restore();
+ const links=[...document.querySelectorAll('link')];
+ assert.equal(links[0].getAttribute('rel'),'preload');
+ assert.equal(links[0].getAttribute('href'),'./word.wasm');
+ assert.equal(links[0].getAttribute('integrity'),'sha384-wasm');
+ assert.equal(links[0].getAttribute('crossorigin'),'anonymous');
+ assert.equal(links[1].getAttribute('rel'),'modulepreload');
+ assert.equal(links[1].getAttribute('integrity'),'sha384-module');
+ assert.equal(links[2].getAttribute('href'),'./editor.css');
+ const before=document.head.innerHTML;restore();assert.equal(document.head.innerHTML,before);
 });

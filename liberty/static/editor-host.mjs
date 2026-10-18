@@ -1,10 +1,11 @@
 import {msg,text,installLanguage,setLanguage} from './i18n.mjs';;
 import {attachBridge} from './bridge.mjs';
 import {clearEditorIdentity} from './editor-storage.mjs';
-import {watchEditorRuntime} from './editor-runtime.mjs';
+import {watchEditorRuntime,deferNativePreloads} from './editor-runtime.mjs';
 import {graphicsAvailable,mountLightEditor} from './light-editor.mjs';
 import {installCanvasDensity} from './canvas-density.mjs';
 const config=JSON.parse(document.getElementById('__liberty-config').textContent);
+const restoreNativePreloads=deferNativePreloads(document);
 installLanguage(window);
 installCanvasDensity(window);
 const documentId=crypto.randomUUID();
@@ -49,6 +50,7 @@ async function start(){
  }
  document.documentElement.dataset.libertyState='loading';
  watchEditorRuntime(window,(phase,text)=>{document.documentElement.dataset.libertyState=phase;state(text)});
+ restoreNativePreloads();
  // Start the original modules only after identity cleanup and bridge initialization.
  for(const inert of document.querySelectorAll('script[type="application/x-liberty-module"]')){
   const script=document.createElement('script');for(const attr of inert.attributes)if(attr.name!=='type')script.setAttribute(attr.name,attr.value);

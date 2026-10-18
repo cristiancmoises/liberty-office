@@ -1,11 +1,12 @@
 import {msg,text,installLanguage,setLanguage} from './i18n.mjs';;
 import {clearEditorIdentity} from './editor-storage.mjs';
-import {watchEditorRuntime} from './editor-runtime.mjs';
+import {watchEditorRuntime,deferNativePreloads} from './editor-runtime.mjs';
 import {disableDemoImports} from './demo-guard.mjs';
 import {graphicsAvailable,mountLightEditor} from './light-editor.mjs';
 import {installCanvasDensity} from './canvas-density.mjs';
 import {installDemoExports} from './demo-download.mjs';
 const config=JSON.parse(document.getElementById('__liberty-config').textContent);
+const restoreNativePreloads=deferNativePreloads(document);
 installLanguage(window);
 installCanvasDensity(window);
 window.addEventListener('message',event=>{if(event.source===window.parent&&event.origin===config.portalOrigin&&event.data?.type==='liberty.language'&&['en','pt-BR'].includes(event.data.language))setLanguage(event.data.language)});
@@ -22,6 +23,7 @@ async function start(){
   mountLightEditor(window,{demo:true,onState:state,onSave:downloads.exportBlob});return;
  }
  watchEditorRuntime(window,(phase,text)=>{document.documentElement.dataset.libertyState=phase;state(text)});
+ restoreNativePreloads();
  for(const inert of document.querySelectorAll('script[type="application/x-liberty-module"]')){
   const script=document.createElement('script');for(const attr of inert.attributes)if(attr.name!=='type')script.setAttribute(attr.name,attr.value);
   script.type='module';script.textContent=inert.textContent;inert.replaceWith(script);

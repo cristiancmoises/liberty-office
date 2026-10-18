@@ -1,5 +1,8 @@
 import hashlib,json,mimetypes,secrets,re
+from html import escape
+from html.parser import HTMLParser
 from pathlib import Path
+from urllib.parse import urlsplit
 from fastapi import APIRouter,Depends,HTTPException,Request
 from fastapi.responses import FileResponse,HTMLResponse
 from .security import full,svc,authorize,digest,uid,now
@@ -66,6 +69,39 @@ def runtime(token: str,asset: str,request: Request):
     injection+='<script type="module" src="./__liberty/editor-host.mjs"></script>'
     return serve_bundle(service,ticket['app_id'],asset,request,injection)
 
+def defer_native_preloads(html: str) -> str:
+    """Make native-code hints inert before the browser's preload scanner runs."""
+    offsets = [0, *(match.end() for match in re.finditer('\n', html))]
+    replacements = []
+
+    class Preloads(HTMLParser):
+        def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+            if tag != 'link':
+                return
+            values = dict(attrs)
+            rel = (values.get('rel') or '').lower().split()
+            native = 'modulepreload' in rel or ('preload' in rel and (
+                (values.get('as') or '').lower() == 'script'
+                or (values.get('type') or '').lower() == 'application/wasm'
+                or urlsplit(values.get('href') or '').path.lower().endswith(('.wasm', '.js'))))
+            if not native:
+                return
+            rendered = []
+            for name, value in attrs:
+                name = 'data-liberty-' + name if name in ('rel', 'href') else name
+                rendered.append(' ' + name + ('' if value is None else '="' + escape(value, quote=True) + '"'))
+            line, column = self.getpos()
+            start = offsets[line - 1] + column
+            raw = self.get_starttag_text()
+            assert raw is not None
+            replacements.append((start, start + len(raw), '<link' + ''.join(rendered) + '>'))
+
+    Preloads(convert_charrefs=False).feed(html)
+    for start, end, replacement in reversed(replacements):
+        html = html[:start] + replacement + html[end:]
+    return html
+
+
 def serve_bundle(service,app_id,asset,request,injection):
     """Serve pinned assets after the calling route has authorized its runtime."""
     root=(service.settings.apps_dir/app_id).resolve();path=(root/asset).resolve()
@@ -73,7 +109,7 @@ def serve_bundle(service,app_id,asset,request,injection):
         raise HTTPException(404,'Arquivo do aplicativo não encontrado.')
     if asset=='index.html':
         # Installation verifies and prepares editor assets; serving adds the adapter.
-        html=path.read_text()
+        html=defer_native_preloads(path.read_text())
         html=re.sub(r'(<script\b[^>]*?\btype\s*=\s*)([\"\'])module\2',lambda m:m.group(1)+m.group(2)+'application/x-liberty-module'+m.group(2),html,flags=re.I)
         html=html.replace('<head>','<head>'+injection,1) if '<head>' in html else injection+html
         return HTMLResponse(html)

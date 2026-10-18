@@ -48,3 +48,55 @@ def test_demo_frame_policy_denies_document_import_and_external_connections(env):
     assert 'camera=()' in headers['permissions-policy']
     assert 'form-action \'none\'' in headers['content-security-policy']
     assert 'frame-ancestors ' + settings.origin in headers['content-security-policy']
+
+
+def test_native_preloads_wait_for_full_mode_without_changing_styles(env):
+    from html.parser import HTMLParser
+
+    _, client, settings = env
+    target = settings.apps_dir / 'wordcraft'
+    target.mkdir(parents=True)
+    (target / 'index.html').write_text('''<!doctype html><html><head>
+      <link rel="preload" href="./word_bg.wasm" as="fetch" type="application/wasm" crossorigin="anonymous" integrity="sha384-wasm">
+      <link rel="modulepreload" href="./word.js" integrity="sha384-module" crossorigin="anonymous">
+      <link rel="preload" href="./font.woff2" as="font" type="font/woff2">
+      <link rel="stylesheet" href="./editor.css">
+      </head><body><script type="module">start()</script></body></html>''')
+    response = client.get(settings.demo_editor_origin + '/demo/runtime/wordcraft/index.html')
+    assert response.status_code == 200
+
+    class Links(HTMLParser):
+        def __init__(self):
+            super().__init__()
+            self.items = []
+
+        def handle_starttag(self, tag, attrs):
+            if tag == 'link':
+                self.items.append(dict(attrs))
+
+    links = Links()
+    links.feed(response.text)
+    wasm, module, font, style = links.items
+    assert 'href' not in wasm and 'rel' not in wasm
+    assert wasm['data-liberty-href'] == './word_bg.wasm'
+    assert wasm['data-liberty-rel'] == 'preload'
+    assert wasm['integrity'] == 'sha384-wasm'
+    assert module['data-liberty-rel'] == 'modulepreload'
+    assert module['data-liberty-href'] == './word.js'
+    assert module['integrity'] == 'sha384-module'
+    assert module['crossorigin'] == 'anonymous'
+    assert font['href'] == './font.woff2' and font['rel'] == 'preload'
+    assert style['href'] == './editor.css' and style['rel'] == 'stylesheet'
+
+
+@pytest.mark.parametrize('optional_attributes', ['as', 'type', 'as type'])
+def test_native_preload_optional_boolean_attributes_do_not_break_launch(env, optional_attributes):
+    _, client, settings = env
+    target = settings.apps_dir / 'wordcraft'
+    target.mkdir(parents=True)
+    (target / 'index.html').write_text(
+        '<html><head><link rel="preload" href="./word.wasm" ' + optional_attributes
+        + '></head><body></body></html>')
+    response = client.get(settings.demo_editor_origin + '/demo/runtime/wordcraft/index.html')
+    assert response.status_code == 200
+    assert 'data-liberty-href="./word.wasm"' in response.text
