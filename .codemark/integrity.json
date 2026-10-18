@@ -3,14 +3,14 @@
     "sha256",
     "sha512"
   ],
-  "created_at": "2026-10-18T18:41:40Z",
+  "created_at": "2026-10-18T19:21:00Z",
   "excluded": [
     {
       "path": ".codemark",
       "reason": "Metadados do CodeMark"
     }
   ],
-  "file_count": 564,
+  "file_count": 565,
   "files": {
     ".dockerignore": {
       "mode": 420,
@@ -50,9 +50,9 @@
     },
     "MANIFEST.sha256": {
       "mode": 420,
-      "sha256": "575e6da479b462b29bed3e73c3ef22929e84e2ec0dc1bc40399bfb87e838e520",
-      "sha512": "6a717b6aa4fdb7a6ceed5f29b7644ae1d32f5e90dec5d25b4aa979801b8354cead5da05afb7f90c4462e44d86b9fa21e5bceaa3348b4d94d8527a1586647c74f",
-      "size": 68557
+      "sha256": "733603f40c03e2dfebe982557567e3a4cae9aec6194266f2641b7268fab07b38",
+      "sha512": "4ec0b21ca1e7a713c8fd64e4e4bd72cce3a227cf3138a42c48dd47285e2a0c07eaa94080fd0e913697c9491cf2650248ad0e495640b4a8b58ae60920744baa3b",
+      "size": 68650
     },
     "NOTICE": {
       "mode": 420,
@@ -266,9 +266,9 @@
     },
     "liberty/cli.py": {
       "mode": 420,
-      "sha256": "0a63634cca09e1f635a69040524a97c0ee6f6c0dbda839fbc1d131f9f994877c",
-      "sha512": "5ceb33e7408552b260e4684835a6b9f6b22f83db2e505a8ac33acafd6650a10faae685c015180229c744db10179728103c2f5cb234991bd6fd3492ac1cce55f8",
-      "size": 14380
+      "sha256": "06d2581c36efe14bb4e5b4996be4b3192a7da775832bc1e3de8e8b1a5c59acdc",
+      "sha512": "3e5bc5c1c9d08543987e0a735c6f49767259f056ae82ebef772c3ca007025353036c2c0efb8b739897bdd818f59b1e07922b76f770138a021340870216c56000",
+      "size": 14594
     },
     "liberty/config.py": {
       "mode": 420,
@@ -3264,6 +3264,12 @@
       "sha512": "4929b6b16e575f1b6fef6806f8a53430c536d6b3fdcbd30cdded133526135952223c528b7699e1d7dbfb9ce2b79a8c0af4d4b0cf7c6e23e9329a33b8da8217bc",
       "size": 2625
     },
+    "tests/test_empty_backup.py": {
+      "mode": 420,
+      "sha256": "e44c32e5a3bf9f2a5b260b320f9bf7be5bf436bd21ec58ad18f2d89daad0d457",
+      "sha512": "a2e18a3624ebfaca446dd831f2a7af3841356394755bd7f235f202f6a5ef4f458ad439780f87f9a10a493ff030b551e885b09c176fd117479a14989591203b7c",
+      "size": 3073
+    },
     "tests/test_figcraft_install.py": {
       "mode": 420,
       "sha256": "f8c6e328eb973716f3f3decf93f72b76add50568f69360021e1a4bb92b366d34",
@@ -3400,5 +3406,5 @@
   "format": "secops-codemark-integrity-v1",
   "project_id": "77ee92c4-5b90-4839-bc43-05fdf32394b7",
   "tool_version": "0.4.1",
-  "total_bytes": 3787152
+  "total_bytes": 3790532
 }
