@@ -12,7 +12,7 @@ export LIBERTY_BIND=127.0.0.1 LIBERTY_PORT=${ACCEPTANCE_PORT:-18097} EDITOR_PORT
 export DEMO_EDITOR_PORT=${ACCEPTANCE_DEMO_EDITOR_PORT:-18099}
 initial_volume="$project-data";restore_volume="$project-restored"
 export LIBERTY_VOLUME_NAME="$initial_volume"
-export LIBERTY_IMAGE="$project:0.2.0-rc.1"
+export LIBERTY_IMAGE="$project:0.2.0-rc.2"
 work="acceptance-results/$project";mkdir -p "$work";chmod 700 "$work"
 compose(){ docker compose -p "$project" -f compose.yaml "$@"; }
 cleanup(){ compose down --volumes --remove-orphans >/dev/null 2>&1 || true; docker volume rm "$initial_volume" "$restore_volume" >/dev/null 2>&1 || true; rm -f "$work/seed.json"; }

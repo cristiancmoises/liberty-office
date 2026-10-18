@@ -2,7 +2,7 @@ name: liberty-office
 services:
   office:
     build: .
-    image: ${LIBERTY_IMAGE:-liberty-office:0.2.0-rc.1}
+    image: ${LIBERTY_IMAGE:-liberty-office:0.2.0-rc.2}
     restart: unless-stopped
     init: true
     ports:

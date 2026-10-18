@@ -241,7 +241,7 @@ To rehearse a restore, keep the original volume and use a new empty destination:
 ```sh
 docker compose stop office
 docker volume create liberty_office_restored
-docker run --rm -i --user 10001:10001 --mount source=liberty_office_restored,target=/data liberty-office:0.2.0-rc.1 python -m liberty.cli restore - /data < liberty-office-backup.tar.gz
+docker run --rm -i --user 10001:10001 --mount source=liberty_office_restored,target=/data liberty-office:0.2.0-rc.2 python -m liberty.cli restore - /data < liberty-office-backup.tar.gz
 ```
 
 The restore checks hashes, blob references, SQLite and MFA keys, rejects a

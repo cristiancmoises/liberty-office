@@ -95,10 +95,10 @@ Mantenha o volume original. Para testar restauração em outro volume, pare a in
 ```sh
 docker compose stop office
 docker volume create liberty_office_restored
-docker run --rm -i --user 10001:10001 --mount source=liberty_office_restored,target=/data liberty-office:0.2.0-rc.1 python -m liberty.cli restore - /data < liberty-office-backup.tar.gz
+docker run --rm -i --user 10001:10001 --mount source=liberty_office_restored,target=/data liberty-office:0.2.0-rc.2 python -m liberty.cli restore - /data < liberty-office-backup.tar.gz
 ```
 
-O volume novo deve herdar a propriedade de `/data` da imagem. Se a plataforma criar o volume com propriedade root e o comando retornar permissão negada, inicialize apenas esse volume novo com `docker run --rm --user 0:0 --mount source=liberty_office_restored,target=/data liberty-office:0.2.0-rc.1 chown 10001:10001 /data` e repita. Não execute chown recursivo em um volume desconhecido.
+O volume novo deve herdar a propriedade de `/data` da imagem. Se a plataforma criar o volume com propriedade root e o comando retornar permissão negada, inicialize apenas esse volume novo com `docker run --rm --user 0:0 --mount source=liberty_office_restored,target=/data liberty-office:0.2.0-rc.2 chown 10001:10001 /data` e repita. Não execute chown recursivo em um volume desconhecido.
 
 O exemplo transfere o backup privado por stdin: o arquivo não precisa ficar legível para UID 10001 no host. A restauração usa espaço temporário no volume para o arquivo compactado e a extração; reserve essa margem. O CLI aceita apenas arquivos esperados, valida os hashes e recusa destinos não vazios. Segredos MFA e hashes de senhas são preservados. As sessões e reservas antigas são apagadas na restauração. Em seguida, altere `LIBERTY_VOLUME_NAME=liberty_office_restored` no `.env` e recrie o serviço. Confira login com MFA e download de documentos antes de remover qualquer cópia antiga.
 
@@ -276,7 +276,7 @@ Os launchers reiniciam o serviço ao final, inclusive se o CLI falhar. Esses com
 ## Atualizar de 0.1.0-preview
 
 1. Faça backup offline com a versão antiga e preserve a imagem/pacote anterior.
-2. Extraia 0.2.0-rc.1 em outro diretório. Preserve o `.env` e o nome do volume; configure `EDITOR_ORIGIN`, `EDITOR_PORT=8098` e o segundo host HTTPS antes da troca. Convites passam a usar a origem exata do portal.
+2. Extraia 0.2.0-rc.2 em outro diretório. Preserve o `.env` e o nome do volume; configure `EDITOR_ORIGIN`, `EDITOR_PORT=8098` e o segundo host HTTPS antes da troca. Convites passam a usar a origem exata do portal.
 3. Pare a instância antiga. Construa e inicie a nova, mantendo apenas um worker e uma instância por volume.
 4. O banco migra da versão 1 para 2 por criação idempotente de tabelas. Usuários, TOTP, blobs, versões e compartilhamentos são preservados. Reabra o portal e os editores para obter a nova interface e as novas capacidades de sessão.
 5. Execute `./libertyctl verify`, valide MFA, download de documento antigo, exportação nova, cotas e o segundo host. Homologue com dados de teste antes de aplicar a uma implantação com documentos reais.

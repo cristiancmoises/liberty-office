@@ -79,7 +79,7 @@ case "${1:-help}" in
    mv "$output.partial" "$output"; printf 'Backup: %s\n' "$output"
   else rm -f "$output.partial"; exit 1; fi
   ;;
- *) printf '%s\n' 'Liberty Office 0.2.0-rc.1'
+ *) printf '%s\n' 'Liberty Office 0.2.0-rc.2'
     say 'Usage: ./libertyctl up [https://your-domain] [https://editor.your-domain] [https://demo-editor.your-domain]' 'Uso: ./libertyctl up [https://seu-dominio] [https://editor.seu-dominio] [https://demo-editor.seu-dominio]'
     printf '%s\n' '     ./libertyctl token | status | verify | logs | stop'
     say '     ./libertyctl backup /path/backup.tar.gz' '     ./libertyctl backup /caminho/backup.tar.gz'

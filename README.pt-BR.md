@@ -1,6 +1,6 @@
 # Liberty Office
 
-Portal web self-hosted com 13 editores integrados, Drive privado, administração de contas e MFA obrigatório. Inglês é o idioma padrão; selecione português brasileiro na interface. **Versão 0.2.0-rc.1.**
+Portal web self-hosted com 13 editores integrados, Drive privado, administração de contas e MFA obrigatório. Inglês é o idioma padrão; selecione português brasileiro na interface. **Versão 0.2.0-rc.2.**
 
 **Acessar:** [office.securityops.co](https://office.securityops.co) · [office.securityops.com.br](https://office.securityops.com.br) · [Experimentar a demonstração](https://office.securityops.co/demo). [English documentation](README.md).
 
