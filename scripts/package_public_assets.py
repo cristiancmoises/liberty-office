@@ -13,8 +13,11 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("apps", type=Path)
     parser.add_argument("output", type=Path)
+    parser.add_argument(
+        "--retain", type=Path, help="Verified previous image's public store"
+    )
     args = parser.parse_args()
-    manifest = build_public_manifest(args.apps, args.output)
+    manifest = build_public_manifest(args.apps, args.output, previous=args.retain)
     if set(manifest["apps"]) != set(REVIEWED):
         raise ValueError("The release must include every reviewed editor")
     print(

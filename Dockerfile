@@ -2,6 +2,13 @@
 ARG FIGCRAFT_BUNDLE_IMAGE=rust:1.95.0-bookworm@sha256:6258907abe69656e41cd992e0b705cdcfabcbbe3db374f92ed2d47121282d4a1
 ARG GRIDCRAFT_BUNDLE_IMAGE=rust:1.95.0-bookworm@sha256:6258907abe69656e41cd992e0b705cdcfabcbbe3db374f92ed2d47121282d4a1
 ARG WORDCRAFT_BUNDLE_IMAGE=rust:1.95.0-bookworm@sha256:6258907abe69656e41cd992e0b705cdcfabcbbe3db374f92ed2d47121282d4a1
+ARG RETAINED_PUBLIC_IMAGE=empty-public
+# Upgrade with an identity-verified previous image (or public-code-only image).
+# The default contains no previous generations and is for first installations.
+FROM python:3.12-slim-bookworm@sha256:34386ef0cb081344d7ec1c103ba398e6e9f64e9ab3a1509accc92a4e24a07258 AS empty-public
+RUN mkdir -p /opt/liberty-public-assets
+FROM ${RETAINED_PUBLIC_IMAGE} AS retained-public
+
 FROM ${FIGCRAFT_BUNDLE_IMAGE} AS figcraft
 WORKDIR /integration
 COPY scripts/build_figcraft_web.sh scripts/patch_figcraft_web.py scripts/package_figcraft_web.py ./scripts/
@@ -50,11 +57,12 @@ COPY scripts/fetch_apps.py scripts/brand_apps.py scripts/install_source_web.py \
 COPY --from=figcraft /out ./figcraft-prepared
 COPY --from=gridcraft /out ./gridcraft-prepared
 COPY --from=wordcraft /out ./wordcraft-prepared
+COPY --from=retained-public /opt/liberty-public-assets /previous-public
 RUN python scripts/fetch_apps.py --output /opt/artcraft \
     && python scripts/install_source_web.py --bundle /build/figcraft-prepared --output /opt/artcraft --lock /build/figcraft-build.lock.json \
     && python scripts/install_source_web.py --bundle /build/gridcraft-prepared --output /opt/artcraft --lock /build/gridcraft-build.lock.json \
     && python scripts/install_source_web.py --bundle /build/wordcraft-prepared --output /opt/artcraft --lock /build/wordcraft-build.lock.json \
-    && python scripts/package_public_assets.py /opt/artcraft /opt/liberty-public-assets
+    && python scripts/package_public_assets.py /opt/artcraft /opt/liberty-public-assets --retain /previous-public
 
 FROM python:3.12-slim-bookworm@sha256:34386ef0cb081344d7ec1c103ba398e6e9f64e9ab3a1509accc92a4e24a07258 AS runtime
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 LIBERTY_DATA=/data LIBERTY_APPS=/opt/artcraft LIBERTY_PUBLIC_ASSETS=/opt/liberty-public-assets

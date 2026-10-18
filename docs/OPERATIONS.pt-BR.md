@@ -56,6 +56,33 @@ condicional de build. Hashes dos arquivos
 compilados e dos patches/receitas atuais continuam obrigatórios; um bundle
 arbitrário ou antigo é recusado. Preserve licenças e registros de modificação.
 
+### Preservar código público nas atualizações de imagem
+
+Antes do build de atualização, registre e confira a identidade da imagem
+anterior preservada. Defina `RETAINED_PUBLIC_IMAGE` no `.env` do operador com
+essa imagem, que precisa conter `/opt/liberty-public-assets`. O Compose repassa
+esse argumento; no Docker direto use
+`--build-arg RETAINED_PUBLIC_IMAGE=sua-imagem-anterior-verificada`.
+Prefira um digest imutável ou confira o ID de uma tag local protegida antes e
+depois do build. O padrão `empty-public` serve apenas à primeira instalação,
+sem geração pública anterior.
+
+O empacotamento valida manifests fechados, caminhos, tamanhos e hashes das
+representações anteriores. Copia somente os arquivos públicos listados e cria
+a geração atual a partir dos novos editores verificados, sem substituir código
+atual por antigo. Store ausente, alterado ou com links interrompe o build.
+Hashes comprovam consistência, não a procedência ou segurança de uma imagem
+arbitrária: confira sua origem separadamente. Nunca forneça volume privado,
+backup de documentos ou diretório não revisado. Versões antigas sem esse store
+exigem uma imagem separada de código público revisado, não um caminho presumido.
+
+Antes da promoção, confira URLs das gerações antiga e atual nas três origens,
+com recusa de hashes desconhecidos. Preserve a imagem anterior para recuperação.
+Execute `PYTHONPATH=. python3 tests/integration/check_compose_config.py` em host
+com Docker CLI e Compose v2 para validar ambos os arquivos de implantação,
+inclusive limites de cadastro mais restritos. O teste não inicia serviços nem
+precisa do socket Docker.
+
 ## Escolher onde armazenar os dados
 
 O volume padrão chama-se `liberty_office_data`. Ele inclui `liberty.db`, blobs privados, chave `mfa.key`, arquivos temporários e token inicial até o bootstrap. Não coloque esse diretório em um webroot nem apague a chave: sem ela, os segredos TOTP existentes deixam de ser decifráveis.

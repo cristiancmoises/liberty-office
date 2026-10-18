@@ -61,7 +61,50 @@ def _mime(name: str) -> str:
     )
 
 
-def build_public_manifest(apps_dir: Path, output: Path) -> dict:
+def _retain_generations(previous: Path, output: Path) -> None:
+    """Import only manifest-selected bytes from an operator-verified old image."""
+    previous = Path(previous)
+    if previous.is_symlink() or not previous.is_dir():
+        raise ValueError("Expected a regular previous public store")
+    if output.resolve().is_relative_to(
+        previous.resolve()
+    ) or previous.resolve().is_relative_to(output.resolve()):
+        raise ValueError("Previous and new public stores must be separate")
+    if not any(previous.iterdir()):
+        return  # The explicit empty-image stage supports first installations.
+    registry = load_public_generations(previous)
+    if {path.name for path in previous.iterdir()} != {
+        "current",
+        *registry["generations"],
+    }:
+        raise ValueError("Unexpected previous public-store entry")
+    for generation, manifest in registry["generations"].items():
+        final = output / generation
+        if final.exists():
+            if load_public_manifest(final / "manifest.json") != manifest:
+                raise ValueError("Retained generation differs from its verified input")
+            continue
+        with tempfile.TemporaryDirectory(prefix=".retain-", dir=output) as temporary:
+            stage = Path(temporary) / generation
+            stage.mkdir()
+            names = ["manifest.json"]
+            for app_id, files in manifest["apps"].items():
+                for name, entry in files.items():
+                    names.extend(
+                        app_id + "/" + name + SUFFIXES[encoding]
+                        for encoding in entry["representations"]
+                    )
+            for name in names:
+                destination = stage / name
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(_file(previous / generation, name), destination)
+            load_public_manifest(stage / "manifest.json")
+            stage.rename(final)
+
+
+def build_public_manifest(
+    apps_dir: Path, output: Path, *, previous: Path | None = None
+) -> dict:
     """Copy reviewed verified code into a new generation; retain older ones."""
     apps_dir, output = Path(apps_dir), Path(output)
     if apps_dir.is_symlink() or output.is_symlink():
@@ -130,6 +173,8 @@ def build_public_manifest(apps_dir: Path, output: Path) -> dict:
     generation = hashlib.sha256(_canonical(payload)).hexdigest()
     manifest = payload | {"generation": generation}
     output.mkdir(parents=True, exist_ok=True)
+    if previous is not None:
+        _retain_generations(previous, output)
     with tempfile.TemporaryDirectory(prefix=".build-", dir=output) as temporary:
         stage = Path(temporary) / "generation"
         stage.mkdir()

@@ -60,6 +60,34 @@ Exact compiled-file and current patch/recipe
 hash checks still apply; an arbitrary or stale bundle is rejected. Preserve
 original licenses and source-build records when distributing prepared assets.
 
+### Retain public code across image upgrades
+
+An upgrade must keep code URLs used by existing tabs. Before building, record
+and verify the previous image identity and set `RETAINED_PUBLIC_IMAGE` in the
+operator's `.env` to that preserved image. It must contain
+`/opt/liberty-public-assets`. Compose forwards this build argument; a direct
+Docker build accepts `--build-arg RETAINED_PUBLIC_IMAGE=your-verified-previous-image`.
+Use an immutable digest where available, or verify a protected local tag's
+image ID before and after the build. The default `empty-public` stage is only
+for first installations without an existing public generation.
+
+Packaging validates every retained generation's closed manifest, paths, sizes
+and representation digests before copying only listed public code into the new
+image. It then creates the current generation from the newly verified editors;
+it never substitutes old code for the current build. A missing, linked or
+altered previous store aborts the build. These hashes establish consistency,
+not the origin or safety of an arbitrary supplied image: verify that image
+independently. Never supply a private data volume, document backup or unreviewed
+directory. Older releases without this store require a separately reviewed
+public-code-only image, not an assumed legacy directory.
+
+Before promotion, verify both old and current generation URLs and rejection of
+unknown hashes on all three origins. Keep the previous image for recovery.
+Run `PYTHONPATH=. python3 tests/integration/check_compose_config.py` on a host
+with the Docker CLI and Compose v2 to check both deployment entrypoints,
+including tightened signup limits; this check does not start services or need
+a Docker socket.
+
 ## Public demonstration
 
 `/demo` is anonymous and explicitly labelled. Set `DEMO_EDITOR_ORIGIN` to a third,

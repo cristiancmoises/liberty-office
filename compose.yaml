@@ -1,7 +1,10 @@
 name: liberty-office
 services:
   office:
-    build: .
+    build:
+      context: .
+      args:
+        RETAINED_PUBLIC_IMAGE: ${RETAINED_PUBLIC_IMAGE:-empty-public}
     image: ${LIBERTY_IMAGE:-liberty-office:0.2.0-rc.2}
     restart: unless-stopped
     init: true
