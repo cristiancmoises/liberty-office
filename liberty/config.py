@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from ipaddress import ip_network
 import os
 from pathlib import Path
 from urllib.parse import urlsplit
@@ -35,6 +36,14 @@ class Settings:
     max_upload: int = 100*1024**2
     session_seconds: int = 43200
     public_assets_dir: Path | None = None
+    public_signup: bool = False
+    signup_quota: int = 100_000_000
+    signup_attempts: int = 5
+    signup_successes: int = 20
+    signup_window: int = 3600
+    signup_slots: int = 400
+    signup_pending_ttl: int = 86400
+    trusted_proxy_cidrs: tuple[str, ...] = ()
 
     def __post_init__(self):
         origin=canonical_origin(self.origin);object.__setattr__(self,'origin',origin)
@@ -60,12 +69,24 @@ class Settings:
             raise ValueError('DEMO_EDITOR_ORIGIN precisa ser distinta do portal e dos editores privados, com o mesmo esquema.')
         if min(self.global_quota,self.default_quota,self.max_upload,self.session_seconds)<=0:
             raise ValueError('Limites devem ser positivos.')
+        if type(self.public_signup) is not bool:
+            raise ValueError('PUBLIC_SIGNUP_ENABLED must be a boolean.')
+        if type(self.signup_quota) is not int or not 1 <= self.signup_quota <= 2**60:
+            raise ValueError('Public account quota is outside the supported range.')
+        limits=(self.signup_attempts,self.signup_successes,self.signup_window,self.signup_slots,self.signup_pending_ttl)
+        if any(type(value) is not int or not 1 <= value <= 2**31-1 for value in limits):
+            raise ValueError('Signup limits must be positive bounded integers.')
+        object.__setattr__(self,'trusted_proxy_cidrs',tuple(str(ip_network(value)) for value in self.trusted_proxy_cidrs))
 
     @property
     def secure(self):return self.origin.startswith('https:')
 
     @classmethod
     def from_env(cls):
+        enabled=os.getenv('PUBLIC_SIGNUP_ENABLED','false').strip().lower()
+        if enabled not in ('true','false','1','0','yes','no','on','off'):
+            raise ValueError('Invalid PUBLIC_SIGNUP_ENABLED boolean.')
+        peers=os.getenv('TRUSTED_PROXY_CIDRS','').strip()
         return cls(data_dir=Path(os.getenv('LIBERTY_DATA','/data')),apps_dir=Path(os.getenv('LIBERTY_APPS','/opt/artcraft')),
                    source_archive=Path(os.getenv('LIBERTY_SOURCE_ARCHIVE','/opt/liberty-source.zip')),
                    public_assets_dir=Path(os.environ['LIBERTY_PUBLIC_ASSETS']) if os.getenv('LIBERTY_PUBLIC_ASSETS') else None,
@@ -73,4 +94,12 @@ class Settings:
                    demo_editor_origin=os.getenv('DEMO_EDITOR_ORIGIN') or None,
                    global_quota=int(os.getenv('GLOBAL_QUOTA_BYTES',str(50*1024**3))),
                    default_quota=int(os.getenv('DEFAULT_QUOTA_BYTES',str(5*1024**3))),
-                   max_upload=int(os.getenv('MAX_UPLOAD_BYTES',str(100*1024**2))))
+                   max_upload=int(os.getenv('MAX_UPLOAD_BYTES',str(100*1024**2))),
+                   public_signup=enabled in ('true','1','yes','on'),
+                   signup_quota=int(os.getenv('PUBLIC_SIGNUP_QUOTA_BYTES','100000000')),
+                   signup_attempts=int(os.getenv('SIGNUP_ATTEMPTS','5')),
+                   signup_successes=int(os.getenv('SIGNUP_SUCCESSES','20')),
+                   signup_window=int(os.getenv('SIGNUP_WINDOW_SECONDS','3600')),
+                   signup_slots=int(os.getenv('SIGNUP_SLOTS','400')),
+                   signup_pending_ttl=int(os.getenv('SIGNUP_PENDING_TTL_SECONDS','86400')),
+                   trusted_proxy_cidrs=tuple(value.strip() for value in peers.split(',')) if peers else ())

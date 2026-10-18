@@ -18,6 +18,14 @@ def env(tmp_path):
 def csrf(client):
     return {'X-CSRF-Token': client.get('/api/auth/status').json()['csrf']}
 
+@pytest.fixture
+def public_env(env):
+    from dataclasses import replace
+    app, operator, settings = env
+    bootstrap(operator, settings)
+    app.state.svc.settings = replace(settings, public_signup=True)
+    return app, operator, app.state.svc.settings
+
 def bootstrap(client, settings):
     r = client.post('/api/auth/bootstrap', json={'token': (settings.data_dir/'bootstrap-token').read_text().strip(),
         'username': 'admin', 'name': 'Admin Liberty', 'password': PASSWORD})

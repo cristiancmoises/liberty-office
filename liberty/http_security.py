@@ -3,7 +3,7 @@ from urllib.parse import urlsplit
 from fastapi.responses import JSONResponse
 from .i18n import translate,language
 
-EXEMPT={'/api/auth/login','/api/auth/bootstrap','/api/auth/activate','/api/auth/password-reset'}
+EXEMPT={'/api/auth/login','/api/auth/bootstrap','/api/auth/activate','/api/auth/password-reset','/api/auth/signup'}
 UPLOAD=re.compile(r'^/api/files(?:/[^/]+/content)?$')
 
 def decorate(response,editor,settings,demo=False,public_asset=False):

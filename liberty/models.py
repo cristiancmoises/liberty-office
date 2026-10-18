@@ -24,6 +24,10 @@ class Bootstrap(Identity):
     password: str = Field(min_length=14,max_length=256)
 
 
+class PublicSignup(Identity):
+    password: str = Field(min_length=14,max_length=256)
+
+
 class Activate(Model):
     token: str = Field(min_length=20,max_length=200)
     password: str = Field(min_length=14,max_length=256)

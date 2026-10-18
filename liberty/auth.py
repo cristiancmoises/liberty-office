@@ -6,7 +6,8 @@ import pyotp
 import qrcode
 import qrcode.image.svg
 
-from .models import Activate, Bootstrap, Code, Login, Password, Reauth
+from .models import Activate, Bootstrap, Code, Login, Password, PublicSignup, Reauth
+from .signup import signup, signup_source
 from .security import (COOKIE, PH, check_password, digest, full, now, pending,
                        public_user, svc, totp_step, uid, hash_password, authorize, recent)
 
@@ -68,6 +69,19 @@ def login(body: Login, request: Request, response: Response):
         stage='mfa' if current['totp_confirmed'] else 'enroll'
         service.new_session(c,user['id'],stage,response)
     return {'state':stage}
+
+
+@router.post('/signup',status_code=201)
+def public_signup(body: PublicSignup, request: Request, response: Response):
+    service=svc(request)
+    cfg=service.settings
+    if not cfg.public_signup:
+        raise HTTPException(503,'Public registration is not available.')
+    # This independently committed counter must survive rejected transactions.
+    source=digest(signup_source(request,cfg))
+    service.limit('signup:source:'+source,cfg.signup_attempts,cfg.signup_window)
+    with service.db.transaction() as c:
+        return signup(c,service,body,response)
 
 
 @router.post('/activate')
@@ -135,6 +149,7 @@ def mfa_verify(body: Code, request: Request, response: Response, session=Depends
                     return {'state':'enroll'}
             raise HTTPException(401,'Código inválido, expirado ou já utilizado.')
         c.execute('UPDATE users SET totp_confirmed=1,totp_step=? WHERE id=?',(step,user['id']))
+        c.execute('UPDATE public_accounts SET established_at=COALESCE(established_at,?) WHERE user_id=?',(now(),user['id']))
         c.execute('DELETE FROM sessions WHERE id=?',(session['id'],))
         result={'state':'full'}
         if session['stage']=='enroll':
