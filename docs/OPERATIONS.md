@@ -74,6 +74,30 @@ editor is a compatibility mode, not a DOCX replacement.
 The hosted Liberty service runs in its own Proxmox CT154. Preserve its persistent
 volume and private runtime configuration when rebuilding the application.
 
+### Public-only account maintenance
+
+`liberty.public_app:create_public_app` is a separate read-only ASGI factory.
+Run it with the same three origin settings and verified read-only application,
+public-generation and source-offer paths. Do not mount the private data volume
+or provide account credentials. It does not create a database, MFA key, session,
+bootstrap token or volume lock. Its health response includes `mode: public-only`
+and the validated current public generation; this is not an account health check.
+
+The English-first maintenance home supports Brazilian Portuguese and links to
+the working demo. Only explicit public GET/HEAD routes are exposed. Account and
+save routes on the portal return 503, with no automatic retry or promised
+completion time; private-editor routes remain unavailable. Verified immutable
+`/public-assets/` GET/HEAD remains available on all three origins, including
+current and retained code generations; this does not grant a private runtime.
+Demo documents stay
+browser-local: download a copy and use Finish and clear. Public delivery does
+not queue saves or retain document backups.
+
+Starting this runtime alone does not perform a safe handoff. Qualify routing,
+old proxy-worker retirement, normal backend exit and authoritative data
+reconciliation before changing a live writer. Never use the ordinary stop-first
+backup/recovery wrapper as a blue/green maintenance controller.
+
 ## Administrator setup
 
 Operator commands use English by default, independently of the host's `LANG`.

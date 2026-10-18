@@ -5,36 +5,35 @@ from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import FileResponse, HTMLResponse
 
 from .catalog import APPS, IDS, STATIC, serve_bundle
-from .security import svc
 from .i18n import translate
 
 router = APIRouter()
 
 
-@router.get('/demo/controller')
+@router.api_route('/demo/controller', methods=['GET', 'HEAD'])
 def demo_controller(request: Request):
-    data = json.dumps({'portalOrigin': svc(request).settings.origin}, ensure_ascii=True).replace('<', '\\u003c')
+    data = json.dumps({'portalOrigin': request.app.state.settings.origin}, ensure_ascii=True).replace('<', '\\u003c')
     return HTMLResponse('<!doctype html><html lang="en"><head><meta charset="utf-8">'
                         '<title>Demo session controller</title></head><body>'
                         '<script id="__liberty-controller" type="application/json">' + data + '</script>'
                         '<script type="module" src="/demo/controller-assets/demo-controller.mjs"></script></body></html>')
 
 
-@router.get('/demo/controller-assets/{name}')
+@router.api_route('/demo/controller-assets/{name}', methods=['GET', 'HEAD'])
 def controller_asset(name: str):
     if name not in ('demo-controller.mjs', 'demo-session.mjs'):
         raise HTTPException(404, 'Controller resource not found.')
     return FileResponse(STATIC / name, media_type='text/javascript')
 
 
-@router.get('/demo')
+@router.api_route('/demo', methods=['GET', 'HEAD'])
 def demo_page():
     return FileResponse(STATIC / 'demo.html')
 
 
-@router.get('/demo/apps')
+@router.api_route('/demo/apps', methods=['GET', 'HEAD'])
 def demo_apps(request: Request):
-    settings = svc(request).settings
+    settings = request.app.state.settings
     return {'apps': [
         {key: translate(value,request) if key in ('description','category') else value for key, value in app.items() if key in ('id', 'name', 'description', 'monogram', 'category')}
         | {'installed': (settings.apps_dir / app['id'] / 'index.html').is_file(),
@@ -52,8 +51,8 @@ def demo_runtime(app_id: str, asset: str, request: Request):
         if name not in ('demo-host.mjs', 'demo-guard.mjs', 'demo-download.mjs', 'demo-session.mjs', 'demo-policy.mjs', 'bridge.mjs', 'editor-runtime.mjs', 'editor-storage.mjs', 'light-editor.mjs', 'light-editor.css', 'i18n.mjs', 'translations.mjs', 'canvas-density.mjs'):
             raise HTTPException(404, 'Adaptador não encontrado.')
         return FileResponse(STATIC / name, media_type='text/css' if name.endswith('.css') else 'text/javascript')
-    service = svc(request)
-    data = json.dumps({'portalOrigin': service.settings.origin, 'appId': app_id}, ensure_ascii=True).replace('<', '\\u003c')
+    settings = request.app.state.settings
+    data = json.dumps({'portalOrigin': settings.origin, 'appId': app_id}, ensure_ascii=True).replace('<', '\\u003c')
     injection = '<script id="__liberty-config" type="application/json">' + data + '</script>'
     injection += '<script type="module" src="./__liberty/demo-host.mjs"></script>'
-    return serve_bundle(service, app_id, asset, request, injection)
+    return serve_bundle(settings, app_id, asset, request, injection)

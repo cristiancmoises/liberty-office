@@ -44,6 +44,7 @@ def create_app(settings=None):
             volume.release()
     app=FastAPI(title='Liberty Office',version=__version__,docs_url=None,redoc_url=None,openapi_url=None,lifespan=lifespan)
     app.state.svc=service
+    app.state.settings=settings
     app.state.public_assets=public_assets
     @app.exception_handler(RequestValidationError)
     async def validation_error(request,exc):

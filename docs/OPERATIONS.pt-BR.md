@@ -106,6 +106,32 @@ Um backup não testado não é garantia de restauração. O teste automatizado d
 
 ## Manutenção e limites
 
+### Runtime público durante a manutenção das contas
+
+`liberty.public_app:create_public_app` é uma factory ASGI separada, somente de
+leitura. Use as mesmas três origens e os caminhos verificados de aplicativos,
+gerações públicas e oferta de fontes, montados somente para leitura. Não monte
+o volume privado nem forneça credenciais de contas. Ela não cria banco, chave
+MFA, sessão, token de bootstrap ou bloqueio do volume. A resposta de saúde inclui
+`mode: public-only` e a geração pública validada; não comprova a saúde das contas.
+
+A página de manutenção tem inglês como padrão, português brasileiro como opção
+e link para a demo funcional. Somente rotas públicas explícitas GET/HEAD estão
+disponíveis. Contas e salvamentos no portal retornam 503, sem reenvio automático
+nem prazo prometido; as rotas de editores privados ficam indisponíveis. GET/HEAD
+de `/public-assets/` verificados e imutáveis continua nas três origens, incluindo
+as gerações atual e anterior; isso não concede acesso ao runtime privado. Os
+documentos da demo permanecem no navegador: baixe uma cópia e use Concluir e
+limpar. O runtime público não enfileira salvamentos nem guarda backups deles.
+
+Iniciar essa factory não realiza uma troca segura por si só. Valide o roteamento,
+o encerramento dos workers antigos do proxy, a saída normal do backend e a
+conciliação dos dados autoritativos antes de trocar o escritor em produção. Não
+use o wrapper comum de backup/recuperação, que para primeiro o serviço, como
+controlador de manutenção blue/green.
+
+### Limites operacionais
+
 - Para atualizar: backup, revisar `upstream.lock.json`, obter o hash oficial da release desejada, reconstruir e validar documentos de exemplo. Não use `latest` silenciosamente para editores.
 - Um worker e uma instância por volume. O bloqueio de arquivo impede startup concorrente. SQLite WAL reside em filesystem local; não é indicado manter esse banco em NFS ou entre hosts.
 - No startup após um processo encerrado, reservas de uploads e temporários interrompidos são liberados. Blobs órfãos de uma queda entre rename e commit não são removidos automaticamente; não apague blobs manualmente durante o serviço. Um backup usa apenas blobs referenciados e sua restauração em volume novo elimina órfãos.

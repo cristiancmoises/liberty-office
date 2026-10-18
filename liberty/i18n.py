@@ -24,6 +24,7 @@ def translate(message, request):
 
 
 PT = {
+    "Accounts and saves are under maintenance. The public demo remains available.": "As contas e o salvamento estão em manutenção. A demonstração pública continua disponível.",
     "Public registration is not available.": "Cadastro público indisponível.",
     "The operator must finish initial setup before registration opens.": "O operador precisa concluir a configuração inicial antes de abrir os cadastros.",
     "That username is already registered.": "Esse nome de usuário já está cadastrado.",

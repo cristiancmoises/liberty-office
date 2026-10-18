@@ -1,5 +1,13 @@
 // Only application-owned interface strings belong here; never translate user data.
 export const english={
+ 'Ir para o conteúdo':'Skip to content',
+ 'Sua criatividade continua aqui.':'Your creativity is still here.',
+ 'A demo continua disponível.':'The demo is still available.',
+ 'Estamos atualizando as contas e o salvamento. Você pode continuar usando os editores na demonstração gratuita, sem cadastro.':'We are updating accounts and saves. You can keep using the editors in the free demo, without an account.',
+ 'Abrir demonstração gratuita':'Open free demo',
+ 'Manutenção somente das contas':'Account-only maintenance',
+ 'Entrar, criar contas e acessar arquivos do Drive estão temporariamente indisponíveis. A duração ainda não foi definida. Não reenvie salvamentos pendentes; verifique o estado da conta quando o acesso voltar.':'Sign-in, registration and Drive files are temporarily unavailable. There is no confirmed completion time. Do not resubmit pending saves; check your account when access returns.',
+ 'Na demo, os arquivos ficam no navegador, sem envio ao servidor. Baixe uma cópia e use Concluir e limpar antes de sair. A demo não mantém uma cópia de segurança dos seus documentos.':'In the demo, files stay in your browser and are not uploaded to the server. Download a copy and use Finish and clear before leaving. The demo does not keep a backup of your documents.',
  'TXT e Markdown são salvos como texto puro, sem formatação. Negrito, itálico, sublinhado e listas não são preservados. Use HTML para exportar a formatação.':'TXT and Markdown are saved as plain text, without formatting. Bold, italic, underline, and lists are not preserved. Use HTML to export formatting.',
  'Download de texto puro iniciado, sem formatação. Nada é salvo no servidor.':'Plain text download started, without formatting. Nothing is saved on the server.',
  'Salvo no Drive como texto puro, sem formatação.':'Saved to Drive as plain text, without formatting.',

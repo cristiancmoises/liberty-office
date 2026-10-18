@@ -8,6 +8,7 @@ from fastapi.responses import FileResponse,HTMLResponse,RedirectResponse
 from .security import full,svc,authorize,digest,uid,now
 from .i18n import translate
 from .assets import asset_response,prepare_public_html,public_location
+from .public_assets import _file
 
 router=APIRouter()
 LOCK=Path(__file__).resolve().parents[1]/'upstream.lock.json'
@@ -68,7 +69,7 @@ def runtime(token: str,asset: str,request: Request):
     data=json.dumps(config,ensure_ascii=True).replace('<','\\u003c')
     injection='<script id="__liberty-config" type="application/json">'+data+'</script>'
     injection+='<script type="module" src="./__liberty/editor-host.mjs"></script>'
-    return serve_bundle(service,ticket['app_id'],asset,request,injection)
+    return serve_bundle(service.settings,ticket['app_id'],asset,request,injection)
 
 def defer_native_preloads(html: str) -> str:
     """Make native-code hints inert before the browser's preload scanner runs."""
@@ -103,10 +104,13 @@ def defer_native_preloads(html: str) -> str:
     return html
 
 
-def serve_bundle(service,app_id,asset,request,injection):
+def serve_bundle(settings,app_id,asset,request,injection):
     """Serve pinned assets after the calling route has authorized its runtime."""
-    root=(service.settings.apps_dir/app_id).resolve();path=(root/asset).resolve()
-    if not path.is_relative_to(root) or not path.is_file() or any(p.startswith('.') for p in Path(asset).parts) or path.name in ('sw.js','sw.js.gz'):
+    try:
+        path=_file(settings.apps_dir,app_id+'/'+asset)
+    except ValueError:
+        raise HTTPException(404,'Arquivo do aplicativo não encontrado.') from None
+    if path.name in ('sw.js','sw.js.gz','installed.json'):
         raise HTTPException(404,'Arquivo do aplicativo não encontrado.')
     if asset=='index.html':
         # Installation verifies and prepares editor assets; serving adds the adapter.
