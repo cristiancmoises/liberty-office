@@ -44,6 +44,7 @@ class Settings:
     signup_slots: int = 400
     signup_pending_ttl: int = 86400
     trusted_proxy_cidrs: tuple[str, ...] = ()
+    min_free_bytes: int = 16777216
 
     def __post_init__(self):
         origin=canonical_origin(self.origin);object.__setattr__(self,'origin',origin)
@@ -73,6 +74,8 @@ class Settings:
             raise ValueError('PUBLIC_SIGNUP_ENABLED must be a boolean.')
         if type(self.signup_quota) is not int or not 1 <= self.signup_quota <= 2**60:
             raise ValueError('Public account quota is outside the supported range.')
+        if type(self.min_free_bytes) is not int or not 1 <= self.min_free_bytes <= 2**60:
+            raise ValueError('MIN_FREE_BYTES must be a positive bounded integer.')
         limits=(self.signup_attempts,self.signup_successes,self.signup_window,self.signup_slots,self.signup_pending_ttl)
         if any(type(value) is not int or not 1 <= value <= 2**31-1 for value in limits):
             raise ValueError('Signup limits must be positive bounded integers.')
@@ -102,4 +105,5 @@ class Settings:
                    signup_window=int(os.getenv('SIGNUP_WINDOW_SECONDS','3600')),
                    signup_slots=int(os.getenv('SIGNUP_SLOTS','400')),
                    signup_pending_ttl=int(os.getenv('SIGNUP_PENDING_TTL_SECONDS','86400')),
-                   trusted_proxy_cidrs=tuple(value.strip() for value in peers.split(',')) if peers else ())
+                   trusted_proxy_cidrs=tuple(value.strip() for value in peers.split(',')) if peers else (),
+                   min_free_bytes=int(os.getenv('MIN_FREE_BYTES','16777216')))

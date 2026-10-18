@@ -179,6 +179,14 @@ homologação. Ensaio não promete duração de manutenção em produção.
 
 ### Limites operacionais
 
+`MIN_FREE_BYTES` reserva espaço físico após todos os envios pendentes e o novo
+arquivo. O padrão comum continua em 16 MiB (16.777.216 bytes); a implantação
+blue/green dedicada usa 1 GiB (1.073.741.824 bytes) por padrão. São aceitos somente
+inteiros positivos até 2^60. É uma proteção separada das cotas individual/global
+e inclui reservas de outros usuários. Uploads e restaurações de versões que
+cruzariam esse piso falham antes de reservar conteúdo; downloads existentes
+continuam disponíveis com cota cheia ou espaço livre abaixo do piso.
+
 - Para atualizar: backup, revisar `upstream.lock.json`, obter o hash oficial da release desejada, reconstruir e validar documentos de exemplo. Não use `latest` silenciosamente para editores.
 - Um worker e uma instância por volume. O bloqueio de arquivo impede startup concorrente. SQLite WAL reside em filesystem local; não é indicado manter esse banco em NFS ou entre hosts.
 - No startup após um processo encerrado, reservas de uploads e temporários interrompidos são liberados. Blobs órfãos de uma queda entre rename e commit não são removidos automaticamente; não apague blobs manualmente durante o serviço. Um backup usa apenas blobs referenciados e sua restauração em volume novo elimina órfãos.

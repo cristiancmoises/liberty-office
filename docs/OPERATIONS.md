@@ -204,6 +204,14 @@ interrupted reservations/temp files; operators should not delete blobs manually
 while the service runs. Backup/restore retains referenced blobs, eliminating
 unreferenced blobs only in the new restored volume.
 
+`MIN_FREE_BYTES` reserves physical disk space after all pending uploads and the
+incoming file. Its ordinary default remains 16 MiB (16,777,216 bytes); the
+dedicated blue/green deployment defaults to 1 GiB (1,073,741,824 bytes). Only
+positive integers up to 2^60 are accepted. This is separate from user/global
+quotas and includes other users' pending reservations. Uploads and revision
+restores that would cross the floor fail before reserving content; existing
+downloads remain available even at full quota or below the free-space floor.
+
 English is the default interface. Select Brazilian Portuguese when needed;
 changing the language must preserve current form and editor contents. Keep the
 original documents when checking editor formats, and repeat browser acceptance

@@ -123,7 +123,7 @@ def reserve(service, session, length):
             raise HTTPException(413,'Espaço insuficiente na cota. Versões e lixeira também ocupam espaço.')
         if c.execute('SELECT COUNT(*) FROM reservations WHERE owner=?',(user['id'],)).fetchone()[0]>=3:
             raise HTTPException(429,'Aguarde a conclusão dos envios em andamento.')
-        if shutil.disk_usage(service.settings.data_dir).free<all_pending+length+16*1024**2:
+        if shutil.disk_usage(service.settings.data_dir).free<all_pending+length+service.settings.min_free_bytes:
             raise HTTPException(507,'O disco do servidor não tem espaço livre suficiente.')
         c.execute('INSERT INTO reservations VALUES(?,?,?,?)',(reservation,user['id'],length,now()))
     return reservation
