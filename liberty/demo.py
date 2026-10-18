@@ -27,7 +27,7 @@ def demo_apps(request: Request):
     ]}
 
 
-@router.get('/demo/runtime/{app_id}/{asset:path}')
+@router.api_route('/demo/runtime/{app_id}/{asset:path}', methods=['GET', 'HEAD'])
 def demo_runtime(app_id: str, asset: str, request: Request):
     if app_id not in IDS:
         raise HTTPException(404, 'Aplicativo não encontrado.')

@@ -1,4 +1,4 @@
-import hashlib,json,mimetypes,secrets,re
+import hashlib,json,secrets,re
 from html import escape
 from html.parser import HTMLParser
 from pathlib import Path
@@ -7,6 +7,7 @@ from fastapi import APIRouter,Depends,HTTPException,Request
 from fastapi.responses import FileResponse,HTMLResponse
 from .security import full,svc,authorize,digest,uid,now
 from .i18n import translate
+from .assets import asset_response
 
 router=APIRouter()
 LOCK=Path(__file__).resolve().parents[1]/'upstream.lock.json'
@@ -55,7 +56,7 @@ def valid_ticket(service,token):
     if not row:raise HTTPException(401,'Sessão do editor inválida ou expirada.')
     return dict(row)
 
-@router.get('/runtime/{token}/{asset:path}')
+@router.api_route('/runtime/{token}/{asset:path}',methods=['GET','HEAD'])
 def runtime(token: str,asset: str,request: Request):
     service=svc(request);ticket=valid_ticket(service,token)
     if asset.startswith('__liberty/'):
@@ -113,8 +114,4 @@ def serve_bundle(service,app_id,asset,request,injection):
         html=re.sub(r'(<script\b[^>]*?\btype\s*=\s*)([\"\'])module\2',lambda m:m.group(1)+m.group(2)+'application/x-liberty-module'+m.group(2),html,flags=re.I)
         html=html.replace('<head>','<head>'+injection,1) if '<head>' in html else injection+html
         return HTMLResponse(html)
-    media='application/wasm' if path.suffix=='.wasm' else mimetypes.guess_type(path.name)[0] or 'application/octet-stream'
-    headers={}
-    if path.suffix in ('.wasm','.js') and 'gzip' in request.headers.get('accept-encoding','') and path.with_name(path.name+'.gz').is_file():
-        path=path.with_name(path.name+'.gz');headers={'Content-Encoding':'gzip','Vary':'Accept-Encoding'}
-    return FileResponse(path,media_type=media,headers=headers)
+    return asset_response(path,request)
