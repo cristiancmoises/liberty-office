@@ -32,14 +32,19 @@ test('anonymous GridCraft edits cells and exports the entered formula and calcul
 });
 
 test('demo remains isolated and usable at mobile widths without upload APIs',async({page})=>{
+ await page.route('**/demo/apps',async route=>{
+  const response=await route.fetch(),catalog=await response.json();
+  for(const app of catalog.apps)if(app.id==='wordcraft')app.url+='?light';
+  await route.fulfill({response,json:catalog});
+ });
  await page.setViewportSize({width:390,height:844});await page.goto(origin+'/demo');
  await expect(page.locator('.app-card')).toHaveCount(13);
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
  const apps=await (await page.request.get(origin+'/demo/apps')).json(),word=apps.apps.find(app=>app.id==='wordcraft');
  await page.locator('.app-card[title="WordCraft"]').click();
  await expect(page.frameLocator('#demo-frame iframe').locator('#__liberty-config')).toHaveCount(1);
- const frame=page.frames().find(frame=>frame.url().startsWith(new URL(word.url).origin));
- await frame.goto(word.url+'?light');await expect(frame.locator('.light-document')).toBeVisible();
+ const frame=page.frames().find(frame=>frame.url().includes('/demo/runtime/wordcraft/'));
+ await expect(frame.locator('.light-document')).toBeVisible();
  await frame.locator('.light-document').press('End');await frame.locator('.light-document').pressSequentially(' Native mobile typing.');
  await expect(frame.locator('.light-document')).toContainText('Native mobile typing.');
  const pending=page.waitForEvent('download');await frame.getByRole('button',{name:'Download copy',exact:true}).click();

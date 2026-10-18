@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {acquireDemoSession,listenDemoController} from '../liberty/static/demo-session.mjs';
+import {acquireDemoSession,acquireDemoEngine,listenDemoController,connectDemoSession,connectDemoEngine} from '../liberty/static/demo-session.mjs';
 
 const portalOrigin='https://office.test',nonce='a'.repeat(32);
 const options={portalOrigin,nonce};
@@ -60,7 +60,7 @@ test('sample sessions also require lifetime ownership and clear stale demo data'
  const p=platform(),privateData=platform();privateData.win.localStorage.setItem('private','keep');
  const session=await acquireDemoSession(p.win,options);
  assert.equal(p.files.size,0);assert.equal(p.cacheNames.size,0);assert.equal(p.databases.size,0);
- assert.equal(p.win.localStorage.length,0);assert.equal(p.win.sessionStorage.length,0);assert(p.unregistered);
+ assert.equal(p.win.localStorage.getItem('old'),null);assert.equal(p.win.sessionStorage.length,0);assert(p.unregistered);
  assert.equal(privateData.win.localStorage.getItem('private'),'keep');assert.equal(privateData.files.size,1);
  await assert.rejects(acquireDemoSession(p.win,options),{name:'DemoSessionBusy'});
  session.dispose();await tick();
@@ -123,7 +123,7 @@ test('controller cleanup failure cannot advertise cleared or admit another engin
 test('a blocked deletion stays pending and keeps ownership until actual success',async()=>{
  const p=platform();p.failure.blocked=true;let ready=false;
  const pending=acquireDemoSession(p.win,options).then(session=>{ready=true;return session});
- await tick();assert.equal(ready,false);assert.equal(p.locks.held.size,1);
+ await tick();assert.equal(ready,false);assert.deepEqual(p.locks.held,new Set(['liberty.demo.owner','liberty.demo.engine']));
  await assert.rejects(acquireDemoSession(p.win,options),{name:'DemoSessionBusy'});
  p.unblock();const session=await pending;session.dispose();await tick();
 });
@@ -132,14 +132,14 @@ test('disposal cannot release a live lock while an uncancellable deletion is pen
  const p=platform(),session=await acquireDemoSession(p.win,options);
  p.databases.add('live-db');p.failure.blocked=true;
  const finishing=session.finish();await tick();session.dispose();await tick();
- assert.equal(p.locks.held.size,1);p.unblock();await finishing;await tick();assert.equal(p.locks.held.size,0);
+ assert.deepEqual(p.locks.held,new Set(['liberty.demo.owner','liberty.demo.engine']));p.unblock();await finishing;await tick();assert.equal(p.locks.held.size,0);
 });
 
 test('controller never acknowledges cleared while a blocked deletion can still run',async()=>{
  const p=platform(),controller=listenDemoController(p.win,options);
  await p.send('acquire');p.databases.add('live-db');p.failure.blocked=true;
  const clearing=p.send('clear','request-00000002');await tick();
- assert.equal(p.replies.at(-1).status,'ready');assert.equal(p.locks.held.size,1);
+ assert.equal(p.replies.at(-1).status,'ready');assert.deepEqual(p.locks.held,new Set(['liberty.demo.owner','liberty.demo.engine']));
  p.unblock();await clearing;assert.equal(p.replies.at(-1).status,'cleared');controller.dispose();await tick();
 });
 
@@ -150,7 +150,7 @@ test('legacy worker retirement waits for redundancy before deleting its caches',
   scope:'https://demo-edit.test/demo/runtime/effectcraft/',active:worker,unregister:async()=>true
  }];
  let ready=false;const pending=acquireDemoSession(p.win,options).then(session=>{ready=true;return session});
- await tick();assert.equal(ready,false);assert.equal(p.locks.held.size,1);assert(p.cacheNames.has('effectcraft-old'));
+ await tick();assert.equal(ready,false);assert.deepEqual(p.locks.held,new Set(['liberty.demo.owner','liberty.demo.engine']));assert(p.cacheNames.has('effectcraft-old'));
  worker.state='redundant';for(const listener of [...listeners])listener();
  const session=await pending;assert.equal(p.cacheNames.size,0);session.dispose();await tick();
 });
@@ -165,4 +165,52 @@ test('an interrupted legacy-worker retirement cannot silently become a clean new
  const p=platform();p.win.localStorage.setItem('liberty.demo.retiring-workers','1');
  await assert.rejects(acquireDemoSession(p.win,options),/Close all demo tabs/);
  await tick();assert.equal(p.files.size,1);assert.equal(p.locks.held.size,0);
+});
+
+test('portal session channel rejects stale, foreign and malformed acknowledgements',async()=>{
+ const listeners=new Set(),sent=[],frame={contentWindow:{postMessage(data,origin){sent.push({data,origin})}}};
+ const win={crypto,setTimeout,clearTimeout,addEventListener(type,fn){listeners.add(fn)},removeEventListener(type,fn){listeners.delete(fn)}};
+ const client=connectDemoSession(win,{frame,origin:'https://demo.test',nonce,timeoutMs:1000});
+ let completed=false;const pending=client.request('acquire').then(status=>{completed=true;return status});
+ const request=sent[0].data,good={source:frame.contentWindow,origin:'https://demo.test',data:{type:request.type,nonce,requestId:request.requestId,status:'ready'}};
+ for(const change of [{source:{}},{origin:portalOrigin},{data:{...good.data,nonce:'b'.repeat(32)}},
+  {data:{...good.data,requestId:'old-request'}},{data:{...good.data,status:'unknown'}},{data:{...good.data,extra:true}}]){
+  for(const fn of listeners)fn({...good,...change});
+ }
+ await tick();assert.equal(completed,false);
+ for(const fn of listeners)fn(good);assert.equal(await pending,'ready');
+ const next=client.request('clear');for(const fn of listeners)fn(good);await tick();
+ client.dispose();await assert.rejects(next,/closed/i);assert.equal(listeners.size,0);
+ await assert.rejects(client.request('acquire'),/closed/i);
+});
+
+test('channel timeout does not release the controller or accept a late acknowledgement',async()=>{
+ const listeners=new Set(),sent=[],frame={contentWindow:{postMessage(data){sent.push(data)}}};
+ const win={crypto,setTimeout,clearTimeout,addEventListener(type,fn){listeners.add(fn)},removeEventListener(type,fn){listeners.delete(fn)}};
+ const client=connectDemoSession(win,{frame,origin:'https://demo.test',nonce,timeoutMs:5});
+ await assert.rejects(client.request('clear'),{name:'DemoSessionTimeout'});
+ assert.equal(sent.length,1);assert.equal(sent[0].action,'clear');
+ assert.equal(listeners.size,1); // Timeout is not permission to unload/release ownership.
+ client.dispose();
+ const engine=connectDemoEngine(win,{frame,origin:'https://demo.test',nonce,timeoutMs:5});
+ await assert.rejects(engine.request('release'),/action/i);engine.dispose();
+});
+
+test('a surviving engine prevents cleanup after its controller disappears',async()=>{
+ const p=platform(),controller=await acquireDemoSession(p.win,options);
+ const engine=await acquireDemoEngine(p.win,options);p.files.add('active-project');
+ controller.dispose();await tick();
+ await assert.rejects(acquireDemoSession(p.win,{...options,nonce:'b'.repeat(32)}),{name:'DemoSessionBusy'});
+ assert(p.files.has('active-project'));engine.dispose();await tick();
+ const next=await acquireDemoSession(p.win,{...options,nonce:'b'.repeat(32)});
+ assert.equal(p.files.size,0);await assert.rejects(acquireDemoEngine(p.win,options),/owner/i);
+ next.dispose();await tick();
+});
+
+test('engine stop must retain its lease until actual unload before Finish can clear',async()=>{
+ const p=platform(),controller=await acquireDemoSession(p.win,options),engine=await acquireDemoEngine(p.win,options);
+ p.files.add('working');await assert.rejects(controller.finish(),{name:'DemoSessionBusy'});
+ assert(p.files.has('working'));assert.equal(p.locks.held.size,2);
+ engine.dispose();await tick();await controller.finish();assert.equal(p.files.size,0);
+ await assert.rejects(acquireDemoEngine(p.win,options),/owner/i);controller.dispose();await tick();
 });

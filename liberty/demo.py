@@ -49,7 +49,7 @@ def demo_runtime(app_id: str, asset: str, request: Request):
         raise HTTPException(404, 'Aplicativo não encontrado.')
     if asset.startswith('__liberty/'):
         name = asset.removeprefix('__liberty/')
-        if name not in ('demo-host.mjs', 'demo-guard.mjs', 'demo-download.mjs', 'bridge.mjs', 'editor-runtime.mjs', 'editor-storage.mjs', 'light-editor.mjs', 'light-editor.css', 'i18n.mjs', 'translations.mjs', 'canvas-density.mjs'):
+        if name not in ('demo-host.mjs', 'demo-guard.mjs', 'demo-download.mjs', 'demo-session.mjs', 'bridge.mjs', 'editor-runtime.mjs', 'editor-storage.mjs', 'light-editor.mjs', 'light-editor.css', 'i18n.mjs', 'translations.mjs', 'canvas-density.mjs'):
             raise HTTPException(404, 'Adaptador não encontrado.')
         return FileResponse(STATIC / name, media_type='text/css' if name.endswith('.css') else 'text/javascript')
     service = svc(request)

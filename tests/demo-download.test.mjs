@@ -89,3 +89,21 @@ test('Blob anchors and save pickers forward once instead of downloading in the i
  assert.equal(sent.length,2);assert.equal(new TextDecoder().decode(sent[1].buffer),'picker bytes');assert.equal(win.downloads.length,0);
  adapter.dispose();assert.equal(win.HTMLAnchorElement.prototype.click,click);assert.equal(win.showSaveFilePicker,undefined);
 });
+
+test('Finish revokes every native Blob URL, including evicted and non-export URLs',()=>{
+ const win=browser();win.parent={postMessage(){}};
+ const adapter=installDemoExports(win,{portalOrigin,maxBytes:10});
+ const urls=[win.URL.createObjectURL(new Blob(['12345678901'])),win.URL.createObjectURL({mediaSource:true})];
+ for(let n=0;n<70;n++)urls.push(win.URL.createObjectURL(new Blob(['x'])));
+ win.URL.revokeObjectURL(urls[0]);adapter.dispose();adapter.dispose();
+ assert.deepEqual(new Set(win.revoked),new Set(urls));assert.equal(win.revoked.length,urls.length);
+});
+
+test('suspended portal rejects late exports but retains URLs until confirmed cleanup',()=>{
+ const win=browser(),source={postMessage(){}},frame={contentWindow:source};
+ const receiver=connectDemoDownloads(win,{frame,origin:demoOrigin});
+ win.emit('message',{source,origin:demoOrigin,data:payload()});assert.equal(win.downloads.length,1);
+ receiver.suspend();assert.equal(win.revoked.length,0);
+ win.emit('message',{source,origin:demoOrigin,data:payload({id:'demo-87654321'})});assert.equal(win.downloads.length,1);
+ receiver.dispose();assert.equal(win.revoked.length,1);
+});

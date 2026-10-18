@@ -41,13 +41,14 @@ export function connectDemoDownloads(win,{frame,origin,onState=()=>{},maxBytes=M
   finally{active=false}
  }
  win.addEventListener('message',receive);
- return {dispose(){disposed=true;win.removeEventListener('message',receive);for(const url of urls.keys())revoke(url);recent.clear()}};
+ const suspend=()=>{disposed=true;win.removeEventListener('message',receive)};
+ return {suspend,dispose(){suspend();for(const url of urls.keys())revoke(url);recent.clear()}};
 }
 
 export function installDemoExports(win,{portalOrigin,onState=()=>{},maxBytes=MAX_BYTES,timeoutMs=15000}){
  maxBytes=Math.min(maxBytes,MAX_BYTES);
  let disposed=false,busy=false,pending=null,trackedBytes=0;
- const blobs=new Map(),create=win.URL.createObjectURL.bind(win.URL),revoke=win.URL.revokeObjectURL.bind(win.URL);
+ const blobs=new Map(),urls=new Set(),create=win.URL.createObjectURL.bind(win.URL),revoke=win.URL.revokeObjectURL.bind(win.URL);
  const click=win.HTMLAnchorElement.prototype.click,savePicker=win.showSaveFilePicker;
  const forget=url=>{const blob=blobs.get(url);if(blob){trackedBytes-=blob.size;blobs.delete(url)}};
  function finish(error){
@@ -88,13 +89,14 @@ export function installDemoExports(win,{portalOrigin,onState=()=>{},maxBytes=MAX
  }
  win.URL.createObjectURL=blob=>{
   const url=create(blob);
+  urls.add(url);
   if(Number.isSafeInteger(blob?.size)&&blob.size>0&&blob.size<=maxBytes){
    blobs.set(url,blob);trackedBytes+=blob.size;
    while(blobs.size>64||trackedBytes>maxBytes)forget(blobs.keys().next().value);
   }
   return url;
  };
- win.URL.revokeObjectURL=url=>{forget(url);return revoke(url)};
+ win.URL.revokeObjectURL=url=>{urls.delete(url);forget(url);return revoke(url)};
  win.HTMLAnchorElement.prototype.click=function(){if(!forward(this))return click.call(this)};
  const intercept=event=>{const anchor=event.target?.closest?.('a[download]');if(anchor&&forward(anchor)){event.preventDefault();event.stopImmediatePropagation()}};
  win.addEventListener('click',intercept,true);win.addEventListener('message',receive);
@@ -107,7 +109,7 @@ export function installDemoExports(win,{portalOrigin,onState=()=>{},maxBytes=MAX
   win.removeEventListener('message',receive);win.removeEventListener('click',intercept,true);win.removeEventListener('pagehide',dispose);
   win.URL.createObjectURL=create;win.URL.revokeObjectURL=revoke;win.HTMLAnchorElement.prototype.click=click;
   if(savePicker)win.showSaveFilePicker=savePicker;else delete win.showSaveFilePicker;
-  blobs.clear();trackedBytes=0;
+  for(const url of urls)revoke(url);urls.clear();blobs.clear();trackedBytes=0;
  }
  win.addEventListener('pagehide',dispose);
  return {exportBlob,dispose};

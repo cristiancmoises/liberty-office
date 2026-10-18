@@ -1,6 +1,12 @@
-const OWNER='liberty.demo.owner',RETIRING='liberty.demo.retiring-workers';
+const OWNER='liberty.demo.owner',ENGINE='liberty.demo.engine',RETIRING='liberty.demo.retiring-workers';
 const validNonce=value=>typeof value==='string'&&/^[A-Za-z0-9_-]{24,80}$/.test(value);
 const requestId=value=>typeof value==='string'&&/^[A-Za-z0-9_-]{8,80}$/.test(value);
+function busy(){const error=Error('Another demo session owns this browser storage.');error.name='DemoSessionBusy';return error}
+async function withoutEngine(win,operation){
+ return win.navigator.locks.request(ENGINE,{ifAvailable:true},async lock=>{
+  if(!lock)throw busy();return operation();
+ });
+}
 
 async function retireWorkers(win,local){
  if(local.getItem(RETIRING))throw Error('Close all demo tabs and clear this demo site’s data after interrupted worker cleanup.');
@@ -60,9 +66,9 @@ export async function acquireDemoSession(win,{portalOrigin,nonce}){
  if(!win.navigator.locks?.request)return Promise.reject(Error('Web Locks are required for demo sessions.'));
  return new Promise((resolve,reject)=>{
   win.navigator.locks.request(OWNER,{ifAvailable:true},async lock=>{
-   if(!lock){const error=Error('Another demo session owns this browser storage.');error.name='DemoSessionBusy';reject(error);return}
+   if(!lock){reject(busy());return}
    try{
-    await clearDemoStorage(win);
+    await withoutEngine(win,async()=>{await clearDemoStorage(win);win.localStorage.setItem(OWNER,nonce)});
     let release,cleared=false,disposed=false,inflight=null;
     const lifetime=new Promise(done=>{release=done});
     const session={
@@ -70,7 +76,7 @@ export async function acquireDemoSession(win,{portalOrigin,nonce}){
       if(disposed)return Promise.reject(Error('Demo session has ended.'));
       if(cleared)return Promise.resolve();
       if(inflight)return inflight;
-      const operation=clearDemoStorage(win);inflight=operation;
+      const operation=withoutEngine(win,()=>clearDemoStorage(win));inflight=operation;
       operation.then(()=>{cleared=true;inflight=null},()=>{inflight=null});
       return operation;
      },
@@ -81,6 +87,21 @@ export async function acquireDemoSession(win,{portalOrigin,nonce}){
     };
     resolve(session);await lifetime;
    }catch(error){reject(error)}
+  }).catch(reject);
+ });
+}
+
+// This second lease survives loss of the sibling controller. The owner marker
+// rejects delayed starts from a previous session; it contains no document data.
+export async function acquireDemoEngine(win,{portalOrigin,nonce}){
+ if(!validNonce(nonce)||new URL(portalOrigin).origin!==portalOrigin||win.location.origin===portalOrigin||!win.navigator.locks?.request)
+  throw Error('Invalid demo engine owner.');
+ return new Promise((resolve,reject)=>{
+  win.navigator.locks.request(ENGINE,{ifAvailable:true},async lock=>{
+   if(!lock)throw busy();
+   if(win.localStorage.getItem(OWNER)!==nonce)throw Error('Demo engine owner has changed.');
+   let release;const lifetime=new Promise(done=>{release=done});
+   resolve({dispose(){release()}});await lifetime;
   }).catch(reject);
  });
 }
@@ -121,3 +142,42 @@ export function listenDemoController(win,{portalOrigin,nonce}){
  win.addEventListener('message',receive);
  return {dispose(){disposed=true;win.removeEventListener('message',receive);session?.dispose()}};
 }
+
+function connectChannel(win,{frame,origin,nonce,timeoutMs=15000},type,actions,statuses){
+ if(!validNonce(nonce)||new URL(origin).origin!==origin)throw Error('Invalid demo channel.');
+ const pending=new Map();let disposed=false;
+ function receive(event){
+  if(disposed||event.source!==frame.contentWindow||event.origin!==origin)return;
+  const data=event.data;
+  if(!data||data.type!==type||data.nonce!==nonce||!requestId(data.requestId)||!statuses.includes(data.status)||
+   Object.keys(data).length!==4||!Object.keys(data).every(key=>['type','nonce','requestId','status'].includes(key)))return;
+  const operation=pending.get(data.requestId);if(!operation)return;
+  pending.delete(data.requestId);win.clearTimeout(operation.timer);operation.resolve(data.status);
+ }
+ win.addEventListener('message',receive);
+ return {
+  async request(action){
+   if(disposed)throw Error('Demo channel is closed.');
+   if(!actions.includes(action))throw Error('Invalid demo action.');
+   if(pending.size)throw Error('A demo operation is still pending.');
+   const id=win.crypto.randomUUID();
+   return new Promise((resolve,reject)=>{
+    const timer=win.setTimeout(()=>{
+     pending.delete(id);const error=Error('Demo operation did not finish. Ownership has not been released.');
+     error.name='DemoSessionTimeout';reject(error);
+    },timeoutMs);
+    pending.set(id,{resolve,reject,timer});
+    try{frame.contentWindow.postMessage({type,nonce,requestId:id,action},origin)}
+    catch(error){pending.delete(id);win.clearTimeout(timer);reject(error)}
+   });
+  },
+  dispose(){
+   disposed=true;win.removeEventListener('message',receive);
+   for(const operation of pending.values()){win.clearTimeout(operation.timer);operation.reject(Error('Demo channel is closed.'))}
+   pending.clear();
+  }
+ };
+}
+
+export const connectDemoSession=(win,options)=>connectChannel(win,options,'liberty.demo.session',['acquire','clear','release'],['ready','busy','cleared','failed']);
+export const connectDemoEngine=(win,options)=>connectChannel(win,options,'liberty.demo.engine',['start','stop'],['started','stopped','failed']);
