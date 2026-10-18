@@ -52,9 +52,9 @@ test('demo remains isolated and usable at mobile widths without upload APIs',asy
  for await(const chunk of stream)chunks.push(chunk);
  expect(download.suggestedFilename()).toBe('document.html');expect(Buffer.concat(chunks).toString()).toContain('Native mobile typing.');
  await expect(frame.locator('.light-status')).toContainText('Download started.');
- await expect(frame.getByRole('button',{name:'Abrir TXT/HTML'})).toHaveCount(0);
+ await expect(frame.getByRole('button',{name:'Open TXT/HTML',exact:true})).toBeVisible();
  expect(await frame.evaluate(()=>{try{parent.document.body;return false}catch(error){return error.name==='SecurityError'}})).toBe(true);
- const denied=await frame.evaluate(async()=>{try{await showOpenFilePicker();return false}catch(error){return error.name==='NotAllowedError'}});expect(denied).toBe(true);
+ const denied=await frame.evaluate(async()=>{try{await showDirectoryPicker();return false}catch(error){return error.name==='NotAllowedError'}});expect(denied).toBe(true);
  const demoOrigin=new URL(word.url).origin;
  expect((await page.request.get(demoOrigin+'/api/auth/status')).status()).toBe(404);
  const blockedUpload=await page.request.post(demoOrigin+'/api/files',{data:'no upload'});

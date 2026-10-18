@@ -27,6 +27,7 @@ def test_public_demo_does_not_grant_account_or_drive_access(env):
     assert 'editor-host.mjs' not in html.text
     assert 'application/x-liberty-module' in html.text
     assert client.get(word['url'].replace('index.html', '__liberty/demo-session.mjs')).status_code == 200
+    assert client.get(word['url'].replace('index.html', '__liberty/demo-policy.mjs')).status_code == 200
     assert client.get(word['url'].replace('index.html', 'app.wasm')).content == b'\x00asm'
     for path in ('/api/auth/status', '/api/files', '/demo/apps', '/runtime/not-a-ticket/index.html'):
         assert client.get(settings.demo_editor_origin + path).status_code == 404

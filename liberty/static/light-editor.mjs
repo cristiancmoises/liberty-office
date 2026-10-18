@@ -31,7 +31,7 @@ export function lightHTMLText(doc,html){
  }
  return result;
 }
-export function mountLightEditor(win,{onSave,onState,demo=false}){
+export function mountLightEditor(win,{onSave,onState,demo=false,admit=null}){
  const doc=win.document;
  const make=(tag,value,attrs={})=>{const element=doc.createElement(tag);if(value)bindText(element,value);for(const [name,value]of Object.entries(attrs))bindAttribute(element,name,value);return element};
  const stylesheet=make('link',null,{rel:'stylesheet',href:'./__liberty/light-editor.css'});doc.head.append(stylesheet);
@@ -52,15 +52,21 @@ export function mountLightEditor(win,{onSave,onState,demo=false}){
  for(const [label,command]of [[msg('Negrito'),'bold'],[msg('Itálico'),'italic'],[msg('Sublinhar'),'underline'],[msg('Lista'),'insertUnorderedList']]){
   const button=action(label,()=>{const before=area.innerHTML,version=revision;area.focus();doc.execCommand(command,false);if(before!==area.innerHTML&&version===revision)dirty()});button.addEventListener('mousedown',event=>event.preventDefault());
  }
- if(!demo)action(msg('Abrir TXT/HTML'),async()=>{
+ async function openFile(file){
   try{
-   const [handle]=await win.showOpenFilePicker({types:[{description:msg('Texto e HTML'),accept:{'text/plain':['.txt','.md'],'text/html':['.html','.htm']}}]});
-   const file=await handle.getFile();const format=lightFormat(file.name);
+   const format=lightFormat(file.name);
    if(file.size>2*1024*1024)throw Error(msg('O modo leve abre documentos de até 2 MiB.'));
    const text=await file.text();
    // HTML is imported as text, never as active markup or remote resources.
    area.textContent=format==='html'?lightHTMLText(doc,text):text;
    name.value=file.name;revision++;updateFormatNote();status(msg('Arquivo aberto no modo leve. HTML é importado como texto.'));area.focus();
+  }catch(error){if(error.name!=='AbortError')status(error.message)}
+ }
+ if(!demo||admit)action(msg('Abrir TXT/HTML'),async()=>{
+  try{
+   const options={types:[{description:text(msg('Texto e HTML')),accept:{'text/plain':['.txt','.md'],'text/html':['.html','.htm']}}]};
+   const [file]=admit?await admit(options):[await(await win.showOpenFilePicker(options))[0].getFile()];
+   if(file)await openFile(file);
   }catch(error){if(error.name!=='AbortError')status(error.message)}
  });
  const save=action(demo?msg('Baixar cópia'):msg('Salvar no Drive'),async()=>{
@@ -82,4 +88,5 @@ export function mountLightEditor(win,{onSave,onState,demo=false}){
  doc.body.replaceChildren(heading,toolbar,sheet,info);doc.body.className='light-editor';
  doc.documentElement.dataset.libertyState='ready';doc.documentElement.dataset.libertyMode='light';
  status(msg('Modo leve pronto. TXT/HTML com edição básica; salvamento manual.'));
+ return {openFile};
 }

@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {parseHTML} from 'linkedom';
-import {graphicsAvailable,lightFormat,lightHTMLText} from '../liberty/static/light-editor.mjs';
+import {graphicsAvailable,lightFormat,lightHTMLText,mountLightEditor} from '../liberty/static/light-editor.mjs';
 test('unsupported graphics choose the lightweight editor without changing browser settings',async()=>{
  assert.equal(await graphicsAvailable({navigator:{},document:{createElement:()=>({getContext:()=>null})}}),false);
  let released=false;
@@ -30,4 +30,25 @@ test('HTML text extraction excludes executable, style, metadata and template con
  const {document}=parseHTML('<html><body></body></html>');
  assert.equal(lightHTMLText(document,'<head><title>Hidden</title><style>hidden style</style></head><p>Safe</p><script>hidden script</script><template>hidden template</template><iframe>hidden frame</iframe><a href="javascript:alert(1)">Link</a>'),'Safe\nLink');
  assert.equal(document.body.textContent,'');
+});
+
+test('demo light mode exposes local Open only through its admission callback before reading',async()=>{
+ const {window}=parseHTML('<html><head></head><body></body></html>'),events=[];
+ const editor=mountLightEditor(window,{demo:true,onState(){},onSave(){},admit:async()=>{
+  events.push('admitted');return [{name:'local.html',size:60,text:async()=>{events.push('read');return '<p>Local text</p><img src="/not-fetched" onerror="alert(1)">'}}];
+ }});
+ const button=[...window.document.querySelectorAll('button')].find(button=>button.textContent==='Open TXT/HTML');
+ assert.ok(button);button.dispatchEvent(new window.Event('click'));await new Promise(setImmediate);
+ assert.deepEqual(events,['admitted','read']);assert.equal(window.document.querySelector('.light-document').textContent,'Local text');
+ assert.equal(window.document.querySelector('.light-document img'),null);assert.equal(typeof editor.openFile,'function');
+});
+
+test('refused demo admission leaves the current document untouched',async()=>{
+ const {window}=parseHTML('<html><head></head><body></body></html>');
+ mountLightEditor(window,{demo:true,onState(){},onSave(){},admit:async()=>{throw Error('Budget exhausted')}});
+ const before=window.document.querySelector('.light-document').textContent;
+ const button=[...window.document.querySelectorAll('button')].find(button=>button.textContent==='Open TXT/HTML');
+ assert.ok(button);button.dispatchEvent(new window.Event('click'));await new Promise(setImmediate);
+ assert.equal(window.document.querySelector('.light-document').textContent,before);
+ assert.match(window.document.querySelector('.light-status').textContent,/Budget exhausted/);
 });
