@@ -3,7 +3,7 @@
     "sha256",
     "sha512"
   ],
-  "created_at": "2026-10-18T23:48:48Z",
+  "created_at": "2026-10-19T00:08:46Z",
   "excluded": [
     {
       "path": ".codemark",
@@ -50,8 +50,8 @@
     },
     "MANIFEST.sha256": {
       "mode": 420,
-      "sha256": "b1670915fb510d294affa7b2b7d088d4e13d3ff13845fd5c343a4e9ef4ecebd8",
-      "sha512": "31fd9fda8181d4ae05263d7240687c9cec2dfcf55a0326baf4e9f7281ba73686303cd9ffb980d662b35077d6e61ada8467b40a351b681d7dc0fcf7eaf3d05be2",
+      "sha256": "44bf94d66e1bdad8b9bfc4da9993c3f1f1cfda96134b72ce639cdc29d9e121d0",
+      "sha512": "737bde5508c25683c1b735d775e0c7e16d1bfdfb97d0af82d06e346bd09f6a28c3be3830782db88723dd7ce586cd8e0c0df1ed48e5951c2c27335d8f666d9802",
       "size": 68762
     },
     "NOTICE": {
@@ -3038,9 +3038,9 @@
     },
     "tests/browser/graphics-compatibility.spec.mjs": {
       "mode": 420,
-      "sha256": "fc2b70f4fce926e0e50e34fa62aedfa399352fef46dbdf591a7de3149e5fdbca",
-      "sha512": "60a9e7f3e4b4994cc8e7a298ea003d479183a48d8a2fe69c2434fe1a4e96ca4d6143cbe7f81b6b9ef625d948ccf0db9575ed1b6d7d8c17d89cd568b4648a9a42",
-      "size": 3707
+      "sha256": "9b9772425cb40b36d53a244eca2cd2a609aeca9297d47e33c671ce8d52103275",
+      "sha512": "5e715d40d601e630007440d5db926e870ccdc0a73cde8924e51bc75e77f10a4ac0d566fd3373281dc89703813dffa69f4790dff1dfa14fc6ce1a612d6a5afd47",
+      "size": 3903
     },
     "tests/browser/i18n.spec.mjs": {
       "mode": 420,
@@ -3412,5 +3412,5 @@
   "format": "secops-codemark-integrity-v1",
   "project_id": "77ee92c4-5b90-4839-bc43-05fdf32394b7",
   "tool_version": "0.4.1",
-  "total_bytes": 3805526
+  "total_bytes": 3805722
 }
