@@ -18,6 +18,8 @@ for(const [language,width] of [['en',1440],['pt-BR',320]]){
   await expect(page.locator('#demo-status')).not.toContainText('did not start');
   await expect(page.locator('#demo-close')).toBeEnabled();
   expect(native).toEqual([]);
+  // Over HTTPS the dynamically loaded stylesheet can arrive after the DOM.
+  await expect(editor.locator('.compatibility-actions button').first()).toHaveCSS('min-height','44px',{timeout:15000});
   const bounds=await editor.locator('.editor-compatibility').evaluate(node=>({width:innerWidth,scroll:document.documentElement.scrollWidth,buttons:[...node.querySelectorAll('button')].map(b=>b.getBoundingClientRect().toJSON())}));
   expect(bounds.scroll).toBeLessThanOrEqual(bounds.width);
   for(const button of bounds.buttons){expect(button.height).toBeGreaterThanOrEqual(44);expect(button.right).toBeLessThanOrEqual(bounds.width)}
