@@ -83,6 +83,21 @@ com Docker CLI e Compose v2 para validar ambos os arquivos de implantação,
 inclusive limites de cadastro mais restritos. O teste não inicia serviços nem
 precisa do socket Docker.
 
+## Demonstração pública
+
+A demo `/demo` processa arquivos no navegador, sem upload de documentos nem
+gravação no Drive privado. Use uma terceira origem HTTPS isolada. Os tetos
+globais são 50.000.000 bytes por arquivo, dez arquivos e 100.000.000 bytes
+cumulativos por projeto; importações de texto têm limite menor de 2 MiB,
+além de limites de conteúdo decodificado, marcação e tabelas. Substituir um
+arquivo não devolve o orçamento. WordCraft aceita TXT, GridCraft CSV/TSV,
+DeckCraft roteiros TXT/Markdown e o editor básico opcional TXT/Markdown/HTML
+inerte. Os demais editores permitem exemplos, criação e exportação, mas suas
+importações locais permanecem bloqueadas até homologação dos parsers.
+Esses limites não são antivírus nem sanitização universal de formatos.
+Baixe o resultado e use Concluir e limpar. Encerramento inesperado pode deixar
+dados locais até a próxima visita ou a limpeza manual dos dados do site.
+
 ## Escolher onde armazenar os dados
 
 O volume padrão chama-se `liberty_office_data`. Ele inclui `liberty.db`, blobs privados, chave `mfa.key`, arquivos temporários e token inicial até o bootstrap. Não coloque esse diretório em um webroot nem apague a chave: sem ela, os segredos TOTP existentes deixam de ser decifráveis.
@@ -321,4 +336,4 @@ backups e imagens para recuperação, sem tratar uma cópia obsoleta como atual.
 
 A imagem tem base e dependências fixadas; não altere hashes para contornar um download inválido. O primeiro build precisa acessar GitHub e PyPI. Depois de construir, a aplicação serve seus próprios assets. Para atualizar releases Artcraft, revise as novas licenças e artefatos, fixe versão/URL/tamanho/SHA-256 e repita a homologação.
 
-O script `scripts/docker_acceptance.sh` cria projeto, imagem e volumes próprios com nomes `liberty-acceptance-*`; o Compose de produção não é selecionado. Ele exige npm dependencies e Chromium instalados no host e deixa relatórios sem o seed em `acceptance-results/` e `playwright-report/`. Consulte `docs/ACCEPTANCE.md` para o que o gate comprova e para a verificação de formatos reais.
+O script `scripts/docker_acceptance.sh` cria projeto, imagem e volumes próprios com nomes `liberty-acceptance-*`; o Compose de produção não é selecionado. Ele exige dependências npm fixadas e Chromium instalados no host e deixa relatórios sem o seed em `acceptance-results/` e `playwright-report/`. Mantenha esses relatórios privados. Os fluxos sintéticos verificam autenticação, isolamento, Drive, reinício e restauração, não todos os formatos. Em ambiente separado, abra documentos representativos, edite, salve/exporte, feche, reabra e compare o resultado antes de usar arquivos importantes.

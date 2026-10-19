@@ -21,15 +21,28 @@ skip = {
     "playwright-report",
     "test-results",
 }
-private_docs = {"AGENTS.md", "RELEASE_REPORT.md", "CODE_REVIEW.md"}
+private_docs = {"agents.md", "release_report.md", "code_review.md", "work_handoff.md"}
+public_docs = {
+    "docs/OPERATIONS.md",
+    "docs/OPERATIONS.pt-BR.md",
+    "docs/SECURITY.md",
+    "docs/SECURITY.pt-BR.md",
+    "docs/LICENSING.md",
+    "docs/INTEGRITY.md",
+}
 out = Path(sys.argv[1])
 with zipfile.ZipFile(out, "w", compression=zipfile.ZIP_DEFLATED) as z:
     for p in sorted(root.rglob("*")):
         rel = p.relative_to(root)
         if (
             any(x in skip or x in {"superpowers", "evidence"} for x in rel.parts)
-            or p.name in private_docs
-            or p.name.startswith("PROMPT")
+            or p.name.casefold() in private_docs
+            or (p.suffix.casefold() == ".md" and "prompt" in p.stem.casefold())
+            or (
+                rel.parts[0] == "docs"
+                and p.suffix.lower() == ".md"
+                and rel.as_posix() not in public_docs
+            )
             or p.name == ".env"
             or p.suffix == ".pyc"
             or p.resolve() == out.resolve()

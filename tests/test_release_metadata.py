@@ -22,8 +22,6 @@ def test_runtime_uses_the_qualified_candidate_version():
         "scripts/docker_acceptance.sh",
         "README.md",
         "README.pt-BR.md",
-        "docs/ACCEPTANCE.md",
-        "docs/ACCEPTANCE.pt-BR.md",
         "docs/OPERATIONS.md",
         "docs/OPERATIONS.pt-BR.md",
     ],

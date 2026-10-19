@@ -23,7 +23,7 @@ TXT/Markdown outlines, and lightweight TXT/Markdown/HTML. These formats have a
 50 MB per file and 10 files/100 MB cumulatively per project; stricter format
 limits prevail. Replacing a file does not reset the budget. Other editors
 offer their examples or creation tools, but local imports remain blocked until
-their parsers have qualified resource limits. See the [acceptance matrix](docs/ACCEPTANCE.md#temporary-demo-candidate).
+their parsers have qualified resource limits. See the [demo operating limits](docs/OPERATIONS.md#public-demonstration).
 
 The lightweight text mode works without WebGL and supports basic writing and formatting. It does not provide full DOCX fidelity. Full graphical editors require working WebGL2 or WebGPU support in the browser. Startup errors are displayed explicitly, with a compatible option when one exists.
 
@@ -102,4 +102,4 @@ The Liberty source is AGPL-3.0-or-later and is offered at `/source.zip`. Upstrea
 
 Source integrity is recorded with SecOps CodeMark. See [verification instructions](docs/INTEGRITY.md); private signing keys are never distributed.
 
-Use Python 3.12+, install `requirements-dev.txt` with `pip install --require-hashes`, and run `python -m pytest -q`. JavaScript tests run with `npm ci` and `npm test`. Browser acceptance uses isolated synthetic data; see [acceptance criteria](docs/ACCEPTANCE.md). The release remains a candidate: verify the formats and editors you depend on before using important files.
+Use Python 3.12+, install `requirements-dev.txt` with `pip install --require-hashes`, and run `python -m pytest -q`. JavaScript tests run with `npm ci` and `npm test`. Browser acceptance uses isolated synthetic data; see [checks and recovery](docs/OPERATIONS.md#checks-and-recovery). The release remains a candidate: verify the formats and editors you depend on before using important files.

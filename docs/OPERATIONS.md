@@ -99,6 +99,15 @@ the qualified browser-local formats listed in the README can be imported. Their
 storage is isolated from the authenticated editor origin. The lightweight text
 editor is a compatibility mode, not a DOCX replacement.
 
+The global browser-local demo ceilings are 50,000,000 bytes per file, ten files
+and 100,000,000 cumulative bytes per project. Qualified text imports have a
+stricter 2 MiB input limit plus decoded text, markup and table limits. Replacing
+a file does not refund its budget. WordCraft accepts TXT, GridCraft CSV/TSV,
+DeckCraft TXT/Markdown outlines, and the optional basic text editor
+TXT/Markdown/inert HTML. Other native editors remain available for examples,
+creation and export; arbitrary local imports remain blocked until qualified.
+These limits are not antivirus or universal format-sanitization guarantees.
+
 The hosted Liberty service runs in its own Proxmox CT154. Preserve its persistent
 volume and private runtime configuration when rebuilding the application.
 
@@ -285,6 +294,14 @@ not migrate data. Keep the MFA key with the database; losing it prevents
 decryption of existing TOTP secrets. Never place the data directory in a webroot.
 
 ## Checks and recovery
+
+Use `scripts/docker_acceptance.sh` only on a separate Linux test host with
+Docker/Compose, locked npm dependencies and Playwright Chromium. It creates its
+own `liberty-acceptance-*` image, project and volumes, not production data.
+Its synthetic checks cover authentication, isolated editors, Drive export,
+restart and backup restoration. Test representative native documents separately:
+open, edit, save/export, close, reopen and compare the result. Keep test reports
+private; passing synthetic checks does not certify every format or browser.
 
 Run `./libertyctl status` for read-only status and `./libertyctl verify` for installed editor hashes, database, MFA key, and disk checks. A passing check does not replace browser testing. Monitor health at `/healthz` on the portal and editor origins. Test backups regularly, including a restored document.
 

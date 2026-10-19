@@ -3,20 +3,20 @@
     "sha256",
     "sha512"
   ],
-  "created_at": "2026-10-19T00:08:46Z",
+  "created_at": "2026-10-19T02:01:41Z",
   "excluded": [
     {
       "path": ".codemark",
       "reason": "Metadados do CodeMark"
     }
   ],
-  "file_count": 566,
+  "file_count": 565,
   "files": {
     ".dockerignore": {
       "mode": 420,
-      "sha256": "0507c253749b27aee15aec82e865a0f94f051ef64bf3e307fe6d739535ef6cba",
-      "sha512": "3f509ac4115a2e8ef496385c2d9c164711bc856e0515b6a4dd1ce1c402dcbe8ba8bbd69757c83ebb23a63af09ed60555469d2dc4aac0a6d01c94763775469690",
-      "size": 284
+      "sha256": "eb3946999819f0107109ed4541e9909b0c83ebb7e0ef7e44c250c4243052629b",
+      "sha512": "8a3c32166aa8381f8d2ff734563fe7f422b9634cbad83c94ed6e9124d0d81e97f56e09fe36b79666af8b03d2928c42e5557eeacd26e0f576406a103739bfedae",
+      "size": 668
     },
     ".env.example": {
       "mode": 420,
@@ -32,9 +32,9 @@
     },
     ".gitignore": {
       "mode": 420,
-      "sha256": "5d4416ec2b38e2be6977c41a35ec4cca239f956fd0fe54e7f46026946fa68e29",
-      "sha512": "4bdec10914f7af590f433d6bbceda578d32d68e2e28c4ec9dfeadb9fa28067c1ff3423bb0d66622208eea9f07e0ae055aed1c95d5226bf139d6f19c3487d0e9f",
-      "size": 250
+      "sha256": "1550eea86501fe16a297041d4e9108ca89ea3013c6c99293a17f7c13b97925d8",
+      "sha512": "2197952d319b3e9ed346bf206446609a45e6f7d9a1f5e8033b5d8b0730bd456e845282c8beb7dbca1f9970957649f167556bf351def7515821e4ce8c6af3081a",
+      "size": 691
     },
     "Dockerfile": {
       "mode": 420,
@@ -50,9 +50,9 @@
     },
     "MANIFEST.sha256": {
       "mode": 420,
-      "sha256": "44bf94d66e1bdad8b9bfc4da9993c3f1f1cfda96134b72ce639cdc29d9e121d0",
-      "sha512": "737bde5508c25683c1b735d775e0c7e16d1bfdfb97d0af82d06e346bd09f6a28c3be3830782db88723dd7ce586cd8e0c0df1ed48e5951c2c27335d8f666d9802",
-      "size": 68762
+      "sha256": "79b13e9e84affecd9622649d5b637533a99f0721cc4b501186060d1c5a56ccd3",
+      "sha512": "13b0d7f8f497f24a4c981e13af7bbbce76c3ad48d0ca2c29d9c80d7de79af8d457ac56b995bde7ea27fde61dccd51b7ffc90fc0cc7446f48bb5c906be38f0eca",
+      "size": 68683
     },
     "NOTICE": {
       "mode": 420,
@@ -62,15 +62,15 @@
     },
     "README.md": {
       "mode": 420,
-      "sha256": "c5704427a861d288938f2217613c0f74166fc3735b570917810e78d031155779",
-      "sha512": "9891cf1e00b099a2e3ddc159e400c350c223c0e7f13d061ad1b2aad820d6df13b8ceee2bbe0c31a7945ada9a5d2d27e5c7671a839331be6c55222c07d8b905ff",
-      "size": 8166
+      "sha256": "b8c0d1c647b8a1e07e121081530757cb7f972a27a8f758dc0f0ec225c7515d86",
+      "sha512": "523d45f723343c4dd99c79c8c9a28ca84bd16bebdc574698a214cd4d7ca12aef6ed997f403516eee47cc6b08f8526d1ca329ea00e886c518b3a673bb4975ccb8",
+      "size": 8186
     },
     "README.pt-BR.md": {
       "mode": 420,
-      "sha256": "97ccfb10a38279f0078ba2094f777f63a412174ca9b133f6f4ae232e34a6cfc1",
-      "sha512": "dfb41d0915dbfc0cff30b8d705214431bca7d93fbac9012c6c45051425f32538a680c1e5bb64c5d21e6af534283d176612b14defff32249cab7bc90345991fa3",
-      "size": 16887
+      "sha256": "97cdd661f7d3ae20abb58edb05324a416d8694ea86c429a6c777102695b4bf75",
+      "sha512": "9f6b0fb65f906e46ebe5dbf46f9a4576c329ba48ff920e534f64f60d8ebeca4d84924229e22a87294a01911241233dcd84a997ef7ecb93bd99bad62f1d62ce61",
+      "size": 16750
     },
     "assets/branding/geometry.json": {
       "mode": 420,
@@ -132,18 +132,6 @@
       "sha512": "33ee30c7a8615c8a74446cea7203913cc7487826e7ff6ecc86eba4e86f5b32498ad1e08858fda9b5f6bda7a768ee52858e1c8e72667ef5f63087e6c0dc5a8632",
       "size": 1786
     },
-    "docs/ACCEPTANCE.md": {
-      "mode": 420,
-      "sha256": "3cf189422dfa4e2cf9f7d8f0ba999d6be700b43c8672b20c28de5e56f270137e",
-      "sha512": "592f77bd4a39bc6983fbc9a2129674f0eae72457bd5db83248f0704383a7c053f4816e30f77779e10b31948f54d8a18473e62935e20e25fd132bd26e22030b7a",
-      "size": 14056
-    },
-    "docs/ACCEPTANCE.pt-BR.md": {
-      "mode": 420,
-      "sha256": "2caa869c0b55ee03cfd0de913effdd16001815224c141c2b8959d45eecb17cee",
-      "sha512": "8d7367449bba384a2c44717019fb3bdf42aced913d84a0ead4d20a4d3edd4237c940729596908c8a59465df3bf1414d435b4c3a69087d7f205ebf357e9a18181",
-      "size": 15046
-    },
     "docs/INTEGRITY.md": {
       "mode": 420,
       "sha256": "aea9bfa87d13fb1228204f7752f5e6d8f3324aea3423f7e43d343c0df35fd2d2",
@@ -158,15 +146,15 @@
     },
     "docs/OPERATIONS.md": {
       "mode": 420,
-      "sha256": "326c2aeac879a6e6f3cfea6f0b42db04b93b3c84f69e8abd172d5916bb359d57",
-      "sha512": "6bd25a08b95e1f74eae0e610c4def77372a4bd31cee5d247226f3d1ec7915538f8d29109c2a3bf10d2df3a4e4ed319e16739a4ab0e9f860ce38552e8b4b51fc0",
-      "size": 20176
+      "sha256": "b892b468c48326b9487b15b1d84ad5a65d81f420846e0624532febfd1ae6652e",
+      "sha512": "5b3b1ea61c529b57f65927c71a1fa2e9389013e727fd3aefdf21679c8ec6d4332b4140a75f8b8eb66f1074b0c4279851567fdbad6536c5d05050eb760e48e4e8",
+      "size": 21334
     },
     "docs/OPERATIONS.pt-BR.md": {
       "mode": 420,
-      "sha256": "ac6f733b52fa812b77f0e0c02950a29600c5eb29226634ca7553ae0ea2a3f85b",
-      "sha512": "3e52bc49cae59fc54a3dc3b0d672dea116b44fb0252c9cf9e53349085b544c693e0fa0c0d547c778ee243c7cc69938b7cfc5834e0d1ef2095123985b8bc9f2ab",
-      "size": 24662
+      "sha256": "0d20a323b6e53bcad244fd1319ff4b20b791bd5093fd3b63e4d422516a4bcd92",
+      "sha512": "51ae708f46dbe1789f29b1dad1e9354bf4ede5589faf065da978fa9ff834c2317e89d05261e61f9db61e22c371767e5623a3270598baffc9358b28f1094b4094",
+      "size": 25830
     },
     "docs/SECURITY.md": {
       "mode": 420,
@@ -2936,9 +2924,9 @@
     },
     "scripts/package_source.py": {
       "mode": 493,
-      "sha256": "3a6162bac09b714247f8a90e7cab8a9f3e65134917bf27784878db9b0689a3b5",
-      "sha512": "e415b7a2c750ce1956345b67f68f4a2aedfed9757dc8e4b2f2600a98e95cdb05a332ae26b79ea7d0b48cfc0dad3b9dd2fc2eb35631cb46fafde9b945ee584446",
-      "size": 1095
+      "sha256": "58a247155dd69783f73f70f85ae477988a74277bcaaadba70811e2222960bd29",
+      "sha512": "d13879e79a89f34ababd1c3aa0e5604223f48f1f6990585e59cbb63392e9ac7803fe629025e0f1b4f898b5c4a62d16580400dc5a16e97eca360ef3581b9dffcf",
+      "size": 1512
     },
     "scripts/package_wordcraft_web.py": {
       "mode": 493,
@@ -3344,15 +3332,21 @@
     },
     "tests/test_release_metadata.py": {
       "mode": 420,
-      "sha256": "94ad6c2b2957ec2f0f2bf1754f123f8a20a9332d32b47f09201475277f99f165",
-      "sha512": "8689f571ed6deb5d500128c8c07cc41d4050a58f59a679043833cd01757c7aeb74477579c388aa3105bc43f273379d9ebc4944655e41ec2bec6fb3016d46e146",
-      "size": 747
+      "sha256": "e35bef065bbedba2595699d3dc43d94bf993dab556a15f39462954b519995d1e",
+      "sha512": "2894ba1b0fa61f3a8420c68311efa5ee5fb8e341566a0c9e256e8ef8b9dab39252b6f181b2c72469e38970dd3ce05184ebc6a980bffe52500cf47249844db60e",
+      "size": 681
     },
     "tests/test_signup.py": {
       "mode": 420,
       "sha256": "59e50ef96af01a1846eeb6c4212d265dabee0f391838d1f7909396bbe2aca9c2",
       "sha512": "e095dd899aa0974061be02a800fd295bf9eec1ea0463680bc3cb8c7c3b46b216a9bdc2a9a118b5cd76e5976bd40edefaac81c445fa361ee98f7d4d4c1060453e",
       "size": 12639
+    },
+    "tests/test_source_packaging.py": {
+      "mode": 420,
+      "sha256": "ce09656213c97203dc119cfe14251d61bf179438afaa99065d630886f1a0dd73",
+      "sha512": "e6612308200fe80097723e3e432451269f6b34031162734377a4a7449d7a1969a2fc5dd057844d6dde24c859b2fe8e82b8dc7cfdcfda41d20fd3dd80227e9ae1",
+      "size": 2525
     },
     "tests/test_source_runtime.py": {
       "mode": 420,
@@ -3412,5 +3406,5 @@
   "format": "secops-codemark-integrity-v1",
   "project_id": "77ee92c4-5b90-4839-bc43-05fdf32394b7",
   "tool_version": "0.4.1",
-  "total_bytes": 3805722
+  "total_bytes": 3782451
 }

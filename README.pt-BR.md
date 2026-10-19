@@ -20,7 +20,7 @@ tetos gerais são 50 MB por arquivo e 10 arquivos/100 MB cumulativos por projeto
 prevalecem os limites menores do formato. Substituir um arquivo não reinicia o
 consumo. Outros editores oferecem exemplos ou ferramentas de criação, mas suas
 importações locais continuam bloqueadas até qualificar limites dos parsers.
-Veja a [matriz de aceitação](docs/ACCEPTANCE.pt-BR.md#candidata-da-demo-temporária).
+Veja os [limites de operação da demo](docs/OPERATIONS.pt-BR.md#demonstração-pública).
 O modo leve permite escrever sem WebGL; não oferece a fidelidade DOCX completa.
 
 Com suporte gráfico disponível, o WordCraft abre seu editor completo original.
@@ -226,7 +226,7 @@ scripts/docker_acceptance.sh
 
 Esse gate constrói uma imagem própria de teste e um volume novo, verifica API/MFA, os 13 editores, reinício, integridade dos bundles, canal de exportação no Chromium e backup/restauração em outro volume. O seed sintético de teste é removido ao final. Não usa nem apaga o volume de produção. Há também um workflow de CI, sem publicação automática.
 
-**Os testes de API, DOM, hashes, HTTP com os bundles reais e backup/restauração foram executados.** A imagem Docker foi construída no CT de implantação, os testes Python e Node passaram, e os fluxos de navegador descritos em [aceitação](docs/ACCEPTANCE.pt-BR.md) foram exercitados com dados fictícios. Esta candidata ainda requer homologação com seus documentos. Consulte também [operação](docs/OPERATIONS.pt-BR.md).
+Esta candidata requer homologação com seus documentos em um ambiente separado. Verifique abertura, edição, exportação, reabertura e restauração de backup antes de usar arquivos importantes. Consulte [diagnóstico e aceitação](docs/OPERATIONS.pt-BR.md#diagnóstico-e-aceitação).
 
 ## Privacidade e licença
 
